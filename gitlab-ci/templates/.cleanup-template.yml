@@ -1,0 +1,9 @@
+# templates for cleanup
+
+.cleanup:
+  stage: cleanup
+  script:
+   - cd $PROJECT_ROOT_PATH
+   - find $PROJECT_ROOT_PATH -mindepth 1 -maxdepth 1 -type d ! -name "$CI_PIPELINE_ID"  | sort -V | head -n-$KEEP_RELEASES | xargs rm -rf
+   - pwd
+   - ls -l

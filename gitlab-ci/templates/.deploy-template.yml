@@ -1,0 +1,14 @@
+# templates for deploy
+
+.deploy_stack_template:
+  stage: deploy
+  script:
+    # docker does not bind the symbolic link but the target of the symbolic link
+    # so for deployment always hard linked directories to use
+    - mkdir -p current #create if not exists
+    - rsync -rltgoEDvz --del --delete $PROJECT_ROOT_PATH/$CI_PIPELINE_ID/ $PROJECT_ROOT_PATH/current/
+    #- rsync -rltgoEDvz --del -e "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" $PROJECT_ROOT_PATH/$CI_PIPELINE_ID/*/.e* $PROJECT_ROOT_PATH/current
+    - cd $PROJECT_ROOT_PATH
+    - pwd
+    - ls -l
+

@@ -1,0 +1,16 @@
+# maintain
+
+restart_dev_nginx:
+  extends: 
+   - .restart_template
+   - .development_variables
+   - .rules_development_manual
+  variables:
+    SERVICE_DIRECTORY: nginx-docker
+    SERVICE: letsencrypt
+
+# take_volume_backup:
+#   extends: 
+#     - .volume_backup_template
+#     - .development_variables
+#     - .rules_development_manual

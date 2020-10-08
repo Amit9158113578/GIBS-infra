@@ -1,0 +1,22 @@
+ # templates for maintain
+
+.restart_template:
+  stage: maintain
+  script:
+    - cd $PROJECT_ROOT_PATH/current/$SERVICE_DIRECTORY
+    - docker-compose restart $SERVICE
+
+
+# .view_log_template:
+#   stage: run_up
+#   script:
+#     - cd $PROJECT_ROOT_PATH/current/$SERVICE_DIRECTORY
+#     - docker-compose logs --tail=500 $SERVICE
+
+# .volume_backup_template:
+#   stage: backup
+#   script:
+#     - cd $PROJECT_ROOT_PATH/current
+#     - ./shellscripts/restore-volume.sh /usr/share/projects/nchr-crm/current/ zammad $HOME zammad-docker
+
+

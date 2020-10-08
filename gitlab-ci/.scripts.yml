@@ -1,0 +1,9 @@
+before_script:
+  - declare -x HOSTNAME=$HOSTNAME
+
+include:
+  - local: '/gitlab-ci/scripts/.build-script.yml'
+  - local: '/gitlab-ci/scripts/.deploy-script.yml'
+  - local: '/gitlab-ci/scripts/.run-script.yml'
+  - local: '/gitlab-ci/scripts/.cleanup-script.yml'
+  # - local: '/gitlab-ci/scripts/.maintain-script.yml'

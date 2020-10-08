@@ -1,0 +1,50 @@
+variables:
+  KEEP_RELEASES: "4"
+  PROJECT_ROOT_PATH: /usr/share/projects/nchr-crm
+
+#  Using internal Gitlab
+#  REGISTRY: $CI_REGISTRY
+#  REGISTRY_SLAG:
+#  REGISTRY_USER: $CI_REGISTRY_USER
+#  REGISTRY_PASSWORD: $CI_REGISTRY_PASSWORD
+#
+# Trigger variables will test if the environment is available 
+# and trigger jobs only if the environment is up
+# trigger variables are the host names of docker hosts in capital letters
+# Default set to offline - the first job will set it to true if environment is available
+# This is needed for testing purpose in dev environments which can be down
+#
+#
+# settings for pipeline build
+#
+# target environment will be set by initial environment check jobs
+# and is empty at beginning
+  TARGET_ENVIRONMENT: NCHR
+  PIPELINE_TYPE: default
+
+#
+# Name of the configuration file for environment variables used in docker
+  ENV_FILE: .env-default
+
+.development_variables:
+  environment:
+    name: development-$TARGET_ENVIRONMENT
+  tags:
+    - development
+    
+.production_variables:
+  environment:
+    name: production-$TARGET_ENVIRONMENT
+  tags:
+    - production
+
+.staging_variables:
+  tags:
+    - staging
+  environment:
+    name: staging-$TARGET_ENVIRONMENT 
+
+.stack_services:
+  variables:
+      SERVICE1: "elastic-docker"
+      SERVICE2: "nginx-docker"

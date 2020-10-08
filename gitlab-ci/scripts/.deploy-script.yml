@@ -1,0 +1,14 @@
+
+# deploy
+
+deploy_dev:
+  extends: 
+   - .deploy_stack_template
+   - .development_variables
+   - .rules_development
+
+deploy_prod:
+  extends: 
+   - .deploy_stack_template
+   - .production_variables
+   - .rules_production

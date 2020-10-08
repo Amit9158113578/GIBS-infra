@@ -1,0 +1,45 @@
+# run
+
+run_dev_stack_down&up:
+  extends:
+    - .stack_command
+    - .stack_services
+    - .development_variables
+    - .rules_development_manual
+  stage: run_up
+  variables:
+    DOCKER_COMMAND1: "docker-compose down"
+    DOCKER_COMMAND2: "docker-compose up -d"
+    EXECUTION_PATH: $PROJECT_ROOT_PATH/current
+
+run_prod_stack_down&up:
+  extends:
+    - .stack_command
+    - .stack_services
+    - .production_variables
+    - .rules_production_manual
+  stage: run_up
+  variables:
+    DOCKER_COMMAND1: "docker-compose down"
+    DOCKER_COMMAND2: "docker-compose up -d"
+    EXECUTION_PATH: $PROJECT_ROOT_PATH/current
+    
+# run_dev_nginx_up:
+#   extends: 
+#     - .run_service_template
+#     - .development_variables
+#     - .rules_development_manual
+#   stage: run_up
+#   variables:
+#     SERVICE_DIRECTORY: nginx-docker
+#     COMMAND: "up -d"
+
+# run_dev_nginx_down:
+#   extends: 
+#     - .run_service_template
+#     - .development_variables
+#     - .rules_development_manual
+#   stage: run_down
+#   variables:
+#     SERVICE_DIRECTORY: nginx-docker
+#     COMMAND: down

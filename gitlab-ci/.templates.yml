@@ -1,0 +1,10 @@
+  # templates for target envíronment
+include:
+  - local: '/gitlab-ci/templates/.general-template.yml'
+  - local: '/gitlab-ci/templates/.build-template.yml'
+  - local: '/gitlab-ci/templates/.deploy-template.yml'
+  - local: '/gitlab-ci/templates/.run-template.yml'
+  - local: '/gitlab-ci/templates/.cleanup-template.yml'
+  - local: '/gitlab-ci/templates/.maintain-template.yml'
+
+

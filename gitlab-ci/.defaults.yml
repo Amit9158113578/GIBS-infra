@@ -1,0 +1,10 @@
+stages:
+    - build_1
+    - build_2
+    - deploy
+    - cleanup
+    - run_up
+    # - backup
+    # - run_down
+    # - maintain
+  

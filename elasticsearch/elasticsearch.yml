@@ -1,0 +1,54 @@
+---
+## Default Elasticsearch configuration from Elasticsearch base image.
+## https://github.com/elastic/elasticsearch/blob/master/distribution/docker/src/docker/config/elasticsearch.yml
+#
+cluster.name: "gbis-cluster"
+network.host: 0.0.0.0
+node.name: ${HOSTNAME}
+
+#cluster.initial_master_nodes: gbis-cluster-es03,gbis-cluster-es02,gbis-cluster-es01
+discovery.seed_hosts: gbis-cluster-es03,gbis-cluster-es02,gbis-cluster-es01
+## Use single node discovery in order to disable production mode and avoid bootstrap checks
+## see https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html
+#
+# discovery.type: single-node
+
+## X-Pack settings
+## see https://www.elastic.co/guide/en/elasticsearch/reference/current/setup-xpack.html
+#
+#xpack.license.self_generated.type: basic
+#xpack.security.enabled: true
+#xpack.monitoring.collection.enabled: true
+#xpack.security.transport.ssl.enabled: true
+#xpack.security.transport.ssl.verification_mode: certificate 
+#xpack.security.transport.ssl.keystore.path: cert/elastic-certificates.p12 
+#xpack.security.transport.ssl.truststore.path: cert/elastic-stack-ca.p12 
+
+#xpack.security.http.ssl.enabled: true
+#xpack.security.http.ssl.keystore.path: "cert/http.p12"
+
+#disable swap to avoid elasticsearch problems
+bootstrap.memory_lock: true
+
+#xpack.security.authc.token.enabled: true
+
+#xpack.security.authc:
+#  anonymous:
+#    username: anonymous_user 
+#    roles: kibana, monitoring_index_access
+#    authz_exception: true 
+
+# xpack.security.authc.realms.oidc.oidc1:
+#     order: 2
+#     rp.client_id: "elastic-stack-dev"
+#     rp.response_type: code
+#     rp.redirect_uri: "https://kibana.example.org:5601/api/security/oidc/callback"
+#     op.issuer: "https://ldap.stack.dev.risa.gov.rw/auth/realms/stack.dev.risa.gov.rw"
+#     op.authorization_endpoint: "https://op.example.org/oauth2/v1/authorize"
+#     op.token_endpoint: "https://ldap.stack.dev.risa.gov.rw/auth/realms/stack.dev.risa.gov.rw/protocol/openid-connect/token"
+#     op.jwkset_path: oidc/jwkset.json
+#     op.userinfo_endpoint: "https://op.example.org/oauth2/v1/userinfo"
+#     op.endsession_endpoint: "https://op.example.org/oauth2/v1/logout"
+#     rp.post_logout_redirect_uri: "https://kibana.example.org:5601/security/logged_out"
+#     claims.principal: sub
+#     claims.groups: "http://example.info/claims/groups"

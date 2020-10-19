@@ -1,0 +1,87 @@
+version: '3.6'
+# Risa Development passwords
+#Changed password for user apm_system
+##PASSWORD apm_system = 2EGDosOSQdKvZoaojxmq
+
+#Changed password for user kibana
+#PASSWORD kibana = eOmXvclZ0@ruro[56pA0mgO1xBHS
+
+#Changed password for user logstash_system
+##PASSWORD logstash_system = gjv3ZHn4cl1H9slXLJ5Q
+
+#Changed password for user beats_system
+##PASSWORD beats_system = yftfQ9IjOHXpwDQzTN5u
+
+#Changed password for user remote_monitoring_user
+##PASSWORD remote_monitoring_user = yhUmic6dmbLSVx80TtKQ
+
+#Changed password for user elastic
+#PASSWORD elastic = XsrIYkgat@%673s6t2xTk62nw
+
+#Changed password for user monitoring_user
+##PASSWORD monitoring_user = kypzIw-5mihme-sytrop
+
+services:
+  gcc-dev-es01:
+    build:
+      context: /
+      args:
+        ELK_VERSION: $ELK_VERSION
+    env_file: "configuration/${HOSTNAME}/.env-default"
+    hostname: gcc-dev-01
+    volumes:
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - elastic_data:/usr/share/elasticsearch/data:rw
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - infrastructure_default
+    restart: always
+
+  gcc-dev-es02:
+    build:
+      context: /
+      args:
+        ELK_VERSION: $ELK_VERSION
+    env_file: "configuration/${HOSTNAME}/.env-default"
+    hostname: gcc-dev-02
+    volumes:
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - elastic_data_02:/usr/share/elasticsearch/data:rw
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - infrastructure_default
+    restart: always
+
+  gcc-dev-es03:
+    build:
+      context: /
+      args:
+        ELK_VERSION: $ELK_VERSION
+    env_file: "configuration/${HOSTNAME}/.env-default"
+    hostname: gcc-dev-03
+    volumes:
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - elastic_data_03:/usr/share/elasticsearch/data:rw
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - infrastructure_default
+    restart: always
+
+networks:
+  infrastructure_default: # external network
+    external: true
+  elk_internal:
+
+volumes:
+  elastic_data:
+  elastic_data_02:
+  elastic_data_03:

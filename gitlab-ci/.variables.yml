@@ -46,5 +46,5 @@ variables:
 
 .stack_services:
   variables:
-      SERVICE1: "elastic-docker"
+      SERVICE1: "elasticsearch"
       SERVICE2: "nginx-docker"

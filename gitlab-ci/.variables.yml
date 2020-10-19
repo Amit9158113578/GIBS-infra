@@ -1,6 +1,6 @@
 variables:
   KEEP_RELEASES: "4"
-  PROJECT_ROOT_PATH: /usr/share/projects/nchr-crm
+  PROJECT_ROOT_PATH: /usr/share/projects/risa-stack
 
 #  Using internal Gitlab
 #  REGISTRY: $CI_REGISTRY

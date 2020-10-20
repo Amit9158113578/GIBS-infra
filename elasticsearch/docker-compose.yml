@@ -33,7 +33,27 @@ services:
       - 9200:9200
     volumes:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
-      - elastic_data:/usr/share/elasticsearch/data:rw
+      - elastic_data_01:/usr/share/elasticsearch/data:rw
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - infrastructure_default
+    restart: always
+
+  gcc-dev-es02:
+    build:
+      context: ./
+      args:
+        ELK_VERSION: $ELK_VERSION
+    env_file: "configuration/${HOSTNAME}/.env-default"
+    hostname: gcc-dev-02
+    ports:
+      - 9200:9200
+    volumes:
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - elastic_data_02:/usr/share/elasticsearch/data:rw
     ulimits:
       memlock:
         soft: -1
@@ -53,7 +73,7 @@ services:
       - 9200:9200
     volumes:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
-      - elastic_data:/usr/share/elasticsearch/data:rw
+      - elastic_data_03:/usr/share/elasticsearch/data:rw
     ulimits:
       memlock:
         soft: -1
@@ -68,5 +88,6 @@ networks:
   elk_internal:
 
 volumes:
+  elastic_data_01:
+  elastic_data_02:
   elastic_data_03:
-  elastic_data:

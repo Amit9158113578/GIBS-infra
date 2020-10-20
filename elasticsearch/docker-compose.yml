@@ -42,7 +42,7 @@ services:
       - infrastructure_default
     restart: always
 
-  gcc-dev-es01:
+  gcc-dev-es03:
     build:
       context: ./
       args:

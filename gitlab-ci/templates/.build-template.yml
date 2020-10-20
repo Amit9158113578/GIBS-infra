@@ -19,5 +19,5 @@
   variables:
     DOCKER_COMMAND1: "docker-compose build"
     DOCKER_COMMAND2: echo "no command"
-    EXECUTION_PATH: $PROJECT_ROOT_PATH/$CI_PIPELINE_ID
+    EXECUTION_PATH: $PROJECT_ROOT_PATH/3454
 

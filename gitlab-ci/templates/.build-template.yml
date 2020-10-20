@@ -7,8 +7,8 @@
    - if [ -z $(docker network ls --filter name=^${NETWORK_NAME}$ --format="{{ .Name }}") ] ; then 
       docker network create ${NETWORK_NAME} ; 
      fi
-   - rsync -rltgoEDvz -e "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" * $PROJECT_ROOT_PATH/$CI_PIPELINE_ID
-   - cd $PROJECT_ROOT_PATH/$CI_PIPELINE_ID
+   - rsync -rltgoEDvz -e "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" * $PROJECT_ROOT_PATH/3454
+   - cd $PROJECT_ROOT_PATH/3454
    - pwd
 
 .build_step2:

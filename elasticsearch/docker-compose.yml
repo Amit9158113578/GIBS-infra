@@ -41,7 +41,8 @@ services:
     networks:
       - infrastructure_default
     restart: always
- gcc-dev-es03:
+    
+  gcc-dev-es03:
     build:
       context: ./
       args:

@@ -32,7 +32,7 @@ variables:
   tags:
     - dev1
 
-.development_variables:
+.development_variables1:
   environment:
     name: development-$TARGET_ENVIRONMENT
   tags:

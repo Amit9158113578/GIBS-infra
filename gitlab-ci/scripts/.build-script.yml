@@ -2,6 +2,7 @@ build_dev_step1(copy to host):
   extends: 
     - .build_step1
     - .development_variables
+    - .development_variables1
     - .rules_development
     
 build_dev_step2(build the containers):

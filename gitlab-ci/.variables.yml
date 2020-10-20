@@ -30,7 +30,7 @@ variables:
   environment:
     name: development-$TARGET_ENVIRONMENT
   tags:
-    - dev1, dev2
+    - dev1, dev3
     
 .production_variables:
   environment:

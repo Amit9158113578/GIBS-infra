@@ -30,8 +30,8 @@ variables:
   environment:
     name: development-$TARGET_ENVIRONMENT
   tags:
-    - dev1
-    - dev3
+    - gcc-dev-01
+    - gcc-dev-03
     
 .production_variables:
   environment:

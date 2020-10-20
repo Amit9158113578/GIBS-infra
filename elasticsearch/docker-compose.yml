@@ -22,6 +22,25 @@ version: '3.6'
 ##PASSWORD monitoring_user = kypzIw-5mihme-sytrop
 
 services:
+  gcc-dev-es01:
+    build:
+      context: ./
+      args:
+        ELK_VERSION: $ELK_VERSION
+    env_file: "configuration/${HOSTNAME}/.env-default"
+    hostname: gcc-dev-01
+    ports:
+      - 9200:9200
+    volumes:
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - elastic_data:/usr/share/elasticsearch/data:rw
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - infrastructure_default
+    restart: always
  gcc-dev-es03:
     build:
       context: ./
@@ -49,3 +68,4 @@ networks:
 
 volumes:
   elastic_data_03:
+  elastic_data:

@@ -1,10 +1,22 @@
 # run
 
-run_dev_stack_down&up:
+run_dev_stack_down&up1:
   extends:
     - .stack_command
     - .stack_services
-    - .development_variables
+    - .development_variables1
+    - .rules_development_manual
+  stage: run_up
+  variables:
+    DOCKER_COMMAND1: "docker-compose down"
+    DOCKER_COMMAND2: "docker-compose up -d"
+    EXECUTION_PATH: $PROJECT_ROOT_PATH/current
+
+run_dev_stack_down&up3:
+  extends:
+    - .stack_command
+    - .stack_services
+    - .development_variables3
     - .rules_development_manual
   stage: run_up
   variables:

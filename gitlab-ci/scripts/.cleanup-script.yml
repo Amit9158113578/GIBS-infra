@@ -1,9 +1,15 @@
 # cleanup
 
-cleanup_dev:
+cleanup_dev1:
   extends: 
     - .cleanup
-    - .development_variables
+    - .development_variables1
+    - .rules_development
+
+cleanup_dev3:
+  extends: 
+    - .cleanup
+    - .development_variables3
     - .rules_development
 
 cleanup_prod:

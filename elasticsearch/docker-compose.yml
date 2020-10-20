@@ -50,5 +50,3 @@ networks:
 
 volumes:
   elastic_data:
-  elastic_data_02:
-  elastic_data_03:

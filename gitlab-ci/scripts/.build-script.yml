@@ -10,13 +10,13 @@ build_dev_step2(copy to host):
     - .development_variables1
     - .rules_development
     
-build_dev_step2(build the containers):
+build_dev_step3(build the containers):
   extends:
     - .build_step2
     - .development_variables
     - .rules_development
 
-build_dev_step3(build the containers):
+build_dev_step4(build the containers):
   extends:
     - .build_step2
     - .development_variables1

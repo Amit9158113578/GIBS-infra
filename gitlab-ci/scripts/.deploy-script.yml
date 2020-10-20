@@ -5,6 +5,12 @@ deploy_dev1:
    - .deploy_stack_template
    - .development_variables1
    - .rules_development
+
+deploy_dev2:
+  extends: 
+   - .deploy_stack_template
+   - .development_variables2
+   - .rules_development
    
 deploy_dev3:
   extends: 

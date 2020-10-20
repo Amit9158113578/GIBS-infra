@@ -5,6 +5,12 @@ cleanup_dev1:
     - .cleanup
     - .development_variables1
     - .rules_development
+    
+cleanup_dev2:
+  extends: 
+    - .cleanup
+    - .development_variables2
+    - .rules_development
 
 cleanup_dev3:
   extends: 

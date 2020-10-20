@@ -26,13 +26,13 @@ variables:
 # Name of the configuration file for environment variables used in docker
   ENV_FILE: .env-default
 
-.development_variables:
+.development_variables1:
   environment:
     name: development-$TARGET_ENVIRONMENT
   tags:
     - dev1
 
-.development_variables1:
+.development_variables3:
   environment:
     name: development-$TARGET_ENVIRONMENT
   tags:

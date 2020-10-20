@@ -16,6 +16,12 @@ build_dev_step2(build the containers):
     - .development_variables
     - .rules_development
 
+build_dev_step3(build the containers):
+  extends:
+    - .build_step2
+    - .development_variables1
+    - .rules_development
+
 build_prod_step1(copy to host):
   extends: 
     - .build_step1

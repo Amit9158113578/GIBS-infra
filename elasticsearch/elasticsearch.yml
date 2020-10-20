@@ -3,7 +3,7 @@
 ## https://github.com/elastic/elasticsearch/blob/master/distribution/docker/src/docker/config/elasticsearch.yml
 #
 cluster.name: "gbis-cluster"
-network.host: 0.0.0.0
+#network.host: 0.0.0.0
 node.name: ${HOSTNAME}
 
 #cluster.initial_master_nodes: gbis-cluster-es03,gbis-cluster-es02,gbis-cluster-es01

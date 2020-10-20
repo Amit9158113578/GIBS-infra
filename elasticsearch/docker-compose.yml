@@ -28,7 +28,27 @@ services:
       args:
         ELK_VERSION: $ELK_VERSION
     env_file: "configuration/${HOSTNAME}/.env-default"
-    hostname: gcc-dev-01, gcc-dev-03
+    hostname: gcc-dev-01
+    ports:
+      - 9200:9200
+    volumes:
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
+      - elastic_data:/usr/share/elasticsearch/data:rw
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    networks:
+      - infrastructure_default
+    restart: always
+
+  gcc-dev-es01:
+    build:
+      context: ./
+      args:
+        ELK_VERSION: $ELK_VERSION
+    env_file: "configuration/${HOSTNAME}/.env-default"
+    hostname: gcc-dev-03
     ports:
       - 9200:9200
     volumes:

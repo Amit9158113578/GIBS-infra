@@ -48,4 +48,4 @@ networks:
   elk_internal:
 
 volumes:
-  elastic_data:
+  elastic_data_03:

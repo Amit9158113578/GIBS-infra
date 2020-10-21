@@ -29,10 +29,6 @@ services:
         ELK_VERSION: $ELK_VERSION
     env_file: "configuration/${HOSTNAME}/.env-default"
     hostname: $HOSTNAME
-    ports:
-      - 9200:9200
-    networks:
-      - nginx-net
 
     volumes:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
@@ -42,10 +38,41 @@ services:
         soft: -1
         hard: -1
     restart: always
+  
+  nginx:
+    image: nginx:1.17.1-alpine
+    ports:
+      - 9200:9200
+    deploy:
+      mode: global
+    command: |
+      /bin/sh -c "echo '
+      user nobody nogroup;
+      worker_processes auto;
+      events {
+        worker_connections 1024;
+      }
+      http {
+        client_max_body_size 4g;
+        resolver 127.0.0.11 ipv6=off;
+        server {
+          listen *:9200;
+          location / {
+            proxy_set_header Connection keep-alive;
+            set $$url http://elasticsearch:9200;
+            proxy_pass $$url;
+            proxy_set_header  Host $$http_host;
+            proxy_set_header  X-Real-IP $$remote_addr;
+            proxy_set_header  X-Forwarded-For $$proxy_add_x_forwarded_for;
+          }
+        }
+      }' | tee /etc/nginx/nginx.conf && nginx -t && nginx -g 'daemon off;'"
+
 
 networks:
   nginx-net: # external network
      attachable: true
+
 
 volumes:
   elastic_data_01:

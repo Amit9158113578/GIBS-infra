@@ -39,13 +39,12 @@ services:
         soft: -1
         hard: -1
     networks:
-      - ingress
+      - docker_gwbridge
     restart: always
     
 networks:
-  ingress: # external network
-    driver: overlay
-  elk_internal:
+  docker_gwbridge: # external network
+    driver: bridge
 
 volumes:
   elastic_data_01:

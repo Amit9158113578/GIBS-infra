@@ -45,7 +45,6 @@ services:
 
 networks:
   nginx-net: # external network
-     external: true
      attachable: true
 
 volumes:

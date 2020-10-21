@@ -3,7 +3,7 @@
 .build_step1:
   stage: build_1
   script:
-   - NETWORK_NAME=infrastructure_default
+   - NETWORK_NAME=ingress
    - if [ -z $(docker network ls --filter name=^${NETWORK_NAME}$ --format="{{ .Name }}") ] ; then 
       docker network create ${NETWORK_NAME} ; 
      fi

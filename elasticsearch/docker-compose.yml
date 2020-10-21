@@ -32,7 +32,7 @@ services:
     ports:
       - 9200:9200
     networks:
-      - infrastructure_default
+      - ingress
 
     volumes:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
@@ -44,7 +44,7 @@ services:
     restart: always
 
 networks:
-  infrastructure_default: # external network
+  ingress: # external network
      external: true
 
 volumes:

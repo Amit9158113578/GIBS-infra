@@ -31,6 +31,9 @@ services:
     hostname: $HOSTNAME
     ports:
       - 9200:9200
+    networks:
+      - ingress
+
     volumes:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       - elastic_data_01:/usr/share/elasticsearch/data:rw
@@ -40,6 +43,9 @@ services:
         hard: -1
     restart: always
 
+networks:
+  ingress: # external network
+    driver: overlay
 
 volumes:
   elastic_data_01:

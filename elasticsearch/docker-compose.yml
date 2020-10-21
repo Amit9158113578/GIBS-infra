@@ -46,6 +46,7 @@ services:
 networks:
   nginx-net: # external network
      external: true
+     attachable: true
 
 volumes:
   elastic_data_01:

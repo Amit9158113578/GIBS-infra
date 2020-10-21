@@ -38,13 +38,8 @@ services:
       memlock:
         soft: -1
         hard: -1
-    networks:
-      - docker_gwbridge
     restart: always
-    
-networks:
-  docker_gwbridge: # external network
-    driver: bridge
+
 
 volumes:
   elastic_data_01:

@@ -10,19 +10,6 @@
    - echo $SERVICE1
    - $DOCKER_COMMAND1
    - echo "Finishing..."
-   - echo $SERVICE2
-   - cd ../$SERVICE2
-   - $DOCKER_COMMAND1
-   - cd $EXECUTION_PATH
-   - echo $EXECUTION_PATH
-   - cd $SERVICE1
-   - echo "Starting..."
-   - echo $SERVICE1
-   - $DOCKER_COMMAND2
-   - echo "Starting..."
-   - echo $SERVICE2
-   - cd ../$SERVICE2
-   - $DOCKER_COMMAND2
   #  - echo "Building..."
   #  - echo $SERVICE3
   #  - cd ../$SERVICE3

@@ -58,4 +58,4 @@ variables:
 
 .stack_services:
   variables:
-      SERVICE1: ""
+      SERVICE1: "elasticsearch"

@@ -45,6 +45,7 @@ services:
 networks:
   infrastructure_default: # external network
     external: true
+    driver: bridge
   elk_internal:
 
 volumes:

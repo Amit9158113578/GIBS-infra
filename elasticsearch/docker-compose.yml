@@ -39,13 +39,12 @@ services:
         soft: -1
         hard: -1
     networks:
-      - infrastructure_default
+      - ingress
     restart: always
     
 networks:
-  infrastructure_default: # external network
-    external: true
-    driver: bridge
+  ingress: # external network
+    driver: overlay
   elk_internal:
 
 volumes:

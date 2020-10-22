@@ -31,7 +31,7 @@ services:
     hostname: $HOSTNAME
     environment:
         - node.roles=master,data
-        - network.publish_host=10.10.73.16
+        - network.publish_host=$IPADD
         - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
         - Des.discovery.zen.ping.unicast.hosts=gcc-dev-01,gcc-dev-02,gcc-dev-03
         - Des.discovery.zen.minimum_master_nodes=1

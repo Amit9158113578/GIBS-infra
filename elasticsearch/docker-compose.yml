@@ -22,7 +22,7 @@ version: '3.6'
 ##PASSWORD monitoring_user = kypzIw-5mihme-sytrop
 
 services:
-  name: $HOSTNAME
+  name: "${HOSTNAME}"
     build:
       context: ./
       args:
@@ -33,7 +33,7 @@ services:
         - node.roles=master,data
         - network.publish_host=$IPADD
         - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
-        - discovery.seed_hosts=gcc-dev-es01_1
+        - discovery.seed_hosts=gcc-dev-01,gcc-dev-02,gcc-dev-03
         - cluster.initial_master_nodes=gcc-dev-01,gcc-dev-02,gcc-dev-03
         - net=infrastructure_default
     ports:

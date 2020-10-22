@@ -7,7 +7,7 @@ network.host: 0.0.0.0
 node.name: ${HOSTNAME}
 
 cluster.initial_master_nodes: gcc-dev-03,gcc-dev-02,gcc-dev-01
-discovery.seed_hosts: gcc-dev-01, gcc-dev-02, gcc-dev-03
+discovery.seed_hosts: 10.10.73.15, 10.10.73.15, 10.10.73.15
 
 ## Use single node discovery in order to disable production mode and avoid bootstrap checks
 ## see https://www.elastic.co/guide/en/elasticsearch/reference/current/bootstrap-checks.html

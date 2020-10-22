@@ -33,8 +33,8 @@ services:
         - node.roles=master,data
         - network.publish_host=$IPADD
         - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
-        - discovery.seed_hosts=10.10.73.15, 10.10.73.16, 10.10.73.17
-        - cluster.initial_master_nodes=gcc-dev-01,gcc-dev-02,gcc-dev-02
+        - discovery.seed_hosts=10.10.73.15,10.10.73.16,10.10.73.17
+        - cluster.initial_master_nodes=gcc-dev-01,gcc-dev-02,gcc-dev-03
         - net=infrastructure_default
     ports:
       - 9200:9200

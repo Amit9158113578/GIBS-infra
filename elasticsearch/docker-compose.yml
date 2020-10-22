@@ -32,7 +32,7 @@ services:
     ports:
       - 9200:9200
     networks:
-      - nginx-net
+      - infrastructure_default
 
     volumes:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
@@ -44,8 +44,8 @@ services:
     restart: always
 
 networks:
-  nginx-net: # external network
-     attachable: true
+  infrastructure_default: # external network
+     external: true
 
 volumes:
   elastic_data_01:

@@ -38,11 +38,10 @@ services:
         - Des.network.publish_host=$HOSTNAME
         - transport.tcp.port=9300
         - http.port=9200
+        - net=infrastructure_default
     ports:
       - 9200:9200
       - 9300:9300
-    networks:
-      - infrastructure_default
 
     volumes:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
@@ -52,9 +51,6 @@ services:
         soft: -1
         hard: -1
     restart: always
-
-networks:
-  infrastructure_default: # external network
 
 volumes:
   elastic_data_01:

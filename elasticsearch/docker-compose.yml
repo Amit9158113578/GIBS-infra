@@ -50,7 +50,7 @@ services:
     restart: always
     
 networks:
-    elastic: bridge
+    elastic:
 
 volumes:
   elastic_data_01:

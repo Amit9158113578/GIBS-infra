@@ -48,6 +48,9 @@ services:
         soft: -1
         hard: -1
     restart: always
+    
+networks:
+    elastic: bridge
 
 volumes:
   elastic_data_01:

@@ -35,7 +35,7 @@ services:
         - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
         - Des.discovery.zen.ping.unicast.hosts=gcc-dev-01,gcc-dev-02,gcc-dev-03
         - Des.discovery.zen.minimum_master_nodes=1
-        - Des.network.publish_host=gcc-dev-01
+        - Des.network.publish_host=$HOSTNAME
         - transport.tcp.port=9300
         - http.port=9200
     ports:

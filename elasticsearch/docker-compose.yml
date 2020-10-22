@@ -55,7 +55,6 @@ services:
 
 networks:
   infrastructure_default: # external network
-    driver:bridge
 
 volumes:
   elastic_data_01:

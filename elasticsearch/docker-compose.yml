@@ -38,8 +38,6 @@ services:
     ports:
       - 9200:9200
       - 9300:9300
-    networks:
-      - elastic
     volumes:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml:ro
       - elastic_data_01:/usr/share/elasticsearch/data:rw

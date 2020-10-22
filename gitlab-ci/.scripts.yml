@@ -1,6 +1,6 @@
 before_script:
   - declare -x HOSTNAME=$HOSTNAME
-  - declare "hostname -i"=$IPADD
+  - declare $IPADD=hostname -i
 include:
   - local: '/gitlab-ci/scripts/.build-script.yml'
   - local: '/gitlab-ci/scripts/.deploy-script.yml'

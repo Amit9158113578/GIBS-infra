@@ -22,7 +22,7 @@ version: '3.6'
 ##PASSWORD monitoring_user = kypzIw-5mihme-sytrop
 
 services:
-  name: $HOSTNAME
+  elk:
     build:
       context: ./
       args:

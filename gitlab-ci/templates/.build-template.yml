@@ -3,10 +3,10 @@
 .build_step1:
   stage: build_1
   script:
-   - NETWORK_NAME=infrastructure_default
-   - if [ -z $(docker network ls --filter name=^${NETWORK_NAME}$ --format="{{ .Name }}") ] ; then 
-      docker network create ${NETWORK_NAME} ; 
-     fi
+  # - NETWORK_NAME=infrastructure_default
+  # - if [ -z $(docker network ls --filter name=^${NETWORK_NAME}$ --format="{{ .Name }}") ] ; then 
+  #    docker network create ${NETWORK_NAME} ; 
+  #   fi
    - rsync -rltgoEDvz -e "-o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" * $PROJECT_ROOT_PATH/3454
    - cd $PROJECT_ROOT_PATH/3454
    - pwd

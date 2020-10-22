@@ -22,7 +22,7 @@ version: '3.6'
 ##PASSWORD monitoring_user = kypzIw-5mihme-sytrop
 
 services:
-  gcc-dev-es01:
+  name: $HOSTNAME
     build:
       context: ./
       args:

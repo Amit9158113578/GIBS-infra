@@ -13,3 +13,5 @@ test:
         - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/elasticsearch.yaml
         - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/ls-configmap.yml 
        # - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/ls.yaml
+       # - test
+       # - test

@@ -4,7 +4,7 @@ test:
         - echo 'test hello there demo'
         #- #rm -rf /home/neerajkumar.aptude.risa/devops
         #- cd /home/neerajkumar.aptude.risa/devops
-        - git pull https://ngogavale@aptude.com:Neeraj@7010@git.risa.gov.rw/risa/risa-gcino-projects/risa-enterprise-architecture-division-projects/gbis/gbis-aptude.git
+        - git pull https://ngogavale%40aptude.com:Neeraj%407010@git.risa.gov.rw/risa/risa-gcino-projects/risa-enterprise-architecture-division-projects/gbis/gbis-aptude.git
         - cd /home/neerajkumar.aptude.risa/devops
         - kubectl apply -f /home/neerajkumar.aptude.risa/devops/storage-class.yaml
         - kubectl apply -f /home/neerajkumar.aptude.risa/devops/pv.yaml

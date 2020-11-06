@@ -1,9 +1,0 @@
-# templates for run
-
-.run_service_template:
-  script:
-    - cd $PROJECT_ROOT_PATH/3454/$SERVICE_DIRECTORY
-    - docker-compose $COMMAND
-
- 
-

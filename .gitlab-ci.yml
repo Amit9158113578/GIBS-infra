@@ -1,15 +1,15 @@
 test:
     stage: test
     script:
-        - echo 'test'
-        - cd /tmp
-        - rm -rf /tmp/devops
-        - git clone https://lksingh009:N7ntQ~7C@github.com/lksingh009/devops.git
-        - kubectl apply -f storage-class.yaml
-        - kubectl apply -f pv.yaml
-        - kubectl apply -f pv-1.yaml
-        - kubectl apply -f pv-2.yaml
-        - kubectl apply -f elasticsearch.yaml
-        - kubectl apply -f ls-configmap.yml 
-        - kubectl apply -f ls.yaml
-        - sh /etc/gitlab-runner/test.sh
+        - echo 'test hello there demo'
+        #- #rm -rf /home/neerajkumar.aptude.risa/devops
+        #- cd /home/neerajkumar.aptude.risa/devops
+        - git pull https://lksingh009:N7ntQ~7C@gitlab.com/lksingh009/devops.git
+        - cd /home/neerajkumar.aptude.risa/devops
+        - kubectl apply -f /home/neerajkumar.aptude.risa/devops/storage-class.yaml
+        - kubectl apply -f /home/neerajkumar.aptude.risa/devops/pv.yaml
+        - kubectl apply -f /home/neerajkumar.aptude.risa/devops/pv-1.yaml
+        - kubectl apply -f /home/neerajkumar.aptude.risa/devops/pv-2.yaml
+        - kubectl apply -f /home/neerajkumar.aptude.risa/devops/elasticsearch.yaml
+        - kubectl apply -f /home/neerajkumar.aptude.risa/devops/ls-configmap.yml 
+       # - kubectl apply -f /home/neerajkumar.aptude.risa/devops/ls.yaml

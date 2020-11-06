@@ -11,7 +11,7 @@ deploy_infra:
         - ls
         #- #rm -rf         #- cd         - ls
         #- git pull https://ngogavale%40aptude.com:Neeraj%407010@git.risa.gov.rw/risa/risa-gcino-projects/risa-enterprise-architecture-division-projects/gbis/gbis-aptude.git
-        - cd /infrastructure-deployment/k8s-configuration
+        - cd infrastructure-deployment/k8s-configuration
         - kubectl apply -f storage-class.yaml
         - kubectl apply -f pv.yaml
         - kubectl apply -f pv-1.yaml

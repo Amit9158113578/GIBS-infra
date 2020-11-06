@@ -1,5 +1,5 @@
-configdep:
-    stage: dep-dev
+deploy:
+    stage: deploy
     script:
         - echo 'test hello there demo'
         #- #rm -rf /home/neerajkumar.aptude.risa/gbis-aptude

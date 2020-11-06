@@ -1,3 +1,9 @@
+stages:
+    - deploy
+    - cleanup
+    - deploy_manual
+    - maintain
+  
 deploy_infra:
     stage: deploy
     script:
@@ -17,7 +23,7 @@ deploy_infra:
        # - test
 
 initial_deploy_kubernetes:
-    stage: deploy
+    stage: deploy_manual
     script:
         - echo 'this is an empty job so far'
     # install kubernetes
@@ -26,7 +32,7 @@ initial_deploy_kubernetes:
     # further initial things to do...
 
 initial_deploy_elastic:
-    stage: deploy
+    stage: deploy_manual
     script:
         - echo 'this is an empty job so far'
     # install kubernetes
@@ -35,6 +41,6 @@ initial_deploy_elastic:
     # further initial things to do...
 
 deploy_code:
-    stage: deploy
+    stage: deploy_manual
     script:
         - echo 'this is an empty job so far for deployment of pipelines elk scripts'

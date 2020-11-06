@@ -1,18 +1,39 @@
-deploy:
+deploy_infra:
     stage: deploy
     script:
         - echo 'test hello there demo'
-        #- #rm -rf /home/neerajkumar.aptude.risa/gbis-aptude
-        #- cd /home/neerajkumar.aptude.risa/gbis-aptude
-        - ls
-        - git pull https://ngogavale%40aptude.com:Neeraj%407010@git.risa.gov.rw/risa/risa-gcino-projects/risa-enterprise-architecture-division-projects/gbis/gbis-aptude.git
-        - cd /home/neerajkumar.aptude.risa/gbis-aptude
-        - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/storage-class.yaml
-        - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/pv.yaml
-        - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/pv-1.yaml
-        - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/pv-2.yaml
-        - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/elasticsearch.yaml
-        - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/ls-configmap.yml 
-       # - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/ls.yaml
+        #- #rm -rf         #- cd         - ls
+        #- git pull https://ngogavale%40aptude.com:Neeraj%407010@git.risa.gov.rw/risa/risa-gcino-projects/risa-enterprise-architecture-division-projects/gbis/gbis-aptude.git
+        - cd /infrastructure-deployment/k8s-configuration
+        - kubectl apply -f storage-class.yaml
+        - kubectl apply -f pv.yaml
+        - kubectl apply -f pv-1.yaml
+        - kubectl apply -f pv-2.yaml
+        - kubectl apply -f elasticsearch.yaml
+        - kubectl apply -f ls-configmap.yml 
+       # - kubectl apply -f ls.yaml
        # - test
        # - test
+
+initial_deploy_kubernetes:
+    stage: deploy
+    script:
+        - echo 'this is an empty job so far'
+    # install kubernetes
+    # create certificates for elastic tls?
+    # change the standard passwords
+    # further initial things to do...
+
+initial_deploy_elastic:
+    stage: deploy
+    script:
+        - echo 'this is an empty job so far'
+    # install kubernetes
+    # create certificates for elastic tls?
+    # change the standard passwords
+    # further initial things to do...
+
+deploy_code:
+    stage: deploy
+    script:
+        - echo 'this is an empty job so far for deployment of pipelines elk scripts'

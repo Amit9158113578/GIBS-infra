@@ -4,6 +4,7 @@ deploy:
         - echo 'test hello there demo'
         #- #rm -rf /home/neerajkumar.aptude.risa/gbis-aptude
         #- cd /home/neerajkumar.aptude.risa/gbis-aptude
+        - ls
         - git pull https://ngogavale%40aptude.com:Neeraj%407010@git.risa.gov.rw/risa/risa-gcino-projects/risa-enterprise-architecture-division-projects/gbis/gbis-aptude.git
         - cd /home/neerajkumar.aptude.risa/gbis-aptude
         - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/storage-class.yaml

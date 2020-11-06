@@ -2,6 +2,7 @@ deploy_infra:
     stage: deploy
     script:
         - echo 'test hello there demo'
+        - ls
         #- #rm -rf         #- cd         - ls
         #- git pull https://ngogavale%40aptude.com:Neeraj%407010@git.risa.gov.rw/risa/risa-gcino-projects/risa-enterprise-architecture-division-projects/gbis/gbis-aptude.git
         - cd /infrastructure-deployment/k8s-configuration

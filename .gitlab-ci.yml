@@ -1,7 +1,15 @@
-include:
-  - local: '/gitlab-ci/.defaults.yml'
-  - local: '/gitlab-ci/.variables.yml'
-  - local: '/gitlab-ci/.rules.yml' 
-  - local: '/gitlab-ci/.templates.yml'
-  - local: '/gitlab-ci/.scripts.yml'
-
+test:
+    stage: test
+    script:
+        - echo 'test'
+        - cd /tmp
+        - rm -rf /tmp/devops
+        - git clone https://lksingh009:N7ntQ~7C@github.com/lksingh009/devops.git
+        - kubectl apply -f storage-class.yaml
+        - kubectl apply -f pv.yaml
+        - kubectl apply -f pv-1.yaml
+        - kubectl apply -f pv-2.yaml
+        - kubectl apply -f elasticsearch.yaml
+        - kubectl apply -f ls-configmap.yml 
+        - kubectl apply -f ls.yaml
+        - sh /etc/gitlab-runner/test.sh

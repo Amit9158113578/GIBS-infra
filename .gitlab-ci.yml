@@ -2,14 +2,14 @@ test:
     stage: test
     script:
         - echo 'test hello there demo'
-        #- #rm -rf /home/neerajkumar.aptude.risa/devops
-        #- cd /home/neerajkumar.aptude.risa/devops
+        #- #rm -rf /home/neerajkumar.aptude.risa/gbis-aptude
+        #- cd /home/neerajkumar.aptude.risa/gbis-aptude
         - git pull https://ngogavale%40aptude.com:Neeraj%407010@git.risa.gov.rw/risa/risa-gcino-projects/risa-enterprise-architecture-division-projects/gbis/gbis-aptude.git
-        - cd /home/neerajkumar.aptude.risa/devops
-        - kubectl apply -f /home/neerajkumar.aptude.risa/devops/storage-class.yaml
-        - kubectl apply -f /home/neerajkumar.aptude.risa/devops/pv.yaml
-        - kubectl apply -f /home/neerajkumar.aptude.risa/devops/pv-1.yaml
-        - kubectl apply -f /home/neerajkumar.aptude.risa/devops/pv-2.yaml
-        - kubectl apply -f /home/neerajkumar.aptude.risa/devops/elasticsearch.yaml
-        - kubectl apply -f /home/neerajkumar.aptude.risa/devops/ls-configmap.yml 
-       # - kubectl apply -f /home/neerajkumar.aptude.risa/devops/ls.yaml
+        - cd /home/neerajkumar.aptude.risa/gbis-aptude
+        - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/storage-class.yaml
+        - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/pv.yaml
+        - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/pv-1.yaml
+        - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/pv-2.yaml
+        - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/elasticsearch.yaml
+        - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/ls-configmap.yml 
+       # - kubectl apply -f /home/neerajkumar.aptude.risa/gbis-aptude/ls.yaml

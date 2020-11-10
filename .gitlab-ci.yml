@@ -27,5 +27,7 @@ elk_config:
          - kubectl apply -f pv-1.yaml
          - kubectl apply -f pv-2.yaml
          - kubectl apply -f elasticsearch.yaml
+         - kubectl apply -f kibana.yaml
+         - kubectl apply -f ls.yaml
          - kubectl apply -f ls-configmap.yml
          - echo 'elk-config end'

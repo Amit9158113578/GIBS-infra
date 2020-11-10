@@ -6,8 +6,7 @@ kube_deploy:
   stage: kube_deploy_manual
   when: manual
   tags: 
-    - dev
-    - master
+    - test123
   script: 
          - echo 'kube_deploy start'
          - cd kube-setup
@@ -19,8 +18,7 @@ elk_config:
   stage: elk_deploy
   when: manual
   tags: 
-    - dev
-    - master
+    - test123
   script: 
          - echo 'elk-config start'
          - cd elk-config

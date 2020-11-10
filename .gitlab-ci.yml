@@ -1,6 +1,6 @@
 stages:
-  - deploy
-  - deploy_manual
+  - kube_deploy_manual
+  - elk_deploy
 
 kube_deploy:
   stage: deploy_manual
@@ -14,7 +14,7 @@ kube_deploy:
          - echo 'kube_deploy end'
 
 elk_config:
-  stage: deploy
+  stage: elk_deploy
   tags: 
     - dev
     - master

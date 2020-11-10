@@ -1,8 +1,8 @@
 #!/bin/bash
 IP=`hostname -I | awk '{print $1}'`
-master=172.31.75.144
-Node1=172.31.73.96
-Node2=172.31.78.17
+master=172.31.65.130
+Node1=172.31.78.155
+Node2=172.31.71.232
 
 echo "updating apt repositories for kubernetes installation"
 
@@ -48,14 +48,14 @@ fi
 
 
 #Kubernetes MASTER
-#sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --control-plane-endpoint "$master:6443" --upload-certs
+sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --control-plane-endpoint "$master:6443" --upload-certs
 if [ $? -ne 0 ]
 then
         echo "kube init failed"
         exit 1
 fi
-#mkdir -p $HOME/.kube
-#sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"

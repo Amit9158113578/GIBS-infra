@@ -1,8 +1,8 @@
 #!/bin/bash
 IP=`hostname -I | awk '{print $1}'`
-master=10.10.73.15
-Node1=10.10.73.16
-Node2=10.10.73.17
+master=172.31.70.174
+Node1=172.31.64.182
+Node2=172.31.73.127
 
 echo "updating apt repositories for kubernetes installation"
 
@@ -64,13 +64,13 @@ kubectl apply -f https://download.elastic.co/downloads/eck/1.2.0/all-in-one.yaml
 
 token=$(sudo kubeadm token create --print-join-command|tail -1)
 
-scp -o StrictHostKeyChecking=no -i /root/ssh.pem /root/script-kube.sh neerajkumar.aptude.risa@$Node1:/tmp
-ssh -o StrictHostKeyChecking=no -i /root/ssh.pem neerajkumar.aptude.risa@$Node1 bash /tmp/script-kube.sh
-ssh -o StrictHostKeyChecking=no -i /root/ssh.pem neerajkumar.aptude.risa@$Node1 sudo $token
+scp -o StrictHostKeyChecking=no -i /root/ssh.pem /root/script-kube.sh ubuntu@$Node1:/tmp
+ssh -o StrictHostKeyChecking=no -i /root/ssh.pem ubuntu@$Node1 bash /tmp/script-kube.sh
+ssh -o StrictHostKeyChecking=no -i /root/ssh.pem ubuntu@$Node1 sudo $token
 
-scp -o StrictHostKeyChecking=no -i /root/ssh.pem /root/script-kube.sh neerajkumar.aptude.risa@$Node2:/tmp
-ssh -o StrictHostKeyChecking=no -i /root/ssh.pem neerajkumar.aptude.risa@$Node2 bash /tmp/script-kube.sh
-ssh -o StrictHostKeyChecking=no -i /root/ssh.pem neerajkumar.aptude.risa@$Node2 sudo $token
+scp -o StrictHostKeyChecking=no -i /root/ssh.pem /root/script-kube.sh ubuntu@$Node2:/tmp
+ssh -o StrictHostKeyChecking=no -i /root/ssh.pem ubuntu@$Node2 bash /tmp/script-kube.sh
+ssh -o StrictHostKeyChecking=no -i /root/ssh.pem ubuntu@$Node2 sudo $token
 
 
 # Kubernetes Minion 

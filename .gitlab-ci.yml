@@ -9,6 +9,7 @@ kube_deploy:
     - test123
   script: 
          - echo 'kube_deploy start'
+         - cp kube-setup/node-k8s.sh /root/
          - cd kube-setup
          - sh master-k8s.sh
          - echo 'kube_deploy end'

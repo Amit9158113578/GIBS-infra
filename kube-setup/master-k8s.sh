@@ -1,8 +1,8 @@
 #!/bin/bash
 IP=`hostname -I | awk '{print $1}'`
-master=172.31.75.247
-Node1=172.31.76.106
-Node2=172.31.78.159
+master=10.10.73.15
+Node1=10.10.73.16
+Node2=10.10.73.17
 
 echo "updating apt repositories for kubernetes installation"
 

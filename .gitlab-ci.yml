@@ -3,7 +3,7 @@ stages:
   - elk_deploy
 
 kube_deploy:
-  stage: deploy_manual
+  stage: kube_deploy_manual
   tags: 
     - dev
     - master

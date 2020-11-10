@@ -1,46 +1,30 @@
 stages:
-    - deploy
-    - cleanup
-    - deploy_manual
-    - maintain
-  
-deploy_infra:
-    stage: deploy
-    script:
-        - echo 'test hello there demo'
-        - ls
-        #- #rm -rf         #- cd         - ls
-        #- git pull https://ngogavale%40aptude.com:Neeraj%407010@git.risa.gov.rw/risa/risa-gcino-projects/risa-enterprise-architecture-division-projects/gbis/gbis-aptude.git
-        - cd infrastructure-deployment/k8s-configuration
-        - kubectl apply -f storage-class.yaml
-        - kubectl apply -f pv.yaml
-        - kubectl apply -f pv-1.yaml
-        - kubectl apply -f pv-2.yaml
-        - kubectl apply -f elasticsearch.yaml
-        - kubectl apply -f ls-configmap.yml 
-       # - kubectl apply -f ls.yaml
-       # - test
-       # - test
+  - deploy
+  - deploy_manual
 
-initial_deploy_kubernetes:
-    stage: deploy_manual
-    script:
-        - echo 'this is an empty job so far'
-    # install kubernetes
-    # create certificates for elastic tls?
-    # change the standard passwords
-    # further initial things to do...
+kube_deploy:
+  stage: deploy_manual
+  tags: 
+    - dev
+    - master
+  script: 
+         - echo 'kube_deploy start'
+         - cd kube-setup
+         - sh master-k8s.sh
+         - echo 'kube_deploy end'
 
-initial_deploy_elastic:
-    stage: deploy_manual
-    script:
-        - echo 'this is an empty job so far'
-    # install kubernetes
-    # create certificates for elastic tls?
-    # change the standard passwords
-    # further initial things to do...
-
-deploy_code:
-    stage: deploy_manual
-    script:
-        - echo 'this is an empty job so far for deployment of pipelines elk scripts'
+elk_config:
+  stage: deploy
+  tags: 
+    - dev
+    - master
+  script: 
+         - echo 'elk-config start'
+         - cd elk-config
+         - kubectl apply -f storage-class.yaml
+         - kubectl apply -f pv.yaml
+         - kubectl apply -f pv-1.yaml
+         - kubectl apply -f pv-2.yaml
+         - kubectl apply -f elasticsearch.yaml
+         - kubectl apply -f ls-configmap.yml
+         - echo 'elk-config end'

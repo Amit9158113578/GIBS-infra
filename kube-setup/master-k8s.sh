@@ -1,6 +1,6 @@
 #!/bin/bash
 IP=`hostname -I | awk '{print $1}'`
-Master=172.31.75.144
+master=172.31.75.144
 Node1=172.31.73.96
 Node2=172.31.78.17
 

@@ -64,12 +64,12 @@ kubectl apply -f https://download.elastic.co/downloads/eck/1.2.0/all-in-one.yaml
 
 token=$(sudo kubeadm token create --print-join-command|tail -1)
 
-scp -o StrictHostKeyChecking=no -i /root/ssh.pem /root/script-kube.sh ubuntu@$Node1:/tmp
-ssh -o StrictHostKeyChecking=no -i /root/ssh.pem ubuntu@$Node1 bash /tmp/script-kube.sh
+scp -o StrictHostKeyChecking=no -i /root/ssh.pem /root/node-k8s.sh ubuntu@$Node1:/tmp
+ssh -o StrictHostKeyChecking=no -i /root/ssh.pem ubuntu@$Node1 bash /tmp/node-k8s.sh
 ssh -o StrictHostKeyChecking=no -i /root/ssh.pem ubuntu@$Node1 sudo $token
 
-scp -o StrictHostKeyChecking=no -i /root/ssh.pem /root/script-kube.sh ubuntu@$Node2:/tmp
-ssh -o StrictHostKeyChecking=no -i /root/ssh.pem ubuntu@$Node2 bash /tmp/script-kube.sh
+scp -o StrictHostKeyChecking=no -i /root/ssh.pem /root/node-k8s.sh ubuntu@$Node2:/tmp
+ssh -o StrictHostKeyChecking=no -i /root/ssh.pem ubuntu@$Node2 bash /tmp/node-k8s.sh
 ssh -o StrictHostKeyChecking=no -i /root/ssh.pem ubuntu@$Node2 sudo $token
 
 

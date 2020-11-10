@@ -4,6 +4,7 @@ stages:
 
 kube_deploy:
   stage: kube_deploy_manual
+  when: manual
   tags: 
     - dev
     - master
@@ -12,6 +13,7 @@ kube_deploy:
          - cd kube-setup
          - sh master-k8s.sh
          - echo 'kube_deploy end'
+  
 
 elk_config:
   stage: elk_deploy

@@ -17,6 +17,7 @@ kube_deploy:
 
 elk_config:
   stage: elk_deploy
+  when: manual
   tags: 
     - dev
     - master

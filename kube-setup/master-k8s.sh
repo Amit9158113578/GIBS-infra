@@ -48,7 +48,7 @@ fi
 
 
 #Kubernetes MASTER
-sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --control-plane-endpoint "$master:6443" --upload-certs
+#sudo kubeadm init --pod-network-cidr=192.168.0.0/16 --control-plane-endpoint "$master:6443" --upload-certs
 if [ $? -ne 0 ]
 then
         echo "kube init failed"

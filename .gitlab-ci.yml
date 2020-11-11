@@ -1,7 +1,7 @@
 stages:
   - kube_deploy_manual
   - elk_deploy
-  - new_node_kube_token_gen
+  #- new_node_kube_token_gen
   - new_node_kube_setup
   - add_new_to_kube_cluster
 
@@ -39,7 +39,7 @@ elk_config:
          - echo 'elk-config end'
 
 new_node_kube_setup:
-  stage: new_node_kube_token_gen
+  stage: new_node_kube_setup
   when: manual
   tags:
     - master

@@ -52,8 +52,8 @@ new_node_kube_setup:
     - dev
     - newnode
   script: 
-         - cd kube-setup
-         - sh add-node-k8s.sh
+    - cd kube-setup
+    - sh add-node-k8s.sh
 
 add_new_to_kube_cluster:
   stage: add_new_to_kube_cluster

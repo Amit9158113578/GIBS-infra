@@ -46,7 +46,7 @@ new_node_kube_setup:
     - dev
   script:
     - sh token=$(sudo kubeadm token create --print-join-command|tail -1)
-  stage: new_node_kube_token_gen
+  stage: new_node_kube_setup
   when: manual
   tags: 
     - dev

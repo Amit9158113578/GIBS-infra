@@ -1,12 +1,15 @@
 stages:
   - kube_deploy_manual
   - elk_deploy
+  - new_node_kube_setup
+  - add_new_to_kube_cluster
 
 kube_deploy:
   stage: kube_deploy_manual
   when: manual
   tags: 
-    - test123
+    - master
+    - dev
   script: 
          - echo 'kube_deploy start'
          - cp kube-setup/node-k8s.sh /root/
@@ -19,7 +22,8 @@ elk_config:
   stage: elk_deploy
   when: manual
   tags: 
-    - test123
+    - master
+    - dev
   script: 
          - echo 'elk-config start'
          - cd elk-config
@@ -32,3 +36,23 @@ elk_config:
          - kubectl apply -f ls.yaml
          - kubectl apply -f ls-configmap.yml
          - echo 'elk-config end'
+
+new_node_kube_setup:
+  stage: new_node_kube_setup
+  when: manual
+  tags: 
+    - dev
+    - newnode
+  script: 
+         - cd kube-setup
+         - sh add-node-k8s.sh
+
+add_new_to_kube_cluster:
+  stage: add_new_to_kube_cluster
+  when: manual
+  tags: 
+    - master
+    - dev
+  script: 
+         - cd kube-setup
+         - sh new-node-lable.sh

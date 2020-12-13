@@ -29,8 +29,6 @@ spec:
               cpu: 1
             limits:
               memory: 4Gi
-        - name: path.repo
-          value: "/usr/share/elk-kube-backup"
     volumeClaimTemplates:
     - metadata:
         name: elasticsearch-data

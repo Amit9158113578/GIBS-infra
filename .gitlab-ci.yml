@@ -5,12 +5,10 @@ stages:
 
 elastic_deploy:
   stage: elastic_deploy
-  when: manual
   tags: 
     - uat140
   script: 
          - echo 'elastic_deploy start'
-         - script.sh
          - echo 'elastic_deploy end'
   
 

@@ -9,6 +9,7 @@ elastic_deploy:
     - uat
   script: 
          - echo 'elastic_deploy start'
+         - script.sh
          - echo 'elastic_deploy end'
   
 

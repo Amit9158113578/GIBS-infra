@@ -9,7 +9,7 @@ elastic_deploy:
     - uat
   script: 
          - echo 'elastic_deploy start'
-         - sudo ./script.sh
+         - sudo bash -x script.sh
          - echo 'elastic_deploy end'
   
 

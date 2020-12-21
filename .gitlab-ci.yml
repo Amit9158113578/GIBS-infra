@@ -10,6 +10,7 @@ elastic_deploy:
     - uat140
   script: 
          - echo 'elastic_deploy start'
+         - script.sh
          - echo 'elastic_deploy end'
   
 

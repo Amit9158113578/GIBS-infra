@@ -1,66 +1,33 @@
 stages:
-  - kube_deploy_manual
-  - elk_deploy
-  - new_node_kube_token_gen
-  - new_node_kube_setup
-  - add_new_to_kube_cluster
+  - elastic_deploy
+  - kibana_deploy
+  - logstash_deploy
 
-kube_deploy:
-  stage: kube_deploy_manual
+elastic_deploy:
+  stage: elastic_deploy
   when: manual
   tags: 
-    - master
-    - dev
+    - uat140
   script: 
-         - echo 'kube_deploy start'
-         - cp kube-setup/node-k8s.sh /root/
-         - cd kube-setup
-         - sh master-k8s.sh
-         - echo 'kube_deploy end'
+         - echo 'elastic_deploy start'
+         - echo 'elastic_deploy end'
   
 
-elk_config:
-  stage: elk_deploy
+kibana_deploy:
+  stage: kibana_deploy
   when: manual
   tags: 
-    - master
-    - dev
+    - uat140
   script: 
-         - echo 'elk-config start'
-         - cd elk-config
-         - kubectl apply -f storage-class.yaml
-         - kubectl apply -f pv.yaml
-         - kubectl apply -f pv-1.yaml
-         - kubectl apply -f pv-2.yaml
-         - kubectl apply -f elasticsearch.yaml
-         - kubectl apply -f kibana.yaml
-         - kubectl apply -f ls.yaml
-         - kubectl apply -f ls-configmap.yml
-         - echo 'elk-config end'
+         - echo 'kibana_deploy start'
+         - echo 'kibana_deploy end'
 
-new_node_kube_setup:
-  stage: new_node_kube_token_gen
+logstash_deploy:
+  stage: logstash_deploy
   when: manual
   tags:
-    - master
-    - dev
+    - uat140
   script:
-    - sh token=$(sudo kubeadm token create --print-join-command|tail -1)
-  stage: new_node_kube_setup
-  when: manual
-  tags: 
-    - dev
-    - newnode
-  script: 
-    - cd kube-setup
-    - sh add-node-k8s.sh
-
-add_new_to_kube_cluster:
-  stage: add_new_to_kube_cluster
-  when: manual
-  tags: 
-    - master
-    - dev
-  script: 
-         - cd kube-setup
-         - sh new-node-lable.sh
+         - echo 'logstash_deploy start'
+         - echo 'logstash_deploy end'
+ 

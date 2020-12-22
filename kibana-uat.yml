@@ -8,6 +8,7 @@
       copy:
         src: uat-cert/ca/ca.crt
         dest: /etc/kibana/config/certs/ca.crt
+      become: yes
     - name: start kibana
       service:
           name: kibana

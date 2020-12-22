@@ -1,11 +1,11 @@
 - name: Kibana Instalation
   hosts: node1
   tasks:
-    - name: Ensure logstash is at the latest version
-      apt: name=logstash state=latest
+    - name: Ensure kibana is at the latest version
+      apt: name=kibana state=latest
       become: yes
-    - name: start logstash
+    - name: start kibana
       service:
-          name: logstash
+          name: kibana
           state: started
       become: yes

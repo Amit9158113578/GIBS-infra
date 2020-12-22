@@ -1,6 +1,6 @@
-node1=""
-node2=""
-node3=""
+node1="10.10.94.140"
+node2="10.10.94.141"
+node3="10.10.94.142"
 #udo apt-add-repository --yes --update ppa:ansible/ansible
 sudo apt update -y
 sudo apt install ansible -y 
@@ -23,5 +23,3 @@ $node3 node3.elastic.uat.net node3 "| sudo tee -a /etc/hosts
 #unzip uat.zip
 #ansible-playbook -i host elk.yml
 #ansible-playbook -i host kibana.yml
-
-

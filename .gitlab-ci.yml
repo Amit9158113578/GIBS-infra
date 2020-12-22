@@ -1,17 +1,29 @@
 stages:
+  - base_setup
   - elastic_deploy
   - kibana_deploy
   - logstash_deploy
 
+base_setup:
+  stage: base_setup
+  when: manual
+  tags: 
+    - uat144
+  script: 
+         - echo 'base_setup start'
+         - bash -x script-uat.sh
+         - echo 'base_setup end'
+  
+
 elastic_deploy:
   stage: elastic_deploy
+  when: manual
   tags: 
     - uat144
   script: 
          - echo 'elastic_deploy start'
-         - bash -x script-uat.sh
+         - ansible-playbook -i host elk-uat.yml
          - echo 'elastic_deploy end'
-  
 
 kibana_deploy:
   stage: kibana_deploy

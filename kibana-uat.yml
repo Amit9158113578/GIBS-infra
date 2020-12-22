@@ -7,10 +7,15 @@
     - name: Ensures /etc/kibana/config/certs dir exists
       file: path=/etc/kibana/config/certs state=directory
       become: yes
-    - name: Copy config file 
+    - name: Copy ca file 
       copy:
         src: uat-cert/ca/ca.crt
         dest: /etc/kibana/config/certs/ca.crt
+      become: yes
+    - name: Copy config file 
+      copy:
+        src: kibana-conf-uat.yml
+        dest: /etc/kibana/kibana.yml
       become: yes
     - name: start kibana
       service:

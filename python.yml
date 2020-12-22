@@ -1,0 +1,6 @@
+- hosts: all
+  gather_facts: false
+  tasks:
+    - name: Ensure pyton is at the latest version
+      apt: name=python state=latest
+      become: yes

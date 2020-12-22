@@ -9,6 +9,8 @@
         src: uat-cert/ca/ca.crt
         dest: /etc/kibana/config/certs/ca.crt
       become: yes
+    - name: Ensures /etc/kibana/config/certs dir exists
+      file: path=/etc/kibana/config/certs state=directory
     - name: start kibana
       service:
           name: kibana

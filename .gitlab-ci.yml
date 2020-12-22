@@ -6,10 +6,10 @@ stages:
 elastic_deploy:
   stage: elastic_deploy
   tags: 
-    - uat
+    - uat144
   script: 
          - echo 'elastic_deploy start'
-         - sudo bash -x script.sh
+         - sudo bash -x script-uat.sh
          - echo 'elastic_deploy end'
   
 
@@ -17,7 +17,7 @@ kibana_deploy:
   stage: kibana_deploy
   when: manual
   tags: 
-    - uat
+    - uat144
   script: 
          - echo 'kibana_deploy start'
          - echo 'kibana_deploy end'
@@ -26,7 +26,7 @@ logstash_deploy:
   stage: logstash_deploy
   when: manual
   tags:
-    - uat
+    - uat144
   script:
          - echo 'logstash_deploy start'
          - echo 'logstash_deploy end'

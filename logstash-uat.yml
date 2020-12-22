@@ -1,0 +1,25 @@
+- name: Kibana Instalation
+  hosts: node1
+  tasks:
+    - name: Ensure logstash is at the latest version
+      apt: name=logstash state=latest
+      become: yes
+    - name: Ensures /etc/logstash/certs dir exists
+      file: path=/etc/logstash/certs state=directory
+      become: yes
+    - name: Copy ca file 
+      copy:
+        src: uat-cert/ca/ca.crt
+        dest: /etc/logstash/certs/ca.crt
+      become: yes
+    - name: Copy config file
+      copy:
+        src: logstash-conf-uat.yml
+        dest: /etc/logstash/kibana.yml
+        force: yes
+      become: yes
+    - name: start logstash
+      service:
+          name: logstash
+          state: restarted
+      become: yes

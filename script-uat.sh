@@ -2,9 +2,12 @@ node1="10.10.94.140"
 node2="10.10.94.141"
 node3="10.10.94.142"
 #udo apt-add-repository --yes --update ppa:ansible/ansible
-sudo apt update -y
-sudo apt install ansible -y 
-sudo apt-get install python-jmespath zip unzip git -y
+#sudo apt update -y
+#sudo apt install ansible -y 
+#sudo apt-get install python-jmespath zip unzip git -y
+apt update -y
+apt install ansible -y 
+apt-get install python-jmespath zip unzip git -y
 echo '[defaults]
 private_key_file = /root/.ssh/id_rsa
 remote_user = root

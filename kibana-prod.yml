@@ -16,9 +16,10 @@
       copy:
         src: kibana-conf-prod.yml
         dest: /etc/kibana/kibana.yml
+        force: yes
       become: yes
     - name: start kibana
       service:
           name: kibana
-          state: started
+          state: restarted
       become: yes  

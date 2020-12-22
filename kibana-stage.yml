@@ -9,12 +9,12 @@
       become: yes
     - name: Copy ca file 
       copy:
-        src: uat-cert/ca/ca.crt
+        src: stage-cert/ca/ca.crt
         dest: /etc/kibana/config/certs/ca.crt
       become: yes
     - name: Copy config file 
       copy:
-        src: kibana-conf-uat.yml
+        src: kibana-conf-stage.yml
         dest: /etc/kibana/kibana.yml
         force: yes
       become: yes
@@ -22,4 +22,4 @@
       service:
           name: kibana
           state: restarted
-      become: yes  
+      become: yes

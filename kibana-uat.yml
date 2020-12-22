@@ -21,4 +21,4 @@
       service:
           name: kibana
           state: started
-      become: yes    
+      become: yes  

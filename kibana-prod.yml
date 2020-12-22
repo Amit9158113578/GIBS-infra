@@ -4,12 +4,21 @@
     - name: Ensure kibana is at the latest version
       apt: name=kibana state=latest
       become: yes
-    - name: Copy config file 
+    - name: Ensures /etc/kibana/config/certs dir exists
+      file: path=/etc/kibana/config/certs state=directory
+      become: yes
+    - name: Copy ca file 
       copy:
         src: prod-cert/ca/ca.crt
         dest: /etc/kibana/config/certs/ca.crt
+      become: yes
+    - name: Copy config file 
+      copy:
+        src: kibana-conf-prod.yml
+        dest: /etc/kibana/kibana.yml
+      become: yes
     - name: start kibana
       service:
           name: kibana
           state: started
-      become: yes    
+      become: yes  

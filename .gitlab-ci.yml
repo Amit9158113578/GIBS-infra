@@ -32,6 +32,7 @@ kibana_deploy:
     - uat144
   script: 
          - echo 'kibana_deploy start'
+         - ansible-playbook -i host kibana-uat.yml
          - echo 'kibana_deploy end'
 
 logstash_deploy:

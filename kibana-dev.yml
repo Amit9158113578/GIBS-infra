@@ -4,8 +4,12 @@
     - name: Ensure kibana is at the latest version
       apt: name=kibana state=latest
       become: yes
+    - name: Copy config file 
+      copy:
+        src: dev-cert/ca/ca.crt
+        dest: /etc/kibana/config/certs/ca.crt
     - name: start kibana
       service:
           name: kibana
           state: started
-      become: yes
+      become: yes    

@@ -1,0 +1,15 @@
+- name: Kibana Instalation
+  hosts: node1
+  tasks:
+    - name: Ensure kibana is at the latest version
+      apt: name=kibana state=latest
+      become: yes
+    - name: Copy config file 
+      copy:
+        src: prod-cert/ca/ca.crt
+        dest: /etc/kibana/config/certs/ca.crt
+    - name: start kibana
+      service:
+          name: kibana
+          state: started
+      become: yes    

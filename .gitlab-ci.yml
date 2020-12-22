@@ -42,5 +42,6 @@ logstash_deploy:
     - uat144
   script:
          - echo 'logstash_deploy start'
+         - ansible-playbook -i host logstash-uat.yml
          - echo 'logstash_deploy end'
  

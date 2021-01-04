@@ -11,7 +11,7 @@ base_setup:
     - uat144
   script: 
          - echo 'base_setup start'
-         - bash -x script-uat.sh
+         - bash -x script-$ENV.sh $NODE1 $NODE2 $NODE3 $ENV
          - echo 'base_setup end'
   
 
@@ -22,7 +22,7 @@ elastic_deploy:
     - uat144
   script: 
          - echo 'elastic_deploy start'
-         - ansible-playbook -i host elk-uat.yml
+         - ansible-playbook -i host elk-$ENV.yml
          - echo 'elastic_deploy end'
 
 kibana_deploy:
@@ -32,7 +32,7 @@ kibana_deploy:
     - uat144
   script: 
          - echo 'kibana_deploy start'
-         - ansible-playbook -i host kibana-uat.yml
+         - ansible-playbook -i host kibana-$ENV.yml
          - echo 'kibana_deploy end'
 
 logstash_deploy:
@@ -42,6 +42,6 @@ logstash_deploy:
     - uat144
   script:
          - echo 'logstash_deploy start'
-         - ansible-playbook -i host logstash-uat.yml
+         - ansible-playbook -i host logstash-$ENV.yml
          - echo 'logstash_deploy end'
  

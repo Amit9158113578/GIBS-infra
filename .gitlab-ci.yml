@@ -1,3 +1,5 @@
+include:
+  - local: '.variables.yml'
 stages:
   - base_setup
   - elastic_deploy
@@ -41,7 +43,7 @@ logstash_deploy:
   tags:
     - uat144
   script:
+         - 'sed -i s/ENV/$ENV/g $CI_PROJECT_DIR/file_input.conf $CI_PROJECT_DIR/master-data.conf $CI_PROJECT_DIR/target.conf'
          - echo 'logstash_deploy start'
-         - ansible-playbook -i host logstash-$ENV.yml
+         - ansible-playbook -i host logstash.yml
          - echo 'logstash_deploy end'
- 

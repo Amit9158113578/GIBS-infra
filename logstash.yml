@@ -1,0 +1,45 @@
+- name: Logstash Instalation
+  hosts: node1
+  tasks:
+    - name: Ensure logstash is at the latest version
+      apt: name=logstash state=latest
+      become: yes
+    
+    - name: Ensures /etc/logstash/certs dir exists
+      file: path=/etc/logstash/certs state=directory
+      become: yes
+    
+    - name: Copy ca file
+      copy:
+        src: uat-cert/ca/ca.crt
+        dest: /etc/logstash/certs/ca.crt
+      become: yes
+    
+    - name: Copy config file
+      copy:
+        src: file_input.conf
+        dest: /etc/logstash/conf.d/file_input.conf
+        force: yes
+      become: yes
+
+    - name: Copy config file
+      copy:
+        src: target.conf
+        dest: /etc/logstash/conf.d/target.conf
+        force: yes
+      become: yes
+
+    - name: Copy config file
+      copy:
+        src: master-data.conf
+        dest: /etc/logstash/conf.d/master-data.conf
+        force: yes
+      become: yes
+
+    
+    - name: start logstash
+      service:
+          name: logstash
+          state: restarted
+      become: yes
+

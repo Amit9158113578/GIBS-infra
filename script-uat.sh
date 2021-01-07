@@ -4,7 +4,6 @@ node2=$2
 node3=$3
 ENV=$4
 
-
 if [ $# != 4 ]
 then
 echo "Please provide 3 node IPs and ENV variable"

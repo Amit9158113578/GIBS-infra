@@ -10,7 +10,7 @@ base_setup:
   stage: base_setup
   when: manual
   tags: 
-    - uat144
+    - dev
   script: 
          - echo 'base_setup start'
          - bash -x script-$ENV.sh $NODE1 $NODE2 $NODE3 $ENV
@@ -21,7 +21,7 @@ elastic_deploy:
   stage: elastic_deploy
   when: manual
   tags: 
-    - uat144
+    - dev
   script: 
          - echo 'elastic_deploy start'
          - ansible-playbook -i host elk-$ENV.yml
@@ -31,7 +31,7 @@ kibana_deploy:
   stage: kibana_deploy
   when: manual
   tags: 
-    - uat144
+    - dev
   script: 
          - echo 'kibana_deploy start'
          - ansible-playbook -i host kibana-$ENV.yml
@@ -41,7 +41,7 @@ logstash_deploy:
   stage: logstash_deploy
   when: manual
   tags:
-    - uat144
+    - dev
   script:
          - 'sed -i s/ENV/$ENV/g $CI_PROJECT_DIR/file_input.conf $CI_PROJECT_DIR/master-data.conf $CI_PROJECT_DIR/target.conf'
          - echo 'logstash_deploy start'

@@ -42,4 +42,3 @@ fi
 
 scp /etc/hosts root@$node2:/etc/hosts
 scp /etc/hosts root@$node3:/etc/hosts
-sed -i s/ENV/$ENV/g file_input.conf master-data.conf target.conf

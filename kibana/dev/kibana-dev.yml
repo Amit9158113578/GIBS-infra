@@ -9,12 +9,12 @@
       become: yes
     - name: Copy ca file 
       copy:
-        src: dev-cert/ca/ca.crt
+        src: security/dev/ca/ca.crt
         dest: /etc/kibana/config/certs/ca.crt
       become: yes
     - name: Copy config file 
       copy:
-        src: kibana-conf-dev.yml
+        src: kibana/dev/kibana-conf-dev.yml
         dest: /etc/kibana/kibana.yml
         force: yes
       become: yes
@@ -35,12 +35,12 @@
       become: yes
     - name: Copy ca file 
       copy:
-        src: dev-cert/ca/ca.crt
+        src: security/dev/ca/ca.crt
         dest: /etc/kibana/config/certs/ca.crt
       become: yes
     - name: Copy config file 
       copy:
-        src: kibana-conf-dev.yml
+        src: kibana/dev/kibana-conf-dev.yml
         dest: /etc/kibana/kibana.yml
         force: yes
       become: yes

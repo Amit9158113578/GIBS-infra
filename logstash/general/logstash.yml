@@ -11,27 +11,27 @@
     
     - name: Copy ca file
       copy:
-        src: uat-cert/ca/ca.crt
+        src: security/uat/ca/ca.crt
         dest: /etc/logstash/certs/ca.crt
       become: yes
     
     - name: Copy config file
       copy:
-        src: file_input.conf
+        src: logstash/general/file_input.conf
         dest: /etc/logstash/conf.d/file_input.conf
         force: yes
       become: yes
 
     - name: Copy config file
       copy:
-        src: target.conf
+        src: logstash/general/target.conf
         dest: /etc/logstash/conf.d/target.conf
         force: yes
       become: yes
 
     - name: Copy config file
       copy:
-        src: master-data.conf
+        src: logstash/general/master-data.conf
         dest: /etc/logstash/conf.d/master-data.conf
         force: yes
       become: yes

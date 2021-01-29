@@ -13,7 +13,7 @@
       become: yes
     - name: copy the nginx config file and restart nginx
       copy:
-        src: ssl.conf
+        src: nginx/ssl.conf
         dest: /etc/nginx/sites-available/ssl.conf
       become: yes
     - name: create symlink

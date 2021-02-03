@@ -22,7 +22,7 @@
     es_config:
       cluster.name: "elk-cluster"
       cluster.initial_master_nodes: "node1"
-      discovery.seed_hosts: "node1.elastic.$ENV.net , node2.elastic.$ENV.net , node3.elastic.$ENV.net"
+      discovery.seed_hosts: "node1.elastic.{{ lookup('ENV','ENV') }}.net , node2.elastic.{{ lookup('ENV','ENV') }}.net , node3.elastic.{{ lookup('ENV','ENV') }}.net"
       http.port: 9200
       node.data: true
       node.master: true
@@ -55,7 +55,7 @@
     es_config:
       cluster.name: "elk-cluster"
       cluster.initial_master_nodes: "node1"
-      discovery.seed_hosts: "node1.elastic.$ENV.net , node2.elastic.$ENV.net , node3.elastic.$ENV.net"
+      discovery.seed_hosts: "node1.elastic.{{ lookup('ENV','ENV') }}.net , node2.elastic.{{ lookup('ENV','ENV') }}.net , node3.elastic.{{ lookup('ENV','ENV') }}.net"
       http.port: 9200
       node.data: true
       node.master: true
@@ -88,7 +88,7 @@
     es_config:
       cluster.name: "elk-cluster"
       cluster.initial_master_nodes: "node1"
-      discovery.seed_hosts: "node1.elastic.$ENV.net , node2.elastic.$ENV.net , node3.elastic.$ENV.net"
+      discovery.seed_hosts: "node1.elastic.{{ lookup('ENV','ENV') }}.net , node2.elastic.{{ lookup('ENV','ENV') }}.net , node3.elastic.{{ lookup('ENV','ENV') }}.net"
       http.port: 9200
       node.data: true
       node.master: true

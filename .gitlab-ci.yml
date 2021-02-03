@@ -34,7 +34,7 @@ kibana_deploy:
     - dev
   script: 
          - echo 'kibana_deploy start'
-         - ansible-playbook -i host kibana/$ENV/kibana-$ENV.yml
+         - ansible-playbook -i host kibana/general/kibana.yml
          - echo 'kibana_deploy end'
 
 logstash_deploy:

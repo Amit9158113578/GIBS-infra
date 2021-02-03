@@ -14,7 +14,7 @@
       become: yes
     - name: Copy config file 
       copy:
-        src: "config/{{ ENV }}/kibana-conf-{{ ENV }}.yml"
+        src: "config/{{ lookup('ENV','ENV') }}/kibana-conf-{{ lookup('ENV','ENV') }}.yml"
         dest: /etc/kibana/kibana.yml
         force: yes
       become: yes
@@ -40,7 +40,7 @@
       become: yes
     - name: Copy config file 
       copy:
-        src: "config/{{ ENV }}/kibana-conf-{{ ENV }}.yml"
+        src: "config/{{ lookup('ENV','ENV') }}/kibana-conf-{{ lookup('ENV','ENV') }}.yml"
         dest: /etc/kibana/kibana.yml
         force: yes
       become: yes

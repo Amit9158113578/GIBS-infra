@@ -24,7 +24,7 @@ elastic_deploy:
     - dev
   script: 
          - echo 'elastic_deploy start'
-         - ansible-playbook -i host elastic/$ENV/elk-$ENV.yml
+         - ansible-playbook -i host elastic/general/elk.yml
          - echo 'elastic_deploy end'
 
 kibana_deploy:

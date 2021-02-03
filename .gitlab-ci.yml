@@ -13,7 +13,7 @@ base_setup:
     - dev
   script: 
          - echo 'base_setup start'
-         - bash -x scripts/$ENV/script-$ENV.sh $NODE1 $NODE2 $NODE3 $ENV
+         - bash -x scripts/general/script.sh $NODE1 $NODE2 $NODE3 $ENV
          - echo 'base_setup end'
   
 

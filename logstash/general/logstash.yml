@@ -11,7 +11,7 @@
     
     - name: Copy ca file
       copy:
-        src: security/uat/ca/ca.crt
+        src: security/ca/ca.crt
         dest: /etc/logstash/certs/ca.crt
       become: yes
     

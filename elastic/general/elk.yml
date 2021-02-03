@@ -1,6 +1,6 @@
 - hosts: node1
   roles:
-    - role: elastic.elasticsearch
+    - role: $CI_PROJECT_DIR/roles/elastic.elasticsearch
   vars:
     es_enable_xpack: true
     es_data_dirs:

@@ -23,3 +23,29 @@ Update Case
     1. Change elk.yml
     2. Run pipeline -> only elk.yml
 
+Manual pipeline execution
+    Variable description as below
+    1. development env        
+        | name  | value |
+        | ------| ------ |
+        | ENV   | dev |
+        | NODE1 | 10.10.73.15 |
+        | NODE2 | 10.10.73.16 |
+        | NODE3 | 10.10.73.17 |
+ 
+    2. UAT env
+        | name  | value |
+        | ------| ------ |
+        | ENV   | uat |
+        | NODE1 | 10.10.94.140 |
+        | NODE2 | 10.10.94.141 |
+        | NODE3 | 10.10.74.142 |
+
+    3. Production Env
+        | name  | value |
+        | ------| ------ |
+        | ENV   | prod |
+        | NODE1 | xx.xx.xx.xx |
+        | NODE2 | xx.xx.xx.xx |
+        | NODE3 | xx.xx.xx.xx |
+

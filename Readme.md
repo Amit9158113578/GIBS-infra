@@ -25,6 +25,7 @@ Update Case
 
 Manual pipeline execution
     Variable description as below
+    
     1. development env        
         | name  | value |
         | ------| ------ |
@@ -32,7 +33,7 @@ Manual pipeline execution
         | NODE1 | 10.10.73.15 |
         | NODE2 | 10.10.73.16 |
         | NODE3 | 10.10.73.17 |
- 
+
     2. UAT env
         | name  | value |
         | ------| ------ |

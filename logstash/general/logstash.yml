@@ -17,21 +17,21 @@
     
     - name: Copy config file
       copy:
-        src: logstash/general/file_input.conf
+        src: config/file_input.conf
         dest: /etc/logstash/conf.d/file_input.conf
         force: yes
       become: yes
 
     - name: Copy config file
       copy:
-        src: logstash/general/target.conf
+        src: config/target.conf
         dest: /etc/logstash/conf.d/target.conf
         force: yes
       become: yes
 
     - name: Copy config file
       copy:
-        src: logstash/general/master-data.conf
+        src: config/master-data.conf
         dest: /etc/logstash/conf.d/master-data.conf
         force: yes
       become: yes

@@ -27,7 +27,7 @@ Manual pipeline execution
     Variable description as below
     
     1. development env        
-        | name  | value       |
+        | **name**  | **value**       |
         | ------| ----------- |
         | ENV   | dev         |
         | NODE1 | 10.10.73.15 |
@@ -35,7 +35,7 @@ Manual pipeline execution
         | NODE3 | 10.10.73.17 |
 
     2. UAT env
-        | name  | value        |
+        | **name**  | **value**        |
         | ------| ------------ |
         | ENV   | uat          |
         | NODE1 | 10.10.94.140 |
@@ -43,7 +43,7 @@ Manual pipeline execution
         | NODE3 | 10.10.74.142 |
 
     3. Production Env
-        | name  | value        |
+        | **name**  | **value**        |
         | ------| ------------ |
         | ENV   | prod         |
         | NODE1 | xx.xx.xx.xx  |

@@ -9,9 +9,9 @@
     es_path_repo: "/data/elasticsearch/backup"
     es_java_install: true
     es_heap_size: "1g"
-    es_ssl_certificate_authority: security/dev/ca/ca.crt
-    es_ssl_key: security/dev/node1/node1.key
-    es_ssl_certificate: security/dev/node1/node1.crt
+    es_ssl_certificate_authority: $CI_PROJECT_DIR/security/dev/ca/ca.crt
+    es_ssl_key: $CI_PROJECT_DIR/security/dev/node1/node1.key
+    es_ssl_certificate: $CI_PROJECT_DIR/security/dev/node1/node1.crt
     es_enable_http_ssl: true
     es_enable_auto_ssl_configuration: true
     es_api_basic_auth_username: "elastic"
@@ -42,9 +42,9 @@
     es_path_repo: "/data/elasticsearch/backup"
     es_java_install: true
     es_heap_size: "1g"
-    es_ssl_certificate_authority: security/dev/ca/ca.crt
-    es_ssl_key: security/dev/node2/node2.key
-    es_ssl_certificate: security/dev/node2/node2.crt
+    es_ssl_certificate_authority: $CI_PROJECT_DIR/security/dev/ca/ca.crt
+    es_ssl_key: $CI_PROJECT_DIR/security/dev/node2/node2.key
+    es_ssl_certificate: $CI_PROJECT_DIR/security/dev/node2/node2.crt
     es_enable_http_ssl: true
     es_enable_auto_ssl_configuration: true
     es_api_basic_auth_username: "elastic"
@@ -75,9 +75,9 @@
     es_path_repo: "/data/elasticsearch/backup"
     es_java_install: true
     es_heap_size: "1g"
-    es_ssl_certificate_authority: security/dev/ca/ca.crt
-    es_ssl_key: security/dev/node3/node3.key
-    es_ssl_certificate: security/dev/node3/node3.crt
+    es_ssl_certificate_authority: $CI_PROJECT_DIR/security/dev/ca/ca.crt
+    es_ssl_key: $CI_PROJECT_DIR/security/dev/node3/node3.key
+    es_ssl_certificate: $CI_PROJECT_DIR/security/dev/node3/node3.crt
     es_enable_http_ssl: true
     es_enable_auto_ssl_configuration: true
     es_api_basic_auth_username: "elastic"

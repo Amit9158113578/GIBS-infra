@@ -10,7 +10,7 @@ base_setup:
   stage: base_setup
   when: manual
   tags: 
-    - dev
+    - staging
   script: 
          - echo 'base_setup start'
          - bash -x scripts/general/script.sh $NODE1 $NODE2 $NODE3 $ENV
@@ -21,7 +21,7 @@ elastic_deploy:
   stage: elastic_deploy
   when: manual
   tags: 
-    - dev
+    - staging
   script: 
          - echo 'elastic_deploy start'
          - ansible-playbook -i host elastic/general/elk.yml
@@ -31,7 +31,7 @@ kibana_deploy:
   stage: kibana_deploy
   when: manual
   tags: 
-    - dev
+    - staging
   script: 
          - echo 'kibana_deploy start'
          - ansible-playbook -i host kibana/general/kibana.yml
@@ -41,7 +41,7 @@ logstash_deploy:
   stage: logstash_deploy
   when: manual
   tags:
-    - dev
+    - staging
   script:
          - 'sed -i s/ENV/$ENV/g $CI_PROJECT_DIR/logstash/general/config/file_input.conf $CI_PROJECT_DIR/logstash/general/config/master-data.conf $CI_PROJECT_DIR/logstash/general/config/target.conf'
          - echo 'logstash_deploy start'

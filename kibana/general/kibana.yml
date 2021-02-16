@@ -64,7 +64,7 @@
           xpack.encryptedSavedObjects.encryptionKey: "BDHcisme3231234msid8493029384930281hc"
           server.ssl.enabled: true
           server.ssl.certificate: /etc/kibana/config/certs/security/node2/node2.crt
-          server.ssl.key: /etc/kibana/config/certs/security/node1/node2.key
+          server.ssl.key: /etc/kibana/config/certs/security/node2/node2.key
       become: yes
     - name: start kibana
       service:

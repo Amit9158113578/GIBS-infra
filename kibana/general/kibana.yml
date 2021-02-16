@@ -10,7 +10,7 @@
     - name: Copy certs folder 
       copy:
         src: security
-        dest: /etc/kibana/config/certs/security
+        dest: /etc/kibana/config/certs
       become: yes
     - name: Copy config file 
       copy:
@@ -47,7 +47,7 @@
     - name: Copy certs folder 
       copy:
         src: security
-        dest: /etc/kibana/config/certs/security
+        dest: /etc/kibana/config/certs
       become: yes
     - name: Copy config file 
       copy:

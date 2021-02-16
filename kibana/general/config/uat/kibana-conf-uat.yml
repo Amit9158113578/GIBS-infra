@@ -105,3 +105,8 @@ elasticsearch.ssl.verificationMode: certificate
 # Specifies locale to be used for all localizable strings, dates and number formats.
 # Supported languages are the following: English - en , by default , Chinese - zh-CN .
 #i18n.locale: "en"
+
+xpack.security.enabled: true
+xpack.fleet.agents.tlsCheckDisabled: true
+xpack.security.encryptionKey: "BDHcisme3231234msid8493029384930281hc"
+xpack.encryptedSavedObjects.encryptionKey: "BDHcisme3231234msid8493029384930281hc"

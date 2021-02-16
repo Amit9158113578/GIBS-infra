@@ -18,6 +18,16 @@
         dest: /etc/kibana/kibana.yml
         force: yes
       become: yes
+    - name: add TLS
+      blockinfile:
+        dest: /etc/kibana/kibana.yml
+        block: |
+          'xpack.security.enabled: true'
+          'xpack.fleet.agents.tlsCheckDisabled: true'
+          'xpack.security.encryptionKey: "BDHcisme3231234msid8493029384930281hc"'
+          'xpack.encryptedSavedObjects.encryptionKey: "BDHcisme3231234msid8493029384930281hc"'
+          'test auto'
+      become: yes
     - name: start kibana
       service:
           name: kibana
@@ -43,6 +53,16 @@
         src: "config/{{ lookup('ENV','ENV') }}/kibana-conf-{{ lookup('ENV','ENV') }}.yml"
         dest: /etc/kibana/kibana.yml
         force: yes
+      become: yes
+    - name: add TLS
+      blockinfile:
+        dest: /etc/kibana/kibana.yml
+        block: |
+          'xpack.security.enabled: true'
+          'xpack.fleet.agents.tlsCheckDisabled: true'
+          'xpack.security.encryptionKey: "BDHcisme3231234msid8493029384930281hc"'
+          'xpack.encryptedSavedObjects.encryptionKey: "BDHcisme3231234msid8493029384930281hc"'
+          'test auto'
       become: yes
     - name: start kibana
       service:

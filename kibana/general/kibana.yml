@@ -7,10 +7,10 @@
     - name: Ensures /etc/kibana/config/certs dir exists
       file: path=/etc/kibana/config/certs state=directory
       become: yes
-    - name: Copy ca file 
+    - name: Copy certs folder 
       copy:
-        src: security/ca/ca.crt
-        dest: /etc/kibana/config/certs/ca.crt
+        src: security/node1
+        dest: /etc/kibana/config/certs/security
       become: yes
     - name: Copy config file 
       copy:
@@ -23,10 +23,11 @@
         dest: /etc/kibana/kibana.yml
         block: |
           'xpack.security.enabled: true'
-          'xpack.fleet.agents.tlsCheckDisabled: true'
           'xpack.security.encryptionKey: "BDHcisme3231234msid8493029384930281hc"'
           'xpack.encryptedSavedObjects.encryptionKey: "BDHcisme3231234msid8493029384930281hc"'
-          'test auto'
+          'server.ssl.enabled: true'
+          'server.ssl.certificate: /etc/kibana/config/certs/security/node1/node1.crt'
+          'server.ssl.key: /etc/kibana/config/certs/security/node1/node1.key'
       become: yes
     - name: start kibana
       service:
@@ -43,10 +44,10 @@
     - name: Ensures /etc/kibana/config/certs dir exists
       file: path=/etc/kibana/config/certs state=directory
       become: yes
-    - name: Copy ca file 
+    - name: Copy certs folder 
       copy:
-        src: security/ca/ca.crt
-        dest: /etc/kibana/config/certs/ca.crt
+        src: security/node2
+        dest: /etc/kibana/config/certs/security
       become: yes
     - name: Copy config file 
       copy:
@@ -59,10 +60,11 @@
         dest: /etc/kibana/kibana.yml
         block: |
           'xpack.security.enabled: true'
-          'xpack.fleet.agents.tlsCheckDisabled: true'
           'xpack.security.encryptionKey: "BDHcisme3231234msid8493029384930281hc"'
           'xpack.encryptedSavedObjects.encryptionKey: "BDHcisme3231234msid8493029384930281hc"'
-          'test auto'
+          'server.ssl.enabled: true'
+          'server.ssl.certificate: /etc/kibana/config/certs/security/node2/node2.crt'
+          'server.ssl.key: /etc/kibana/config/certs/security/node1/node2.key'
       become: yes
     - name: start kibana
       service:

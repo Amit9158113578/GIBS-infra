@@ -1,8 +1,8 @@
 - name: Kibana Instalation
   hosts: node1
   tasks:
-    - name: Ensure kibana is at the latest version
-      apt: name=kibana state=latest
+    - name: Ensure kibana is at the 7.10.1 version
+      apt: name=kibana state=7.10.1
       become: yes
     - name: Ensures /etc/kibana/config/certs dir exists
       file: path=/etc/kibana/config/certs state=directory
@@ -27,8 +27,8 @@
 - name: Kibana Instalation on node2
   hosts: node2
   tasks:
-    - name: Ensure kibana is at the latest version
-      apt: name=kibana state=latest
+    - name: Ensure kibana is at the 7.10.1 version
+      apt: name=kibana state=7.10.1
       become: yes
     - name: Ensures /etc/kibana/config/certs dir exists
       file: path=/etc/kibana/config/certs state=directory

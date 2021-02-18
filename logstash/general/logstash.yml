@@ -2,7 +2,7 @@
   hosts: node1
   tasks:
     - name: Ensure logstash is at the latest version
-      apt: name=logstash state=latest
+      apt: name=logstash=7.11.1 state=present
       become: yes
     
     - name: Ensures /etc/logstash/certs dir exists

@@ -61,6 +61,8 @@
       blockinfile:
         dest: /etc/kibana/kibana.yml
         block: |
+          xpack.security.sameSiteCookies: None
+          xpack.security.secureCookies: true
           xpack.security.enabled: true
           xpack.security.encryptionKey: "BDHcisme3231234msid8493029384930281hc"
           xpack.encryptedSavedObjects.encryptionKey: "BDHcisme3231234msid8493029384930281hc"

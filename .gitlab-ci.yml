@@ -57,5 +57,6 @@ test_dev:
   script:
     - echo $TEST
     - pwd
+    - export
     - echo "Test End"
 

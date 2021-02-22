@@ -10,6 +10,8 @@ stages:
 base_setup:
   stage: base_setup
   when: manual
+  environment:
+    name: development
   tags: 
     - dev
   script: 
@@ -21,6 +23,8 @@ base_setup:
 elastic_deploy:
   stage: elastic_deploy
   when: manual
+  environment:
+    name: development
   tags: 
     - dev
   script: 
@@ -31,6 +35,8 @@ elastic_deploy:
 kibana_deploy:
   stage: kibana_deploy
   when: manual
+  environment:
+    name: development
   tags: 
     - dev
   script: 
@@ -41,6 +47,8 @@ kibana_deploy:
 logstash_deploy:
   stage: logstash_deploy
   when: manual
+  environment:
+    name: development
   tags:
     - dev
   script:

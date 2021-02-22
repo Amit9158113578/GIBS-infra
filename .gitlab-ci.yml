@@ -52,6 +52,8 @@ logstash_deploy:
 test_dev:
   stage: test
   when: manual
+  environment:
+    name: development
   tags:
     - dev
   script:

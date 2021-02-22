@@ -15,6 +15,10 @@ base_setup:
   tags: 
     - dev
   script: 
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
          - echo 'base_setup start'
          - bash -x scripts/general/script.sh $NODE1 $NODE2 $NODE3 $ENV
          - echo 'base_setup end'
@@ -28,6 +32,10 @@ elastic_deploy:
   tags: 
     - dev
   script: 
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
          - echo 'elastic_deploy start'
          - ansible-playbook -i host elastic/general/elk.yml
          - echo 'elastic_deploy end'
@@ -40,6 +48,10 @@ kibana_deploy:
   tags: 
     - dev
   script: 
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
          - echo 'kibana_deploy start'
          - ansible-playbook -i host kibana/general/kibana.yml
          - echo 'kibana_deploy end'
@@ -52,6 +64,10 @@ logstash_deploy:
   tags:
     - dev
   script:
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
          - 'sed -i s/ENV/$ENV/g $CI_PROJECT_DIR/logstash/general/config/file_input.conf $CI_PROJECT_DIR/logstash/general/config/master-data.conf $CI_PROJECT_DIR/logstash/general/config/target.conf'
          - echo 'logstash_deploy start'
          - ansible-playbook -i host logstash/general/logstash.yml

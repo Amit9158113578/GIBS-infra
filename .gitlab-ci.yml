@@ -11,9 +11,9 @@ base_setup:
   stage: base_setup
   when: manual
   environment:
-    name: staging
+    name: development
   tags: 
-    - staging
+    - dev
   script: 
          - echo $ENV
          - echo $NODE1
@@ -28,9 +28,9 @@ elastic_deploy:
   stage: elastic_deploy
   when: manual
   environment:
-    name: staging
+    name: development
   tags: 
-    - staging
+    - dev
   script: 
          - echo $ENV
          - echo $NODE1
@@ -44,9 +44,9 @@ kibana_deploy:
   stage: kibana_deploy
   when: manual
   environment:
-    name: staging
+    name: development
   tags: 
-    - staging
+    - dev
   script: 
          - echo $ENV
          - echo $NODE1
@@ -60,9 +60,9 @@ logstash_deploy:
   stage: logstash_deploy
   when: manual
   environment:
-    name: staging
+    name: development
   tags:
-    - staging
+    - dev
   script:
          - echo $ENV
          - echo $NODE1
@@ -77,9 +77,9 @@ test:
   stage: test
   when: manual
   environment:
-    name: staging
+    name: development
   tags:
-    - staging
+    - dev
   script:
     - echo $ENV
     - echo $NODE1

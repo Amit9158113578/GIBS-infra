@@ -21,6 +21,7 @@
     es_enable_auto_ssl_configuration: true
     es_xpack_features: []
     es_config:
+      xpack.monitoring.collection.enabled: true
       cluster.name: "elk-cluster"
       cluster.initial_master_nodes: "node1"
       discovery.seed_hosts: "node1.elastic.{{ lookup('ENV','ENV') }}.net , node2.elastic.{{ lookup('ENV','ENV') }}.net , node3.elastic.{{ lookup('ENV','ENV') }}.net"
@@ -55,6 +56,7 @@
     es_enable_auto_ssl_configuration: true
     es_xpack_features: []
     es_config:
+      xpack.monitoring.collection.enabled: true
       cluster.name: "elk-cluster"
       cluster.initial_master_nodes: "node1"
       discovery.seed_hosts: "node1.elastic.{{ lookup('ENV','ENV') }}.net , node2.elastic.{{ lookup('ENV','ENV') }}.net , node3.elastic.{{ lookup('ENV','ENV') }}.net"
@@ -89,6 +91,7 @@
     es_enable_auto_ssl_configuration: true
     es_xpack_features: []
     es_config:
+      xpack.monitoring.collection.enabled: true
       cluster.name: "elk-cluster"
       cluster.initial_master_nodes: "node1"
       discovery.seed_hosts: "node1.elastic.{{ lookup('ENV','ENV') }}.net , node2.elastic.{{ lookup('ENV','ENV') }}.net , node3.elastic.{{ lookup('ENV','ENV') }}.net"

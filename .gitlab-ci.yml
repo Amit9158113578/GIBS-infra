@@ -78,24 +78,7 @@ test_dev:
   stage: test_dev
   when: manual
   environment:
-    name: development
-  tags:
-    - dev
-  script:
-    - echo $ENV
-    - echo $NODE1
-    - echo $NODE2
-    - echo $NODE3
-    - echo $TEST
-    - pwd
-    - export
-    - echo "Test End"
-
-test_stage:
-  stage: test_stage
-  when: manual
-  environment:
-    name: staging
+    name: $CI_BUILD_REF_NAME
   tags:
     - dev
   script:

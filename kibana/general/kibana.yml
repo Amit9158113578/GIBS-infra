@@ -22,7 +22,6 @@
       blockinfile:
         dest: /etc/kibana/kibana.yml
         block: |
-          xpack.monitoring.collection.enabled: true
           xpack.security.sameSiteCookies: None
           xpack.security.secureCookies: true
           xpack.security.enabled: true
@@ -62,7 +61,6 @@
       blockinfile:
         dest: /etc/kibana/kibana.yml
         block: |
-          xpack.monitoring.collection.enabled: true
           xpack.security.sameSiteCookies: None
           xpack.security.secureCookies: true
           xpack.security.enabled: true

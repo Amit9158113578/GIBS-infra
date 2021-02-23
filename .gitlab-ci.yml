@@ -5,8 +5,7 @@ stages:
   - elastic_deploy
   - kibana_deploy
   - logstash_deploy
-  - test_dev
-  - test_stage
+  - test
 
 base_setup:
   stage: base_setup
@@ -74,8 +73,8 @@ logstash_deploy:
          - ansible-playbook -i host logstash/general/logstash.yml
          - echo 'logstash_deploy end'
 
-test_dev:
-  stage: test_dev
+test:
+  stage: test
   when: manual
   environment:
     name: $CI_BUILD_REF_NAME

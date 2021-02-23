@@ -5,7 +5,8 @@ stages:
   - elastic_deploy
   - kibana_deploy
   - logstash_deploy
-  - test
+  - test_dev
+  - test_stage
 
 base_setup:
   stage: base_setup
@@ -74,7 +75,7 @@ logstash_deploy:
          - echo 'logstash_deploy end'
 
 test_dev:
-  stage: test
+  stage: test_dev
   when: manual
   environment:
     name: development
@@ -90,8 +91,8 @@ test_dev:
     - export
     - echo "Test End"
 
-test_dev:
-  stage: test
+test_stage:
+  stage: test_stage
   when: manual
   environment:
     name: staging

@@ -17,7 +17,7 @@
           region_iso_code: KG
           city_name: Kigali
   # Monitor name used for job name and document type
-  name: "elastic-dev-gcc"
+  name: "elasticsearch-dev-gcc"
 
   # Enable/Disable monitor
   enabled: true

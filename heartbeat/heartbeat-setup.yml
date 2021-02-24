@@ -15,7 +15,7 @@
     - name: Copy heartbeat config yml
       copy:
         src: "general/config/{{ lookup('ENV','ENV') }}/heartbeat.yml"
-        dest: /usr/share/heartbeat
+        dest: /usr/share/heartbeat/bin
       become: yes
     - name: Copy monitors.d folder
       copy:

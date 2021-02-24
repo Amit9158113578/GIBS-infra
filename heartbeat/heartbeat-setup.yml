@@ -20,7 +20,7 @@
     - name: Copy monitors.d folder
       copy:
         src: general/monitors.d
-        dest: /usr/share/heartbeat
+        dest: /usr/share/heartbeat/bin
       become: yes
     - name: start heartbeat
       service:

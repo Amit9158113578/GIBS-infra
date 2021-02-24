@@ -79,7 +79,7 @@ heartbeat_deploy:
   environment:
     name: development
   tags: 
-    - development
+    - dev
   script: 
          - echo $ENV
          - echo $NODE1

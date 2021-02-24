@@ -4,7 +4,7 @@
 # be loaded.
 
 - id: kibana-staging-gcc
-  type: https # monitor type `http`. Connect via HTTP an optionally verify response
+  type: http # monitor type `http`. Connect via HTTP an optionally verify response
   tags: ["staging", "gcc", "kibana", "kibana-staging", "gbis"]
   processors:
     - add_observer_metadata:

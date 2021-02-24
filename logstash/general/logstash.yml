@@ -1,5 +1,5 @@
 - name: Logstash Instalation
-  hosts: node1
+  hosts: node3
   tasks:
     - name: Ensure logstash is at the latest version
       #apt: name=logstash=7.11.1 state=present

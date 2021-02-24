@@ -1,1 +1,19 @@
-
+- name: Heartbeat Instalation
+  hosts: node3
+  tasks:
+    - name: Ensure heartbeat is at the 7.11.1 version
+      apt: name=heartbeat-elastic=7.11.1 state=present
+      become: yes
+    - name: Ensures /etc/heartbeat/security/ca dir exists
+      file: path=/etc/heartbeat/security/ca state=directory
+      become: yes
+    - name: Copy security folder 
+      copy:
+        src: security
+        dest: /etc/heartbeat
+      become: yes
+    - name: start heartbeat
+      service:
+          name: heartbeat-elastic
+          state: restarted
+      become: yes  

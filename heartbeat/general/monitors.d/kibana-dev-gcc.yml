@@ -5,7 +5,7 @@
 
 - id: kibana-dev-gcc
   type: http # monitor type `http`. Connect via HTTP an optionally verify response
-  tags: ["dev", "gcc", "kibana" ]
+  tags: ["dev", "gcc", "kibana", "kibana-dev", "gbis"]
   processors:
     - add_observer_metadata:
         geo:

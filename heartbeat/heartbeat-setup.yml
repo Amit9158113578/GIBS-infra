@@ -9,7 +9,17 @@
       become: yes
     - name: Copy security folder 
       copy:
-        src: security
+        src: general/security
+        dest: /etc/heartbeat
+      become: yes
+    - name: Copy heartbeat config yml
+      copy:
+        src: general/heartbeat.yml
+        dest: /etc/heartbeat
+      become: yes
+    - name: Copy monitors.d folder
+      copy:
+        src: general/monitors.d
         dest: /etc/heartbeat
       become: yes
     - name: start heartbeat

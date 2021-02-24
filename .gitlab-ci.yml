@@ -5,7 +5,7 @@ stages:
   - elastic_deploy
   - kibana_deploy
   - logstash_deploy
-  - test
+  - heartbeat_deploy
 
 base_setup:
   stage: base_setup
@@ -73,19 +73,18 @@ logstash_deploy:
          - ansible-playbook -i host logstash/general/logstash.yml
          - echo 'logstash_deploy end'
 
-test:
-  stage: test
+heartbeat_deploy:
+  stage: heartbeat_deploy
   when: manual
   environment:
-    name: development
-  tags:
-    - dev
-  script:
-    - echo $ENV
-    - echo $NODE1
-    - echo $NODE2
-    - echo $NODE3
-    - echo $TEST
-    - pwd
-    - export
-    - echo "Test End"
+    name: staging
+  tags: 
+    - staging
+  script: 
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'heartbeat_deploy start'
+         - ansible-playbook -i host heartbeat/general/heartbeat.yml
+         - echo 'heartbeat_deploy end'

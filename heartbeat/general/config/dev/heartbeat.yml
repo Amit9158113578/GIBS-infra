@@ -249,7 +249,7 @@ setup.kibana:
 # elasticsearch.ssl.certificateAuthorities: [ "config/cert/elasticsearch-ca.pem" ]
 
 output.elasticsearch:
-  hosts: ["https://node1.elastic.dev.net:9200", "https://node2.elastic.dev.net:9200", "https://node3.elastic.dev.net:9200"]
+  hosts: ["https://elasticsearch.dev.gcc.gov.rw/"]
   #ssl.certificate_authorities: /etc/heartbeat/security/ca/ca.crt
   # Optional protocol and basic auth credentials.
   #protocol: "https"

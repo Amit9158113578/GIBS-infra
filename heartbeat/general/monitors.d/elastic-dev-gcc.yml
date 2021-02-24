@@ -3,9 +3,9 @@
 # The .example extension on this file must be removed for it to
 # be loaded.
 
-- id: elastic-dev-gcc
+- id: elasticsearch-dev-gcc
   type: http # monitor type `http`. Connect via HTTP an optionally verify response
-  tags: ["dev", "gcc", "elasticsearch" ]
+  tags: ["dev", "gcc", "elasticsearch", "elasticsearch-dev", "gbis"]
   processors:
     - add_observer_metadata:
         geo:

@@ -3,9 +3,9 @@
 # The .example extension on this file must be removed for it to
 # be loaded.
 
-- id: elastic-staging-gcc
+- id: elasticsearch-staging-gcc
   type: http # monitor type `http`. Connect via HTTP an optionally verify response
-  tags: ["staging", "gcc", "elasticsearch" ]
+  tags: ["staging", "gcc", "elasticsearch", "elasticsearch-staging", "gbis"]
   processors:
     - add_observer_metadata:
         geo:
@@ -17,7 +17,7 @@
           region_iso_code: KG
           city_name: Kigali
   # Monitor name used for job name and document type
-  name: "elastic-staging-gcc"
+  name: "elasticsearch-staging-gcc"
 
   # Enable/Disable monitor
   enabled: true

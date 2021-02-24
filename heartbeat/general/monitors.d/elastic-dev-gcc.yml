@@ -29,9 +29,6 @@
   #hosts: ["https://projectmanagement.risa.rw"]
   urls:
       - https://elasticsearch.dev.gcc.gov.rw/
-      - https://10.10.73.15:9200
-      - https://10.10.73.16:9200
-      - https://10.10.73.17:9200
   # Configure IP protocol types to ping on if hostnames are configured.
   # Ping all resolvable IPs if `mode` is `all`, or only one IP if `mode` is `any`.
   ipv4: true
@@ -72,7 +69,7 @@
   check.response:
     # Expected status code. If not configured or set to 0 any status code not
     # being 404 is accepted.
-    status: 0
+    status: 401
 
     # Required response headers.
     #headers:

@@ -77,9 +77,9 @@ heartbeat_deploy:
   stage: heartbeat_deploy
   when: manual
   environment:
-    name: development
+    name: staging
   tags: 
-    - dev
+    - staging
   script: 
          - echo $ENV
          - echo $NODE1

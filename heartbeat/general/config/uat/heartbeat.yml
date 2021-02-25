@@ -250,7 +250,7 @@ setup.kibana:
 
 output.elasticsearch:
   hosts: ["https://gbis-elastic.staging.risa.gov.rw:443"]
-  ssl.certificate_authorities: /etc/heartbeat/security/ca/ca.crt
+  #ssl.certificate_authorities: /etc/heartbeat/security/ca/ca.crt
   # Optional protocol and basic auth credentials.
   #protocol: "https"
   username: "elastic"

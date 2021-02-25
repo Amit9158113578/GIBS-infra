@@ -17,10 +17,15 @@
         src: "general/config/{{ lookup('ENV','ENV') }}/heartbeat.yml"
         dest: /usr/share/heartbeat/bin
       become: yes
+    #- name: Copy monitors.d folder
+    #  copy:
+    #    src: general/monitors.d
+    #    dest: /usr/share/heartbeat/bin
+    #  become: yes
     - name: Copy monitors.d folder
       copy:
         src: general/monitors.d
-        dest: /usr/share/heartbeat/bin
+        dest: /etc/heartbeat
       become: yes
     - name: start heartbeat
       service:

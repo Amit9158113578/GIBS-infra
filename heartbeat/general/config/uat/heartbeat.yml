@@ -13,7 +13,7 @@ http.enabled: true
 
 heartbeat.config.monitors:
   # Directory + glob pattern to search for configuration files
-  path: ${path.config}/monitors.d/*.yml
+  path: /etc/heartbeat/monitors.d/*.yml
   # If enabled, heartbeat will periodically check the config.monitors path for changes
   reload.enabled: true
   # How often to check for changes

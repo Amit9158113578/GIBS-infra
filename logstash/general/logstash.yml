@@ -1,4 +1,4 @@
-- name: Logstash Instalation
+- name: Logstash Installation
   hosts: node3
   tasks:
     - name: Ensure logstash is at the latest version
@@ -15,24 +15,31 @@
         src: security/ca/ca.crt
         dest: /etc/logstash/certs/ca.crt
       become: yes
-    
+
     - name: Copy config file
       copy:
-        src: config/file_input.conf
+        src: config/logstash.yml
+        dest: /etc/logstash/logstash.yml
+        force: yes
+      become: yes    
+
+    - name: Copy pipeline file
+      copy:
+        src: config/pipelines/file_input.conf
         dest: /etc/logstash/conf.d/file_input.conf
         force: yes
       become: yes
 
-    - name: Copy config file
+    - name: Copy pipeline file
       copy:
-        src: config/target.conf
+        src: config/pipelines/target.conf
         dest: /etc/logstash/conf.d/target.conf
         force: yes
       become: yes
 
-    - name: Copy config file
+    - name: Copy pipeline file
       copy:
-        src: config/master-data.conf
+        src: config/pipelines/master-data.conf
         dest: /etc/logstash/conf.d/master-data.conf
         force: yes
       become: yes

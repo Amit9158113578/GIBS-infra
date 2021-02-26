@@ -3,21 +3,21 @@
 # The .example extension on this file must be removed for it to
 # be loaded.
 
-- id: elasticsearch-dev-gcc
+- id: prod-gov-rw
   type: http # monitor type `http`. Connect via HTTP an optionally verify response
-  tags: ["dev", "gcc", "elasticsearch", "elasticsearch-dev", "gbis"]
+  tags: ["prod", "gov.rw", "risa" ]
   processors:
     - add_observer_metadata:
         geo:
           location: -1.9441, 30.0619
-          name: prod.gov.rw
+          name: TYPO3-VPN
           continent_name: Africa
           country_iso_code: RW
           region_name: Kigali
           region_iso_code: KG
           city_name: Kigali
   # Monitor name used for job name and document type
-  name: "elasticsearch-dev-gcc"
+  name: "prod-gov-rw"
 
   # Enable/Disable monitor
   enabled: true
@@ -28,7 +28,7 @@
   # Configure URLs to ping
   #hosts: ["https://projectmanagement.risa.rw"]
   urls:
-      - https://elasticsearch.dev.gcc.gov.rw/
+      - https://www.gov.rw
   # Configure IP protocol types to ping on if hostnames are configured.
   # Ping all resolvable IPs if `mode` is `all`, or only one IP if `mode` is `any`.
   ipv4: true
@@ -69,13 +69,13 @@
   check.response:
     # Expected status code. If not configured or set to 0 any status code not
     # being 404 is accepted.
-    status: 401
+    #status: 0
 
     # Required response headers.
     #headers:
 
     # Required response contents.
-    #body:
+    body: This website is powered by TYPO3 - inspiring people to share!
 
     # Parses the body as JSON, then checks against the given condition expression
     #json:
@@ -93,7 +93,7 @@
   # monitor output. Fields can be scalar values, arrays, dictionaries, or any nested
   # combination of these.
   fields:
-    env: development
+    env: production
 
   # If this option is set to true, the custom fields are stored as top-level
   # fields in the output document instead of being grouped under a fields

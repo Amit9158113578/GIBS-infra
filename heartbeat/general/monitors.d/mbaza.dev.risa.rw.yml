@@ -10,7 +10,7 @@
     - add_observer_metadata:
         geo:
           location: -1.9441, 30.0619
-          name: prod.gov.rw
+          name: MBAZA-VPN
           continent_name: Africa
           country_iso_code: RW
           region_name: Kigali
@@ -23,7 +23,7 @@
   enabled: true
 
   # Configure task schedule
-  schedule: '@every 5s' # every 5 seconds from start of beat
+  schedule: '@every 30s' # every 5 seconds from start of beat
 
   # Configure URLs to ping
   #hosts: ["https://projectmanagement.risa.rw"]

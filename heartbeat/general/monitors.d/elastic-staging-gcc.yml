@@ -23,7 +23,7 @@
   enabled: true
 
   # Configure task schedule
-  schedule: '@every 5s' # every 5 seconds from start of beat
+  schedule: '@every 30s' # every 5 seconds from start of beat
 
   # Configure URLs to ping
   #hosts: ["https://projectmanagement.risa.rw"]

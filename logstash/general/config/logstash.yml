@@ -273,7 +273,7 @@ xpack.monitoring.elasticsearch.hosts: ["https://node1.elastic.ENV.net:9200", "ht
 #xpack.monitoring.elasticsearch.cloud_auth: logstash_system:password
 # another authentication alternative is to use an Elasticsearch API key
 #xpack.monitoring.elasticsearch.api_key: "id:api_key"
-xpack.monitoring.elasticsearch.ssl.certificate_authority: [ "/etc/elasticsearch/certs/ca.crt" ]
+xpack.monitoring.elasticsearch.ssl.certificate_authority: "/etc/elasticsearch/certs/ca.crt"
 #xpack.monitoring.elasticsearch.ssl.truststore.path: path/to/file
 #xpack.monitoring.elasticsearch.ssl.truststore.password: password
 #xpack.monitoring.elasticsearch.ssl.keystore.path: /path/to/file

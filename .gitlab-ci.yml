@@ -6,6 +6,7 @@ stages:
   - kibana_deploy
   - logstash_deploy
   - heartbeat_deploy
+  - test
 
 base_setup:
   stage: base_setup
@@ -88,3 +89,17 @@ heartbeat_deploy:
          - echo 'heartbeat_deploy start'
          - ansible-playbook -i host heartbeat/heartbeat-setup.yml
          - echo 'heartbeat_deploy end'
+
+test:
+  stage: test
+  when: manual
+  environment:
+    name: development
+  tags:
+    - dev
+  script:
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo sed -i s/ENV/$ENV/g

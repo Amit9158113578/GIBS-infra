@@ -69,7 +69,7 @@ logstash_deploy:
          - echo $NODE1
          - echo $NODE2
          - echo $NODE3
-         - 'sed -i s/ENV/$ENV/g $CI_PROJECT_DIR/logstash/general/config/logstash.yml $CI_PROJECT_DIR/logstash/general/config/pipelines/file_input.conf $CI_PROJECT_DIR/logstash/general/config/pipelines/master-data.conf $CI_PROJECT_DIR/logstash/general/config/pipelines/target.conf'
+         #- 'sed -i s/ENV/$ENV/g $CI_PROJECT_DIR/logstash/general/config/logstash.yml $CI_PROJECT_DIR/logstash/general/config/pipelines/file_input.conf $CI_PROJECT_DIR/logstash/general/config/pipelines/master-data.conf $CI_PROJECT_DIR/logstash/general/config/pipelines/target.conf'
          - echo 'logstash_deploy start'
          - ansible-playbook -i host logstash/general/logstash.yml
          - echo 'logstash_deploy end'
@@ -89,17 +89,3 @@ heartbeat_deploy:
          - echo 'heartbeat_deploy start'
          - ansible-playbook -i host heartbeat/heartbeat-setup.yml
          - echo 'heartbeat_deploy end'
-
-test:
-  stage: test
-  when: manual
-  environment:
-    name: development
-  tags:
-    - dev
-  script:
-         - echo $ENV
-         - echo $NODE1
-         - echo $NODE2
-         - echo $NODE3
-         - echo sed -i s/ENV/$ENV/g

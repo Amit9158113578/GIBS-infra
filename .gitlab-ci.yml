@@ -97,12 +97,9 @@ test:
     name: development
   tags: 
     - dev
-  variables:
-    - version: "{{ lookup('ENV','VERSION') }}"
   script: 
          - echo $ENV
          - echo $NODE1
          - echo $NODE2
          - echo $NODE3
-         - echo '{{ lookup('ENV','VERSION') }}'
-         - echo 'version add $version'
+         - echo {{ lookup('ENV','VERSION') }}

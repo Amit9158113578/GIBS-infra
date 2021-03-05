@@ -8,7 +8,7 @@
          - echo $NODE2
          - echo $NODE3
          - echo 'ENVIRONMENT SETUP START'
-         - bash -x environment_setup\env_setup.sh $NODE1 $NODE2 $NODE3 $ENV
+         - bash -x environment_setup/env_setup.sh $NODE1 $NODE2 $NODE3 $ENV
          - echo 'ENVIRONMENT SETUP END'
 
 .deploy_elasticsearch_template:
@@ -19,7 +19,7 @@
          - echo $NODE2
          - echo $NODE3
          - echo 'ElasticSearch DEPLOY START'
-         - ansible-playbook -i host elasticsearch\elasticsearch-setup.yml
+         - ansible-playbook -i host elasticsearch/elasticsearch-setup.yml
          - echo 'ElasticSearch DEPLOY END'
 
 .deploy_kibana_template:
@@ -30,7 +30,7 @@
          - echo $NODE2
          - echo $NODE3
          - echo 'Kibana DEPLOY START'
-         - ansible-playbook -i host kibana\kibana-setup.yml
+         - ansible-playbook -i host kibana/kibana-setup.yml
          - echo 'Kibana DEPLOY END'
 
 .deploy_logstash_template:
@@ -41,7 +41,7 @@
          - echo $NODE2
          - echo $NODE3
          - echo 'Logstash DEPLOY START'
-         - ansible-playbook -i host logstash\logstash-setup.yml
+         - ansible-playbook -i host logstash/logstash-setup.yml
          - echo 'Logstash DEPLOY END'
 
 .deploy_heartbeat_template:
@@ -52,5 +52,5 @@
          - echo $NODE2
          - echo $NODE3
          - echo 'Heartbeat DEPLOY START'
-         - ansible-playbook -i host heartbeat\heartbeat-setup.yml
+         - ansible-playbook -i host heartbeat/heartbeat-setup.yml
          - echo 'Heartbeat DEPLOY END'

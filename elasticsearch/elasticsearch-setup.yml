@@ -15,8 +15,8 @@
     es_ssl_certificate: security/node1/node1.crt
     es_enable_http_ssl: true
     es_enable_auto_ssl_configuration: true
-    es_api_basic_auth_username: "{{ elasticsearch_username }}"
-    es_api_basic_auth_password: "{{ elasticsearch_password }}"
+    es_api_basic_auth_username: "{{ lookup('ENV','elasticsearch_username') }}"
+    es_api_basic_auth_password: "{{ lookup('ENV','elasticsearch_password') }}"
     es_enable_transport_ssl: true 
     es_enable_auto_ssl_configuration: true
     es_xpack_features: []
@@ -24,7 +24,7 @@
       xpack.monitoring.collection.enabled: true
       cluster.name: "elk-cluster"
       cluster.initial_master_nodes: "node1"
-      discovery.seed_hosts: "{{ hosts }}"
+      discovery.seed_hosts: "{{ lookup('ENV','hosts') }}"
       http.port: 9200
       node.data: true
       node.master: true
@@ -37,7 +37,7 @@
   roles:
     - role: elastic.elasticsearch
   vars:
-    es_version: "{{ elk_version }}"
+    es_version: "{{ lookup('ENV','elk_version') }}"
     es_enable_xpack: true
     es_data_dirs:
       - "/data/elasticsearch/data"
@@ -50,8 +50,8 @@
     es_ssl_certificate: security/node2/node2.crt
     es_enable_http_ssl: true
     es_enable_auto_ssl_configuration: true
-    es_api_basic_auth_username: "{{ elasticsearch_username }}"
-    es_api_basic_auth_password: "{{ elasticsearch_password }}"
+    es_api_basic_auth_username: "{{ lookup('ENV','elasticsearch_username') }}"
+    es_api_basic_auth_password: "{{ lookup('ENV','elasticsearch_password') }}"
     es_enable_transport_ssl: true 
     es_enable_auto_ssl_configuration: true
     es_xpack_features: []
@@ -59,7 +59,7 @@
       xpack.monitoring.collection.enabled: true
       cluster.name: "elk-cluster"
       cluster.initial_master_nodes: "node1"
-      discovery.seed_hosts: "{{ hosts }}"
+      discovery.seed_hosts: "{{ lookup('ENV','hosts') }}"
       http.port: 9200
       node.data: true
       node.master: true
@@ -72,7 +72,7 @@
   roles:
     - role: elastic.elasticsearch
   vars:
-    es_version: "{{ elk_version }}"
+    es_version: "{{ lookup('ENV','elk_version') }}"
     es_enable_xpack: true
     es_data_dirs:
       - "/data/elasticsearch/data"
@@ -85,8 +85,8 @@
     es_ssl_certificate: security/node3/node3.crt
     es_enable_http_ssl: true
     es_enable_auto_ssl_configuration: true
-    es_api_basic_auth_username: "{{ elasticsearch_username }}"
-    es_api_basic_auth_password: "{{ elasticsearch_password }}"
+    es_api_basic_auth_username: "{{ lookup('ENV','elasticsearch_username') }}"
+    es_api_basic_auth_password: "{{ lookup('ENV','elasticsearch_password') }}"
     es_enable_transport_ssl: true 
     es_enable_auto_ssl_configuration: true
     es_xpack_features: []
@@ -94,7 +94,7 @@
       xpack.monitoring.collection.enabled: true
       cluster.name: "elk-cluster"
       cluster.initial_master_nodes: "node1"
-      discovery.seed_hosts: "{{ hosts }}"
+      discovery.seed_hosts: "{{ lookup('ENV','hosts') }}"
       http.port: 9200
       node.data: true
       node.master: true

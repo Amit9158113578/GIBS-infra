@@ -1,0 +1,8 @@
+# Default Stages
+
+stages:
+    - env_setup
+    - deploy_elasticsearch
+    - deploy_kibana
+    - deploy_logstash
+    - deploy_heartbeat

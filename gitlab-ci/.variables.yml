@@ -1,0 +1,33 @@
+# Variables
+
+.variables_dev:
+  environment:
+    name: development
+  tags:
+    - dev
+  variables:
+    elk_version: "7.11.1"
+    logstash_version: "1:7.11.1-1"
+    hosts: "node1.elastic.net, node2.elastic.net, node3.elastic.net"
+    elasticsearch_hosts: "https://node1.elastic.net:9200 , https://node2.elastic.net:9200 , https://node3.elastic.net:9200"
+    elasticsearch_username: "elastic"
+    elasticsearch_password: "Elastic@123"
+    elasticsearch_url: "https://elasticsearch.dev.gcc.gov.rw"
+    kibana_hosts: "https://node1.elastic.net:5601, https://node1.elastic.net:5601"
+    kibana_url: "https://kibana.dev.gcc.gov.rw/login?next=%2F"
+
+
+.variables_staging:
+  environment:
+    name: staging
+  tags:
+    - staging
+  variables:
+    elk_version: "7.11.1"
+    hosts: "node1.elastic.net, node2.elastic.net, node3.elastic.net"
+    elasticsearch_hosts: "https://node1.elastic.net:9200 , https://node2.elastic.net:9200 , https://node3.elastic.net:9200"
+    elasticsearch_username: "elastic"
+    elasticsearch_password: "Elastic@123"
+    elasticsearch_url: "https://gbis-elastic.staging.risa.gov.rw"
+    kibana_hosts: "https://node1.elastic.net:5601, https://node1.elastic.net:5601"
+    kibana_url: "https://gbis.staging.risa.gov.rw/login?next=%2F"

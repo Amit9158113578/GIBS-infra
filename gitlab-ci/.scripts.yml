@@ -1,0 +1,61 @@
+# Deploy
+
+deploy_env_setup_dev_manual:
+  extends:
+    - .deploy_env_setup_template
+    - .variables_dev
+    - .rules_dev_manual
+
+deploy_env_setup_staging_manual:
+  extends:
+    - .deploy_env_setup_template
+    - .variables_staging
+    - .rules_staging_manual
+
+deploy_elasticsearch_dev_manual:
+  extends:
+    - .deploy_elasticsearch_template
+    - .variables_dev
+    - .rules_dev_manual
+
+deploy_elasticsearch_staging_manual:
+  extends:
+    - .deploy_elasticsearch_template
+    - .variables_staging
+    - .rules_staging_manual
+
+deploy_kibana_dev_manual:
+  extends:
+    - .deploy_kibana_template
+    - .variables_dev
+    - .rules_dev_manual
+
+deploy_kibana_staging_manual:
+  extends:
+    - .deploy_kibana_template
+    - .variables_staging
+    - .rules_staging_manual
+
+deploy_logstash_dev_manual:
+  extends:
+    - .deploy_logstash_template
+    - .variables_dev
+    - .rules_dev_manual
+
+deploy_logstash_staging_manual:
+  extends:
+    - .deploy_logstash_template
+    - .variables_staging
+    - .rules_staging_manual
+
+deploy_heartbeat_dev_manual:
+  extends:
+    - .deploy_heartbeat_template
+    - .variables_dev
+    - .rules_dev_manual
+
+deploy_heartbeat_staging_manual:
+  extends:
+    - .deploy_heartbeat_template
+    - .variables_staging
+    - .rules_staging_manual

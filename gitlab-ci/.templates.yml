@@ -1,0 +1,56 @@
+# Templates
+
+.deploy_env_setup_template:
+  stage: env_setup
+  script:
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'ENVIRONMENT SETUP START'
+         - bash -x environment_setup\env_setup.sh $NODE1 $NODE2 $NODE3 $ENV
+         - echo 'ENVIRONMENT SETUP END'
+
+.deploy_elasticsearch_template:
+  stage: deploy_elasticsearch
+  script:
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'ElasticSearch DEPLOY START'
+         - ansible-playbook -i host elasticsearch\elasticsearch-setup.yml
+         - echo 'ElasticSearch DEPLOY END'
+
+.deploy_kibana_template:
+  stage: deploy_kibana
+  script:
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'Kibana DEPLOY START'
+         - ansible-playbook -i host kibana\kibana-setup.yml
+         - echo 'Kibana DEPLOY END'
+
+.deploy_logstash_template:
+  stage: deploy_logstash
+  script:
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'Logstash DEPLOY START'
+         - ansible-playbook -i host logstash\logstash-setup.yml
+         - echo 'Logstash DEPLOY END'
+
+.deploy_heartbeat_template:
+  stage: deploy_heartbeat
+  script:
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'Heartbeat DEPLOY START'
+         - ansible-playbook -i host heartbeat\heartbeat-setup.yml
+         - echo 'Heartbeat DEPLOY END'

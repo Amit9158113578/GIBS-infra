@@ -1,17 +1,20 @@
-- name: Heartbeat Instalation
-  hosts: node3
-  tasks:
-    - name: Ensure heartbeat is at the 7.11.1 version
-      apt: name=heartbeat-elastic=7.11.1 state=present
+include:
+  - local: '.variables.yml'
+
+name: Heartbeat Instalation
+hosts: node3
+tasks:
+    - name: Ensure heartbeat is at the $elk_version version
+      apt: name=heartbeat-elastic=$elk_version state=present
       become: yes
     - name: Copy heartbeat config yml
       copy:
-        src: "general/config/{{ lookup('ENV','ENV') }}/heartbeat.yml"
+        src: heartbeat/heartbeat.yml
         dest: /etc/heartbeat
       become: yes
     - name: Copy monitors.d folder
       copy:
-        src: general/monitors.d
+        src: heartbeat/monitors.d
         dest: /etc/heartbeat
       become: yes
     - name: start heartbeat

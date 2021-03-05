@@ -54,3 +54,10 @@
          - echo 'Heartbeat DEPLOY START'
          - ansible-playbook -i host heartbeat/heartbeat-setup.yml
          - echo 'Heartbeat DEPLOY END'
+
+.test:
+  stage: test
+  script:
+         - echo $elk_version
+         - echo $elasticsearch_username
+         - echo $elasticsearch_password

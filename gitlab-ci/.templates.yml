@@ -19,7 +19,7 @@
          - echo $NODE2
          - echo $NODE3
          - echo 'ElasticSearch DEPLOY START'
-         - ansible-playbook -i host elasticsearch/elasticsearch-setup.yml -e "$elk_version = ${elk_version}"
+         - ansible-playbook -i host elasticsearch/elasticsearch-setup.yml
          - echo 'ElasticSearch DEPLOY END'
 
 .deploy_kibana_template:

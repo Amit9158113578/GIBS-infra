@@ -1,9 +1,9 @@
 - name: Logstash Installation
   hosts: node3
   tasks:
-    - name: Ensure logstash is at $logstash_version version
+    - name: Ensure logstash is at "{{ lookup('ENV','logstash_version') }}" version
       #apt: name=logstash=1:7.11.1-1 state=present
-      apt: name=logstash=$logstash_version state=present
+      apt: name=logstash={{ lookup('ENV','logstash_version') }} state=present
       become: yes
     
     - name: Ensures /etc/logstash/certs dir exists

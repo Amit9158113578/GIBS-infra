@@ -12,7 +12,7 @@
     elasticsearch_hosts: "https://node1.elastic.net:9200 , https://node2.elastic.net:9200 , https://node3.elastic.net:9200"
     elasticsearch_username: "elastic"
     elasticsearch_password: "Elastic@123"
-    elasticsearch_url: "https://elasticsearch.dev.gcc.gov.rw"
+    elasticsearch_url: "https://elasticsearch.dev.gcc.gov.rw:443"
     kibana_hosts: "https://node1.elastic.net:5601, https://node1.elastic.net:5601"
     kibana_url: "https://kibana.dev.gcc.gov.rw/login?next=%2F"
 

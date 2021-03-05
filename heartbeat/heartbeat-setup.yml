@@ -4,8 +4,8 @@ include:
 name: Heartbeat Instalation
 hosts: node3
 tasks:
-    - name: Ensure heartbeat is at the $elk_version version
-      apt: name=heartbeat-elastic=$elk_version state=present
+    - name: Ensure heartbeat is at the "{{ lookup('ENV','elk_version') }}" version
+      apt: name=heartbeat-elastic={{ lookup('ENV','elk_version') }} state=present
       become: yes
     - name: Copy heartbeat config yml
       copy:

@@ -26,9 +26,9 @@ host_key_checking=False' | sudo tee  /etc/ansible/ansible.cfg
 
 #Making /etc/hosts entries
 
-grep "$node1 node1.elastic.$ENV.net node1 
-$node2 node2.elastic.$ENV.net node2 
-$node3 node3.elastic.$ENV.net node3" /etc/hosts
+grep "$node1 node1.elastic.net node1 
+$node2 node2.elastic.net node2 
+$node3 node3.elastic.net node3" /etc/hosts
 
 if [ $? != 0 ]
 then

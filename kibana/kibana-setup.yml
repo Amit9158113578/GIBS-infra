@@ -1,8 +1,8 @@
 - name: Kibana Instalation
   hosts: node1
   tasks:
-    - name: Ensure kibana is at the "{{ elk_version }}" version
-      apt: name=kibana="{{ elk_version }}" state=present
+    - name: Ensure kibana is at the "{{ lookup('ENV','elk_version') }}" version
+      apt: name=kibana="{{ lookup('ENV','elk_version') }}" state=present
       become: yes
     - name: Ensures /etc/kibana/config/certs dir exists
       file: path=/etc/kibana/config/certs state=directory

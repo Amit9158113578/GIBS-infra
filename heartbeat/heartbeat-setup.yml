@@ -1,6 +1,3 @@
-include:
-  - local: '.variables.yml'
-
 name: Heartbeat Instalation
 hosts: node3
 tasks:

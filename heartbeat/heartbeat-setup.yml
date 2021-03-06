@@ -9,12 +9,12 @@ tasks:
       become: yes
     - name: Copy heartbeat config yml
       copy:
-        src: heartbeat/heartbeat.yml
+        src: heartbeat.yml
         dest: /etc/heartbeat
       become: yes
     - name: Copy monitors.d folder
       copy:
-        src: heartbeat/monitors.d
+        src: monitors.d
         dest: /etc/heartbeat
       become: yes
     - name: start heartbeat

@@ -53,7 +53,7 @@
       become: yes
     - name: Copy config file 
       copy:
-        src: kibana/kibana.yml
+        src: kibana.yml
         dest: /etc/kibana/kibana.yml
         force: yes
       become: yes

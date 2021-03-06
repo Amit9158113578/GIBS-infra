@@ -32,8 +32,8 @@
 
     - name: Copy pipeline file
       copy:
-        src: pipelines/file_input.conf
-        dest: /etc/logstash/conf.d/file_input.conf
+        src: pipelines/kpi_data.conf
+        dest: /etc/logstash/conf.d/kpi_data.conf
         force: yes
       become: yes
 

@@ -44,6 +44,21 @@
          - echo $NODE1
          - echo $NODE2
          - echo $NODE3
+         - echo 'Prepare Variables START'
+         
+         - echo 'PIPELINE kpi_data.conf'
+         - envsubst < "logstash/pipelines/kpi_data.conf" > kpi_data_var.conf
+         - cp kpi_data_var.conf logstash/pipelines/kpi_data.conf
+
+         - echo 'PIPELINE master_data.conf'
+         - envsubst < "logstash/pipelines/master_data.conf" > master_data_var.conf
+         - cp master_data_var.conf logstash/pipelines/master_data.conf
+
+         - echo 'PIPELINE target.conf'
+         - envsubst < "logstash/pipelines/target.conf" > target_var.conf
+         - cp target_var.conf logstash/pipelines/target.conf
+
+         - echo 'Prepare Variables END'
          - echo 'Logstash DEPLOY START'
          - ansible-playbook -i host logstash/logstash-setup.yml
          - echo 'Logstash DEPLOY END'

@@ -55,6 +55,10 @@
          - echo $NODE1
          - echo $NODE2
          - echo $NODE3
+         - echo 'Prepare Variables START'
+         - envsubst < "heartbeat/heartbeat.yml" > heartbeat_var.yml
+         - cp heartbeat_var.yml heartbeat/heartbeat.yml
+         - echo 'Prepare Variables END'
          - echo 'Heartbeat DEPLOY START'
          - ansible-playbook -i host heartbeat/heartbeat-setup.yml
          - echo 'Heartbeat DEPLOY END'

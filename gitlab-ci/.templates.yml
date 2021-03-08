@@ -29,6 +29,7 @@
          - echo $NODE1
          - echo $NODE2
          - echo $NODE3
+         - export
          - echo 'Kibana DEPLOY START'
          - ansible-playbook -i host kibana/kibana-setup.yml
          - echo 'Kibana DEPLOY END'

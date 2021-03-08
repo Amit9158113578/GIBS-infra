@@ -105,3 +105,13 @@ elasticsearch.ssl.verificationMode: certificate
 # Specifies locale to be used for all localizable strings, dates and number formats.
 # Supported languages are the following: English - en , by default , Chinese - zh-CN .
 #i18n.locale: "en"
+
+# ADD TLS
+xpack.security.sameSiteCookies: None
+xpack.security.secureCookies: true
+xpack.security.enabled: true
+xpack.security.encryptionKey: "$kibana_xpack_encryptionKey"
+xpack.encryptedSavedObjects.encryptionKey: "$kibana_encryptedSavedObjects_encryptionKey"
+server.ssl.enabled: true
+server.ssl.certificate: /etc/kibana/config/certs/security/node1/node1.crt
+server.ssl.key: /etc/kibana/config/certs/security/node1/node1.key

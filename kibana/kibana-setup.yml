@@ -18,19 +18,6 @@
         dest: /etc/kibana/kibana.yml
         force: yes
       become: yes
-    - name: add TLS
-      blockinfile:
-        dest: /etc/kibana/kibana.yml
-        block: |
-          xpack.security.sameSiteCookies: None
-          xpack.security.secureCookies: true
-          xpack.security.enabled: true
-          xpack.security.encryptionKey: "BDHcisme3231234msid8493029384930281hc"
-          xpack.encryptedSavedObjects.encryptionKey: "BDHcisme3231234msid8493029384930281hc"
-          server.ssl.enabled: true
-          server.ssl.certificate: /etc/kibana/config/certs/security/node1/node1.crt
-          server.ssl.key: /etc/kibana/config/certs/security/node1/node1.key
-      become: yes
     - name: start kibana
       service:
           name: kibana
@@ -56,19 +43,6 @@
         src: kibana.yml
         dest: /etc/kibana/kibana.yml
         force: yes
-      become: yes
-    - name: add TLS
-      blockinfile:
-        dest: /etc/kibana/kibana.yml
-        block: |
-          xpack.security.sameSiteCookies: None
-          xpack.security.secureCookies: true
-          xpack.security.enabled: true
-          xpack.security.encryptionKey: "BDHcisme3231234msid8493029384930281hc"
-          xpack.encryptedSavedObjects.encryptionKey: "BDHcisme3231234msid8493029384930281hc"
-          server.ssl.enabled: true
-          server.ssl.certificate: /etc/kibana/config/certs/security/node2/node2.crt
-          server.ssl.key: /etc/kibana/config/certs/security/node2/node2.key
       become: yes
     - name: start kibana
       service:

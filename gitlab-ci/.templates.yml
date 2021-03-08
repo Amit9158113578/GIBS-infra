@@ -59,4 +59,4 @@
 .deploy_test_template:
   stage: test
   script:
-         - export
+         - export NODE1=$NODE1

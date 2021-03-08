@@ -29,7 +29,9 @@
          - echo $NODE1
          - echo $NODE2
          - echo $NODE3
-         - export
+         - echo 'Prepare Variables'
+         - envsubst < "$CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/kibana/kibana.yml" > kibana_var.yml
+         - cp kibana_var.yml $CI_PROJECT_NAMESPACE/$CI_PROJECT_NAME/kibana/kibana.yml
          - echo 'Kibana DEPLOY START'
          - ansible-playbook -i host kibana/kibana-setup.yml
          - echo 'Kibana DEPLOY END'
@@ -59,4 +61,4 @@
 .deploy_test_template:
   stage: test
   script:
-         - export NODE1=$NODE1
+         - export

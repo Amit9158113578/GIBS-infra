@@ -21,7 +21,11 @@
         src: logstash.yml
         dest: /etc/logstash/logstash.yml
         force: yes
-      become: yes    
+      become: yes
+
+    - name: Ensures /etc/logstash/conf.d dir exists
+      file: path=/etc/logstash/conf.d state=directory
+      become: yes
 
     - name: Copy pipeline file
       copy:

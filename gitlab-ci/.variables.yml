@@ -13,7 +13,7 @@
     elasticsearch_username: "elastic"
     elasticsearch_password: "Elastic@123"
     elasticsearch_url: "https://elasticsearch.dev.gcc.gov.rw:443"
-    kibana_hosts: "https://node1.elastic.net:5601, https://node1.elastic.net:5601"
+    kibana_hosts: https://node1.elastic.net:5601, https://node1.elastic.net:5601
     kibana_url: "https://kibana.dev.gcc.gov.rw/login?next=%2F"
     kibana_xpack_encryptionKey: "BDHcisme3231234msid8493029384930281hc"
     kibana_encryptedSavedObjects_encryptionKey: "BDHcisme3231234msid8493029384930281hc"

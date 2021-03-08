@@ -9,7 +9,7 @@
     elk_version: "7.11.1"
     logstash_version: "1:7.11.1-1"
     hosts: "node1.elastic.net, node2.elastic.net, node3.elastic.net"
-    elasticsearch_hosts: '"https://node1.elastic.net:9200", "https://node2.elastic.net:9200", "https://node3.elastic.net:9200"'
+    elasticsearch_hosts: https://node1.elastic.net:9200", "https://node2.elastic.net:9200", "https://node3.elastic.net:9200
     elasticsearch_username: "elastic"
     elasticsearch_password: "Elastic@123"
     elasticsearch_url: "https://elasticsearch.dev.gcc.gov.rw:443"

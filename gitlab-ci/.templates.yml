@@ -50,9 +50,9 @@
          - envsubst < "logstash/pipelines/kpi_data.conf" > kpi_data_var.conf
          - cp kpi_data_var.conf logstash/pipelines/kpi_data.conf
 
-         - echo 'PIPELINE master_data.conf'
-         - envsubst < "logstash/pipelines/master_data.conf" > master_data_var.conf
-         - cp master_data_var.conf logstash/pipelines/master_data.conf
+         - echo 'PIPELINE master-data.conf'
+         - envsubst < "logstash/pipelines/master-data.conf" > master-data_var.conf
+         - cp master-data_var.conf logstash/pipelines/master-data.conf
 
          - echo 'PIPELINE target.conf'
          - envsubst < "logstash/pipelines/target.conf" > target_var.conf

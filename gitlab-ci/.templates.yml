@@ -29,6 +29,10 @@
          - echo $NODE1
          - echo $NODE2
          - echo $NODE3
+         - echo 'Prepare Variables START'
+         - envsubst < "kibana/kibana.yml" > kibana_var.yml
+         - cp kibana_var.yml kibana/kibana.yml
+         - echo 'Prepare Variables END'
          - echo 'Kibana DEPLOY START'
          - ansible-playbook -i host kibana/kibana-setup.yml
          - echo 'Kibana DEPLOY END'
@@ -40,6 +44,21 @@
          - echo $NODE1
          - echo $NODE2
          - echo $NODE3
+         - echo 'Prepare Variables START'
+         
+         - echo 'PIPELINE kpi_data.conf'
+         - envsubst < "logstash/pipelines/kpi_data.conf" > kpi_data_var.conf
+         - cp kpi_data_var.conf logstash/pipelines/kpi_data.conf
+
+         - echo 'PIPELINE master-data.conf'
+         - envsubst < "logstash/pipelines/master-data.conf" > master-data_var.conf
+         - cp master-data_var.conf logstash/pipelines/master-data.conf
+
+         - echo 'PIPELINE target.conf'
+         - envsubst < "logstash/pipelines/target.conf" > target_var.conf
+         - cp target_var.conf logstash/pipelines/target.conf
+
+         - echo 'Prepare Variables END'
          - echo 'Logstash DEPLOY START'
          - ansible-playbook -i host logstash/logstash-setup.yml
          - echo 'Logstash DEPLOY END'
@@ -51,13 +70,34 @@
          - echo $NODE1
          - echo $NODE2
          - echo $NODE3
+         - echo 'Prepare Variables START'
+
+         - echo 'Heartbeat.yml'
+         - envsubst < "heartbeat/heartbeat.yml" > heartbeat_var.yml
+         - cp heartbeat_var.yml heartbeat/heartbeat.yml
+
+         - echo '--- Monitors - Elastic DEV ---'
+         - envsubst < "heartbeat/monitors.d/elastic-dev-gcc.yml" > elastic-dev-gcc_var.yml
+         - cp elastic-dev-gcc_var.yml heartbeat/monitors.d/elastic-dev-gcc.yml
+
+         - echo '--- Monitors - Elastic STAGE ---'
+         - envsubst < "heartbeat/monitors.d/elastic-staging-gcc.yml" > elastic-staging-gcc_var.yml
+         - cp elastic-staging-gcc_var.yml heartbeat/monitors.d/elastic-staging-gcc.yml
+
+         - echo '--- Monitors - Kibana DEV ---'
+         - envsubst < "heartbeat/monitors.d/kibana-dev-gcc.yml" > kibana-dev-gcc_var.yml
+         - cp kibana-dev-gcc_var.yml heartbeat/monitors.d/kibana-dev-gcc.yml
+
+         - echo '--- Monitors - Kibana STAGE ---'
+         - envsubst < "heartbeat/monitors.d/kibana-staging-gcc.yml" > kibana-staging-gcc_var.yml
+         - cp kibana-staging-gcc_var.yml heartbeat/monitors.d/kibana-staging-gcc.yml
+         
+         - echo 'Prepare Variables END'
          - echo 'Heartbeat DEPLOY START'
          - ansible-playbook -i host heartbeat/heartbeat-setup.yml
          - echo 'Heartbeat DEPLOY END'
 
-.test:
+.deploy_test_template:
   stage: test
   script:
-         - echo $elk_version
-         - echo $elasticsearch_username
-         - echo $elasticsearch_password
+         - export

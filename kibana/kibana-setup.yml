@@ -1,8 +1,8 @@
 - name: Kibana Instalation
   hosts: node1
   tasks:
-    - name: Ensure kibana is at the $elk_version version
-      apt: name=kibana=$elk_version state=present
+    - name: Ensure kibana is at the "{{ lookup('ENV','elk_version') }}" version
+      apt: name=kibana={{ lookup('ENV','elk_version') }} state=present
       become: yes
     - name: Ensures /etc/kibana/config/certs dir exists
       file: path=/etc/kibana/config/certs state=directory
@@ -14,22 +14,9 @@
       become: yes
     - name: Copy config file 
       copy:
-        src: kibana/kibana.yml
+        src: kibana.yml
         dest: /etc/kibana/kibana.yml
         force: yes
-      become: yes
-    - name: add TLS
-      blockinfile:
-        dest: /etc/kibana/kibana.yml
-        block: |
-          xpack.security.sameSiteCookies: None
-          xpack.security.secureCookies: true
-          xpack.security.enabled: true
-          xpack.security.encryptionKey: "BDHcisme3231234msid8493029384930281hc"
-          xpack.encryptedSavedObjects.encryptionKey: "BDHcisme3231234msid8493029384930281hc"
-          server.ssl.enabled: true
-          server.ssl.certificate: /etc/kibana/config/certs/security/node1/node1.crt
-          server.ssl.key: /etc/kibana/config/certs/security/node1/node1.key
       become: yes
     - name: start kibana
       service:
@@ -40,8 +27,8 @@
 - name: Kibana Instalation on node2
   hosts: node2
   tasks:
-    - name: Ensure kibana is at the $elk_version version
-      apt: name=kibana=$elk_version state=present
+    - name: Ensure kibana is at the "{{ lookup('ENV','elk_version') }}" version
+      apt: name=kibana={{ lookup('ENV','elk_version') }} state=present
       become: yes
     - name: Ensures /etc/kibana/config/certs dir exists
       file: path=/etc/kibana/config/certs state=directory
@@ -53,22 +40,9 @@
       become: yes
     - name: Copy config file 
       copy:
-        src: kibana/kibana.yml
+        src: kibana.yml
         dest: /etc/kibana/kibana.yml
         force: yes
-      become: yes
-    - name: add TLS
-      blockinfile:
-        dest: /etc/kibana/kibana.yml
-        block: |
-          xpack.security.sameSiteCookies: None
-          xpack.security.secureCookies: true
-          xpack.security.enabled: true
-          xpack.security.encryptionKey: "BDHcisme3231234msid8493029384930281hc"
-          xpack.encryptedSavedObjects.encryptionKey: "BDHcisme3231234msid8493029384930281hc"
-          server.ssl.enabled: true
-          server.ssl.certificate: /etc/kibana/config/certs/security/node2/node2.crt
-          server.ssl.key: /etc/kibana/config/certs/security/node2/node2.key
       become: yes
     - name: start kibana
       service:

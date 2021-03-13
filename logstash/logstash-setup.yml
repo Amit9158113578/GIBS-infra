@@ -34,9 +34,9 @@
         force: yes
       become: yes
 
-    - name: Copy pipeline folder
+    - name: Copy pipeline files to conf.d
       copy:
-        src: pipelines
+        src: pipelines/
         dest: /etc/logstash/
         force: yes
       become: yes

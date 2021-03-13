@@ -34,13 +34,6 @@
         force: yes
       become: yes
 
-    - name: Copy pipeline file
-      copy:
-        src: pipelines/kpi_data.conf
-        dest: /etc/logstash/conf.d/kpi_data.conf
-        force: yes
-      become: yes
-
     - name: Copy pipeline folder
       copy:
         src: pipelines

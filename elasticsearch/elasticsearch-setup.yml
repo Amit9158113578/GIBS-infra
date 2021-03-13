@@ -18,7 +18,6 @@
     es_api_basic_auth_username: "{{ lookup('ENV','elasticsearch_username') }}"
     es_api_basic_auth_password: "{{ lookup('ENV','elasticsearch_password') }}"
     es_enable_transport_ssl: true 
-    es_enable_auto_ssl_configuration: true
     es_xpack_features: []
     es_config:
       xpack.monitoring.collection.enabled: true
@@ -53,7 +52,6 @@
     es_api_basic_auth_username: "{{ lookup('ENV','elasticsearch_username') }}"
     es_api_basic_auth_password: "{{ lookup('ENV','elasticsearch_password') }}"
     es_enable_transport_ssl: true 
-    es_enable_auto_ssl_configuration: true
     es_xpack_features: []
     es_config:
       xpack.monitoring.collection.enabled: true
@@ -88,7 +86,6 @@
     es_api_basic_auth_username: "{{ lookup('ENV','elasticsearch_username') }}"
     es_api_basic_auth_password: "{{ lookup('ENV','elasticsearch_password') }}"
     es_enable_transport_ssl: true 
-    es_enable_auto_ssl_configuration: true
     es_xpack_features: []
     es_config:
       xpack.monitoring.collection.enabled: true

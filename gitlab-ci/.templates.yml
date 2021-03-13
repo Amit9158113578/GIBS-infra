@@ -96,8 +96,3 @@
          - echo 'Heartbeat DEPLOY START'
          - ansible-playbook -i host heartbeat/heartbeat-setup.yml
          - echo 'Heartbeat DEPLOY END'
-
-.deploy_test_template:
-  stage: test
-  script:
-         - export

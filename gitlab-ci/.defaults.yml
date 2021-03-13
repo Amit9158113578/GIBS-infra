@@ -6,4 +6,3 @@ stages:
     - deploy_kibana
     - deploy_logstash
     - deploy_heartbeat
-    - test

@@ -7,7 +7,7 @@
     - name: Ensures /etc/kibana/security dir exists
       file: path=/etc/kibana/security state=directory
       become: yes
-    - name: Copy certs folder 
+    - name: Copy security folder 
       copy:
         src: security
         dest: /etc/kibana/
@@ -40,7 +40,7 @@
     - name: Ensures /etc/kibana/security dir exists
       file: path=/etc/kibana/security state=directory
       become: yes
-    - name: Copy certs folder 
+    - name: Copy security folder 
       copy:
         src: security
         dest: /etc/kibana/

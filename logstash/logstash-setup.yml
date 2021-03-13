@@ -6,14 +6,14 @@
       apt: name=logstash={{ lookup('ENV','logstash_version') }} state=present
       become: yes
     
-    - name: Ensures /etc/logstash/certs dir exists
-      file: path=/etc/logstash/certs state=directory
+    - name: Ensures /etc/logstash/security dir exists
+      file: path=/etc/logstash/security state=directory
       become: yes
     
-    - name: Copy ca file
+    - name: Copy Security Folder
       copy:
-        src: security/ca/ca.crt
-        dest: /etc/logstash/certs/ca.crt
+        src: security
+        dest: /etc/logstash/
       become: yes
 
     - name: Copy config file
@@ -27,7 +27,7 @@
       file: path=/etc/logstash/conf.d state=directory
       become: yes
 
-    - name: Copy pipeline file
+    - name: Copy pipeline yml
       copy:
         src: pipelines.yml
         dest: /etc/logstash/pipelines.yml
@@ -41,24 +41,15 @@
         force: yes
       become: yes
 
-    - name: Copy pipeline file
+    - name: Copy pipeline folder
       copy:
-        src: pipelines/target.conf
-        dest: /etc/logstash/conf.d/target.conf
+        src: pipelines
+        dest: /etc/logstash/
         force: yes
       become: yes
-
-    - name: Copy pipeline file
-      copy:
-        src: pipelines/target.conf
-        dest: /etc/logstash/conf.d/master-data.conf
-        force: yes
-      become: yes
-
     
     - name: start logstash
       service:
           name: logstash
           state: restarted
-      become: yes
-
+      become: yes  

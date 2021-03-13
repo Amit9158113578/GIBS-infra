@@ -55,7 +55,7 @@ elasticsearch.password: "${elasticsearch_password}"
 
 # Optional setting that enables you to specify a path to the PEM file for the certificate
 # authority for your Elasticsearch instance.
-elasticsearch.ssl.certificateAuthorities: [ "/etc/kibana/config/certs/security/ca/ca.crt" ]
+elasticsearch.ssl.certificateAuthorities: [ "/etc/kibana/security/ca/ca.crt" ]
 
 # To disregard the validity of SSL certificates, change this setting's value to 'none'.
 elasticsearch.ssl.verificationMode: certificate
@@ -113,5 +113,5 @@ xpack.security.enabled: true
 xpack.security.encryptionKey: "$kibana_xpack_encryptionKey"
 xpack.encryptedSavedObjects.encryptionKey: "$kibana_encryptedSavedObjects_encryptionKey"
 server.ssl.enabled: true
-server.ssl.certificate: /etc/kibana/config/certs/security/node1/node1.crt
-server.ssl.key: /etc/kibana/config/certs/security/node1/node1.key
+#server.ssl.certificate: /etc/kibana/security/node1/node1.crt
+#server.ssl.key: /etc/kibana/security/node1/node1.key

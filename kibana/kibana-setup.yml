@@ -4,19 +4,26 @@
     - name: Ensure kibana is at the "{{ lookup('ENV','elk_version') }}" version
       apt: name=kibana={{ lookup('ENV','elk_version') }} state=present
       become: yes
-    - name: Ensures /etc/kibana/config/certs dir exists
-      file: path=/etc/kibana/config/certs state=directory
+    - name: Ensures /etc/kibana/security dir exists
+      file: path=/etc/kibana/security state=directory
       become: yes
     - name: Copy certs folder 
       copy:
         src: security
-        dest: /etc/kibana/config/certs
+        dest: /etc/kibana/
       become: yes
     - name: Copy config file 
       copy:
         src: kibana.yml
         dest: /etc/kibana/kibana.yml
         force: yes
+      become: yes
+    - name: Add Server Certificate
+      blockinfile:
+        dest: /etc/kibana/kibana.yml
+        block: |
+          server.ssl.certificate: /etc/kibana/security/node1/node1.crt
+          server.ssl.key: /etc/kibana/security/node1/node1.key
       become: yes
     - name: start kibana
       service:
@@ -30,19 +37,26 @@
     - name: Ensure kibana is at the "{{ lookup('ENV','elk_version') }}" version
       apt: name=kibana={{ lookup('ENV','elk_version') }} state=present
       become: yes
-    - name: Ensures /etc/kibana/config/certs dir exists
-      file: path=/etc/kibana/config/certs state=directory
+    - name: Ensures /etc/kibana/security dir exists
+      file: path=/etc/kibana/security state=directory
       become: yes
     - name: Copy certs folder 
       copy:
         src: security
-        dest: /etc/kibana/config/certs
+        dest: /etc/kibana/
       become: yes
     - name: Copy config file 
       copy:
         src: kibana.yml
         dest: /etc/kibana/kibana.yml
         force: yes
+      become: yes
+    - name: Add Server Certificate
+      blockinfile:
+        dest: /etc/kibana/kibana.yml
+        block: |
+          server.ssl.certificate: /etc/kibana/security/node2/node2.crt
+          server.ssl.key: /etc/kibana/security/node2/node2.key
       become: yes
     - name: start kibana
       service:

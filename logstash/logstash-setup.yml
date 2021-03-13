@@ -37,7 +37,7 @@
     - name: Copy pipeline files to conf.d
       copy:
         src: pipelines/
-        dest: /etc/logstash/
+        dest: /etc/logstash/conf.d
         force: yes
       become: yes
     

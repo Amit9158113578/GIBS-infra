@@ -63,18 +63,17 @@
          - cp temp.conf logstash/pipelines/vaccination/master-data-health_facilities.conf
 
          - echo 'PIPELINE Villages'
+         - envsubst < "logstash/pipelines/vaccination/master-data-villages.conf" > temp.conf
+         - cp temp.conf logstash/pipelines/vaccination/master-data-villages.conf
+
+         - echo 'PIPELINE Vaccination Pipeline'
          - envsubst < "logstash/pipelines/vaccination/vaccination-pipeline.conf" > temp.conf
          - cp temp.conf logstash/pipelines/vaccination/vaccination-pipeline.conf
 
 
-         - echo 'PIPELINE Vaccintion Pipeline'
-         - envsubst < "logstash/pipelines/vaccination/vaccination-report" > temp.conf
+         - echo 'PIPELINE Vaccintion Report'
+         - envsubst < "logstash/pipelines/vaccination/vaccination-report.conf" > temp.conf
          - cp temp.conf logstash/pipelines/vaccination/vaccination-report.conf
-
-
-         - echo 'PIPELINE Vaccination Report'
-         - envsubst < "logstash/pipelines/vaccination/master-data-villages.conf.conf" > temp.conf
-         - cp temp.conf logstash/pipelines/vaccination/master-data-villages.conf.conf
 
          - echo 'Prepare Variables END'
          - echo 'Logstash DEPLOY START'

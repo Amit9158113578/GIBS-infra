@@ -41,3 +41,4 @@ fi
 
 scp /etc/hosts root@$node2:/etc/hosts
 scp /etc/hosts root@$node3:/etc/hosts
+scp /etc/hosts root@$node1:/etc/hosts

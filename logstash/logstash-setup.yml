@@ -34,10 +34,17 @@
         force: yes
       become: yes
 
-    - name: Copy pipeline files to conf.d
+    - name: Copy gcc pipeline files to conf.d
       copy:
         src: pipelines/
         dest: /etc/logstash/conf.d
+        force: yes
+      become: yes
+
+    - name: Copy vaccination pipeline files to conf.d
+      copy:
+        src: pipelines/vaccination
+        dest: /etc/logstash/conf.d/vaccination
         force: yes
       become: yes
     

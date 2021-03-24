@@ -131,6 +131,6 @@
          - cp system_var.yml metricbeat/modules.d/system.yml
 
          - echo 'Prepare Variables END'
-         - echo 'Heartbeat DEPLOY START'
-         - ansible-playbook -i host heartbeat/heartbeat-setup.yml
-         - echo 'Heartbeat DEPLOY END'
+         - echo 'Metricbeat DEPLOY START'
+         - ansible-playbook -i host metricbeat/metricbeat-setup.yml
+         - echo 'Metricbeat DEPLOY END'

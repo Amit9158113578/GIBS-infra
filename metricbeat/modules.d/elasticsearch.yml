@@ -10,5 +10,5 @@
   period: 10s
   hosts: ["$elasticsearch_hosts"]
   username: "$elasticsearch_username"
-  password: "$elasticsearch_username"
+  password: "$elasticsearch_password"
   ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]

@@ -1,0 +1,14 @@
+- module: elasticsearch
+  metricsets:
+    - node
+    - node_stats
+    #- index
+    #- index_recovery
+    #- index_summary
+    #- shard
+    #- ml_job
+  period: 10s
+  hosts: "$elasticsearch_hosts"
+  username: "$elasticsearch_username"
+  password: "$elasticsearch_username"
+  ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]

@@ -1,0 +1,10 @@
+- module: kibana
+  metricsets: ["status"]
+  period: 10s
+  hosts: "$kibana_hosts"
+  #basepath: ""
+  username: "$elasticsearch_username"
+  password: "$elasticsearch_password"
+  enabled: true
+  ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]
+  ssl.enabled: true

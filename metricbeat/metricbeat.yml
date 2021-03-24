@@ -1,0 +1,374 @@
+###################### Metricbeat Configuration Example #######################
+
+# This file is an example configuration file highlighting only the most common
+# options. The metricbeat.reference.yml file from the same directory contains all the
+# supported options with more comments. You can use it as a reference.
+#
+# You can find the full configuration reference here:
+# https://www.elastic.co/guide/en/beats/metricbeat/index.html
+
+## ================================= Monitoring =================================
+
+http.enabled: true
+monitoring.enabled: false # legacy monitoring off
+http.port: 5066
+http.host: ${HOSTNAME}
+
+# =========================== Modules configuration ============================
+
+metricbeat.config.modules:
+  # Glob pattern for configuration loading
+  path: ${path.config}/modules.d/*.yml
+
+  # Set to true to enable config reloading
+  reload.enabled: true
+
+  # Period on which files under path should be checked for changes
+  reload.period: 10s
+
+# ======================= Elasticsearch template setting =======================
+
+setup.template.settings:
+  index.number_of_shards: 2
+  index.codec: best_compression
+  #_source.enabled: false
+
+# ====================== Index Lifecycle Management (ILM) ======================
+
+# Configure index lifecycle management (ILM). These settings create a write
+# alias and add additional settings to the index template. When ILM is enabled,
+# output.elasticsearch.index is ignored, and the write alias is used to set the
+# index name.
+
+# Enable ILM support. Valid values are true, false, and auto. When set to auto
+# (the default), the Beat uses index lifecycle management when it connects to a
+# cluster that supports ILM; otherwise, it creates daily indices.
+setup.ilm.enabled: auto
+
+# Set the prefix used in the index lifecycle write alias name. The default alias
+# name is 'metricbeat-%{[agent.version]}'.
+setup.ilm.rollover_alias: 'metricbeat-%{[agent.version]}'
+
+# Set the rollover index pattern. The default is "%{now/d}-000001".
+setup.ilm.pattern: "{now/d}-000001"
+
+# Set the lifecycle policy name. The default policy name is
+# 'beatname'.
+#setup.ilm.policy_name: "mypolicy"
+
+# The path to a JSON file that contains a lifecycle policy configuration. Used
+# to load your own lifecycle policy.
+#setup.ilm.policy_file:
+
+# Disable the check for an existing lifecycle policy. The default is true. If
+# you disable this check, set setup.ilm.overwrite: true so the lifecycle policy
+# can be installed.
+setup.ilm.check_exists: true
+
+# Overwrite the lifecycle policy at startup. The default is false.
+# setup.ilm.overwrite: true
+
+# ================================== General ===================================
+
+# The name of the shipper that publishes the network data. It can be used to group
+# all the transactions sent by a single shipper in the web interface.
+#name: risa-stack-dev-metricbeat
+
+# The tags of the shipper are included in their own field with each
+# transaction published.
+#tags: ["service-X", "web-tier"]
+
+# Optional fields that you can specify to add additional information to the
+# output.
+#fields:
+#  env: development
+
+
+## ================================= Dashboards =================================
+
+# These settings control loading the sample dashboards to the Kibana index. Loading
+# the dashboards are disabled by default and can be enabled either by setting the
+# options here, or by using the `-setup` CLI flag or the `setup` command.
+setup.dashboards.enabled: true
+
+# The directory from where to read the dashboards. The default is the `kibana`
+# folder in the home path.
+#setup.dashboards.directory: ${path.home}/kibana
+
+# The URL from where to download the dashboards archive. It is used instead of
+# the directory if it has a value.
+#setup.dashboards.url:
+
+# The file archive (zip file) from where to read the dashboards. It is used instead
+# of the directory when it has a value.
+#setup.dashboards.file:
+
+# In case the archive contains the dashboards from multiple Beats, this lets you
+# select which one to load. You can load all the dashboards in the archive by
+# setting this to the empty string.
+#setup.dashboards.beat: filebeat
+
+# The name of the Kibana index to use for setting the configuration. Default is ".kibana"
+#setup.dashboards.kibana_index: .kibana
+
+# The Elasticsearch index name. This overwrites the index name defined in the
+# dashboards and index pattern. Example: testbeat-*
+setup.dashboards.index: metricbeat-*
+
+# Always use the Kibana API for loading the dashboards instead of autodetecting
+# how to install the dashboards by first querying Elasticsearch.
+#setup.dashboards.always_kibana: false
+
+# If true and Kibana is not reachable at the time when dashboards are loaded,
+# it will retry to reconnect to Kibana instead of exiting with an error.
+setup.dashboards.retry.enabled: true
+
+# Duration interval between Kibana connection retries.
+setup.dashboards.retry.interval: 5s
+
+# Maximum number of retries before exiting with an error, 0 for unlimited retrying.
+setup.dashboards.retry.maximum: 10
+
+
+# metricbeat.autodiscover:
+#   providers:
+#     - type: docker
+#       templates:
+#         - condition:
+#             contains:
+#               container.image.name: swag
+#           config:
+#             - module: nginx
+#               metricsets: ["stubstatus"]
+#               hosts: "http://${data.host}"  
+#               period: 10s
+#               #hosts: ["http://swag"]
+#               # Path to server status. Default server-status
+#               server_status_path: "nginx_status"
+#         - condition:
+#             contains:
+#               container.image.name: beats
+#           config:
+#             - module: beat-xpack
+#               xpack.enabled: true
+#               period: 10s
+#               hosts: "http://${data.host}:5066"  
+#               period: 10s
+#         - condition:
+#             contains:
+#               container.image.name: risa-dwh1-es
+#           config:
+#             - module: elasticsearch-xpack
+#               xpack.enabled: true
+#               period: 10s
+#               #hosts: ["http://localhost:9200"]
+#               hosts: https://${data.host}:9200" 
+#               username: ${ELK_ELASTICSEARCH_USERNAME}
+#               password: ${ELK_ELASTICSEARCH_PASSWORD}
+#               ssl.certificate_authorities: [ "config/cert/elasticsearch-ca.pem" ]
+#         - condition:
+#             contains:
+#               container.image.name: kibana
+#           config:
+#             - module: kibana-xpack
+#               xpack.enabled: true
+#               period: 10s
+#               #hosts: ["http://localhost:9200"]
+#               hosts: http://${data.host}:5601" 
+#               username: ${ELK_ELASTICSEARCH_USERNAME}
+#               password: ${ELK_ELASTICSEARCH_PASSWORD}
+
+#-------------------------------- Autodiscovery -------------------------------
+# Autodiscover allows you to detect changes in the system and spawn new modules as they happen.
+# metricbeat.autodiscover:
+#   providers:
+#     - type: docker
+      # https://www.elastic.co/guide/en/beats/metricbeat/current/configuration-autodiscover-hints.html
+      # hints.enabled: true
+
+metricbeat.modules:
+#------------------------------- System Module -------------------------------
+# - module: system
+#   metricsets: ["cpu", "load", "memory", "network", "process", "process_summary", "core", "diskio", "socket"]
+#   processes: ['.*']
+#   process.include_top_n:
+#     by_cpu: 5
+#     by_memory: 5
+#   period: 10s
+#   cpu.metrics:  ["percentages"]
+#   core.metrics: ["percentages"]
+
+# - module: system
+#   period: 1m
+#   metricsets:
+#     - filesystem
+#     - fsstat
+#   processors:
+#   - drop_event.when.regexp:
+#       system.filesystem.mount_point: '^/(sys|cgroup|proc|dev|etc|host|lib)($|/)'
+
+# - module: system
+#   period: 15m
+#   metricsets:
+#     - uptime
+
+#------------------------------- Docker Module -------------------------------
+# - module: docker
+#   metricsets: ["container", "cpu", "diskio", "healthcheck", "info", "memory", "network"]
+#   hosts: ["unix:///var/run/docker.sock"]
+#   period: 10s
+
+#------------------------------- Elastic Module -------------------------------
+
+# - module: elasticsearch
+#   xpack.enabled: true
+#   period: 10s
+#   #hosts: ["https://risa-dwh1-es01:9200"]
+#   hosts: '${ELK_ELASTICSEARCH_HOSTS}'
+#   username: ${ELK_ELASTICSEARCH_USERNAME}
+#   password: ${ELK_ELASTICSEARCH_PASSWORD}
+#   ssl.certificate_authorities: [ "config/cert/elasticsearch-ca.pem" ]
+
+# =================================== Kibana ===================================
+
+# Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.
+# This requires a Kibana endpoint configuration.
+setup.kibana:
+
+  # Kibana Host
+  # Scheme and port can be left out and will be set to the default (http and 5601)
+  # In case you specify and additional path, the scheme is required: http://localhost:5601/path
+  # IPv6 addresses should always be defined as: https://[2001:db8::1]:5601
+  host: "$kibana_hosts"
+
+  # Kibana Space ID
+  # ID of the Kibana Space into which the dashboards should be loaded. By default,
+  # the Default Space will be used.
+  #space.id: ${ELK_MONITORING_SPACE}
+  ssl.enabled: true
+  ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]
+
+# ---------------------------- Elasticsearch Output ----------------------------
+output.elasticsearch:
+  # Array of hosts to connect to.
+  # hosts:
+  #   - https://risa-dwh1-es01:9200
+  #   - https://risa-dwh1-es02:9200
+  #   - https://risa-dwh1-es03:9200
+  ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]
+  hosts: "$elasticsearch_hosts"
+  #ssl.certificate_authorities: ${SSL_CERTIFICATE_AUTHORITY_FILE}
+  # Optional protocol and basic auth credentials.
+  #protocol: "https"
+  # username: ${ELK_ELASTICSEARCH_USERNAME}
+  # password: ${ELK_ELASTICSEARCH_PASSWORD}
+  username: "$elasticsearch_username"
+  password: "$elasticsearch_password"
+# ------------------------------ Logstash Output -------------------------------
+#output.logstash:
+  # The Logstash hosts
+  #hosts: ["localhost:5044"]
+
+  # Optional SSL. By default is off.
+  # List of root certificates for HTTPS server verifications
+  #ssl.certificate_authorities: ["/etc/pki/root/ca.pem"]
+
+  # Certificate for SSL client authentication
+  #ssl.certificate: "/etc/pki/client/cert.pem"
+
+  # Client Certificate Key
+  #ssl.key: "/etc/pki/client/cert.key"
+
+# ================================= Processors =================================
+
+# Configure processors to enhance or manipulate events generated by the beat.
+
+# processors:
+#   - add_observer_metadata:
+#       netinfo.enabled: true
+#   - add_docker_metadata:
+#       host: "unix:///var/run/docker.sock"
+#       #match_fields: ["system.process.cgroup.id"]
+#       #match_pids: ["process.pid", "process.ppid"]
+#       #match_source: true
+#       #match_source_index: 4
+#       #match_short_id: false
+#       #cleanup_timeout: 60
+#       #labels.dedot: false
+#   - add_locale:
+#       format: offset
+#   - drop_fields:
+#       fields: ["host.name"]
+#       ignore_missing: true
+#   # - copy_fields:
+#   #     fields:
+#   #       - from: container.name
+#   #         to: host.name
+#   #     fail_on_error: false
+#   #     ignore_missing: true
+#   - add_fields:
+#       target: ''
+#       fields:
+#         host.name: ${ELK_DOCKER_HOSTNAME}
+
+
+# ================================== Logging ===================================
+
+# Sets log level. The default log level is info.
+# Available log levels are: error, warning, info, debug
+#logging.level: debug
+
+# At debug level, you can selectively enable logging only for some components.
+# To enable all selectors use ["*"]. Examples of other selectors are "beat",
+# "publish", "service".
+#logging.selectors: ["*"]
+
+# ============================= X-Pack Monitoring ==============================
+# Metricbeat can export internal metrics to a central Elasticsearch monitoring
+# cluster.  This requires xpack monitoring to be enabled in Elasticsearch.  The
+# reporting is disabled by default.
+
+# Set to true to enable the monitoring reporter.
+# monitoring.enabled: true
+
+# Sets the UUID of the Elasticsearch cluster under which monitoring data for this
+# Metricbeat instance will appear in the Stack Monitoring UI. If output.elasticsearch
+# is enabled, the UUID is derived from the Elasticsearch cluster referenced by output.elasticsearch.
+#monitoring.cluster_uuid:
+
+# Uncomment to send the metrics to Elasticsearch. Most settings from the
+# Elasticsearch output are accepted here as well.
+# Note that the settings should point to your Elasticsearch *monitoring* cluster.
+# Any setting that is not set is automatically inherited from the Elasticsearch
+# output configuration, so if you have the Elasticsearch output configured such
+# that it is pointing to your Elasticsearch monitoring cluster, you can simply
+# uncomment the following line.
+monitoring.elasticsearch:
+
+# ============================== Instrumentation ===============================
+
+# Instrumentation support for the metricbeat.
+#instrumentation:
+    # Set to true to enable instrumentation of metricbeat.
+    #enabled: false
+
+    # Environment in which metricbeat is running on (eg: staging, production, etc.)
+    #environment: ""
+
+    # APM Server hosts to report instrumentation results to.
+    #hosts:
+    #  - http://localhost:8200
+
+    # API Key for the APM Server(s).
+    # If api_key is set then secret_token will be ignored.
+    #api_key:
+
+    # Secret token for the APM Server(s).
+    #secret_token:
+
+
+# ================================= Migration ==================================
+
+# This allows to enable 6.7 migration aliases
+#migration.6_to_7.enabled: true
+

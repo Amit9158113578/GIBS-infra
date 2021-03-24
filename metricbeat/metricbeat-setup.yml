@@ -1,0 +1,65 @@
+- name: MetricBeat Instalation
+  hosts: node1
+  tasks:
+    - name: Ensure metricbeat is at the "{{ lookup('ENV','elk_version') }}" version
+      apt: name=metricbeat={{ lookup('ENV','elk_version') }} state=present
+      become: yes
+    - name: Copy metricbeat config yml
+      copy:
+        src: metricbeat.yml
+        dest: /etc/metricbeat
+      become: yes
+    - name: Copy modules.d folder
+      copy:
+        src: modules.d
+        dest: /etc/metricbeat
+      become: yes
+    - name: start metricbeat
+      service:
+          name: metricbeat
+          state: restarted
+      become: yes
+
+- name: MetricBeat Instalation
+  hosts: node2
+  tasks:
+    - name: Ensure metricbeat is at the "{{ lookup('ENV','elk_version') }}" version
+      apt: name=metricbeat={{ lookup('ENV','elk_version') }} state=present
+      become: yes
+    - name: Copy metricbeat config yml
+      copy:
+        src: metricbeat.yml
+        dest: /etc/metricbeat
+      become: yes
+    - name: Copy modules.d folder
+      copy:
+        src: modules.d
+        dest: /etc/metricbeat
+      become: yes
+    - name: start metricbeat
+      service:
+          name: metricbeat
+          state: restarted
+      become: yes
+
+- name: MetricBeat Instalation
+  hosts: node3
+  tasks:
+    - name: Ensure metricbeat is at the "{{ lookup('ENV','elk_version') }}" version
+      apt: name=metricbeat={{ lookup('ENV','elk_version') }} state=present
+      become: yes
+    - name: Copy metricbeat config yml
+      copy:
+        src: metricbeat.yml
+        dest: /etc/metricbeat
+      become: yes
+    - name: Copy modules.d folder
+      copy:
+        src: modules.d
+        dest: /etc/metricbeat
+      become: yes
+    - name: start metricbeat
+      service:
+          name: metricbeat
+          state: restarted
+      become: yes

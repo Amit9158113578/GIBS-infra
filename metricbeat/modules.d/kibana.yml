@@ -1,7 +1,7 @@
 - module: kibana
   metricsets: ["status"]
   period: 10s
-  hosts: "$kibana_hosts"
+  hosts: ["$kibana_hosts"]
   #basepath: ""
   username: "$elasticsearch_username"
   password: "$elasticsearch_password"

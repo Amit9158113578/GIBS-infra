@@ -1,0 +1,34 @@
+{
+    "size": 1,
+    "query": {
+            "bool": {
+                    "must": [
+                            {
+                                "match": {
+                                        "KPIID.keyword": "%{[KPIID]}"
+                                }
+                        },
+                        {
+                                "match": {
+                                        "Period.keyword": "%{[Period]}"
+                                }
+                        },
+                        {
+                                "match": {
+                                        "financial_year.keyword": "%{[financial_year]}"
+                                }
+                        },
+                        {
+                                "match": {
+                                        "period_desc.keyword": "%{[period_desc]}"
+                                }
+                        },
+                        {
+                                "match": {
+                                        "category.keyword": "%{[category]}"
+                               }
+                        }
+                    ]
+            }
+    }
+}

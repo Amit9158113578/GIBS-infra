@@ -1,0 +1,14 @@
+# Module: kibana
+# Docs: https://www.elastic.co/guide/en/beats/metricbeat/7.9/metricbeat-module-kibana.html
+
+- module: kibana
+  xpack.enabled: true
+  metricsets:
+    - stats
+  period: 10s
+  hosts: ["$kibana_hosts"]
+  #basepath: ""
+  username: "$elasticsearch_username"
+  password: "$elasticsearch_password"
+  ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]
+  ssl.enabled: true

@@ -1,9 +1,8 @@
 - module: logstash
-    metricsets:
-      - node
-      - node_stats
-    period: 10s
-    hosts: ["node3:9600"]
-    username: "$elasticsearch_username"
-    password: "$elasticsearch_password"
-    xpack.enabled: true
+  metricsets:
+    - node
+    - node_stats
+  period: 10s
+  hosts: ["node3:9600"]
+  username: "$elasticsearch_username"
+  password: "$elasticsearch_password"

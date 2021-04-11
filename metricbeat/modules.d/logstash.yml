@@ -1,5 +1,7 @@
 - module: logstash
-  metricsets: ["node", "node_stats"]
-  enabled: true
-  period: 10s
-  hosts: ["node3:9600"]
+    metricsets:
+      - node
+      - node_stats
+    period: 10s
+    hosts: ["http://node3:9600"]
+    xpack.enabled: true

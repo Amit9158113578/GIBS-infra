@@ -121,7 +121,7 @@ http.host: node3
 # Values can be specified as a single port (e.g., `9600`), or an inclusive range
 # of ports (e.g., `9600-9700`).
 #
-http.port: 9600-9700
+http.port: 9600
 
 monitoring.enabled: false
 xpack.monitoring.enabled: false

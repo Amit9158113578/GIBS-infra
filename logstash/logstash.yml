@@ -20,6 +20,8 @@
 #
 # If omitted the node name will default to the machine's host name
 #
+http.enabled: true
+http.port: 9600
 # ------------ Data path ------------------
 #
 # Which directory should be used by logstash and its plugins

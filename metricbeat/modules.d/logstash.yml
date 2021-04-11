@@ -4,4 +4,6 @@
       - node_stats
     period: 10s
     hosts: ["http://node3:9600"]
+    username: "$elasticsearch_username"
+    password: "$elasticsearch_password"
     xpack.enabled: true

@@ -122,6 +122,9 @@ http.host: 127.0.0.1
 # of ports (e.g., `9600-9700`).
 #
 http.port: 9600-9700
+
+monitoring.enabled: false
+xpack.monitoring.enabled: false
 #
 # ------------ Module Settings ---------------
 # Define modules here.  Modules definitions must be defined as an array.

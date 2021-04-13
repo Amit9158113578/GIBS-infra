@@ -58,9 +58,9 @@
          - envsubst < "logstash/pipelines/target.conf" > target_var.conf
          - cp target_var.conf logstash/pipelines/target.conf
 
-         - echo 'PIPELINE vaccination-report-csv-file.conf'
-         - envsubst < "logstash/pipelines/vaccination/vaccination-report-csv-file.conf" > temp.conf
-         - cp temp.conf logstash/conf.d/vaccination/vaccination-report-csv-file.conf
+         - echo 'PIPELINE vaccination-report.conf'
+         - envsubst < "logstash/pipelines/vaccination/vaccination-report.conf" > temp.conf
+         - cp temp.conf logstash/conf.d/vaccination/vaccination-report.conf
 
          - echo 'Prepare Variables END'
          - echo 'Logstash DEPLOY START'

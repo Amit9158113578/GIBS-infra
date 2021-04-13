@@ -60,6 +60,7 @@
 
          - echo 'PIPELINE vaccination-report.conf'
          - envsubst < "logstash/pipelines/vaccination/vaccination-report.conf" > temp.conf
+         - mkdir -p logstash/vaccination
          - cp temp.conf logstash/vaccination/vaccination-report.conf
 
          - echo 'Prepare Variables END'

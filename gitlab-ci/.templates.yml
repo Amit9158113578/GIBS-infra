@@ -60,9 +60,7 @@
 
          - echo 'PIPELINE vaccination-report.conf'
          - envsubst < "logstash/pipelines/vaccination/vaccination-report.conf" > temp.conf
-         - mkdir -p logstash/conf.d #create if not exists
-         - mkdir -p logstash/conf.d/vaccination #create if not exists
-         - cp temp.conf logstash/conf.d/vaccination/vaccination-report.conf
+         - cp temp.conf logstash/vaccination/vaccination-report.conf
 
          - echo 'Prepare Variables END'
          - echo 'Logstash DEPLOY START'

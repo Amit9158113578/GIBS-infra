@@ -307,3 +307,11 @@ path.logs: /var/log/logstash
 #xpack.management.elasticsearch.ssl.verification_mode: certificate
 #xpack.management.elasticsearch.sniffing: false
 #xpack.management.logstash.poll_interval: 5s
+
+http.enabled: true
+monitoring.enabled: false # legacy monitoring off
+http.port: 9600
+http.host: "node3"
+
+## X-Pack security credentials
+xpack.monitoring.enabled: true

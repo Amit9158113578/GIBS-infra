@@ -66,6 +66,7 @@
          - echo 'Prepare Variables END'
          - echo 'Logstash DEPLOY START'
          - ansible-playbook -i host logstash/logstash-setup.yml
+         - ls -la /etc/logstash/conf.d/vaccination/*
          - echo 'Logstash DEPLOY END'
 
 .deploy_heartbeat_template:

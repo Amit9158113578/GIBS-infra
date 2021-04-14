@@ -27,10 +27,6 @@
       file: path=/etc/logstash/conf.d state=directory
       become: yes
 
-    - name: Ensures /etc/logstash/conf.d/vaccination dir exists
-      file: path=/etc/logstash/conf.d/vaccination state=directory
-      become: yes
-
     - name: Copy pipeline yml
       copy:
         src: pipelines.yml
@@ -42,13 +38,6 @@
       copy:
         src: pipelines/
         dest: /etc/logstash/conf.d
-        force: yes
-      become: yes
-
-    - name: Copy pipeline vaccination tracker files to conf.d/vaccination
-      copy:
-        src: pipelines/vaccination/
-        dest: /etc/logstash/conf.d/vaccination
         force: yes
       become: yes
     

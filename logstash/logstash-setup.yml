@@ -44,5 +44,5 @@
     - name: start logstash
       service:
           name: logstash
-          state: restarted
+          state: stopped
       become: yes  

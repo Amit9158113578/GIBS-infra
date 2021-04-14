@@ -131,8 +131,8 @@
          - cp system_var.yml metricbeat/modules.d/system.yml
 
          - echo '--- Modules - Logstash ---'
-         - envsubst < "metricbeat/modules.d/logstash.yml" > logstash_var.yml
-         - cp logstash_var.yml metricbeat/modules.d/logstash.yml
+         - envsubst < "metricbeat/modules.d/logstash-xpack.yml" > logstash-xpack_var.yml
+         - cp logstash-xpack_var.yml metricbeat/modules.d/logstash-xpack.yml
 
          - echo 'Prepare Variables END'
          - echo 'Metricbeat DEPLOY START'

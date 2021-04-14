@@ -32,13 +32,13 @@
 
 # # vaccination
 
-# - pipeline.id: vaccination-report-csv-file
-#   path.config: "/etc/logstash/conf.d//vaccination/vaccination-report-csv-file.conf"
-#   pipeline.workers: 1 # otherwise column autodetect will not work
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
-#   queue.type: memory
+- pipeline.id: vaccination-report-csv-file
+  path.config: "/etc/logstash/conf.d/vaccination/*.conf"
+  pipeline.workers: 1 # otherwise column autodetect will not work
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
 
 # - pipeline.id: vaccination-pipeline-csv-file
 #   path.config: "/etc/logstash/conf.d/s/vaccination/vaccination-pipeline-csv-file.conf"

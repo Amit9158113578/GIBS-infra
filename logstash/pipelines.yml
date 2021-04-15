@@ -32,7 +32,7 @@
 
 # # vaccination
 
-- pipeline.id: vaccination-report-csv-file
+- pipeline.id: vaccination
   path.config: "/etc/logstash/conf.d/vaccination/*.conf"
   pipeline.workers: 1 # otherwise column autodetect will not work
   config.reload.automatic: true

@@ -49,7 +49,7 @@
   queue.type: memory
 
 - pipeline.id: vaccination-master-data-villages
-  path.config: "/etc/logstash/conf.d/vaccination/vaccination-master-data-villages.conf"
+  path.config: "/etc/logstash/conf.d/vaccination/master-data-villages.conf"
   pipeline.workers: 1
   config.reload.automatic: true
   config.reload.interval: 3s

@@ -40,25 +40,27 @@
   pipeline.ordered: false
   queue.type: memory
 
-# - pipeline.id: vaccination-pipeline-csv-file
-#   path.config: "/etc/logstash/conf.d/s/vaccination/vaccination-pipeline-csv-file.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
-#   queue.type: memory
+- pipeline.id: vaccination-pipeline
+  path.config: "/etc/logstash/conf.d/vaccination/vaccination-pipeline.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
 
-# - pipeline.id: vaccination-master-data-villages-csv-file
-#   path.config: "/etc/logstash/conf.d//vaccination/vaccination-master-data-villages-csv-file.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
-#   queue.type: memory
+- pipeline.id: vaccination-master-data-villages
+  path.config: "/etc/logstash/conf.d/vaccination/vaccination-master-data-villages.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
 
-# - pipeline.id: vaccination-master-data-health_facilities-csv-file
-#   path.config: "/etc/logstash/conf.d//vaccination/vaccination-master-data-health_facilities-csv-file.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
+- pipeline.id: vaccination-master-data-health-facilities
+  path.config: "/etc/logstash/conf.d/vaccination/master-data-health-facilities.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+
+## project Management Pipeline

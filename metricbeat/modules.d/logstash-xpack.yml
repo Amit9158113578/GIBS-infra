@@ -1,0 +1,4 @@
+- module: logstash
+  xpack.enabled: true
+  period: 10s
+  hosts: ["node3:9600"]

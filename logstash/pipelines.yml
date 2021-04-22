@@ -30,38 +30,38 @@
   queue.type: memory
 
 
-# # vaccination
+# # # vaccination
 
-- pipeline.id: vaccination-report
-  path.config: "/etc/logstash/conf.d/vaccination/vaccination-report.conf"
-  pipeline.workers: 1 # otherwise column autodetect will not work
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+# - pipeline.id: vaccination-report
+#   path.config: "/etc/logstash/conf.d/vaccination/vaccination-report.conf"
+#   pipeline.workers: 1 # otherwise column autodetect will not work
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
 
-- pipeline.id: vaccination-pipeline
-  path.config: "/etc/logstash/conf.d/vaccination/vaccination-pipeline.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+# - pipeline.id: vaccination-pipeline
+#   path.config: "/etc/logstash/conf.d/vaccination/vaccination-pipeline.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
 
-- pipeline.id: vaccination-master-data-villages
-  path.config: "/etc/logstash/conf.d/vaccination/master-data-villages.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+# - pipeline.id: vaccination-master-data-villages
+#   path.config: "/etc/logstash/conf.d/vaccination/master-data-villages.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
 
-- pipeline.id: vaccination-master-data-health-facilities
-  path.config: "/etc/logstash/conf.d/vaccination/master-data-health-facilities.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
+# - pipeline.id: vaccination-master-data-health-facilities
+#   path.config: "/etc/logstash/conf.d/vaccination/master-data-health-facilities.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
 
 ## project Management Pipelines
 

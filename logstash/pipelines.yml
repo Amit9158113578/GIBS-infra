@@ -63,4 +63,20 @@
   config.reload.interval: 3s
   pipeline.ordered: false
 
-## project Management Pipeline
+## project Management Pipelines
+
+- pipeline.id: project-management-query-952
+  path.config: "/etc/logstash/conf.d/openproject/openproject-query-952.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+
+## Minagri Pipelines
+
+- pipeline.id: minagri-nais-api1
+  path.config: "/etc/logstash/conf.d/minagri-nais/minagri-nais-api1.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false

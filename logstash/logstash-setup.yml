@@ -8,8 +8,8 @@
 
     - name: Install Logstash filter JSON plugin
       logstash_plugin:
-      state: present
-      name: logstash-filter-json_encode
+        state: present
+        name: logstash-filter-json_encode
     
     - name: Ensures /etc/logstash/security dir exists
       file: path=/etc/logstash/security state=directory

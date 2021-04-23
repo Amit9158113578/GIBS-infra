@@ -20,7 +20,7 @@
     es_enable_transport_ssl: true 
     es_xpack_features: []
     es_config:
-      reindex.remote.whitelist: 10.10.94.140:9200
+      reindex.remote.whitelist: gbis-elastic.staging.risa.gov.rw:443
       xpack.monitoring.collection.enabled: true
       cluster.name: "elk-cluster"
       cluster.initial_master_nodes: "node1"

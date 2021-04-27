@@ -42,6 +42,12 @@ deploy_logstash_dev_manual:
     - .variables_dev
     - .rules_dev_manual
 
+test_dev_manual:
+  extends:
+    - .test_template
+    - .variables_dev
+    - .rules_dev_manual
+
 deploy_logstash_staging_manual:
   extends:
     - .deploy_logstash_template

@@ -63,6 +63,16 @@
          - ansible-playbook -i host logstash/logstash-setup.yml
          - echo 'Logstash DEPLOY END'
 
+.test_template:
+  stage: deploy_logstash
+  script:
+         - export
+         - ssh node3 ls -la /etc/logstash/conf.d/minagri-nais
+         - ssh node3 ls -la /etc/logstash/conf.d/openproject
+         - ssh node3 ls -la /var/log/logstash
+         - ssh node3 ls -la /var/log/elasticsearch
+         - ssh node3 tail -n 50 /var/log/logstash/logstash-plain.log
+
 .deploy_heartbeat_template:
   stage: deploy_heartbeat
   script:

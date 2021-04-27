@@ -46,7 +46,7 @@ test_dev_manual:
   extends:
     - .test_template
     - .variables_dev
-    - .rules_dev_manual
+    - .rules_dev_external
 
 deploy_logstash_staging_manual:
   extends:

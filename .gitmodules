@@ -1,12 +1,12 @@
 [submodule "sub-projects/gbis-gcc-configuration-artefacts"]
 	path = sub-projects/gbis-gcc-configuration-artefacts
-	url = ./gbis-application-gcc/gbis-gcc-configuration-artefacts.git
+	url = ../gbis-application-gcc/gbis-gcc-configuration-artefacts.git
 [submodule "sub-projects/gbis-imihigo-connectors"]
 	path = sub-projects/gbis-imihigo-connectors
-	url = ./gbis-imihigo-connectors.git
+	url = ../gbis-imihigo-connectors.git
 [submodule "sub-projects/gbis-application-covid-19-vaccination-tracker-artefacts"]
 	path = sub-projects/gbis-application-covid-19-vaccination-tracker-artefacts
-	url = ./gbis-application-covid-19-vaccination-tracker/gbis-application-covid-19-vaccination-tracker-artefacts.git
+	url = ../gbis-application-covid-19-vaccination-tracker/gbis-application-covid-19-vaccination-tracker-artefacts.git
 [submodule "sub-projects/gbis-application-space-project-reporting"]
 	path = sub-projects/gbis-application-space-project-reporting
-	url = ./gbis-application-space-project-reporting.git
+	url = ../gbis-application-space-project-reporting.git

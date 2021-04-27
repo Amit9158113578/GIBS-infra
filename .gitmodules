@@ -9,4 +9,4 @@
 	url = ./gbis-application-space-project-reporting.git
 [submodule "gbis-gcc-configuration-artefacts"]
 	path = sub-projects/gbis-gcc-configuration-artefacts
-	url = https://git.risa.gov.rw/risa/risa-gcino-projects/risa-enterprise-architecture-division-projects/gbis/gbis-application-gcc/gbis-gcc-configuration-artefacts.git
+	url = ./gbis-application-gcc/gbis-gcc-configuration-artefacts.git

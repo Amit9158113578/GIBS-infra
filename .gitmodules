@@ -1,9 +1,13 @@
 [submodule "sub-projects/gbis-imihigo-connectors"]
 	path = sub-projects/gbis-imihigo-connectors
-	url = https://git.risa.gov.rw/risa/risa-gcino-projects/risa-enterprise-architecture-division-projects/gbis/gbis-imihigo-connectors.git
+	url = ./gbis-imihigo-connectors.git
 [submodule "projects/gbis-application-covid-19-vaccination-tracker-artefacts"]
-	path = projects/gbis-application-covid-19-vaccination-tracker-artefacts
-	url = https://git.risa.gov.rw/risa/risa-gcino-projects/risa-enterprise-architecture-division-projects/gbis/gbis-application-covid-19-vaccination-tracker/gbis-application-covid-19-vaccination-tracker-artefacts.git
+	path = sub-projects/projects/gbis-application-covid-19-vaccination-tracker-artefacts
+	url = ./gbis-application-covid-19-vaccination-tracker/gbis-application-covid-19-vaccination-tracker-artefacts.git
 [submodule "gbis-application-space-project-reporting"]
-	path = gbis-application-space-project-reporting
-	url = https://git.risa.gov.rw/risa/risa-gcino-projects/risa-enterprise-architecture-division-projects/gbis/gbis-application-space-project-reporting.git
+	path = sub-projects/gbis-application-space-project-reporting
+	url = ./gbis-application-space-project-reporting.git
+
+[submodule "gbis-gcc-configuration-artefactsgit"]
+	path = gbis-gcc-configuration-artefactsgit
+	url = https://git.risa.gov.rw/risa/risa-gcino-projects/risa-enterprise-architecture-division-projects/gbis/gbis-application-gcc/gbis-gcc-configuration-artefacts.git

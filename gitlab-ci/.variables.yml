@@ -1,38 +1,38 @@
 # Variables
 
+.variables_general:
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+    elk_version: "7.11.1" # can vary in different environments
+    logstash_version: "1:7.11.1-1"
+    hosts: "node1, node2, node3"
+    elasticsearch_hosts: https://node1:9200", "https://node2:9200", "https://node3:9200 # can vary in different environments
+    kibana_xpack_encryptionKey: "BDHcisme3231234msid8493029384930281hc" # can vary in different environments
+    kibana_hosts: https://node1:5601", "https://node2:5601 # can vary in different environments
+    kibana_encryptedSavedObjects_encryptionKey: "BDHcisme3231234msid8493029384930281hc" # can vary in different environments
+
 .variables_dev:
+  extends:
+    .variables_general
   environment:
-    name: development
+    name: devevelopment # please rename to dev while refactoring
   tags:
     - dev
   variables:
-    elk_version: "7.11.1"
-    logstash_version: "1:7.11.1-1"
-    hosts: "node1, node2, node3"
-    elasticsearch_hosts: https://node1:9200", "https://node2:9200", "https://node3:9200
-    #elasticsearch_username: "elastic"
-    #elasticsearch_password: "Elastic@123"
-    elasticsearch_url: "https://elasticsearch.dev.gcc.gov.rw:443"
-    kibana_hosts: https://node1:5601", "https://node2:5601
+    elasticsearch_password: $elasticsearch_password_dev
+    elasticsearch_username: $elasticsearch_username_dev
     kibana_url: "https://kibana.dev.gcc.gov.rw"
-    kibana_xpack_encryptionKey: "BDHcisme3231234msid8493029384930281hc"
-    kibana_encryptedSavedObjects_encryptionKey: "BDHcisme3231234msid8493029384930281hc"
+    elasticsearch_url: "https://elasticsearch.dev.gcc.gov.rw:443"
 
-
-.variables_staging:
+.variables_staging: # please rename to .variables_test while refactoring
+  extends:
+    .variables_general
   environment:
-    name: staging
+    name: staging # please rename to test while refactoring
   tags:
-    - staging
+    - staging # please rename to test while refactoring
   variables:
-    elk_version: "7.11.1"
-    logstash_version: "1:7.11.1-1"
-    hosts: "node1, node2, node3"
-    elasticsearch_hosts: https://node1:9200", "https://node2:9200", "https://node3:9200
-    #elasticsearch_username: "elastic"
-    #elasticsearch_password: "Elastic@123"
+    elasticsearch_password: $elasticsearch_password_test
+    elasticsearch_username: $elasticsearch_username_test
     elasticsearch_url: "https://gbis-elastic.staging.risa.gov.rw:443"
-    kibana_hosts: https://node1:5601", "https://node2:5601
     kibana_url: "https://gbis.staging.risa.gov.rw"
-    kibana_xpack_encryptionKey: "BDHcisme3231234msid8493029384930281hc"
-    kibana_encryptedSavedObjects_encryptionKey: "BDHcisme3231234msid8493029384930281hc"

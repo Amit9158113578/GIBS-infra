@@ -2,11 +2,22 @@
 
 .rules_dev_auto:
   rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "development"'
+      when: on_success
+
+.rules_dev_external:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+      when: on_success
     - if: '$CI_COMMIT_BRANCH == "development"'
       when: on_success
 
 .rules_dev_manual:
   rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+      when: never
     - if: '$CI_COMMIT_BRANCH == "development"'
       when: manual
     - when: never
@@ -14,11 +25,15 @@
 
 .rules_staging_auto:
   rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+      when: never
     - if: '$CI_COMMIT_BRANCH == "staging"'
       when: on_success
 
 .rules_staging_manual:
   rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+      when: never
     - if: '$CI_COMMIT_BRANCH == "staging"'
       when: manual
     - when: never

@@ -16,9 +16,9 @@ restart_logstash_dev:
     - .variables_dev
     - .rules_dev_auto_changes
 
-test_dev_manual:
+logstash_test_dev_manual:
   extends:
-    - .test_template
+    - .logstash_test_template
     - .variables_dev
     - .rules_dev_external
 

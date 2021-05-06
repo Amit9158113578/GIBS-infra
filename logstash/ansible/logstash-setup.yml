@@ -17,13 +17,13 @@
     
     - name: Copy Security Folder
       copy:
-        src: security
+        src: ../security
         dest: /etc/logstash/
       become: yes
 
     - name: Copy config file
       copy:
-        src: logstash.yml
+        src: ../logstash.yml
         dest: /etc/logstash/logstash.yml
         force: yes
       become: yes
@@ -34,7 +34,7 @@
 
     - name: Copy pipeline yml
       copy:
-        src: pipelines.yml
+        src: ../pipelines.yml
         dest: /etc/logstash/pipelines.yml
         force: yes
       become: yes
@@ -42,7 +42,7 @@
 # the following entry should go when refactoring
     - name: Copy pipeline files to conf.d
       copy:
-        src: pipelines/
+        src: ../pipelines/
         dest: /etc/logstash/conf.d
         force: yes
       become: yes

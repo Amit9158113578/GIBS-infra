@@ -4,16 +4,8 @@
 
     - name: Copy pipeline yml
       copy:
-        src: pipelines.yml
+        src: ../pipelines.yml
         dest: /etc/logstash/pipelines.yml
-        force: yes
-      become: yes
-
-# the following entry should go when refactoring
-    - name: Copy pipeline files to conf.d
-      copy:
-        src: pipelines/
-        dest: /etc/logstash/conf.d
         force: yes
       become: yes
     

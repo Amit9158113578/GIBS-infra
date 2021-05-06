@@ -37,6 +37,6 @@ deploy_kibana_staging_manual:
     - .rules_staging_manual
 
 include:
-  - local: '/gitlab-ci/templates/logstash-scripts.yml'
-  - local: '/gitlab-ci/templates/heartbeat-scripts.yml'
-  - local: '/gitlab-ci/templates/metricbeat-scripts.yml'
+  - local: '/gitlab-ci/scripts/logstash-scripts.yml'
+  - local: '/gitlab-ci/scripts/heartbeat-scripts.yml'
+  - local: '/gitlab-ci/scripts/metricbeat-scripts.yml'

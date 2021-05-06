@@ -16,11 +16,11 @@ restart_logstash_dev:
     - .variables_dev
     - .rules_dev_auto_changes
 
-logstash_test_dev_manual:
+logstash_test_dev:
   extends:
     - .logstash_test_template
     - .variables_dev
-    - .rules_dev_external
+    - .rules_dev_auto
 
 deploy_logstash_staging_manual:
   extends:

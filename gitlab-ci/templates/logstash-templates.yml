@@ -47,6 +47,7 @@
          - export
          - ssh node3 ls -la /etc/logstash/conf.d/minagri-nais
          - ssh node3 ls -la /etc/logstash/conf.d/openproject
+         - ssh node3 ls -la /etc/logstash/conf.d/minagri-mis
          - ssh node3 ls -la /var/log/logstash
          - ssh node3 ls -la /var/log/elasticsearch
          - ssh node3 tail -n 50 /var/log/logstash/logstash-plain.log

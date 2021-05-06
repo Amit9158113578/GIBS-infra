@@ -1,0 +1,52 @@
+.deploy_logstash_template:
+  stage: deploy_logstash
+  script:
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'Prepare Variables START'
+         
+         - echo 'PIPELINE kpi_data.conf'
+         - envsubst < "logstash/pipelines/kpi_data.conf" > kpi_data_var.conf
+         - cp kpi_data_var.conf logstash/pipelines/kpi_data.conf
+
+         - echo 'PIPELINE master-data.conf'
+         - envsubst < "logstash/pipelines/master-data.conf" > master-data_var.conf
+         - cp master-data_var.conf logstash/pipelines/master-data.conf
+
+         - echo 'PIPELINE target.conf'
+         - envsubst < "logstash/pipelines/target.conf" > target_var.conf
+         - cp target_var.conf logstash/pipelines/target.conf
+
+         - echo 'Prepare Variables END'
+         - echo 'Logstash DEPLOY START'
+         - ansible-playbook -i host logstash/ansible/logstash-setup.yml
+         - echo 'Logstash DEPLOY END'
+
+.deploy_logstash_files_template:
+  stage: deploy_logstash_files
+  script:
+         - echo $ENV
+         - echo 'Does nothing at this moment - just showcasing the external trigger'
+
+.restart_logstash_template:
+  stage: restart_logstash
+  script:
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'Logstash DEPLOY START'
+         - ansible-playbook -i host logstash/ansible/logstash-restart.yml
+         - echo 'Logstash DEPLOY END'
+
+.logstash_test_template:
+  stage: deploy_logstash_files
+  script:
+         - export
+         - ssh node3 ls -la /etc/logstash/conf.d/minagri-nais
+         - ssh node3 ls -la /etc/logstash/conf.d/openproject
+         - ssh node3 ls -la /var/log/logstash
+         - ssh node3 ls -la /var/log/elasticsearch
+         - ssh node3 tail -n 50 /var/log/logstash/logstash-plain.log

@@ -36,44 +36,7 @@ deploy_kibana_staging_manual:
     - .variables_staging
     - .rules_staging_manual
 
-deploy_logstash_dev_manual:
-  extends:
-    - .deploy_logstash_template
-    - .variables_dev
-    - .rules_dev_manual
-
-test_dev_manual:
-  extends:
-    - .test_template
-    - .variables_dev
-    - .rules_dev_external
-
-deploy_logstash_staging_manual:
-  extends:
-    - .deploy_logstash_template
-    - .variables_staging
-    - .rules_staging_manual
-
-deploy_heartbeat_dev_manual:
-  extends:
-    - .deploy_heartbeat_template
-    - .variables_dev
-    - .rules_dev_manual
-
-deploy_heartbeat_staging_manual:
-  extends:
-    - .deploy_heartbeat_template
-    - .variables_staging
-    - .rules_staging_manual
-
-deploy_metricbeat_dev_manual:
-  extends:
-    - .deploy_metricbeat_template
-    - .variables_dev
-    - .rules_dev_manual
-
-deploy_metricbeat_staging_manual:
-  extends:
-    - .deploy_metricbeat_template
-    - .variables_staging
-    - .rules_staging_manual
+include:
+  - local: '/gitlab-ci/templates/logstash-templates.yml'
+  - local: '/gitlab-ci/templates/heartbeat-templates.yml'
+  - local: '/gitlab-ci/templates/metricbeat-templates.yml'

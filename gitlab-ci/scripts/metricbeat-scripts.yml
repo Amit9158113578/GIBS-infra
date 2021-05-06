@@ -1,0 +1,11 @@
+deploy_metricbeat_dev_manual:
+  extends:
+    - .deploy_metricbeat_template
+    - .variables_dev
+    - .rules_dev_manual
+
+deploy_metricbeat_staging_manual:
+  extends:
+    - .deploy_metricbeat_template
+    - .variables_staging
+    - .rules_staging_manual

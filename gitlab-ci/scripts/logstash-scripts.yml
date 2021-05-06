@@ -1,0 +1,29 @@
+deploy_logstash_dev_manual:
+  extends:
+    - .deploy_logstash_template
+    - .variables_dev
+    - .rules_dev_manual
+
+deploy_logstash_dev_external:
+  extends:
+    - .deploy_logstash_files_template
+    - .variables_dev
+    - .rules_dev_external
+
+restart_logstash_dev:
+  extends:
+    - .deploy_logstash_template
+    - .variables_dev
+    - .rules_dev_auto_changes
+
+test_dev_manual:
+  extends:
+    - .test_template
+    - .variables_dev
+    - .rules_dev_external
+
+deploy_logstash_staging_manual:
+  extends:
+    - .deploy_logstash_template
+    - .variables_staging
+    - .rules_staging_manual

@@ -39,6 +39,7 @@
         force: yes
       become: yes
 
+# the following entry should go when refactoring
     - name: Copy pipeline files to conf.d
       copy:
         src: pipelines/

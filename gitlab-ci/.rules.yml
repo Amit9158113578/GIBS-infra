@@ -7,11 +7,18 @@
     - if: '$CI_COMMIT_BRANCH == "development"'
       when: on_success
 
-.rules_dev_external:
+.rules_dev_auto_changes:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
-      when: on_success
+      when: never
     - if: '$CI_COMMIT_BRANCH == "development"'
+      changes:
+        - logstash/pipelines.yml
+      when: on_success
+
+.rules_dev_external:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline" && $CI_COMMIT_BRANCH == "development"'
       when: on_success
 
 .rules_dev_manual:

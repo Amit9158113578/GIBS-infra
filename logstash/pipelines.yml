@@ -95,13 +95,5 @@
   config.reload.interval: 3s
   pipeline.ordered: false
 
-## Mineduc Pipelines
-
-- pipeline.id: mineduc-sdms-api1
-  path.config: "/etc/logstash/conf.d/mineduc/mineduc-sdms-api1.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
   
 

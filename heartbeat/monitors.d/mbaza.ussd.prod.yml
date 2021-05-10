@@ -23,7 +23,7 @@
   enabled: true
 
   # Configure task schedule
-  schedule: '@every 30s' # every 5 seconds from start of beat
+  schedule: '@every 60s' # every 5 seconds from start of beat
 
   # Configure URLs to ping
   #hosts: ["https://projectmanagement.risa.rw"]
@@ -39,7 +39,7 @@
   #proxy_url: ''
 
   # Total test connection and data exchange timeout
-  timeout: 10s
+  timeout: 20s
 
   # Optional Authentication Credentials
   #username: monitoring_user

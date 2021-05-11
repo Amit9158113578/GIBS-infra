@@ -5,29 +5,29 @@
 #- pipeline.id: main
 #  path.config: "/etc/logstash/conf.d/*.conf"
 
-- pipeline.id: master_csv
-  path.config: "/etc/logstash/conf.d/master-data.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+# - pipeline.id: master_csv
+#   path.config: "/etc/logstash/conf.d/master-data.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
 
-- pipeline.id: target_csv
-  path.config: "/etc/logstash/conf.d/target.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+# - pipeline.id: target_csv
+#   path.config: "/etc/logstash/conf.d/target.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
 
-- pipeline.id: kpi_data_csv
-  path.config: "/etc/logstash/conf.d/kpi_data.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+# - pipeline.id: kpi_data_csv
+#   path.config: "/etc/logstash/conf.d/kpi_data.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
 
 
 # # vaccination

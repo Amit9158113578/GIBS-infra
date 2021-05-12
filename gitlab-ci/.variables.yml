@@ -15,7 +15,7 @@
   extends:
     .variables_general
   environment:
-    name: devevelopment # please rename to dev while refactoring
+    name: development # please rename to dev while refactoring
   tags:
     - dev
   variables:

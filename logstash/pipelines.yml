@@ -71,7 +71,7 @@
 #  config.reload.automatic: true
 #  config.reload.interval: 3s
 #  pipeline.ordered: false
-
+#
 ## Minagri Pipelines
 
 - pipeline.id: minagri-nais-api1

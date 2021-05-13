@@ -1,4 +1,4 @@
-# Rules
+# Rules Development
 
 .rules_dev_auto:
   rules:
@@ -30,14 +30,16 @@
     - when: never
   allow_failure: true
 
-.rules_staging_auto:
+# Rules Staging
+
+.rules_test_auto:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
       when: never
     - if: '$CI_COMMIT_BRANCH == "staging"'
       when: on_success
 
-.rules_staging_manual:
+.rules_test_manual:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
       when: never
@@ -45,3 +47,12 @@
       when: manual
     - when: never
   allow_failure: true
+
+.rules_test_auto_changes:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "staging"'
+      changes:
+        - logstash/pipelines.yml
+      when: on_success

@@ -24,7 +24,7 @@
     kibana_url: "https://kibana.dev.gcc.gov.rw"
     elasticsearch_url: "https://elasticsearch.dev.gcc.gov.rw:443"
 
-.variables_staging: # please rename to .variables_test while refactoring
+.variables_test: # please rename to .variables_test while refactoring
   extends:
     .variables_general
   environment:

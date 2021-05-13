@@ -1,3 +1,5 @@
+##### Development Branch
+
 deploy_logstash_dev_manual:
   extends:
     - .deploy_logstash_template
@@ -22,8 +24,16 @@ logstash_test_dev:
     - .variables_dev
     - .rules_dev_auto
 
-deploy_logstash_staging_manual:
+#####  Test Branch
+
+restart_logstash_test:
   extends:
     - .deploy_logstash_template
-    - .variables_staging
-    - .rules_staging_manual
+    - .variables_test
+    - .rules_test_auto_changes
+
+deploy_logstash_test_manual:
+  extends:
+    - .deploy_logstash_template
+    - .variables_test
+    - .rules_test_manual

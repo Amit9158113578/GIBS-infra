@@ -7,3 +7,5 @@ stages:
     - deploy_logstash
     - deploy_heartbeat
     - deploy_metricbeat
+    - deploy_logstash_files
+    - restart_logstash

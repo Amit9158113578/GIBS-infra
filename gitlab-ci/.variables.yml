@@ -3,8 +3,8 @@
 .variables_general:
   variables:
     GIT_SUBMODULE_STRATEGY: recursive
-    elk_version: "7.11.1" # can vary in different environments
-    logstash_version: "1:7.11.1-1"
+    elk_version: "7.12.1" # can vary in different environments
+    logstash_version: "1:7.12.1-1"
     hosts: "node1, node2, node3"
     elasticsearch_hosts: https://node1:9200", "https://node2:9200", "https://node3:9200 # can vary in different environments
     kibana_xpack_encryptionKey: "BDHcisme3231234msid8493029384930281hc" # can vary in different environments

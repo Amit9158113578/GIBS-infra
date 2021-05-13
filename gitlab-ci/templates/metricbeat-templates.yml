@@ -1,0 +1,41 @@
+.deploy_metricbeat_template:
+  stage: deploy_metricbeat
+  script:
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'Prepare Variables START'
+
+         - echo 'Metricbeat.yml'
+         - envsubst < "metricbeat/metricbeat.yml" > metricbeat_var.yml
+         - cp metricbeat_var.yml metricbeat/metricbeat.yml
+
+         - echo '--- Modules - ElasticSearch X-Pack ---'
+         - envsubst < "metricbeat/modules.d/elasticsearch-xpack.yml" > elasticsearch-xpack_var.yml
+         - cp elasticsearch-xpack_var.yml metricbeat/modules.d/elasticsearch-xpack.yml
+
+         - echo '--- Modules - ElasticSearch ---'
+         - envsubst < "metricbeat/modules.d/elasticsearch.yml" > elasticsearch-m_var.yml
+         - cp elasticsearch-m_var.yml metricbeat/modules.d/elasticsearch.yml
+        
+         - echo '--- Modules - Kibana X-Pack ---'
+         - envsubst < "metricbeat/modules.d/kibana-xpack.yml" > kibana-xpack_var.yml
+         - cp kibana-xpack_var.yml metricbeat/modules.d/kibana-xpack.yml
+
+         - echo '--- Modules - Kibana ---'
+         - envsubst < "metricbeat/modules.d/kibana.yml" > kibana-m_var.yml
+         - cp kibana-m_var.yml metricbeat/modules.d/kibana.yml
+
+         - echo '--- Modules - System ---'
+         - envsubst < "metricbeat/modules.d/system.yml" > system_var.yml
+         - cp system_var.yml metricbeat/modules.d/system.yml
+
+         - echo '--- Modules - Logstash ---'
+         - envsubst < "metricbeat/modules.d/logstash-xpack.yml" > logstash-xpack_var.yml
+         - cp logstash-xpack_var.yml metricbeat/modules.d/logstash-xpack.yml
+
+         - echo 'Prepare Variables END'
+         - echo 'Metricbeat DEPLOY START'
+         - ansible-playbook -i host metricbeat/metricbeat-setup.yml
+         - echo 'Metricbeat DEPLOY END'

@@ -4,8 +4,8 @@ deploy_heartbeat_dev_manual:
     - .variables_dev
     - .rules_dev_manual
 
-deploy_heartbeat_staging_manual:
+deploy_heartbeat_test_manual:
   extends:
     - .deploy_heartbeat_template
-    - .variables_staging
-    - .rules_staging_manual
+    - .variables_test
+    - .rules_test_manual

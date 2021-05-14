@@ -14,7 +14,7 @@
         src: monitors.d
         dest: /etc/heartbeat
       become: yes
-    - name: start heartbeat
+    - name: stop heartbeat
       service:
           name: heartbeat-elastic
           state: stopped

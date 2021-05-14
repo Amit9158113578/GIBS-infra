@@ -1,4 +1,4 @@
-- name: Heartbeat Instalation
+- name: Heartbeat Installation
   hosts: node3
   tasks:
     - name: Ensure heartbeat is at the "{{ lookup('ENV','elk_version') }}" version
@@ -17,5 +17,10 @@
     - name: start heartbeat
       service:
           name: heartbeat-elastic
-          state: restarted
+          state: stopped
       become: yes  
+    - name: start heartbeat
+      service:
+          name: heartbeat-elastic
+          state: started
+      become: yes 

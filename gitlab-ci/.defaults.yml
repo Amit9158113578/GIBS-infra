@@ -2,10 +2,12 @@
 
 stages:
     - env_setup
+    - deploy
     - deploy_elasticsearch
     - deploy_kibana
     - deploy_logstash
     - deploy_heartbeat
     - deploy_metricbeat
     - deploy_logstash_files
+    - maintenance
     - restart_logstash

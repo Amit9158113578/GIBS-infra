@@ -1,5 +1,5 @@
 .deploy_metricbeat_template:
-  stage: deploy_metricbeat
+  stage: deploy
   script:
          - echo $ENV
          - echo $NODE1

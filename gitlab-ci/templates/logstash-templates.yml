@@ -1,5 +1,5 @@
 .deploy_logstash_template:
-  stage: deploy_logstash
+  stage: deploy
   script:
          - echo $ENV
          - echo $NODE1
@@ -25,7 +25,7 @@
          - echo 'Logstash DEPLOY END'
 
 .deploy_logstash_files_template:
-  stage: deploy_logstash_files
+  stage: deploy
   script:
          - echo $ENV
          - echo 'Does nothing at this moment - just showcasing the external trigger'
@@ -42,7 +42,7 @@
          - echo 'Logstash DEPLOY END'
 
 .logstash_test_template:
-  stage: deploy_logstash_files
+  stage: maintenance
   script:
          - export
          - ssh node3 ls -la /etc/logstash/conf.d/minagri-nais

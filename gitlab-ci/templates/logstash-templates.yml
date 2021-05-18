@@ -51,10 +51,10 @@
          - ssh node3 ls -la /var/log/logstash
          - ssh node3 ls -la /var/log/elasticsearch
          - ssh node3 ls -la /data/elasticsearch/logs
-         - scp node3:/data/elasticsearch/logs/elk-cluster.log elk-cluster-node1.log
-         - scp node3:/data/elasticsearch/logs/elk-cluster.log elk-cluster-node2.log         
+         - scp node1:/data/elasticsearch/logs/elk-cluster.log elk-cluster-node1.log
+         - scp node2:/data/elasticsearch/logs/elk-cluster.log elk-cluster-node2.log         
          - scp node3:/data/elasticsearch/logs/elk-cluster.log elk-cluster-node3.log         - scp node3:/data/elasticsearch/logs/elk-cluster.log elk-cluster-node3.log 
-         - scp node1:/var/log/logstash/logstash-plain.log logstash-node3.log
+         - scp node3:/var/log/logstash/logstash-plain.log logstash-node3.log
          - ssh node3 tail -n 50 /var/log/logstash/logstash-plain.log
   artifacts:
     paths:

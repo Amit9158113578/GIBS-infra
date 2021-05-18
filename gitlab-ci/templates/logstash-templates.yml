@@ -41,7 +41,7 @@
          - ansible-playbook -i host logstash/ansible/logstash-restart.yml
          - echo 'Logstash DEPLOY END'
 
-.logstash_test_template:
+.log_template:
   stage: deploy_logstash_files
   script:
          - export
@@ -50,4 +50,10 @@
          - ssh node3 ls -la /etc/logstash/conf.d/minagri-mis
          - ssh node3 ls -la /var/log/logstash
          - ssh node3 ls -la /var/log/elasticsearch
+         - ssh node3 ls -la /data/elasticsearch/logs
+         - scp node3:/var/log/logstash/logstash-plain.log logstash-node3.log 
          - ssh node3 tail -n 50 /var/log/logstash/logstash-plain.log
+  artifacts:
+    paths:
+      - logstash-node3.log 
+    expire_in: 1 week

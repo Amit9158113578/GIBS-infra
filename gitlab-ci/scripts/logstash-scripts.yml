@@ -20,7 +20,7 @@ restart_logstash_dev:
 
 logstash_test_dev:
   extends:
-    - .logstash_test_template
+    - .log_template
     - .variables_dev
     - .rules_dev_auto
 

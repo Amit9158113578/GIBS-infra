@@ -16,7 +16,8 @@ restart_logstash_dev:
   extends:
     - .deploy_logstash_template
     - .variables_dev
-    - .rules_dev_auto_changes
+    - .rules_dev_manual
+#    - .rules_dev_auto_changes
 
 logstash_test_dev:
   extends:

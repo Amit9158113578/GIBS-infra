@@ -109,5 +109,14 @@
   config.reload.interval: 3s
   pipeline.ordered: false
 
+## Twitter Pipeline
+
+- pipeline.id: twitter
+  path.config: "/etc/logstash/conf.d/twitter/twitter.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+
   
 

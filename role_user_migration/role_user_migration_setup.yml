@@ -16,7 +16,7 @@
       become: yes
 
     - name: cd to appliation folder
-      command: cd /etc/role_user_migration
+      command: cd /etc/role_user_migration/
 
     - name: run maven build
       command: mavn clean install

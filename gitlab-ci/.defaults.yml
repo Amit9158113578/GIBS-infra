@@ -2,6 +2,7 @@
 
 stages:
     - env_setup
+    - deploy_role_user_migration
     - deploy
     - deploy_elasticsearch
     - deploy_kibana
@@ -11,4 +12,3 @@ stages:
     - deploy_logstash_files
     - maintenance
     - restart_logstash
-    - deploy_role_user_migration

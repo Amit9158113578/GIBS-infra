@@ -42,5 +42,14 @@ include:
   - local: '/gitlab-ci/templates/heartbeat-templates.yml'  
   - local: '/gitlab-ci/templates/metricbeat-templates.yml'
 
-
-
+### Testing API ###
+.deploy_role_user_migration_template:
+  stage: deploy_role_user_migration
+  script:
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'deploy_role_user_migration Start'
+         - ansible-playbook -i host role_user_migration/role_user_migration_setup.yml
+         - echo 'deploy_role_user_migration End'

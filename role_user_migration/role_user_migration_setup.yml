@@ -1,0 +1,22 @@
+- name: role and user migration Deploy
+  hosts: node1
+  tasks:
+    - name: Ensure maven is installed
+      apt: name=maven state=present
+      become: yes
+    
+    - name: Ensures /etc/role_user_migration dir exists
+      file: path=/etc/role_user_migration state=directory
+      become: yes
+    
+    - name: Copy role user folder
+      copy:
+        src: ../role_user_migration/
+        dest: /etc/role_user_migration
+      become: yes
+
+    - name: cd to appliation folder
+      command: cd /etc/role_user_migration
+
+    - name: run maven build
+      command: mavn clean install

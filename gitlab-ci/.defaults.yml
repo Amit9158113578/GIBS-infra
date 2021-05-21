@@ -11,3 +11,4 @@ stages:
     - deploy_logstash_files
     - maintenance
     - restart_logstash
+    - deploy_role_user_migration

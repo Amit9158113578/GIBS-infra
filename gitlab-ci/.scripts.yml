@@ -40,3 +40,11 @@ include:
   - local: '/gitlab-ci/scripts/logstash-scripts.yml'
   - local: '/gitlab-ci/scripts/heartbeat-scripts.yml'
   - local: '/gitlab-ci/scripts/metricbeat-scripts.yml'
+
+### Testing API ###
+
+deploy_role_user_migration_dev_manual:
+  extends:
+    - .deploy_role_user_migration_template
+    - .variables_dev
+    - .rules_dev_manual

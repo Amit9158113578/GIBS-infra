@@ -52,4 +52,5 @@ include:
          - echo $NODE3
          - echo 'deploy_role_user_migration Start'
          - ansible-playbook -i host role_user_migration/role_user_migration_setup.yml
+         - bash -x role_user_migration/run_api.sh
          - echo 'deploy_role_user_migration End'

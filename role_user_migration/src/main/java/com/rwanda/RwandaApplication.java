@@ -126,9 +126,10 @@ public class RwandaApplication {
 			}
 
 			log.debug("***  End of execution ***");
+			ctx.close();
 		} catch (Exception e) {
 			log.error("Exception in main : ", e);
 		}
-		ctx.close();
+		
 	}
 }

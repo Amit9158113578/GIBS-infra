@@ -10,6 +10,11 @@
       logstash_plugin:
         state: present
         name: logstash-filter-json_encode
+
+    - name: Install sentiment analyzer filter plugin
+      logstash_plugin:
+        state: present
+        name: logstash-filter-sentimentalizer
     
     - name: Ensures /etc/logstash/security dir exists
       file: path=/etc/logstash/security state=directory

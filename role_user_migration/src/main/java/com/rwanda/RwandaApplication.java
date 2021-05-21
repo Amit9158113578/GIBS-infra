@@ -82,7 +82,7 @@ public class RwandaApplication {
 	public static void main(String[] args) {
 		Logger log = Logger.getLogger(RwandaApplication.class);
 		try {
-			SpringApplication.run(RwandaApplication.class, args);
+			ConfigurableApplicationContext ctx = SpringApplication.run(RwandaApplication.class, args);
 			String authheader = "Basic "
 					+ new String((Base64.encodeBase64((args[0] + ":" + args[1]).getBytes(StandardCharsets.UTF_8))));
 
@@ -129,6 +129,6 @@ public class RwandaApplication {
 		} catch (Exception e) {
 			log.error("Exception in main : ", e);
 		}
-
+		ctx.close();
 	}
 }

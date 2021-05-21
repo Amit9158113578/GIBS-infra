@@ -15,7 +15,8 @@
         dest: /etc/role_user_migration
       become: yes
 
+    - name: cd to folder
+      shell: cd /etc/role_user_migration
+
     - name: run maven build
-      command: mavn clean install
-      args:
-        chdir: /etc/role_user_migration
+      shell: mavn clean install

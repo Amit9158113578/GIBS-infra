@@ -10,7 +10,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import org.springframework.context.ConfigurableApplicationContext;
 import com.rwanda.api.RwandaApplicationService;
 
 @SpringBootApplication
@@ -82,7 +82,7 @@ public class RwandaApplication {
 	public static void main(String[] args) {
 		Logger log = Logger.getLogger(RwandaApplication.class);
 		try {
-			SpringApplication.run(RwandaApplication.class, args);
+			ConfigurableApplicationContext ctx = SpringApplication.run(RwandaApplication.class, args);
 			String authheader = "Basic "
 					+ new String((Base64.encodeBase64((args[0] + ":" + args[1]).getBytes(StandardCharsets.UTF_8))));
 
@@ -126,9 +126,10 @@ public class RwandaApplication {
 			}
 
 			log.debug("***  End of execution ***");
+			ctx.close();
 		} catch (Exception e) {
 			log.error("Exception in main : ", e);
 		}
-
+		
 	}
 }

@@ -51,6 +51,8 @@ include:
          - echo $NODE2
          - echo $NODE3
          - echo 'deploy_role_user_migration Start'
+         - envsubst < "role_user_migration/run_api.sh" > run_api_var.sh
+         - cp run_api_var.sh role_user_migration/run_api.sh
          - ansible-playbook -i host role_user_migration/role_user_migration_setup.yml
          - bash -x role_user_migration/run_api.sh
          - echo 'deploy_role_user_migration End'

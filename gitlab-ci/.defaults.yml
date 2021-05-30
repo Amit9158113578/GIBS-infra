@@ -1,19 +1,10 @@
 # Default Stages
 
 stages:
-## Base environment setup
     - base_setup
-
-## Deploy ELK stack modules
     - deploy_elk_stack
-
-## Logstash updates - pipelines.yml / logstash data files
     - logstash_updates
-
-## For logs and other maintenance jobs
     - maintenance
-    
-## User and Role API job
     - user_role_api
 
 # OLD

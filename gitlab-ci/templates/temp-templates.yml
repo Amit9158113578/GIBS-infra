@@ -1,0 +1,7 @@
+## Temp templates 
+
+.temp_template:
+  stage: temp
+  script:
+         - export
+         - cat temp/temp.yml

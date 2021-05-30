@@ -6,6 +6,7 @@ stages:
     - logstash_updates
     - maintenance
     - user_role_api
+    - temp
 
 # OLD
 # stages:

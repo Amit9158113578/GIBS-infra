@@ -9,3 +9,4 @@ include:
   - local: '/gitlab-ci/templates/logstash-templates.yml'
   - local: '/gitlab-ci/templates/metricbeat-templates.yml'
   - local: '/gitlab-ci/templates/user-role-api-templates.yml'
+  - local: '/gitlab-ci/templates/temp-templates.yml'

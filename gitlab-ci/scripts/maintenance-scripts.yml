@@ -6,7 +6,7 @@ logs_dev_manual:
   extends:
     - .log_template
     - .variables_dev
-    - .rules_dev_auto
+    - .rules_dev_manual
 
 ## TEST
 
@@ -14,6 +14,6 @@ logs_test_manual:
   extends:
     - .log_template
     - .variables_test
-    - .rules_test_auto
+    - .rules_test_manual
 
 ## PROD

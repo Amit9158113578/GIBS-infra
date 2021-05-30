@@ -5,5 +5,5 @@
   script:
          - export
          - cat temp/temp.yml
-         - envsubst < "temp/temp.yml" | sponge "temp/temp.yml"
+         - envsubst < "temp/temp.yml" > "temp/temp.yml"
          - cat temp/temp.yml

@@ -2,7 +2,7 @@
 
 ## DEV
 
-base_setup_dev_manual:
+temp_manual:
   extends:
     - .temp_template
     - .variables_dev

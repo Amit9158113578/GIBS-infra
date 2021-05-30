@@ -42,8 +42,6 @@
 
 ## TEST
 
-## DEV
-
 # For manual jobs
 .rules_test_manual:
   rules:
@@ -63,7 +61,7 @@
       when: on_success
 
 # For changes made to pipelines.yml - AUTO runs logstash restart with pipelines.yml copy
-.rules_dev_auto_changes:
+.rules_test_auto_changes:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
       when: never
@@ -73,7 +71,7 @@
       when: on_success
 
 # Push files from external (submodules)
-.rules_dev_external:
+.rules_test_external:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "pipeline" && $CI_COMMIT_BRANCH == "test"'
       changes:

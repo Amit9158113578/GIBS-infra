@@ -2,6 +2,8 @@
 
 .temp_template:
   stage: temp
+  extends:
+    - .variables_dev
   script:
          - export
          - cat temp/temp.yml

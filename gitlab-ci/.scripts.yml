@@ -1,8 +1,7 @@
 # Deploy
 
 before_script:
-  extends:
-    - .variables_dev
+  - .variables_dev
 
 include:
   - local: '/gitlab-ci/scripts/base-setup-scripts.yml'

@@ -1,8 +1,5 @@
 # Deploy
 
-before_script:
-  - .variables_dev
-
 include:
   - local: '/gitlab-ci/scripts/base-setup-scripts.yml'
   - local: '/gitlab-ci/scripts/elasticsearch-scripts.yml'

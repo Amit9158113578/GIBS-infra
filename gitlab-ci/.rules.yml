@@ -19,6 +19,7 @@
       when: never
     - if: '$CI_COMMIT_BRANCH == "dev"'
       when: on_success
+  allow_failure: true
 
 # For changes made to pipelines.yml - AUTO runs logstash restart with pipelines.yml copy
 .rules_dev_auto_changes:
@@ -29,6 +30,7 @@
       changes:
         - logstash/pipelines.yml
       when: on_success
+  allow_failure: true
 
 # Push files from external (submodules)
 .rules_dev_external:
@@ -37,6 +39,7 @@
       changes:
         - sub-projects
       when: on_success
+  allow_failure: true
 
 
 

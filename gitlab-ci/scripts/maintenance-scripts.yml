@@ -1,0 +1,19 @@
+## Maintenance Scripts
+
+## DEV
+
+logs_dev_manual:
+  extends:
+    - .log_template
+    - .variables_dev
+    - .rules_dev_auto
+
+## TEST
+
+logs_test_manual:
+  extends:
+    - .log_template
+    - .variables_test
+    - .rules_test_auto
+
+## PROD

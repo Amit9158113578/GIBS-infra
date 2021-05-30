@@ -1,0 +1,18 @@
+## Kibana templates
+
+
+.kibana_setup_template:
+  stage: deploy_elk_stack
+  script:
+         - export
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'Prepare Variables START'
+         - envsubst < "kibana/kibana.yml" > kibana_var.yml
+         - cp kibana_var.yml kibana/kibana.yml
+         - echo 'Prepare Variables END'
+         - echo 'Kibana DEPLOY START'
+         - ansible-playbook -i host kibana/kibana-setup.yml
+         - echo 'Kibana DEPLOY END'

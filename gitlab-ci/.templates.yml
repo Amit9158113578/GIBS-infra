@@ -1,58 +1,11 @@
 # Templates
 
-.deploy_env_setup_template:
-  stage: env_setup
-  script:
-         - echo $ENV
-         - echo $NODE1
-         - echo $NODE2
-         - echo $NODE3
-         - echo 'ENVIRONMENT SETUP START'
-         - bash -x environment_setup/env_setup.sh $NODE1 $NODE2 $NODE3 $ENV
-         - echo 'ENVIRONMENT SETUP END'
-
-.deploy_elasticsearch_template:
-  stage: deploy_elasticsearch
-  script:
-         - echo $ENV
-         - echo $NODE1
-         - echo $NODE2
-         - echo $NODE3
-         - echo 'ElasticSearch DEPLOY START'
-         - ansible-playbook -i host elasticsearch/elasticsearch-setup.yml
-         - echo 'ElasticSearch DEPLOY END'
-
-.deploy_kibana_template:
-  stage: deploy_kibana
-  script:
-         - echo $ENV
-         - echo $NODE1
-         - echo $NODE2
-         - echo $NODE3
-         - echo 'Prepare Variables START'
-         - envsubst < "kibana/kibana.yml" > kibana_var.yml
-         - cp kibana_var.yml kibana/kibana.yml
-         - echo 'Prepare Variables END'
-         - echo 'Kibana DEPLOY START'
-         - ansible-playbook -i host kibana/kibana-setup.yml
-         - echo 'Kibana DEPLOY END'
-
 include:
+  - local: '/gitlab-ci/templates/base-setup-templates.yml'
+  - local: '/gitlab-ci/templates/elasticsearch-templates.yml'
+  - local: '/gitlab-ci/templates/heartbeat-templates.yml'
+  - local: '/gitlab-ci/templates/kibana-templates.yml'
+  - local: '/gitlab-ci/templates/logs-templates.yml'
   - local: '/gitlab-ci/templates/logstash-templates.yml'
-  - local: '/gitlab-ci/templates/heartbeat-templates.yml'  
   - local: '/gitlab-ci/templates/metricbeat-templates.yml'
-
-### Testing API ###
-.deploy_role_user_migration_template:
-  stage: deploy_role_user_migration
-  script:
-         - echo $ENV
-         - echo $NODE1
-         - echo $NODE2
-         - echo $NODE3
-         - echo 'deploy_role_user_migration Start'
-         - envsubst < "role_user_migration/run_api.sh" > run_api_var.sh
-         - cp run_api_var.sh role_user_migration/run_api.sh
-         - ansible-playbook -i host role_user_migration/role_user_migration_setup.yml
-         - bash -x role_user_migration/run_api.sh
-         - echo 'deploy_role_user_migration End'
+  - local: '/gitlab-ci/templates/user-role-api-templates.yml'

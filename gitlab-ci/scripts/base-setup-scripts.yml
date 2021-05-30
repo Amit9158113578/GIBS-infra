@@ -1,0 +1,19 @@
+## Base setup
+## Base environment setup
+
+## DEV
+
+base_setup_dev_manual:
+  extends:
+    - .base_setup_template
+    - .variables_dev
+    - .rules_dev_manual
+
+## TEST
+base_setup_test_manual:
+  extends:
+    - .base_setup_template
+    - .variables_test
+    - .rules_test_manual
+
+## PROD

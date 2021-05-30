@@ -1,40 +1,130 @@
-##### Development Branch
+## Logstash Scripts
 
-deploy_logstash_dev_manual:
+##########################################################
+## Logstash Setup - START ##
+##########################################################
+
+## DEV
+
+logstash_setup_dev_manual:
+   extends:
+     - .logstash_setup_template
+     - .variables_dev
+     - .rules_dev_manual
+
+## TEST
+
+logstash_setup_test_manual:
+   extends:
+     - .logstash_setup_template
+     - .variables_test
+     - .rules_test_manual
+
+## PROD
+
+
+##########################################################
+## Logstash Setup - STOP ##
+##########################################################
+
+
+
+##########################################################
+## Logstash Restart - START ##
+## For maintenance or when pipelines.yml updated
+##########################################################
+
+## DEV
+
+logstash_restart_dev:
   extends:
-    - .deploy_logstash_template
+    - .logstash_restart_template
     - .variables_dev
-    - .rules_dev_manual
+    - .rules_dev_auto_changes
 
-deploy_logstash_dev_external:
+## TEST
+
+logstash_restart_test:
   extends:
-    - .deploy_logstash_files_template
-    - .variables_dev
-    - .rules_dev_external
-
-restart_logstash_dev:
-  extends:
-    - .deploy_logstash_template
-    - .variables_dev
-    - .rules_dev_manual
-#    - .rules_dev_auto_changes
-
-logstash_test_dev:
-  extends:
-    - .log_template
-    - .variables_dev
-    - .rules_dev_auto
-
-#####  Test Branch
-
-restart_logstash_test:
-  extends:
-    - .deploy_logstash_template
+    - .logstash_restart_template
     - .variables_test
     - .rules_test_auto_changes
 
-deploy_logstash_test_manual:
+## PROD
+
+
+##########################################################
+## Logstash Restart - STOP ##
+##########################################################
+
+
+##########################################################
+## Logstash Files Copy - START ##
+## For copying logstash files from external projects
+##########################################################
+
+## DEV
+
+logstash_files_copy_dev_external:
   extends:
-    - .deploy_logstash_template
+    - .logstash_files_copy_template
+    - .variables_dev
+    - .rules_dev_external
+
+## TEST
+
+logstash_files_copy_test_external:
+  extends:
+    - .logstash_files_copy_template
     - .variables_test
-    - .rules_test_manual
+    - .rules_test_external
+
+## PROD
+
+##########################################################
+## Logstash Files Copy - END ##
+##########################################################
+
+
+
+## OLD
+##### Development Branch
+
+# deploy_logstash_dev_manual:
+#   extends:
+#     - .deploy_logstash_template
+#     - .variables_dev
+#     - .rules_dev_manual
+
+# deploy_logstash_dev_external:
+#   extends:
+#     - .deploy_logstash_files_template
+#     - .variables_dev
+#     - .rules_dev_external
+
+# restart_logstash_dev:
+#   extends:
+#     - .deploy_logstash_template
+#     - .variables_dev
+#     - .rules_dev_manual
+# #    - .rules_dev_auto_changes
+
+# logstash_test_dev:
+#   extends:
+#     - .log_template
+#     - .variables_dev
+#     - .rules_dev_auto
+
+# #####  Test Branch
+
+# restart_logstash_test:
+#   extends:
+#     - .deploy_logstash_template
+#     - .variables_test
+#     - .rules_test_auto_changes
+
+# deploy_logstash_test_manual:
+#   extends:
+#     - .deploy_logstash_template
+#     - .variables_test
+#     - .rules_test_manual

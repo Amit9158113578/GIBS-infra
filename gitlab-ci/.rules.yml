@@ -1,58 +1,144 @@
-# Rules Development
+## Rules
 
-.rules_dev_auto:
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
-      when: never
-    - if: '$CI_COMMIT_BRANCH == "development"'
-      when: on_success
+## DEV
 
-.rules_dev_auto_changes:
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
-      when: never
-    - if: '$CI_COMMIT_BRANCH == "development"'
-      changes:
-        - logstash/pipelines.yml
-      when: on_success
-
-.rules_dev_external:
-  rules:
-    - if: '$CI_PIPELINE_SOURCE == "pipeline" && $CI_COMMIT_BRANCH == "development"'
-      when: on_success
-
+# For manual jobs
 .rules_dev_manual:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
       when: never
-    - if: '$CI_COMMIT_BRANCH == "development"'
+    - if: '$CI_COMMIT_BRANCH == "dev"'
       when: manual
     - when: never
   allow_failure: true
 
-# Rules Staging
-
-.rules_test_auto:
+# For auto jobs like logs
+.rules_dev_auto:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
       when: never
-    - if: '$CI_COMMIT_BRANCH == "staging"'
+    - if: '$CI_COMMIT_BRANCH == "dev"'
       when: on_success
 
+# For changes made to pipelines.yml - AUTO runs logstash restart with pipelines.yml copy
+.rules_dev_auto_changes:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+      changes:
+        - logstash/pipelines.yml
+      when: on_success
+
+# Push files from external (submodules)
+.rules_dev_external:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline" && $CI_COMMIT_BRANCH == "dev"'
+      changes:
+        - sub-projects
+      when: on_success
+
+
+
+## TEST
+
+## DEV
+
+# For manual jobs
 .rules_test_manual:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
       when: never
-    - if: '$CI_COMMIT_BRANCH == "staging"'
+    - if: '$CI_COMMIT_BRANCH == "test"'
       when: manual
     - when: never
   allow_failure: true
 
-.rules_test_auto_changes:
+# For auto jobs like logs
+.rules_test_auto:
   rules:
     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
       when: never
-    - if: '$CI_COMMIT_BRANCH == "staging"'
+    - if: '$CI_COMMIT_BRANCH == "test"'
+      when: on_success
+
+# For changes made to pipelines.yml - AUTO runs logstash restart with pipelines.yml copy
+.rules_dev_auto_changes:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "test"'
       changes:
         - logstash/pipelines.yml
       when: on_success
+
+# Push files from external (submodules)
+.rules_dev_external:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline" && $CI_COMMIT_BRANCH == "test"'
+      changes:
+        - sub-projects
+      when: on_success
+
+
+
+
+
+# # Rules Development
+
+# .rules_dev_auto:
+#   rules:
+#     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+#       when: never
+#     - if: '$CI_COMMIT_BRANCH == "dev"'
+#       when: on_success
+
+# .rules_dev_auto_changes:
+#   rules:
+#     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+#       when: never
+#     - if: '$CI_COMMIT_BRANCH == "dev"'
+#       changes:
+#         - logstash/pipelines.yml
+#       when: on_success
+
+# .rules_dev_external:
+#   rules:
+#     - if: '$CI_PIPELINE_SOURCE == "pipeline" && $CI_COMMIT_BRANCH == "dev"'
+#       when: on_success
+
+# .rules_dev_manual:
+#   rules:
+#     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+#       when: never
+#     - if: '$CI_COMMIT_BRANCH == "dev"'
+#       when: manual
+#     - when: never
+#   allow_failure: true
+
+# # Rules Staging
+
+# .rules_test_auto:
+#   rules:
+#     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+#       when: never
+#     - if: '$CI_COMMIT_BRANCH == "test"'
+#       when: on_success
+
+# .rules_test_manual:
+#   rules:
+#     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+#       when: never
+#     - if: '$CI_COMMIT_BRANCH == "test"'
+#       when: manual
+#     - when: never
+#   allow_failure: true
+
+# .rules_test_auto_changes:
+#   rules:
+#     - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+#       when: never
+#     - if: '$CI_COMMIT_BRANCH == "test"'
+#       changes:
+#         - logstash/pipelines.yml
+#       when: on_success

@@ -1,50 +1,10 @@
 # Deploy
 
-deploy_env_setup_dev_manual:
-  extends:
-    - .deploy_env_setup_template
-    - .variables_dev
-    - .rules_dev_manual
-
-deploy_env_setup_test_manual:
-  extends:
-    - .deploy_env_setup_template
-    - .variables_test
-    - .rules_test_manual
-
-deploy_elasticsearch_dev_manual:
-  extends:
-    - .deploy_elasticsearch_template
-    - .variables_dev
-    - .rules_dev_manual
-
-deploy_elasticsearch_test_manual:
-  extends:
-    - .deploy_elasticsearch_template
-    - .variables_test
-    - .rules_test_manual
-
-deploy_kibana_dev_manual:
-  extends:
-    - .deploy_kibana_template
-    - .variables_dev
-    - .rules_dev_manual
-
-deploy_kibana_test_manual:
-  extends:
-    - .deploy_kibana_template
-    - .variables_test
-    - .rules_test_manual
-
 include:
-  - local: '/gitlab-ci/scripts/logstash-scripts.yml'
+  - local: '/gitlab-ci/scripts/base-setup-scripts.yml'
+  - local: '/gitlab-ci/scripts/elasticsearch-scripts.yml'
   - local: '/gitlab-ci/scripts/heartbeat-scripts.yml'
+  - local: '/gitlab-ci/scripts/kibana-scripts.yml'
+  - local: '/gitlab-ci/scripts/logstash-scripts.yml'
   - local: '/gitlab-ci/scripts/metricbeat-scripts.yml'
-
-### Testing API ###
-
-deploy_role_user_migration_dev_manual:
-  extends:
-    - .deploy_role_user_migration_template
-    - .variables_dev
-    - .rules_dev_manual
+  - local: '/gitlab-ci/scripts/user-role-api-scripts.yml'

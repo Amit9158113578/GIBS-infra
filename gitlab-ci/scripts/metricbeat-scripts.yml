@@ -1,11 +1,19 @@
-deploy_metricbeat_dev_manual:
+## Metricbeat Setup
+
+## DEV
+
+metricbeat_setup_dev_manual:
   extends:
-    - .deploy_metricbeat_template
+    - .metricbeat_setup_template
     - .variables_dev
     - .rules_dev_manual
 
-deploy_metricbeat_test_manual:
+## TEST
+
+metricbeat_setup_test_manual:
   extends:
-    - .deploy_metricbeat_template
+    - .metricbeat_setup_template
     - .variables_test
     - .rules_test_manual
+
+## PROD

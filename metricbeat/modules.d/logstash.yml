@@ -4,5 +4,5 @@
     - node_stats
   period: 10s
   hosts: ["node3:9600"]
-  username: "$elasticsearch_username"
-  password: "$elasticsearch_password"
+  username: "$ELASTICSEARCH_USERNAME"
+  password: "$ELASTICSEARCH_PASSWORD"

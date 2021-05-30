@@ -1,14 +1,22 @@
 # Default Stages
 
 stages:
-    - env_setup
-    - deploy_role_user_migration
-    - deploy
-    - deploy_elasticsearch
-    - deploy_kibana
-    - deploy_logstash
-    - deploy_heartbeat
-    - deploy_metricbeat
-    - deploy_logstash_files
-    - maintenance
-    - restart_logstash
+    - base_setup            ## Base environment setup
+    - deploy_elk_stack      ## Deploy ELK stack modules
+    - logstash_updates              ## Logstash updates - pipelines.yml / logstash data files
+    - maintenance           ## For logs and other maintenance jobs
+    - user_role_api         ## User and Role API job
+
+# OLD
+# stages:
+#     - env_setup
+#     - deploy_role_user_migration
+#     - deploy
+#     - deploy_elasticsearch
+#     - deploy_kibana
+#     - deploy_logstash
+#     - deploy_heartbeat
+#     - deploy_metricbeat
+#     - deploy_logstash_files
+#     - maintenance
+#     - restart_logstash

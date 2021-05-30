@@ -1,6 +1,9 @@
-.deploy_metricbeat_template:
-  stage: deploy
+# Metricbeat templates
+
+.metricbeat_setup_template:
+  stage: deploy_elk_stack
   script:
+         - export
          - echo $ENV
          - echo $NODE1
          - echo $NODE2

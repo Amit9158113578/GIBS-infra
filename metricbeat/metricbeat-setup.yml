@@ -1,8 +1,8 @@
 - name: MetricBeat Instalation
   hosts: node1
   tasks:
-    - name: Ensure metricbeat is at the "{{ lookup('ENV','elk_version') }}" version
-      apt: name=metricbeat={{ lookup('ENV','elk_version') }} state=present
+    - name: Ensure metricbeat is at the "{{ lookup('ENV','ELK_VERSION') }}" version
+      apt: name=metricbeat={{ lookup('ENV','ELK_VERSION') }} state=present
       become: yes
     - name: Copy security folder 
       copy:
@@ -35,8 +35,8 @@
 - name: MetricBeat Instalation
   hosts: node2
   tasks:
-    - name: Ensure metricbeat is at the "{{ lookup('ENV','elk_version') }}" version
-      apt: name=metricbeat={{ lookup('ENV','elk_version') }} state=present
+    - name: Ensure metricbeat is at the "{{ lookup('ENV','ELK_VERSION') }}" version
+      apt: name=metricbeat={{ lookup('ENV','ELK_VERSION') }} state=present
       become: yes
     - name: Copy security folder 
       copy:
@@ -69,8 +69,8 @@
 - name: MetricBeat Instalation
   hosts: node3
   tasks:
-    - name: Ensure metricbeat is at the "{{ lookup('ENV','elk_version') }}" version
-      apt: name=metricbeat={{ lookup('ENV','elk_version') }} state=present
+    - name: Ensure metricbeat is at the "{{ lookup('ENV','ELK_VERSION') }}" version
+      apt: name=metricbeat={{ lookup('ENV','ELK_VERSION') }} state=present
       become: yes
     - name: Copy security folder 
       copy:

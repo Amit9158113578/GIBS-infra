@@ -8,7 +8,7 @@
     #- shard
     #- ml_job
   period: 10s
-  hosts: ["$elasticsearch_hosts"]
-  username: "$elasticsearch_username"
-  password: "$elasticsearch_password"
+  hosts: ["$ELASTICSEARCH_HOSTS"]
+  username: "$ELASTICSEARCH_USERNAME"
+  password: "$ELASTICSEARCH_PASSWORD"
   ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]

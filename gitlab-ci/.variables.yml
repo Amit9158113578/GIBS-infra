@@ -3,36 +3,81 @@
 .variables_general:
   variables:
     GIT_SUBMODULE_STRATEGY: recursive
-    elk_version: "7.12.1" # can vary in different environments
-    logstash_version: "1:7.12.1-1"
-    hosts: "node1, node2, node3"
-    elasticsearch_hosts: https://node1:9200", "https://node2:9200", "https://node3:9200 # can vary in different environments
-    kibana_xpack_encryptionKey: "BDHcisme3231234msid8493029384930281hc" # can vary in different environments
-    kibana_hosts: https://node1:5601", "https://node2:5601 # can vary in different environments
-    kibana_encryptedSavedObjects_encryptionKey: "BDHcisme3231234msid8493029384930281hc" # can vary in different environments
+    HOSTS: "node1, node2, node3"
+    ELASTICSEARCH_HOSTS: https://node1:9200", "https://node2:9200", "https://node3:9200
+    KIBANA_XPACK_ENCRYPTIONKEY: "BDHcisme3231234msid8493029384930281hc"
+    KIBANA_HOSTS: https://node1:5601", "https://node2:5601
+    KIBANA_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY: "BDHcisme3231234msid8493029384930281hc"
+
 
 .variables_dev:
   extends:
     .variables_general
   environment:
-    name: development # please rename to dev while refactoring
+    name: dev
   tags:
     - dev
   variables:
-    elasticsearch_password: $elasticsearch_password_dev
-    elasticsearch_username: $elasticsearch_username_dev
-    kibana_url: "https://kibana.dev.gcc.gov.rw"
-    elasticsearch_url: "https://elasticsearch.dev.gcc.gov.rw:443"
+    ELK_VERSION: "7.12.1"
+    LOGSTASH_VERSION: "1:7.12.1-1"
+    ELASTICSEARCH_PASSWORD: $ELASTICSEARCH_PASSWORD_DEV
+    ELASTICSEARCH_USERNAME: $ELASTICSEARCH_USERNAME_DEV
+    KIBANA_URL: "https://kibana.dev.gcc.gov.rw"
+    ELASTICSEARCH_URL: "https://elasticsearch.dev.gcc.gov.rw:443"
 
-.variables_test: # please rename to .variables_test while refactoring
+
+.variables_test:
   extends:
     .variables_general
   environment:
-    name: staging # please rename to test while refactoring
+    name: test
   tags:
-    - staging # please rename to test while refactoring
+    - test
   variables:
-    elasticsearch_password: $elasticsearch_password_test
-    elasticsearch_username: $elasticsearch_username_test
-    elasticsearch_url: "https://gbis-elastic.staging.risa.gov.rw:443"
-    kibana_url: "https://gbis.staging.risa.gov.rw"
+    ELK_VERSION: "7.12.1"
+    LOGSTASH_VERSION: "1:7.12.1-1"
+    ELASTICSEARCH_PASSWORD: $ELASTICSEARCH_PASSWORD_TEST
+    ELASTICSEARCH_USERNAME: $ELASTICSEARCH_USERNAME_TEST
+    ELASTICSEARCH_URL: "https://gbis-elastic.staging.risa.gov.rw:443"
+    KIBANA_URL: "https://gbis.staging.risa.gov.rw"
+
+
+
+
+
+# .variables_general:
+#   variables:
+#     GIT_SUBMODULE_STRATEGY: recursive
+#     elk_version: "7.12.1" # can vary in different environments
+#     logstash_version: "1:7.12.1-1"
+#     hosts: "node1, node2, node3"
+#     elasticsearch_hosts: https://node1:9200", "https://node2:9200", "https://node3:9200 # can vary in different environments
+#     kibana_xpack_encryptionKey: "BDHcisme3231234msid8493029384930281hc" # can vary in different environments
+#     kibana_hosts: https://node1:5601", "https://node2:5601 # can vary in different environments
+#     kibana_encryptedSavedObjects_encryptionKey: "BDHcisme3231234msid8493029384930281hc" # can vary in different environments
+
+# .variables_dev:
+#   extends:
+#     .variables_general
+#   environment:
+#     name: development # please rename to dev while refactoring
+#   tags:
+#     - dev
+#   variables:
+#     elasticsearch_password: $elasticsearch_password_dev
+#     elasticsearch_username: $elasticsearch_username_dev
+#     kibana_url: "https://kibana.dev.gcc.gov.rw"
+#     elasticsearch_url: "https://elasticsearch.dev.gcc.gov.rw:443"
+
+# .variables_test: # please rename to .variables_test while refactoring
+#   extends:
+#     .variables_general
+#   environment:
+#     name: staging # please rename to test while refactoring
+#   tags:
+#     - staging # please rename to test while refactoring
+#   variables:
+#     elasticsearch_password: $elasticsearch_password_test
+#     elasticsearch_username: $elasticsearch_username_test
+#     elasticsearch_url: "https://gbis-elastic.staging.risa.gov.rw:443"
+#     kibana_url: "https://gbis.staging.risa.gov.rw"

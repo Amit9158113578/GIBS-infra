@@ -6,9 +6,9 @@
   metricsets:
     - stats
   period: 10s
-  hosts: ["$kibana_hosts"]
+  hosts: ["$KIBANA_HOSTS"]
   #basepath: ""
-  username: "$elasticsearch_username"
-  password: "$elasticsearch_password"
+  username: "$ELASTICSEARCH_USERNAME"
+  password: "$ELASTICSEARCH_PASSWORD"
   ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]
   ssl.enabled: true

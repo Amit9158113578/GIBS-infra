@@ -1,0 +1,13 @@
+## Base setup templates 
+
+.base_setup_template:
+  stage: base_setup
+  script:
+         - export
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'BASE SETUP START'
+         - bash -x base_setup/base_setup.sh $NODE1 $NODE2 $NODE3 $ENV
+         - echo 'BASE SETUP END'

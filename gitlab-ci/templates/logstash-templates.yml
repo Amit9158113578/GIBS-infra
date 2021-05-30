@@ -1,38 +1,25 @@
-.deploy_logstash_template:
-  stage: deploy
+## Logstash templates
+
+## Logstash setup
+
+.logstash_setup_template:
+  stage: deploy_elk_stack
   script:
+         - export
          - echo $ENV
          - echo $NODE1
          - echo $NODE2
          - echo $NODE3
-         - echo 'Prepare Variables START'
-         
-         - echo 'PIPELINE kpi_data.conf'
-         - envsubst < "logstash/pipelines/kpi_data.conf" > kpi_data_var.conf
-         - cp kpi_data_var.conf logstash/pipelines/kpi_data.conf
-
-         - echo 'PIPELINE master-data.conf'
-         - envsubst < "logstash/pipelines/master-data.conf" > master-data_var.conf
-         - cp master-data_var.conf logstash/pipelines/master-data.conf
-
-         - echo 'PIPELINE target.conf'
-         - envsubst < "logstash/pipelines/target.conf" > target_var.conf
-         - cp target_var.conf logstash/pipelines/target.conf
-
-         - echo 'Prepare Variables END'
          - echo 'Logstash DEPLOY START'
          - ansible-playbook -i host logstash/ansible/logstash-setup.yml
          - echo 'Logstash DEPLOY END'
 
-.deploy_logstash_files_template:
-  stage: deploy
-  script:
-         - echo $ENV
-         - echo 'Does nothing at this moment - just showcasing the external trigger'
+## Logstash Restart
 
-.restart_logstash_template:
-  stage: restart_logstash
+.logstash_restart_template:
+  stage: logstash_updates
   script:
+         - export
          - echo $ENV
          - echo $NODE1
          - echo $NODE2
@@ -41,25 +28,80 @@
          - ansible-playbook -i host logstash/ansible/logstash-restart.yml
          - echo 'Logstash DEPLOY END'
 
-.log_template:
-  stage: maintenance
+## Logstash Files Copy - External
+
+.logstash_files_copy_template:
+  stage: logstash_updates
   script:
          - export
-         - ssh node3 ls -la /etc/logstash/conf.d/minagri-nais
-         - ssh node3 ls -la /etc/logstash/conf.d/openproject
-         - ssh node3 ls -la /etc/logstash/conf.d/minagri-mis
-         - ssh node3 ls -la /var/log/logstash
-         - ssh node3 ls -la /var/log/elasticsearch
-         - ssh node3 ls -la /data/elasticsearch/logs
-         - scp node1:/data/elasticsearch/logs/elk-cluster.log elk-cluster-node1.log
-         - scp node2:/data/elasticsearch/logs/elk-cluster.log elk-cluster-node2.log         
-         - scp node3:/data/elasticsearch/logs/elk-cluster.log elk-cluster-node3.log
-         - scp node3:/var/log/logstash/logstash-plain.log logstash-node3.log
-         - ssh node3 tail -n 50 /var/log/logstash/logstash-plain.log
-  artifacts:
-    paths:
-      - logstash-node3.log
-      - elk-cluster-node1.log
-      - elk-cluster-node2.log
-      - elk-cluster-node3.log
-    expire_in: 1 week
+
+
+
+
+## OLD
+
+# .deploy_logstash_template:
+#   stage: deploy
+#   script:
+#          - echo $ENV
+#          - echo $NODE1
+#          - echo $NODE2
+#          - echo $NODE3
+#          - echo 'Prepare Variables START'
+         
+#          - echo 'PIPELINE kpi_data.conf'
+#          - envsubst < "logstash/pipelines/kpi_data.conf" > kpi_data_var.conf
+#          - cp kpi_data_var.conf logstash/pipelines/kpi_data.conf
+
+#          - echo 'PIPELINE master-data.conf'
+#          - envsubst < "logstash/pipelines/master-data.conf" > master-data_var.conf
+#          - cp master-data_var.conf logstash/pipelines/master-data.conf
+
+#          - echo 'PIPELINE target.conf'
+#          - envsubst < "logstash/pipelines/target.conf" > target_var.conf
+#          - cp target_var.conf logstash/pipelines/target.conf
+
+#          - echo 'Prepare Variables END'
+#          - echo 'Logstash DEPLOY START'
+#          - ansible-playbook -i host logstash/ansible/logstash-setup.yml
+#          - echo 'Logstash DEPLOY END'
+
+# .deploy_logstash_files_template:
+#   stage: deploy
+#   script:
+#          - echo $ENV
+#          - echo 'Does nothing at this moment - just showcasing the external trigger'
+
+# .restart_logstash_template:
+#   stage: restart_logstash
+#   script:
+#          - echo $ENV
+#          - echo $NODE1
+#          - echo $NODE2
+#          - echo $NODE3
+#          - echo 'Logstash DEPLOY START'
+#          - ansible-playbook -i host logstash/ansible/logstash-restart.yml
+#          - echo 'Logstash DEPLOY END'
+
+# .log_template:
+#   stage: maintenance
+#   script:
+#          - export
+#          - ssh node3 ls -la /etc/logstash/conf.d/minagri-nais
+#          - ssh node3 ls -la /etc/logstash/conf.d/openproject
+#          - ssh node3 ls -la /etc/logstash/conf.d/minagri-mis
+#          - ssh node3 ls -la /var/log/logstash
+#          - ssh node3 ls -la /var/log/elasticsearch
+#          - ssh node3 ls -la /data/elasticsearch/logs
+#          - scp node1:/data/elasticsearch/logs/elk-cluster.log elk-cluster-node1.log
+#          - scp node2:/data/elasticsearch/logs/elk-cluster.log elk-cluster-node2.log         
+#          - scp node3:/data/elasticsearch/logs/elk-cluster.log elk-cluster-node3.log
+#          - scp node3:/var/log/logstash/logstash-plain.log logstash-node3.log
+#          - ssh node3 tail -n 50 /var/log/logstash/logstash-plain.log
+#   artifacts:
+#     paths:
+#       - logstash-node3.log
+#       - elk-cluster-node1.log
+#       - elk-cluster-node2.log
+#       - elk-cluster-node3.log
+#     expire_in: 1 week

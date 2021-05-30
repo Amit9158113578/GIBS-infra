@@ -2,3 +2,5 @@
   xpack.enabled: true
   period: 10s
   hosts: ["node3:9600"]
+  username: "$ELASTICSEARCH_USERNAME"
+  password: "$ELASTICSEARCH_PASSWORD"

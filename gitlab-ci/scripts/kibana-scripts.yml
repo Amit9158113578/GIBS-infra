@@ -1,18 +1,19 @@
-## Heartbeat setup
+## Kibana setup
 
 ## DEV
 
-heartbeat_setup_dev_manual:
+kibana_setup_dev_manual:
   extends:
-    - .heartbeat_setup_template
+    - .kibana_setup_template
     - .variables_dev
     - .rules_dev_manual
 
+
 ## TEST
 
-heartbeat_setup_test_manual:
+kibana_setup_test_manual:
   extends:
-    - .heartbeat_setup_template
+    - .kibana_setup_template
     - .variables_test
     - .rules_test_manual
 

@@ -1,6 +1,9 @@
-.deploy_heartbeat_template:
-  stage: deploy
+## Heartbeat templates
+
+.heartbeat_setup_template:
+  stage: deploy_elk_stack
   script:
+         - export
          - echo $ENV
          - echo $NODE1
          - echo $NODE2

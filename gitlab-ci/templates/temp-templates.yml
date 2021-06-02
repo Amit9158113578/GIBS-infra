@@ -3,7 +3,9 @@
 .temp_template:
   stage: temp
   extends:
-    - ../.variables
+    - .variables_general
+    - variables_dev
+    - variables_test
   script:
          - export
          - cat temp/temp.yml

@@ -2,8 +2,6 @@
 
 .temp_template:
   stage: temp
-  include: 
-    - local: '/gitlab-ci/.variables.yml'
   script:
          - export
          - cat temp/temp.yml

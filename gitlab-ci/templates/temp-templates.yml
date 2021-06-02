@@ -3,7 +3,7 @@
 .temp_template:
   stage: temp
   variables:
-    - .variables.yml
+    - '/gitlab-ci/.variables.yml'
   script:
          - export
          - cat temp/temp.yml

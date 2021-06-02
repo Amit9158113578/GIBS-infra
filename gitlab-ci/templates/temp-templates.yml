@@ -3,7 +3,7 @@
 .temp_template:
   stage: temp
   variables:
-    - $ELASTICSEARCH_PASSWORD == 'test'
+    - ELASTICSEARCH_PASSWORD: test
   script:
          - export
          - cat temp/temp.yml

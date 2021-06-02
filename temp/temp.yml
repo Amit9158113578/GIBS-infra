@@ -1,7 +1,3 @@
-.args:
-  extends:
-    ./gitlab-ci/.variables.yml
-
 "${HOSTS}"
 "${ELASTICSEARCH_HOSTS}"
 "${KIBANA_XPACK_ENCRYPTIONKEY}"

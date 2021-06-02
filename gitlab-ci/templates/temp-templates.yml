@@ -3,7 +3,7 @@
 .temp_template:
   stage: temp
   variables:
-    - '/gitlab-ci/.variables.yml'
+    - $ELASTICSEARCH_PASSWORD == 'test'
   script:
          - export
          - cat temp/temp.yml

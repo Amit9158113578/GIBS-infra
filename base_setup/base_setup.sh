@@ -31,12 +31,15 @@ $node2 node2
 $node3 node3
 10.10.74.133 www.gov.rw" /etc/hosts
 
-
+if [ $? != 0 ]
+then
 echo "$node1 node1 
 $node2 node2 
 $node3 node3
 10.10.74.133 www.gov.rw"| sudo tee -a /etc/hosts
-
+else
+echo "hosts entries already present"
+fi
 
 scp /etc/hosts root@$node2:/etc/hosts
 scp /etc/hosts root@$node3:/etc/hosts

@@ -181,7 +181,9 @@ setup.kibana:
   password: "$ELASTICSEARCH_PASSWORD"
   # Optional HTTP path
   #path: ""
-
+  ssl.enabled: true
+  ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]
+  
   # Optional Kibana space ID.
   #space.id: 
 

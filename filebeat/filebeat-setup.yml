@@ -13,14 +13,14 @@
         src: filebeat.yml
         dest: /etc/filebeat
       become: yes
-    - name: Add Block
-      blockinfile:
-        dest: /etc/filebeat/filebeat.yml
-        block: |
-          http.enabled: true
-          monitoring.enabled: false # legacy monitoring off
-          http.port: 5066
-          http.host: node1
+    # - name: Add Block
+    #   blockinfile:
+    #     dest: /etc/filebeat/filebeat.yml
+    #     block: |
+    #       http.enabled: true
+    #       monitoring.enabled: false # legacy monitoring off
+    #       http.port: 5066
+    #       http.host: node1
     - name: Copy modules.d folder
       copy:
         src: modules.d
@@ -47,14 +47,14 @@
         src: filebeat.yml
         dest: /etc/filebeat
       become: yes
-    - name: Add Block
-      blockinfile:
-        dest: /etc/filebeat/filebeat.yml
-        block: |
-          http.enabled: true
-          monitoring.enabled: false # legacy monitoring off
-          http.port: 5066
-          http.host: node2
+    # - name: Add Block
+    #   blockinfile:
+    #     dest: /etc/filebeat/filebeat.yml
+    #     block: |
+    #       http.enabled: true
+    #       monitoring.enabled: false # legacy monitoring off
+    #       http.port: 5066
+    #       http.host: node2
     - name: Copy modules.d folder
       copy:
         src: modules.d
@@ -81,14 +81,14 @@
         src: filebeat.yml
         dest: /etc/filebeat
       become: yes
-    - name: Add Block
-      blockinfile:
-        dest: /etc/filebeat/filebeat.yml
-        block: |
-          http.enabled: true
-          monitoring.enabled: false # legacy monitoring off
-          http.port: 5066
-          http.host: node3
+    # - name: Add Block
+    #   blockinfile:
+    #     dest: /etc/filebeat/filebeat.yml
+    #     block: |
+    #       http.enabled: true
+    #       monitoring.enabled: false # legacy monitoring off
+    #       http.port: 5066
+    #       http.host: node3
     - name: Copy modules.d folder
       copy:
         src: modules.d

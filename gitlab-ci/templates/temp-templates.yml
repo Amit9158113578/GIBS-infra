@@ -3,4 +3,4 @@
 .temp_template:
   stage: temp
   script:
-         - cat temp/temp.yml
+         - cat base_setup/base_setup.sh

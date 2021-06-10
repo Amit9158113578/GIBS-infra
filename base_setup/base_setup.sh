@@ -1,8 +1,8 @@
 #!/bin/bash
-node1=$1
-node2=$2
-node3=$3
-ENV=$4
+node1=$NODE1
+node2=$NODE2
+node3=$NODE3
+ENV=$ENV
 
 if [ $# != 4 ]
 then

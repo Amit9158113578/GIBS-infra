@@ -9,5 +9,5 @@
   #   # Set custom paths for the log files. If left empty,
   #   # Filebeat will choose the paths depending on your OS.
   #   #var.paths:
-  ssl.certificate_authorities: ["/etc/filebeat/security/ca/ca.crt"]
-  ssl.enabled: true
+  #ssl.certificate_authorities: ["/etc/filebeat/security/ca/ca.crt"]
+  #ssl.enabled: true

@@ -2,7 +2,7 @@
   hosts: node1
   tasks:
     - name: Ensure FileBeat is at the "{{ lookup('ENV','ELK_VERSION') }}" version
-      apt: name=fileBeat={{ lookup('ENV','ELK_VERSION') }} state=present
+      apt: name=filebeat={{ lookup('ENV','ELK_VERSION') }} state=present
       become: yes
     - name: Copy security folder 
       copy:

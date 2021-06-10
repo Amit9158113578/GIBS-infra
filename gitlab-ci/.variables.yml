@@ -18,9 +18,10 @@
   tags:
     - dev
   variables:
-    node1: $NODE1_DEV
-    node2: $NODE2_DEV
-    node3: $NODE3_DEV
+    NODE1: $NODE1_DEV
+    NODE2: $NODE2_DEV
+    NODE3: $NODE3_DEV
+    ENV: DEV
     ELK_VERSION: "7.12.1"
     LOGSTASH_VERSION: "1:7.12.1-1"
     ELASTICSEARCH_PASSWORD: $ELASTICSEARCH_PASSWORD_DEV
@@ -37,9 +38,10 @@
   tags:
     - test
   variables:
-    node1: $NODE1_TEST
-    node2: $NODE2_TEST
-    node3: $NODE3_TEST
+    NODE1: $NODE1_TEST
+    NODE2: $NODE2_TEST
+    NODE3: $NODE3_TEST
+    ENV: TEST
     ELK_VERSION: "7.12.1"
     LOGSTASH_VERSION: "1:7.12.1-1"
     ELASTICSEARCH_PASSWORD: $ELASTICSEARCH_PASSWORD_TEST

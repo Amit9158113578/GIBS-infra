@@ -3,6 +3,7 @@
 include:
   - local: '/gitlab-ci/scripts/base-setup-scripts.yml'
   - local: '/gitlab-ci/scripts/elasticsearch-scripts.yml'
+  - local: 'gitlab-ci/scripts/filebeat-scripts.yml'
   - local: '/gitlab-ci/scripts/heartbeat-scripts.yml'
   - local: '/gitlab-ci/scripts/kibana-scripts.yml'
   - local: '/gitlab-ci/scripts/logstash-scripts.yml'

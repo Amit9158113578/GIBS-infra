@@ -258,7 +258,7 @@ output.elasticsearch:
   #   - https://risa-dwh1-es02:9200
   #   - https://risa-dwh1-es03:9200
   ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]
-  hosts: ["$elasticsearch_hosts"]
+  hosts: ["$ELASTICSEARCH_HOSTS"]
   #ssl.certificate_authorities: ${SSL_CERTIFICATE_AUTHORITY_FILE}
   # Optional protocol and basic auth credentials.
   #protocol: "https"

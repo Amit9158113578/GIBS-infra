@@ -1,0 +1,19 @@
+## Filebeat setup
+
+## DEV
+
+filebeat_setup_dev_manual:
+  extends:
+    - .filebeat_setup_template
+    - .variables_dev
+    - .rules_dev_manual
+
+## TEST
+
+filebeat_setup_test_manual:
+  extends:
+    - .filebeat_setup_template
+    - .variables_test
+    - .rules_test_manual
+
+## PROD

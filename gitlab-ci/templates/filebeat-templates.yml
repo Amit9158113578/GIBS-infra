@@ -1,0 +1,20 @@
+## Filebeat templates
+
+.filebeat_setup_template:
+  stage: deploy_elk_stack
+  script:
+         - export
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'Prepare Variables START'
+
+         - echo 'Filebeat.yml'
+         - envsubst < "filebeat/filebeat.yml" > filebeat_var.yml
+         - cp filebeat_var.yml filebeat/filebeat.yml
+
+         - echo 'Prepare Variables END'
+         - echo 'Filebeat DEPLOY START'
+         - ansible-playbook -i host filebeat/filebeat-setup.yml
+         - echo 'Filebeat DEPLOY END'

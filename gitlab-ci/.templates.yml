@@ -3,6 +3,7 @@
 include:
   - local: '/gitlab-ci/templates/base-setup-templates.yml'
   - local: '/gitlab-ci/templates/elasticsearch-templates.yml'
+  - local: 'gitlab-ci/templates/filebeat-templates.yml'
   - local: '/gitlab-ci/templates/heartbeat-templates.yml'
   - local: '/gitlab-ci/templates/kibana-templates.yml'
   - local: '/gitlab-ci/templates/logs-templates.yml'

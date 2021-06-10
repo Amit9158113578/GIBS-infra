@@ -3,4 +3,5 @@
 .temp_template:
   stage: temp
   script:
+         - export
          - cat base_setup/base_setup.sh

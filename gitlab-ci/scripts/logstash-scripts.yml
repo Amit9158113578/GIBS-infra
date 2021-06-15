@@ -40,7 +40,7 @@ logstash_restart_dev:
   extends:
     - .logstash_restart_template
     - .variables_dev
-    - .rules_dev_auto_changes
+    - .rules_dev_manual
 
 ## TEST
 
@@ -48,7 +48,7 @@ logstash_restart_test:
   extends:
     - .logstash_restart_template
     - .variables_test
-    - .rules_test_auto_changes
+    - .rules_test_manual
 
 ## PROD
 

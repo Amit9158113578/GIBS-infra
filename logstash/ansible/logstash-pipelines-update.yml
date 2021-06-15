@@ -1,0 +1,10 @@
+- name: Logstash Pipelines.yml Update
+  hosts: node3
+  tasks:
+
+    - name: Copy pipelines yml
+      copy:
+        src: ../pipelines.yml
+        dest: /etc/logstash/pipelines.yml
+        force: yes
+      become: yes

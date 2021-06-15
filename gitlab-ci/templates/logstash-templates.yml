@@ -14,9 +14,9 @@
          - ansible-playbook -i host logstash/ansible/logstash-setup.yml
          - echo 'Logstash DEPLOY END'
 
-## Logstash Restart
+## Logstash Pipelines Update
 
-.logstash_restart_template:
+.logstash_pipelines_update_template:
   stage: logstash_updates
   script:
          - export
@@ -24,9 +24,23 @@
          - echo $NODE1
          - echo $NODE2
          - echo $NODE3
-         - echo 'Logstash DEPLOY START'
-         - ansible-playbook -i host logstash/ansible/logstash-restart.yml
-         - echo 'Logstash DEPLOY END'
+         - echo 'Logstash Pipelines Update START'
+         - ansible-playbook -i host logstash/ansible/logstash-pipelines-update.yml
+         - echo 'Logstash Pipelines Update END'
+
+## Logstash Config Update
+
+.logstash_config_update_template:
+  stage: logstash_updates
+  script:
+         - export
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'Logstash Config Update START'
+         - ansible-playbook -i host logstash/ansible/logstash-config-update.yml
+         - echo 'Logstash Config Update END'
 
 ## Logstash Files Copy - External
 

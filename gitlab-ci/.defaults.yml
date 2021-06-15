@@ -1,12 +1,12 @@
 # Default Stages
 
 stages:
-    - base_setup
-    - deploy_elk_stack
-    - logstash_updates
-    - maintenance
-    - user_role_api
-    - temp
+    - base_setup            # For setting up base requirements (one time run)
+    - deploy_elk_stack      # For deploying different ELK modules/componenets
+    - logstash_updates      # For updates to logstash.yml or pipelines.yml
+    - maintenance           # For pulling logs into GIT
+    - user_role_api         # For User and Role migration API
+    - temp                  # For running temporary scripts for testing or other purposes
 
 # OLD
 # stages:

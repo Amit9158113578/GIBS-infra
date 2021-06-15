@@ -1,11 +1,11 @@
-- name: Logstash Pipeline Update & restart
+- name: Logstash Config Update and Restart
   hosts: node3
   tasks:
 
-    - name: Copy pipeline yml
+    - name: Copy logstash yml
       copy:
-        src: ../pipelines.yml
-        dest: /etc/logstash/pipelines.yml
+        src: ../logstash.yml
+        dest: /etc/logstash/logstash.yml
         force: yes
       become: yes
     
@@ -13,4 +13,4 @@
       service:
           name: logstash
           state: restarted
-      become: yes  
+      become: yes

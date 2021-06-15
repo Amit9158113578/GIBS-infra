@@ -23,39 +23,56 @@ logstash_setup_test_manual:
 ## PROD
 
 
-##########################################################
-## Logstash Setup - STOP ##
-##########################################################
-
 
 
 ##########################################################
-## Logstash Restart - START ##
+## Logstash Pipelines Update - START ##
 ## For maintenance or when pipelines.yml updated
 ##########################################################
 
 ## DEV
 
-logstash_restart_dev:
+logstash_config_update_dev:
   extends:
-    - .logstash_restart_template
+    - .logstash_pipelines_update_template
     - .variables_dev
-    - .rules_dev_manual
+    - .rules_dev_auto_changes
 
 ## TEST
 
-logstash_restart_test:
+logstash_config_update_test:
   extends:
-    - .logstash_restart_template
+    - .logstash_pipelines_update_template
     - .variables_test
-    - .rules_test_manual
+    - .rules_test_auto_changes
 
 ## PROD
 
 
+
 ##########################################################
-## Logstash Restart - STOP ##
+## Logstash Config Update - START ##
+## For maintenance or when logstash.yml updated
 ##########################################################
+
+## DEV
+
+logstash_config_update_dev:
+  extends:
+    - .logstash_config_update_template
+    - .variables_dev
+    - .rules_dev_auto_changes
+
+## TEST
+
+logstash_config_update_test:
+  extends:
+    - .logstash_config_update_template
+    - .variables_test
+    - .rules_test_auto_changes
+
+## PROD
+
 
 
 ##########################################################
@@ -80,10 +97,6 @@ logstash_files_copy_test_external:
     - .rules_test_external
 
 ## PROD
-
-##########################################################
-## Logstash Files Copy - END ##
-##########################################################
 
 
 

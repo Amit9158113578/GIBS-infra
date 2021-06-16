@@ -6,19 +6,19 @@
   server:
     enabled: true
     var.paths:
-      - /var/log/elasticsearch/*.log          # Plain text logs
-      - /var/log/elasticsearch/*_server.json  # JSON logs
+      - /data/elasticsearch/logs/*.log          # Plain text logs
+      - /data/elasticsearch/logs/*_server.json  # JSON logs
 
   gc:
     enabled: true
     var.paths:
-      - /data/elasticsearch/gc.log.*
-      - /var/log/elasticsearch/gc.log
+      - /data/elasticsearch/logs/gc.log.*
+      - /data/elasticsearch/logs/gc.log
 
   audit:
     enabled: true
     var.paths:
-      - /var/log/elasticsearch/*_audit.json
+      - /data/elasticsearch/logs/*_audit.json
 
   # slowlog:
   #   enabled: true
@@ -29,5 +29,5 @@
   deprecation:
     enabled: true
     var.paths:
-      - /var/log/elasticsearch/*_deprecation.log   # Plain text logs
-      - /var/log/elasticsearch/*_deprecation.json  # JSON logs
+      - /data/elasticsearch/logs/*_deprecation.log   # Plain text logs
+      - /data/elasticsearch/logs/*_deprecation.json  # JSON logs

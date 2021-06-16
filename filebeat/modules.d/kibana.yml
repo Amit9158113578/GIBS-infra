@@ -5,7 +5,8 @@
   # # All logs
   log:
     enabled: true
-
+    var.paths:
+      - /var/log/kibana/*.log
   #   # Set custom paths for the log files. If left empty,
   #   # Filebeat will choose the paths depending on your OS.
   #   #var.paths:

@@ -36,7 +36,7 @@ logstash_config_update_dev:
   extends:
     - .logstash_pipelines_update_template
     - .variables_dev
-    - .rules_dev_auto_changes
+    - .rules_dev_manual
 
 ## TEST
 
@@ -44,7 +44,7 @@ logstash_config_update_test:
   extends:
     - .logstash_pipelines_update_template
     - .variables_test
-    - .rules_test_auto_changes
+    - .rules_test_manual
 
 ## PROD
 
@@ -61,7 +61,7 @@ logstash_config_update_dev:
   extends:
     - .logstash_config_update_template
     - .variables_dev
-    - .rules_dev_auto_changes
+    - .rules_dev_manual
 
 ## TEST
 
@@ -69,7 +69,7 @@ logstash_config_update_test:
   extends:
     - .logstash_config_update_template
     - .variables_test
-    - .rules_test_auto_changes
+    - .rules_test_manual
 
 ## PROD
 

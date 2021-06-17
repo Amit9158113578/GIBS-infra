@@ -32,7 +32,7 @@ logstash_setup_test_manual:
 
 ## DEV
 
-logstash_config_update_dev:
+logstash_pipelines_update_dev:
   extends:
     - .logstash_pipelines_update_template
     - .variables_dev
@@ -40,7 +40,7 @@ logstash_config_update_dev:
 
 ## TEST
 
-logstash_config_update_test:
+logstash_pipelines_update_test:
   extends:
     - .logstash_pipelines_update_template
     - .variables_test

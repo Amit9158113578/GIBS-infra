@@ -5,29 +5,29 @@
 #- pipeline.id: main
 #  path.config: "/etc/logstash/conf.d/*.conf"
 
-# - pipeline.id: master_csv
-#   path.config: "/etc/logstash/conf.d/GCC/master-data.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
-#   queue.type: memory
+- pipeline.id: appication_gcc_master_data
+  path.config: "/etc/logstash/conf.d/GCC/master-data.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
 
-# - pipeline.id: target_csv
-#   path.config: "/etc/logstash/conf.d/GCC/target.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
-#   queue.type: memory
+- pipeline.id: appication_gcc_target_data
+  path.config: "/etc/logstash/conf.d/GCC/target.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
 
-# - pipeline.id: kpi_data_csv
-#   path.config: "/etc/logstash/conf.d/GCC/kpi_data.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
-#   queue.type: memory
+- pipeline.id: appication_gcc_kpi_data
+  path.config: "/etc/logstash/conf.d/GCC/kpi_data.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
 
 
 # # # vaccination
@@ -65,13 +65,14 @@
 
 ## project Management Pipelines
 
-#- pipeline.id: project-management-query-952
-#  path.config: "/etc/logstash/conf.d/openproject/openproject-query-952.conf"
-#  pipeline.workers: 1
-#  config.reload.automatic: true
-#  config.reload.interval: 3s
-#  pipeline.ordered: false
-#
+- pipeline.id: project-management-query-952
+  path.config: "/etc/logstash/conf.d/openproject/openproject-query-952.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+
+
 ## Minagri Pipelines
 
 - pipeline.id: minagri-nais-api1
@@ -111,12 +112,12 @@
 
 ## Twitter Pipeline
 
-# - pipeline.id: twitter
-#   path.config: "/etc/logstash/conf.d/twitter/twitter.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
+- pipeline.id: twitter
+  path.config: "/etc/logstash/conf.d/twitter/twitter.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
 
   
 

@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.rwanda</groupId>
 	<artifactId>RwandaCreateUser</artifactId>
-	<version>v1.1</version>
+	<version>v1.2</version>
 	<name>RwandaCreateUser</name>
 	<properties>
 		<java.version>1.8</java.version>

@@ -1,0 +1,1 @@
+curl -u elastic:GBIS@Elastic@321 -XGET https://kibana.dev.gcc.gov.rw/api/spaces/space/development--playground

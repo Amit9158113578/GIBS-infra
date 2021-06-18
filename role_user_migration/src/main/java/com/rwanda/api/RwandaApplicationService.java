@@ -1,13 +1,15 @@
 package com.rwanda.api;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -20,11 +22,16 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import org.apache.http.HttpEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.log4j.Logger;
-import org.apache.tomcat.util.codec.binary.Base64;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
@@ -32,7 +39,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.gson.Gson;
 import com.rwanda.RwandaApplication;
+import com.rwanda.model.RequestForObject;
 import com.rwanda.model.RequestForRoles;
+import com.rwanda.model.RequestForSpace;
 import com.rwanda.model.RequestForUsers;
 
 @Component
@@ -358,7 +367,7 @@ public class RwandaApplicationService {
 		}
 		return false;
 	}
-	
+
 	public boolean userExist(String url, String authHeader,String username) {
 
 		try {
@@ -383,20 +392,20 @@ public class RwandaApplicationService {
 				}
 			}
 			return false;
-			
+
 		} catch (IOException e) {
 			log.error("Error while getting user details against user : "+username+ " : ", e);;
 			e.printStackTrace();
 		}
 		return false;
 	}
-	
+
 	public JSONObject getUser(String url, String authHeader,String username) throws IOException {
 		log.info("Get Users by username : "+ username);
 		url = url +username;
 		log.info("URL :" + url);
 		JSONObject jsonObject = null;
-		
+
 		URL urlForGetRequest = new URL(url);
 		String readLine = null;
 		SSLContext sc = ignoreSSLCertificate();
@@ -424,5 +433,189 @@ public class RwandaApplicationService {
 			return null;
 		}
 		return jsonObject;
+	}
+
+	public JSONObject getSpaceBySpaceId(String url, String authHeader,String spaceId) throws IOException {
+		log.info("Get space :");
+		JSONObject jsonObject = null;
+		url = url + "/" + spaceId;
+		URL urlForGetRequest = new URL(url);
+		log.info("URL :" + url);
+		String readLine = null;
+		SSLContext sc = ignoreSSLCertificate();
+		if (sc == null) {
+			log.debug("Unable to create SSL context");
+			return null;
+		}
+		HttpsURLConnection connection = (HttpsURLConnection) urlForGetRequest.openConnection();
+		connection.setRequestProperty("Authorization", authHeader);
+		connection.setRequestMethod("GET");
+		connection.setSSLSocketFactory(sc.getSocketFactory());
+		int responseCode = connection.getResponseCode();
+		log.debug("Response code : " + responseCode);
+		if (responseCode == HttpURLConnection.HTTP_OK) {
+			BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			StringBuffer response = new StringBuffer();
+			while ((readLine = in.readLine()) != null) {
+				response.append(readLine);
+			}
+			in.close();
+			String stringResponse = response.toString();
+			log.debug("Response:  " + stringResponse);
+			jsonObject = new JSONObject(stringResponse);
+		} else {
+			return null;
+		}
+		return jsonObject;
+	}
+
+	public void importSpace(JSONObject jsonResponse, String baseUrl, String authHeader) {
+		log.debug("importing spaces to :"+baseUrl);
+		try {
+			log.debug("Space Request Body: " + jsonResponse);
+			Gson gson = new Gson();
+			RequestForSpace request = gson.fromJson(jsonResponse.toString(), RequestForSpace.class);
+			SSLContext sc = ignoreSSLCertificate();
+			if (sc == null) {
+				log.debug("Unable to create SSL context");
+				return;
+			}
+			URL url = null;
+			HttpsURLConnection conn = null;
+			if (getSpaceBySpaceId(baseUrl, authHeader, request.getId()) != null) {
+				url = new URL(baseUrl+"/"+jsonResponse.getString("id"));
+				conn = (HttpsURLConnection) url.openConnection();
+				conn.setRequestMethod("PUT");
+			} else {
+				url = new URL(baseUrl);
+				conn = (HttpsURLConnection) url.openConnection();
+				conn.setRequestMethod("POST");
+			}
+			conn.setDoOutput(true);
+			conn.setConnectTimeout(900000);
+			conn.setRequestProperty("Content-Type", "application/json");
+			conn.setRequestProperty("Authorization", authHeader);
+			conn.setRequestProperty("kbn-xsrf", "reporting");
+			conn.setSSLSocketFactory(sc.getSocketFactory());
+			ObjectMapper objmapper = new ObjectMapper();
+			objmapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+			String requestBody = objmapper.writeValueAsString(request);
+			log.info("Request Body for update / create : " + requestBody);
+			sendStream(conn, requestBody);
+			BufferedReader br = null;
+			log.info("Response Code: " + conn.getResponseCode());
+			if (conn.getResponseCode() == HttpStatus.CREATED.value()
+					|| (conn.getResponseCode() >= 200 && conn.getResponseCode() < 300)) {
+				br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+				log.info("Space created / Updated successfully");
+			} else {
+				br = new BufferedReader(new InputStreamReader((conn.getErrorStream())));
+				log.info("Failed to add Space!");
+			}
+			String output = readStream(br);
+			log.debug("response :  " + output);
+		} catch (Exception e) {
+			log.error("Error while creating Space : " + e);
+		}
+
+	}
+
+	public boolean exportObjects(String baseUrl, String types, String spaceId, String filePathToExportObjects,
+			String authHeader) throws IOException {
+		boolean result = false;
+		log.debug("Exporting objects:");
+		baseUrl = baseUrl + spaceId + "/api/saved_objects/_export";
+		log.info("baseUrl :" + baseUrl);
+		try {
+			RequestForObject requestForObjectExport = new RequestForObject();
+			String[] typesArray = types.split(",");
+			requestForObjectExport.setType(typesArray);
+			requestForObjectExport.setIncludeReferencesDeep("true");
+			SSLContext sc = ignoreSSLCertificate();
+			if (sc == null) {
+				log.debug("Unable to create SSL context");
+				return result;
+			}
+			URL url = new URL(baseUrl);
+			HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+			conn.setRequestMethod("POST");
+			conn.setDoOutput(true);
+			conn.setConnectTimeout(900000);
+			conn.setRequestProperty("Content-Type", "application/json");
+			conn.setRequestProperty("Authorization", authHeader);
+			conn.setRequestProperty("kbn-xsrf", "reporting");
+			conn.setSSLSocketFactory(sc.getSocketFactory());
+			ObjectMapper objmapper = new ObjectMapper();
+			objmapper.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+			String requestBody = objmapper.writeValueAsString(requestForObjectExport);
+			log.info("Request Body for exporting objects : " + requestBody);
+			sendStream(conn, requestBody);
+			BufferedReader br = null;
+			log.info("Response Code: " + conn.getResponseCode());
+			if (conn.getResponseCode() == HttpStatus.CREATED.value()
+					|| (conn.getResponseCode() >= 200 && conn.getResponseCode() < 300)) {
+				br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+				log.info("Object exported successfully");
+			} else {
+				br = new BufferedReader(new InputStreamReader((conn.getErrorStream())));
+				log.info("Failed to export Object!");
+				return result;
+			}
+			String output = readStream(br);
+
+			File dir = new File(filePathToExportObjects.trim());
+			if(!dir.exists()) {
+				dir.mkdir();
+			}
+
+			FileWriter writer = new FileWriter(filePathToExportObjects + "Exportedobjects.ndjson");
+			try {
+				writer.write(output);
+				log.debug("File exported at : " + filePathToExportObjects);
+				result = true;
+			} catch (Exception e) {
+				log.error("Exception in writing ndjson file :" + e);
+				result = false;
+			} finally {
+				writer.flush();
+				writer.close();
+			}
+		} catch (Exception e) {
+			log.error("Error while exporting Objects: " + e);
+			result = false;
+		}
+		return result;
+	}
+
+	public void importObjects(String filePath, String spaceId, String baseUrl, String authHeader) {
+		//		log.debug("Importing objects:");
+		baseUrl = baseUrl + spaceId + "/api/saved_objects/_import?overwrite=true";
+		log.info("Importing objects to baseUrl : " + baseUrl);
+		try {
+			CloseableHttpClient httpclient = HttpClients.createDefault();
+			HttpPost httppost = new HttpPost(baseUrl);
+			httppost.addHeader("Authorization", authHeader);
+			httppost.addHeader("kbn-xsrf", "reporting");
+
+			MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+			File f = new File(filePath + "Exportedobjects.ndjson");
+			if (f == null || !f.exists()) {
+				return;
+			}
+			builder.addBinaryBody("file", new FileInputStream(f), ContentType.APPLICATION_OCTET_STREAM, f.getName());
+			HttpEntity multipart = builder.build();
+			httppost.setEntity(multipart);
+			CloseableHttpResponse response = null;
+			response = httpclient.execute(httppost);
+			HttpEntity responseEntity = response.getEntity();
+			BufferedReader br = null;
+			br = new BufferedReader(new InputStreamReader((responseEntity.getContent())));
+			String output = readStream(br);
+			log.info("Response From server : " + output);
+		} catch (IOException e) {
+			log.error("IO exception : " + e);
+		} catch (Exception e) {
+			log.error("Exception  : " + e);
+		}
 	}
 }

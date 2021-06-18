@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.util.StringUtils;
+
 import com.rwanda.api.RwandaApplicationService;
 
 @SpringBootApplication
@@ -33,6 +35,83 @@ public class RwandaApplication {
 	public static boolean createUserEnable;
 
 	public static String urlToFetchExistingUsers;
+
+	public static boolean createSpaceEnable;
+
+	public static String urlToFetchSpace;
+
+	public static String urlToFetchSpaceDest;
+
+	public static String spaceIds;
+
+	public static boolean importExportObjectEnable;
+
+	public static String urlToExportObjects;
+
+	public static String typesOfObjectToBeExported;
+
+	public static String ndsJsonFilePath;
+
+	public static String spaceIdToExportObjects;
+
+	public static String urlToImportObjects;
+
+	public static String spaceIdToImportObjects;
+
+	/*@Value("${rwanda.import.objects.space}")
+	public void setSpaceIdToImportObjects(String spaceIdToImportObjects) {
+		RwandaApplication.spaceIdToImportObjects = spaceIdToImportObjects;
+	}*/
+
+	@Value("${rwanda.object.import.url}")
+	public void setUrlToImportObjects(String urlToImportObjects) {
+		RwandaApplication.urlToImportObjects = urlToImportObjects;
+	}
+
+	/*@Value("${rwanda.object.export.space}")
+	public void setSpaceIdforExportObjects(String spaceIdforExportObjects) {
+		RwandaApplication.spaceIdToExportObjects = spaceIdforExportObjects;
+	}*/
+
+	@Value("${rwanda.object.export.filepath}")
+	public void setNdsJsonFilePath(String ndsJsonFilePath) {
+		RwandaApplication.ndsJsonFilePath = ndsJsonFilePath;
+	}
+
+	@Value("${rwanda.object.export.types}")
+	public void setTypeOfObjectToBeExported(String typeOfObjectToBeExported) {
+		RwandaApplication.typesOfObjectToBeExported = typeOfObjectToBeExported;
+	}
+
+	@Value("${rwanda.object.enable}")
+	public void setCreateObjectEnable(boolean createObjectEnable) {
+		RwandaApplication.importExportObjectEnable = createObjectEnable;
+	}
+
+	@Value("${rwanda.object.export.url}")
+	public void setCreateObjectURL(String createObjectURL) {
+		RwandaApplication.urlToExportObjects = createObjectURL;
+	}
+
+	@Value("${rwanda.space.spaceids}")
+	public void setSpaceIds(String spaceIds) {
+		RwandaApplication.spaceIds = spaceIds.trim();
+	}
+
+	@Value("${rwanda.space.enable}")
+	public void setCreateSpaceEnable(boolean createSpaceEnable) {
+		RwandaApplication.createSpaceEnable = createSpaceEnable;
+	}
+
+	@Value("${rwanda.space.export.url}")
+	public void setUrlToFetchSpace(String urlToFetchSpace) {
+		RwandaApplication.urlToFetchSpace = urlToFetchSpace;
+	}
+
+	@Value("${rwanda.space.import.url}")
+	public void setUrlToFetchSpaceDest(String urlToFetchSpaceDest) {
+		RwandaApplication.urlToFetchSpaceDest = urlToFetchSpaceDest;
+	}
 
 	@Value("${rwanda.create.role}")
 	public void setCreateRoleEnable(boolean createRoleEnable) {
@@ -111,7 +190,7 @@ public class RwandaApplication {
 				try {
 					JSONObject users = callApiRequest.getUsers(urlToFetchAllUsers, authheader);
 					if (users != null) {
-//						JSONObject existingUsers = callApiRequest.getExistingUsers(urlToFetchExistingUsers, authheader);
+						//						JSONObject existingUsers = callApiRequest.getExistingUsers(urlToFetchExistingUsers, authheader);
 						callApiRequest.createUsers(users, createUserURL, authheader);
 					} else {
 						log.debug("Unable to fetch user from server:");
@@ -123,6 +202,50 @@ public class RwandaApplication {
 				}
 			} else {
 				log.info("Create user property is disabled ");
+			}
+
+			log.debug("*** Creating space section start ***");
+			if (createSpaceEnable) {
+				try {
+					if (spaceIds != null && !spaceIds.isEmpty()) {
+						String[] spaceIdArray = spaceIds.split(",");
+						for (String spaceId : spaceIdArray) {
+							JSONObject space = callApiRequest.getSpaceBySpaceId(urlToFetchSpace, authheader,
+									spaceId.trim());
+							if (space != null) {
+								callApiRequest.importSpace(space, urlToFetchSpaceDest, authheader);
+
+							} else {
+								log.debug("Unable to fetch space from server:");
+							}
+						}
+					} else {
+						log.debug("No space IDs mentioned :");
+					}
+				} catch (IOException e) {
+					log.error("Error in space API ", e);
+				} catch (Exception e) {
+					log.error("Error in space API ", e);
+				}
+			} else {
+				log.info("Create space property is disabled ");
+			}
+
+			log.debug("*** Exporting/importing Object section start ***");
+			if (importExportObjectEnable) {
+				try {
+					boolean exported = callApiRequest.exportObjects(urlToExportObjects, typesOfObjectToBeExported,
+							spaceIds, ndsJsonFilePath, authheader);
+					if (exported) {
+						callApiRequest.importObjects(ndsJsonFilePath, spaceIds, urlToImportObjects, authheader);
+					}
+				} catch (IOException e) {
+					log.error("Error in object API ", e);
+				} catch (Exception e) {
+					log.error("Error in object API ", e);
+				}
+			} else {
+				log.info("Export Object property is disabled ");
 			}
 
 			log.debug("***  End of execution ***");

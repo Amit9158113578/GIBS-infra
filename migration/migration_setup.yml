@@ -5,12 +5,12 @@
       apt: name=maven state=present
       become: yes
     
-    - name: Ensures /etc/role_user_migration dir exists
-      file: path=/etc/role_user_migration state=directory
+    - name: Ensures /etc/migration dir exists
+      file: path=/etc/migration state=directory
       become: yes
     
     - name: Copy role user folder
       copy:
-        src: ../role_user_migration/
-        dest: /etc/role_user_migration
+        src: ../migration/
+        dest: /etc/migration
       become: yes

@@ -1,0 +1,21 @@
+## User Role API templates
+
+
+.migration_api_template:
+  stage: migration_api
+  script:
+         - export
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'deploy_migration_api Start'
+         - envsubst < "migration/run_api.sh" > run_api_var.sh
+         - cp run_api_var.sh migration/run_api.sh
+
+         - envsubst < "migration/src/main/resources/${PROPERTY_FILE}.properties" > ${PROPERTY_FILE}-var.properties
+         - cp ${PROPERTY_FILE}-var.properties migration/src/main/resources/${PROPERTY_FILE}.properties
+
+         - ansible-playbook -i host migration/migration_setup.yml
+         - bash -x migration/run_api.sh
+         - echo 'deploy_migration_api End'

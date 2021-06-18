@@ -26,17 +26,53 @@ host_key_checking=False' | sudo tee  /etc/ansible/ansible.cfg
 
 #Making /etc/hosts entries
 
-grep "$node1 node1 
-$node2 node2 
-$node3 node3
-10.10.74.133 www.gov.rw" /etc/hosts
+# grep "$node1 node1 
+# $node2 node2 
+# $node3 node3
+# 10.10.74.133 www.gov.rw" /etc/hosts
+
+# if [ $? != 0 ]
+# then
+# echo "$node1 node1 
+# $node2 node2 
+# $node3 node3
+# 10.10.74.133 www.gov.rw"| sudo tee -a /etc/hosts
+# else
+# echo "hosts entries already present"
+# fi
+
+grep "$node1 node1" /etc/hosts
 
 if [ $? != 0 ]
 then
-echo "$node1 node1 
-$node2 node2 
-$node3 node3
-10.10.74.133 www.gov.rw"| sudo tee -a /etc/hosts
+echo "$node1 node1"| sudo tee -a /etc/hosts
+else
+echo "hosts entries already present"
+fi
+
+grep "$node2 node2" /etc/hosts
+
+if [ $? != 0 ]
+then
+echo "$node2 node2"| sudo tee -a /etc/hosts
+else
+echo "hosts entries already present"
+fi
+
+grep "$node3 node3" /etc/hosts
+
+if [ $? != 0 ]
+then
+echo "$node3 node3"| sudo tee -a /etc/hosts
+else
+echo "hosts entries already present"
+fi
+
+grep "10.10.74.133 www.gov.rw" /etc/hosts
+
+if [ $? != 0 ]
+then
+echo "10.10.74.133 www.gov.rw"| sudo tee -a /etc/hosts
 else
 echo "hosts entries already present"
 fi

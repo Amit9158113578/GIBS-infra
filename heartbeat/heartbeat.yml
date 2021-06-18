@@ -251,7 +251,7 @@ setup.kibana:
 # elasticsearch.ssl.certificateAuthorities: [ "config/cert/elasticsearch-ca.pem" ]
 
 output.elasticsearch:
-  hosts: "$ELASTICSEARCH_HOSTS"
+  hosts: ["$ELASTICSEARCH_HOSTS"]
   ssl.certificate_authorities: /etc/heartbeat/security/ca/ca.crt
   # Optional protocol and basic auth credentials.
   protocol: "https"

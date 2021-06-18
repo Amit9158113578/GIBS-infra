@@ -4,6 +4,14 @@
     - name: Ensure heartbeat is at the "{{ lookup('ENV','ELK_VERSION') }}" version
       apt: name=heartbeat-elastic={{ lookup('ENV','ELK_VERSION') }} state=present
       become: yes
+    - name: Ensures /etc/heartbeat/security dir exists
+      file: path=/etc/heartbeat/security state=directory
+      become: yes
+    - name: Copy security folder 
+      copy:
+        src: security
+        dest: /etc/heartbeat/
+      become: yes
     - name: Copy heartbeat config yml
       copy:
         src: heartbeat.yml

@@ -3,4 +3,4 @@ sudo apt-get update -y
 sudo apt-get install default-jre -y 
 wget "$LDAP_URL"
 dpkg -i $LDAP_FILE
-service $LDAP_SERVICE start
+/etc/init.d/$LDAP_SERVICE status

@@ -11,13 +11,13 @@
 	</parent>
 	<groupId>com.rwanda</groupId>
 	<artifactId>RwandaCreateUser</artifactId>
-	<version>v1.4</version>
+	<version>v1.5</version>
 	<name>RwandaCreateUser</name>
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
 
-		<profiles>
+	<profiles>
 		<profile>
 			<id>dev</id>
 			<properties>
@@ -76,10 +76,15 @@
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.wso2.apache.httpcomponents/httpclient -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.wso2.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.3.1.wso2v1</version>
+		</dependency> -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.2</version>
 		</dependency>
 
 
@@ -112,20 +117,20 @@
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
 		</dependency>
-		
+
 		<dependency>
-		    <groupId>javax.mail</groupId>
-		    <artifactId>mail</artifactId>
-		    <version>1.4.7</version>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
 		</dependency>
-		
+
 		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpmime -->
 		<dependency>
-		    <groupId>org.apache.httpcomponents</groupId>
-		    <artifactId>httpmime</artifactId>
-		    <version>4.3.1</version>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.3.1</version>
 		</dependency>
-		
+
 
 	</dependencies>
 

@@ -6,6 +6,7 @@ stages:
     - logstash_updates      # For updates to logstash.yml or pipelines.yml
     - maintenance           # For pulling logs into GIT
     - migration_api         # For User and Role migration API
+    - ldap                  # For installing LDAP
     - temp                  # For running temporary scripts for testing or other purposes
 
 # OLD

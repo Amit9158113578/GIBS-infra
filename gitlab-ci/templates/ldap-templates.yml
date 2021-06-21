@@ -1,0 +1,17 @@
+## LDAP setup templates 
+
+.ldap_setup_template:
+  stage: ldap
+  script:
+         - export
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'LDAP SETUP START'
+
+         - envsubst < "ldap/ldap-setup.sh" > ldap-setup_var.sh
+         - cp ldap-setup_var.sh ldap/ldap-setup.sh
+
+         - bash -x ldap/ldap-setup.sh
+         - echo 'LDAP SETUP END'

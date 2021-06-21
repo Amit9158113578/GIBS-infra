@@ -1,0 +1,19 @@
+## LDAP setup
+## LDAP environment setup
+
+## DEV
+
+ldap_setup_dev_manual:
+  extends:
+    - .ldap_setup_template
+    - .variables_dev
+    - .rules_dev_manual
+
+## TEST
+ldap_setup_test_manual:
+  extends:
+    - .ldap_setup_template
+    - .variables_test
+    - .rules_test_manual
+
+## PROD

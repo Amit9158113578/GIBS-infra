@@ -2,6 +2,9 @@ package com.rwanda;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -220,7 +223,7 @@ public class RwandaApplication {
 							}
 						}
 					} else {
-						log.debug("No space IDs mentioned :");
+						log.debug("Waringing:: No space IDs mentioned :");
 					}
 				} catch (IOException e) {
 					log.error("Error in space API ", e);
@@ -234,10 +237,19 @@ public class RwandaApplication {
 			log.debug("*** Exporting/importing Object section start ***");
 			if (importExportObjectEnable) {
 				try {
-					boolean exported = callApiRequest.exportObjects(urlToExportObjects, typesOfObjectToBeExported,
-							spaceIds, ndsJsonFilePath, authheader);
-					if (exported) {
-						callApiRequest.importObjects(ndsJsonFilePath, spaceIds, urlToImportObjects, authheader);
+					if(spaceIds== null || spaceIds.isEmpty() || typesOfObjectToBeExported == null || typesOfObjectToBeExported.isEmpty()) {
+						log.debug("Warning:: SpaceIDs or object Types is not mention in property file");
+					} else {
+						String[] spaceIdArray = spaceIds.split(",");
+						for (String spaceId : spaceIdArray) {
+							String[] typesArray = typesOfObjectToBeExported.split(",");
+							List<String> objectTypes = new LinkedList(Arrays.asList(typesArray));							
+							boolean exported = callApiRequest.exportObjects(urlToExportObjects, objectTypes,
+									spaceId, ndsJsonFilePath, authheader);
+							if (exported) {
+								callApiRequest.importObjects(ndsJsonFilePath, spaceId, urlToImportObjects, authheader);
+							}
+						}
 					}
 				} catch (IOException e) {
 					log.error("Error in object API ", e);

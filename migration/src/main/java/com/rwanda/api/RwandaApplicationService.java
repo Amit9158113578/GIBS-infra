@@ -14,6 +14,7 @@ import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Iterator;
+import java.util.List;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.HttpsURLConnection;
@@ -32,6 +33,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.log4j.Logger;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
@@ -39,6 +41,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.google.gson.Gson;
 import com.rwanda.RwandaApplication;
+import com.rwanda.model.APIResponse;
 import com.rwanda.model.RequestForObject;
 import com.rwanda.model.RequestForRoles;
 import com.rwanda.model.RequestForSpace;
@@ -520,16 +523,15 @@ public class RwandaApplicationService {
 
 	}
 
-	public boolean exportObjects(String baseUrl, String types, String spaceId, String filePathToExportObjects,
+	public boolean exportObjects(String baseUrl, List<String> objectTypes, String spaceId, String filePathToExportObjects,
 			String authHeader) throws IOException {
 		boolean result = false;
 		log.debug("Exporting objects:");
 		baseUrl = baseUrl + spaceId + "/api/saved_objects/_export";
 		log.info("baseUrl :" + baseUrl);
 		try {
-			RequestForObject requestForObjectExport = new RequestForObject();
-			String[] typesArray = types.split(",");
-			requestForObjectExport.setType(typesArray);
+			RequestForObject requestForObjectExport = new RequestForObject();			
+			requestForObjectExport.setType(objectTypes);
 			requestForObjectExport.setIncludeReferencesDeep("true");
 			SSLContext sc = ignoreSSLCertificate();
 			if (sc == null) {
@@ -555,14 +557,35 @@ public class RwandaApplicationService {
 			if (conn.getResponseCode() == HttpStatus.CREATED.value()
 					|| (conn.getResponseCode() >= 200 && conn.getResponseCode() < 300)) {
 				br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
-				log.info("Object exported successfully");
 			} else {
 				br = new BufferedReader(new InputStreamReader((conn.getErrorStream())));
 				log.info("Failed to export Object!");
+				String output = readStream(br);
+				if(output!=null && !output.isEmpty()) {
+					APIResponse resp = objmapper.readValue(output, APIResponse.class);
+					if(resp !=null) {
+						if(resp.getMessage().contains("Trying to export non-exportable type(s)")) {
+							String type = resp.getMessage().substring(resp.getMessage().indexOf(":")+1);
+							if(type !=null ) {
+								String split[] = type.split(",");
+								for(String input: split) {
+									log.debug("deleteing type: "+input);
+									input = input.trim();
+									objectTypes.remove(input);
+								}
+								return exportObjects(RwandaApplication.urlToExportObjects, objectTypes, spaceId, filePathToExportObjects, authHeader);
+							}
+
+						}
+ 					}
+				}
 				return result;
 			}
 			String output = readStream(br);
-
+			if(output.contains("exportedCount\":0")){
+				log.error("Invalid space ID : ");
+				return result;
+			}
 			File dir = new File(filePathToExportObjects.trim());
 			if(!dir.exists()) {
 				dir.mkdir();
@@ -572,6 +595,7 @@ public class RwandaApplicationService {
 			try {
 				writer.write(output);
 				log.debug("File exported at : " + filePathToExportObjects);
+				log.info("Object exported successfully");
 				result = true;
 			} catch (Exception e) {
 				log.error("Exception in writing ndjson file :" + e);

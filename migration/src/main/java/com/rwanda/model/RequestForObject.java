@@ -6,14 +6,14 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 @JsonInclude(Include.NON_NULL)
 public class RequestForObject {
 
-	String [] type;
+	List<String> type;
 	String includeReferencesDeep;
 	
-	public String[] getType() {
+	public List<String> getType() {
 		return type;
 	}
 
-	public void setType(String[] type) {
+	public void setType(List<String> type) {
 		this.type = type;
 	}
 
@@ -24,6 +24,4 @@ public class RequestForObject {
 	public void setIncludeReferencesDeep(String includeReferencesDeep) {
 		this.includeReferencesDeep = includeReferencesDeep;
 	}
-
-	
 }

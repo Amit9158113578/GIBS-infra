@@ -10,6 +10,10 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
@@ -26,6 +30,11 @@ import javax.net.ssl.X509TrustManager;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ssl.NoopHostnameVerifier;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.conn.ssl.SSLContextBuilder;
+import org.apache.http.conn.ssl.SSLContexts;
+import org.apache.http.conn.ssl.TrustSelfSignedStrategy;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
@@ -616,18 +625,34 @@ public class RwandaApplicationService {
 		baseUrl = baseUrl + spaceId + "/api/saved_objects/_import?overwrite=true";
 		log.info("Importing objects to baseUrl : " + baseUrl);
 		try {
-			CloseableHttpClient httpclient = HttpClients.createDefault();
+//			CloseableHttpClient httpclient = HttpClients.createDefault();
+			//SSLContext sc = ignoreSSLCertificate();
+			
+			/*
+			 * SSLContext sc = getContext(); if (sc == null) {
+			 * log.debug("Unable to create SSL context"); return ; }
+			 */
+			/*
+			 * SSLConnectionSocketFactory factory = new SSLConnectionSocketFactory(sc,
+			 * SSLConnectionSocketFactory.BROWSER_COMPATIBLE_HOSTNAME_VERIFIER);
+			 * CloseableHttpClient httpclient =
+			 * HttpClients.custom().setSSLSocketFactory(factory).build();
+			 */
+			
+		
+			CloseableHttpClient httpclient = createAcceptSelfSignedCertificateClient();
+			
 			HttpPost httppost = new HttpPost(baseUrl);
 			httppost.addHeader("Authorization", authHeader);
 			httppost.addHeader("kbn-xsrf", "reporting");
 
-			MultipartEntityBuilder builder = MultipartEntityBuilder.create();
+			MultipartEntityBuilder builder1 = MultipartEntityBuilder.create();
 			File f = new File(filePath + "Exportedobjects.ndjson");
 			if (f == null || !f.exists()) {
 				return;
 			}
-			builder.addBinaryBody("file", new FileInputStream(f), ContentType.APPLICATION_OCTET_STREAM, f.getName());
-			HttpEntity multipart = builder.build();
+			builder1.addBinaryBody("file", new FileInputStream(f), ContentType.APPLICATION_OCTET_STREAM, f.getName());
+			HttpEntity multipart = builder1.build();
 			httppost.setEntity(multipart);
 			CloseableHttpResponse response = null;
 			response = httpclient.execute(httppost);
@@ -642,4 +667,28 @@ public class RwandaApplicationService {
 			log.error("Exception  : " + e);
 		}
 	}
+	
+	private static CloseableHttpClient createAcceptSelfSignedCertificateClient()
+			throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+
+			 // use the TrustSelfSignedStrategy to allow Self Signed Certificates
+			SSLContext sslContext = org.apache.http.ssl.SSLContextBuilder
+			.create()
+			.loadTrustMaterial(new TrustSelfSignedStrategy())
+			.build();
+
+			 // we can optionally disable hostname verification.
+			// if you don't want to further weaken the security, you don't have to include this.
+			HostnameVerifier allowAllHosts = new NoopHostnameVerifier();
+			// create an SSL Socket Factory to use the SSLContext with the trust self signed certificate strategy
+			// and allow all hosts verifier.
+			SSLConnectionSocketFactory connectionFactory = new SSLConnectionSocketFactory(sslContext, allowAllHosts);
+			// finally create the HttpClient using HttpClient factory methods and assign the ssl socket factory
+			return HttpClients
+			.custom()
+			.setSSLSocketFactory(connectionFactory)
+			.build();
+			}
+	
+	
 }

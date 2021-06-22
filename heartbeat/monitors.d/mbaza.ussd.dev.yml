@@ -20,7 +20,7 @@
   name: "mbaza-dev"
 
   # Enable/Disable monitor
-  enabled: true
+  enabled: false
 
   # Configure task schedule
   schedule: '@every 30s' # every 5 seconds from start of beat

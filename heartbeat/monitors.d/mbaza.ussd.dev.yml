@@ -5,7 +5,7 @@
 
 - id: mbaza-dev
   type: http # monitor type `http`. Connect via HTTP an optionally verify response
-  tags: ["dev", "mbaza", "Digital Umuganda" ]
+  tags: ["dev", "mbaza" ]
   processors:
     - add_observer_metadata:
         geo:
@@ -26,7 +26,6 @@
   schedule: '@every 30s' # every 5 seconds from start of beat
 
   # Configure URLs to ping
-  #hosts: ["https://projectmanagement.risa.rw"]
   urls:
       - http://10.10.77.250:8088/mbazaussd/ussd?msisdn=0788683008&input=770&newRequest=1
   # Configure IP protocol types to ping on if hostnames are configured.

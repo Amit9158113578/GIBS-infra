@@ -5,7 +5,7 @@
 
 - id: mbaza-production
   type: http # monitor type `http`. Connect via HTTP an optionally verify response
-  tags: ["production", "mbaza", "Digital Umuganda" ]
+  tags: ["prod", "mbaza" ]
   processors:
     - add_observer_metadata:
         geo:
@@ -17,7 +17,7 @@
           region_iso_code: KG
           city_name: Kigali
   # Monitor name used for job name and document type
-  name: "mbaza-production"
+  name: "mbaza-prod"
 
   # Enable/Disable monitor
   enabled: true

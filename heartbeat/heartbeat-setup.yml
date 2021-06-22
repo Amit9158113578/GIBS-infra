@@ -18,7 +18,7 @@
         dest: /etc/heartbeat
       become: yes
     - name: Copy monitors.d folder
-      copy:
+      synchronize:
         src: monitors.d
         dest: /etc/heartbeat
       become: yes

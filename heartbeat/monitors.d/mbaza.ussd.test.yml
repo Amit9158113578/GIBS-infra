@@ -3,7 +3,7 @@
 # The .example extension on this file must be removed for it to
 # be loaded.
 
-- id: mbaza-staging
+- id: mbaza-test
   type: http # monitor type `http`. Connect via HTTP an optionally verify response
   tags: ["test", "mbaza"]
   processors:

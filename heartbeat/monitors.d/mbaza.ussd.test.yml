@@ -28,7 +28,7 @@
   # Configure URLs to ping
   #hosts: ["https://projectmanagement.risa.rw"]
   urls:
-      - http://10.10.77.245:8088/mbazaussd/ussd?msisdn=0788683008&input=770&newRequest=1
+      - http://10.10.77.252:8088/mbazaussd/ussd?msisdn=0788683008&input=770&newRequest=1
   # Configure IP protocol types to ping on if hostnames are configured.
   # Ping all resolvable IPs if `mode` is `all`, or only one IP if `mode` is `any`.
   ipv4: true

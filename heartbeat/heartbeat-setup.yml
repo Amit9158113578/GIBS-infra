@@ -21,6 +21,8 @@
       synchronize:
         src: monitors.d
         dest: /etc/heartbeat
+        delete: yes
+        dirs: yes
       become: yes
     - name: stop heartbeat
       service:

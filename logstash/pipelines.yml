@@ -65,8 +65,8 @@
 
 ## project Management Pipelines
 
-- pipeline.id: project-management-query-952
-  path.config: "/etc/logstash/conf.d/openproject/openproject-query-952.conf"
+- pipeline.id: openproject-management
+  path.config: "/etc/logstash/conf.d/openproject/openproject-pipeline.conf"
   pipeline.workers: 1
   config.reload.automatic: true
   config.reload.interval: 3s

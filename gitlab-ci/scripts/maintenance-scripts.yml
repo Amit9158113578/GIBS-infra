@@ -17,3 +17,8 @@ logs_test_manual:
     - .rules_test_manual
 
 ## PROD
+logs_prod_manual:
+  extends:
+    - .log_template
+    - .variables_prod
+    - .rules_prod_manual

@@ -21,7 +21,11 @@ logstash_setup_test_manual:
      - .rules_test_manual
 
 ## PROD
-
+logstash_setup_prod_manual:
+   extends:
+     - .logstash_setup_template
+     - .variables_prod
+     - .rules_prod_manual
 
 
 
@@ -47,7 +51,11 @@ logstash_pipelines_update_test:
     - .rules_test_manual
 
 ## PROD
-
+logstash_pipelines_update_prod:
+  extends:
+    - .logstash_pipelines_update_template
+    - .variables_prod
+    - .rules_prod_manual
 
 
 ##########################################################
@@ -72,7 +80,11 @@ logstash_config_update_test:
     - .rules_test_manual
 
 ## PROD
-
+logstash_config_update_prod:
+  extends:
+    - .logstash_config_update_template
+    - .variables_prod
+    - .rules_prod_manual
 
 
 ##########################################################
@@ -97,7 +109,11 @@ logstash_files_copy_test_external:
     - .rules_test_external
 
 ## PROD
-
+logstash_files_copy_prod_external:
+  extends:
+    - .logstash_files_copy_template
+    - .variables_prod
+    - .rules_prod_external
 
 
 ## OLD

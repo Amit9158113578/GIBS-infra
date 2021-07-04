@@ -17,3 +17,8 @@ metricbeat_setup_test_manual:
     - .rules_test_manual
 
 ## PROD
+metricbeat_setup_prod_manual:
+  extends:
+    - .metricbeat_setup_template
+    - .variables_prod
+    - .rules_prod_manual

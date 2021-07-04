@@ -18,3 +18,8 @@ kibana_setup_test_manual:
     - .rules_test_manual
 
 ## PROD
+kibana_setup_prod_manual:
+  extends:
+    - .kibana_setup_template
+    - .variables_prod
+    - .rules_prod_manual

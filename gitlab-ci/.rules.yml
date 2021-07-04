@@ -82,6 +82,44 @@
       when: on_success
 
 
+## PROD
+
+# For manual jobs
+.rules_prod_manual:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "prod"'
+      when: manual
+    - when: never
+  allow_failure: true
+
+# For auto jobs like logs
+.rules_prod_auto:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "prod"'
+      when: on_success
+
+# For changes made to pipelines.yml - AUTO runs logstash restart with pipelines.yml copy
+.rules_prod_auto_changes:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline"'
+      when: never
+    - if: '$CI_COMMIT_BRANCH == "prod"'
+      changes:
+        - logstash/pipelines.yml
+      when: on_success
+
+# Push files from external (submodules)
+.rules_prod_external:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "pipeline" && $CI_COMMIT_BRANCH == "prod"'
+      changes:
+        - sub-projects
+      when: on_success
+
 
 
 

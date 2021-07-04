@@ -6,3 +6,17 @@ migration_api_dev_manual:
     - .migration_api_template
     - .variables_dev
     - .rules_dev_manual
+
+## TEST
+migration_api_test_manual:
+  extends:
+    - .migration_api_template
+    - .variables_test
+    - .rules_test_manual
+
+## PROD
+migration_api_prod_manual:
+  extends:
+    - .migration_api_template
+    - .variables_prod
+    - .rules_prod_manual

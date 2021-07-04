@@ -45,13 +45,31 @@
     NODE2: $NODE2_TEST
     NODE3: $NODE3_TEST
     ENV: TEST
-    ELK_VERSION: "7.12.1"
-    LOGSTASH_VERSION: "1:7.12.1-1"
+    ELK_VERSION: "7.13.2"
+    LOGSTASH_VERSION: "1:7.13.2-1"
     ELASTICSEARCH_PASSWORD: $ELASTICSEARCH_PASSWORD_TEST
     ELASTICSEARCH_USERNAME: $ELASTICSEARCH_USERNAME_TEST
     ELASTICSEARCH_URL: "https://gbis-elastic.staging.risa.gov.rw:443"
     KIBANA_URL: "https://gbis.staging.risa.gov.rw"
 
+.variables_prod:
+  extends:
+    .variables_general
+  environment:
+    name: prod
+  tags:
+    - prod
+  variables:
+    NODE1: $NODE1_PROD
+    NODE2: $NODE2_PROD
+    NODE3: $NODE3_PROD
+    ENV: PROD
+    ELK_VERSION: "7.13.2"
+    LOGSTASH_VERSION: "1:7.13.2-1"
+    ELASTICSEARCH_PASSWORD: $ELASTICSEARCH_PASSWORD_PROD
+    ELASTICSEARCH_USERNAME: $ELASTICSEARCH_USERNAME_PROD
+    ELASTICSEARCH_URL: ""
+    KIBANA_URL: ""
 
 
 

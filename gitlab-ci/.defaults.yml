@@ -5,7 +5,8 @@ stages:
     - deploy_elk_stack      # For deploying different ELK modules/componenets
     - logstash_updates      # For updates to logstash.yml or pipelines.yml
     - maintenance           # For pulling logs into GIT
-    - user_role_api         # For User and Role migration API
+    - migration_api         # For User and Role migration API
+    - ldap                  # For installing LDAP
     - temp                  # For running temporary scripts for testing or other purposes
 
 # OLD

@@ -17,3 +17,8 @@ base_setup_test_manual:
     - .rules_test_manual
 
 ## PROD
+base_setup_prod_manual:
+  extends:
+    - .base_setup_template
+    - .variables_prod
+    - .rules_prod_manual

@@ -18,9 +18,11 @@
         dest: /etc/heartbeat
       become: yes
     - name: Copy monitors.d folder
-      copy:
+      synchronize:
         src: monitors.d
         dest: /etc/heartbeat
+        delete: yes
+        dirs: yes
       become: yes
     - name: stop heartbeat
       service:

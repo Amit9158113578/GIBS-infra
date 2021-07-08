@@ -1,8 +1,0 @@
-## User Role API Scripts
-
-## DEV
-user_role_api_dev_manual:
-  extends:
-    - .user_role_api_template
-    - .variables_dev
-    - .rules_dev_manual

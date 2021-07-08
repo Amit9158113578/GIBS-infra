@@ -8,6 +8,9 @@
     KIBANA_XPACK_ENCRYPTIONKEY: "BDHcisme3231234msid8493029384930281hc"
     KIBANA_HOSTS: https://node1:5601", "https://node2:5601
     KIBANA_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY: "BDHcisme3231234msid8493029384930281hc"
+    LDAP_URL: "https://apachemirror.wuchna.com//directory/apacheds/dist/2.0.0.AM26/apacheds-2.0.0.AM26-amd64.deb"
+    LDAP_FILE: "apacheds-2.0.0.AM26-amd64.deb"
+    LDAP_SERVICE: "apacheds-2.0.0.AM26-default"
 
 
 .variables_dev:
@@ -22,8 +25,8 @@
     NODE2: $NODE2_DEV
     NODE3: $NODE3_DEV
     ENV: DEV
-    ELK_VERSION: "7.12.1"
-    LOGSTASH_VERSION: "1:7.12.1-1"
+    ELK_VERSION: "7.13.3"
+    LOGSTASH_VERSION: "1:7.13.3-1"
     ELASTICSEARCH_PASSWORD: $ELASTICSEARCH_PASSWORD_DEV
     ELASTICSEARCH_USERNAME: $ELASTICSEARCH_USERNAME_DEV
     KIBANA_URL: "https://kibana.dev.gcc.gov.rw"
@@ -49,6 +52,41 @@
     ELASTICSEARCH_URL: "https://gbis-elastic.staging.risa.gov.rw:443"
     KIBANA_URL: "https://gbis.staging.risa.gov.rw"
 
+.variables_prod:
+  extends:
+    .variables_general
+  environment:
+    name: prod
+  tags:
+    - prod
+  variables:
+    NODE1: $NODE1_PROD
+    NODE2: $NODE2_PROD
+    NODE3: $NODE3_PROD
+    ENV: PROD
+    ELK_VERSION: "7.12.1"
+    LOGSTASH_VERSION: "1:7.12.1-1"
+    ELASTICSEARCH_PASSWORD: $ELASTICSEARCH_PASSWORD_PROD
+    ELASTICSEARCH_USERNAME: $ELASTICSEARCH_USERNAME_PROD
+    ELASTICSEARCH_URL: ""
+    KIBANA_URL: ""
+    ENABLE_ROLE: "true"
+    NO_OF_ROLES_USER_MIGRATE: "ALL"
+    ENABLE_USER: "true"
+    ENABLE_OBJECT: "true"
+    ENABLE_SPACE: "true"
+    OBJECT_SOURCE: "https://10.10.73.26:5601/s/"
+    OBJECT_DEST: "https://10.10.73.29:5601/s/"
+    #OBJECT_TYPE: "index-pattern,visualization,dashboard,lens,search,config,canvas-workpad,url,map,tag,query,graph-workspace,canvas-element,infrastructure-ui-source,metrics-explorer-view,inventory-view,apm-indices"
+    OBJECT_TYPE: "dashboard,search,index-pattern,url,visualization,lens,config,query,canvas-element,canvas-workpad,graph-workspace,tag,map,infrastructure-ui-source,metrics-explorer-view,inventory-view,apm-indices"
+    PROPERTY_FILE: "application-dev"
+    ROLE_SOURCE: "https://gbis.staging.risa.gov.rw/api/security/role?pretty"
+    ROLE_DEST: "https://10.10.73.29:5601/api/security/role/"
+    SPACE_ID: "national-application--government-command-center"
+    SPACE_SOURCE: "https://10.10.73.26:5601/api/spaces/space"
+    SPACE_DEST: "https://10.10.73.29:5601/api/spaces/space"
+    USER_SOURCE: "https://10.10.73.26:9200/_security/user?pretty"
+    USER_DEST: "https://10.10.73.29:9200/_security/user/"
 
 
 

@@ -17,3 +17,9 @@ elasticsearch_setup_test_manual:
     - .rules_test_manual
 
 ## PROD
+
+elasticsearch_setup_prod_manual:
+  extends:
+    - .elasticsearch_setup_template
+    - .variables_prod
+    - .rules_prod_manual

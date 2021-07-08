@@ -17,3 +17,8 @@ heartbeat_setup_test_manual:
     - .rules_test_manual
 
 ## PROD
+heartbeat_setup_prod_manual:
+  extends:
+    - .heartbeat_setup_template
+    - .variables_prod
+    - .rules_prod_manual

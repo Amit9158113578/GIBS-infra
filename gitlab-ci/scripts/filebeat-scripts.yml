@@ -17,3 +17,8 @@ filebeat_setup_test_manual:
     - .rules_test_manual
 
 ## PROD
+filebeat_setup_prod_manual:
+  extends:
+    - .filebeat_setup_template
+    - .variables_prod
+    - .rules_prod_manual

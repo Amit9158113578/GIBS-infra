@@ -14,22 +14,30 @@
          - envsubst < "heartbeat/heartbeat.yml" > heartbeat_var.yml
          - cp heartbeat_var.yml heartbeat/heartbeat.yml
 
-         - echo '--- Monitors - Elastic DEV ---'
-         - envsubst < "heartbeat/monitors.d/elastic-dev-gcc.yml" > elastic-dev-gcc_var.yml
-         - cp elastic-dev-gcc_var.yml heartbeat/monitors.d/elastic-dev-gcc.yml
+        #  - echo '--- Monitors - Elastic DEV ---'
+        #  - envsubst < "heartbeat/monitors.d/elastic-dev-gcc.yml" > elastic-dev-gcc_var.yml
+        #  - cp elastic-dev-gcc_var.yml heartbeat/monitors.d/elastic-dev-gcc.yml
 
-         - echo '--- Monitors - Elastic STAGE ---'
-         - envsubst < "heartbeat/monitors.d/elastic-staging-gcc.yml" > elastic-staging-gcc_var.yml
-         - cp elastic-staging-gcc_var.yml heartbeat/monitors.d/elastic-staging-gcc.yml
+        #  - echo '--- Monitors - Elastic STAGE ---'
+        #  - envsubst < "heartbeat/monitors.d/elastic-staging-gcc.yml" > elastic-staging-gcc_var.yml
+        #  - cp elastic-staging-gcc_var.yml heartbeat/monitors.d/elastic-staging-gcc.yml
 
-         - echo '--- Monitors - Kibana DEV ---'
-         - envsubst < "heartbeat/monitors.d/kibana-dev-gcc.yml" > kibana-dev-gcc_var.yml
-         - cp kibana-dev-gcc_var.yml heartbeat/monitors.d/kibana-dev-gcc.yml
+        #  - echo '--- Monitors - Kibana DEV ---'
+        #  - envsubst < "heartbeat/monitors.d/kibana-dev-gcc.yml" > kibana-dev-gcc_var.yml
+        #  - cp kibana-dev-gcc_var.yml heartbeat/monitors.d/kibana-dev-gcc.yml
 
-         - echo '--- Monitors - Kibana STAGE ---'
-         - envsubst < "heartbeat/monitors.d/kibana-staging-gcc.yml" > kibana-staging-gcc_var.yml
-         - cp kibana-staging-gcc_var.yml heartbeat/monitors.d/kibana-staging-gcc.yml
-         
+        #  - echo '--- Monitors - Kibana STAGE ---'
+        #  - envsubst < "heartbeat/monitors.d/kibana-staging-gcc.yml" > kibana-staging-gcc_var.yml
+        #  - cp kibana-staging-gcc_var.yml heartbeat/monitors.d/kibana-staging-gcc.yml
+
+        #  - echo '--- Monitors - Mbaza PROD ---'
+        #  - envsubst < "heartbeat/monitors.d/mbaza.ussd.prod.yml" > temp.yml
+        #  - cp temp.yml heartbeat/monitors.d/mbaza.ussd.prod.yml         
+
+        #  - echo '--- Monitors - Mbaza TEST ---'
+        #  - envsubst < "heartbeat/monitors.d/mbaza.ussd.test.yml" > temp.yml
+        #  - cp temp.yml heartbeat/monitors.d/mbaza.ussd.test.yml  
+
          - echo 'Prepare Variables END'
          - echo 'Heartbeat DEPLOY START'
          - ansible-playbook -i host heartbeat/heartbeat-setup.yml

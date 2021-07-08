@@ -1,25 +1,22 @@
-## Kibana setup
+## User Role API Scripts
 
 ## DEV
-
-kibana_setup_dev_manual:
+migration_api_dev_manual:
   extends:
-    - .kibana_setup_template
+    - .migration_api_template
     - .variables_dev
     - .rules_dev_manual
 
-
 ## TEST
-
-kibana_setup_test_manual:
+migration_api_test_manual:
   extends:
-    - .kibana_setup_template
+    - .migration_api_template
     - .variables_test
     - .rules_test_manual
 
 ## PROD
-kibana_setup_prod_manual:
+migration_api_prod_manual:
   extends:
-    - .kibana_setup_template
+    - .migration_api_template
     - .variables_prod
     - .rules_prod_manual

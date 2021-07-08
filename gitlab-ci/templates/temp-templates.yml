@@ -5,3 +5,4 @@
   script:
          - export
          - cat base_setup/base_setup.sh
+         - bash -x temp/temp.sh

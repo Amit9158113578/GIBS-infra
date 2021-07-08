@@ -70,6 +70,22 @@
     ELASTICSEARCH_USERNAME: $ELASTICSEARCH_USERNAME_PROD
     ELASTICSEARCH_URL: ""
     KIBANA_URL: ""
+    ENABLE_ROLE: "true"
+    NO_OF_ROLES_USER_MIGRATE: "ALL"
+    ENABLE_USER: "true"
+    ENABLE_OBJECT: "true"
+    ENABLE_SPACE: "true"
+    OBJECT_SOURCE: "https://10.10.73.26:5601/s/"
+    OBJECT_DEST: "https://10.10.73.29:5601/s/"
+    OBJECT_TYPE: "index-pattern,visualization,dashboard,lens,search,config,canvas-workpad,url,map,tag,query,graph-workspace,canvas-element,infrastructure-ui-source,metrics-explorer-view,inventory-view,apm-indices"
+    PROPERTY_FILE: "application-dev"
+    ROLE_SOURCE: "https://kibana.dev.gcc.gov.rw/api/security/role?pretty"
+    ROLE_DEST: "https://10.10.73.29:5601/api/security/role/"
+    SPACE_ID: "development--playground,training,application--twitter-analytics,monitoring--mbaza-ai-chatbot,monitoring--risa,application--open-project"
+    SPACE_SOURCE: "https://10.10.73.26:5601/api/spaces/space"
+    SPACE_DEST: "https://10.10.73.29:5601/api/spaces/space"
+    USER_SOURCE: "https://10.10.73.26:9200/_security/user?pretty"
+    USER_DEST: "https://10.10.73.29:9200/_security/user/"
 
 
 

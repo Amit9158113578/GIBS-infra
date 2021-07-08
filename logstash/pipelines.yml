@@ -75,26 +75,26 @@
 
 ## Minagri Pipelines
 
-- pipeline.id: minagri-nais-api1
-  path.config: "/etc/logstash/conf.d/minagri-nais/minagri-nais-api1.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
+#- pipeline.id: minagri-nais-api1
+#  path.config: "/etc/logstash/conf.d/minagri-nais/minagri-nais-api1.conf"
+#  pipeline.workers: 1
+#  config.reload.automatic: true
+#  config.reload.interval: 3s
+#  pipeline.ordered: false
 
-- pipeline.id: minagri-nais-api2
-  path.config: "/etc/logstash/conf.d/minagri-nais/minagri-nais-api2.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
+#- pipeline.id: minagri-nais-api2
+#  path.config: "/etc/logstash/conf.d/minagri-nais/minagri-nais-api2.conf"
+#  pipeline.workers: 1
+#  config.reload.automatic: true
+#  config.reload.interval: 3s
+#  pipeline.ordered: false
 
-- pipeline.id: minagri-nais-api3
-  path.config: "/etc/logstash/conf.d/minagri-nais/minagri-nais-api3.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
+#- pipeline.id: minagri-nais-api3
+#  path.config: "/etc/logstash/conf.d/minagri-nais/minagri-nais-api3.conf"
+#  pipeline.workers: 1
+#  config.reload.automatic: true
+#  config.reload.interval: 3s
+#  pipeline.ordered: false
 
 - pipeline.id: minagri-nais-apis-all
   path.config: "/etc/logstash/conf.d/minagri-nais/minagri-nais-apis-all.conf"

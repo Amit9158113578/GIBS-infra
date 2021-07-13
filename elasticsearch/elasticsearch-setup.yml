@@ -53,6 +53,22 @@
                   unmapped_groups_as_roles: false
     es_plugins:
      - plugin: ingest-attachment
+  tasks:
+    - name: Copy role mapping
+      copy:
+        src: role_mapping.yml
+        dest: /etc/elasticsearch/role_mapping.yml
+        force: yes
+      become: yes
+    - name: restart elasticsearch
+      service:
+          name: elasticsearch
+          state: restarted
+      become: yes
+
+
+
+
 
 - hosts: node2
   roles:
@@ -108,6 +124,19 @@
                   unmapped_groups_as_roles: false
     es_plugins:
      - plugin: ingest-attachment
+  tasks:
+    - name: Copy role mapping
+      copy:
+        src: role_mapping.yml
+        dest: /etc/elasticsearch/role_mapping.yml
+        force: yes
+      become: yes
+    - name: restart elasticsearch
+      service:
+          name: elasticsearch
+          state: restarted
+      become: yes
+
 
 - hosts: node3
   roles:
@@ -163,4 +192,15 @@
                   unmapped_groups_as_roles: false
     es_plugins:
      - plugin: ingest-attachment
-
+  tasks:
+    - name: Copy role mapping
+      copy:
+        src: role_mapping.yml
+        dest: /etc/elasticsearch/role_mapping.yml
+        force: yes
+      become: yes
+    - name: restart elasticsearch
+      service:
+          name: elasticsearch
+          state: restarted
+      become: yes

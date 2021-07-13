@@ -10,4 +10,6 @@
          - echo $NODE3
          - echo 'ELASTICSEARCH SETUP START'
          - ansible-playbook -i host elasticsearch/elasticsearch-setup.yml
+         - cp elasticsearch/role_mapping.yml /etc/elasticsearch/role_mapping.yml
+         - service elasticsearch restart
          - echo 'ELASTICSEARCH SETUP END'

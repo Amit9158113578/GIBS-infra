@@ -40,9 +40,9 @@
               ldap:
                 ldap1:
                   order: 1
-                  url: "ldap://10.10.73.15:10389"
-                  bind_dn: "uid=admin,ou=system"
-                  bind_password: "GBIS@Elastic@321"
+                  url: "{{ lookup('ENV','LDAP_URL') }}"
+                  bind_dn: "{{ lookup('ENV','LDAP_USER') }}"
+                  bind_password: "{{ lookup('ENV','LDAP_PASSWORD') }}"
                   user_search:
                     base_dn: "ou=users,ou=GCC,o=GBIS"
                     filter: "(cn={0})"
@@ -111,9 +111,9 @@
               ldap:
                 ldap1:
                   order: 1
-                  url: "ldap://10.10.73.15:10389"
-                  bind_dn: "uid=admin,ou=system"
-                  bind_password: "GBIS@Elastic@321"
+                  url: "{{ lookup('ENV','LDAP_URL') }}"
+                  bind_dn: "{{ lookup('ENV','LDAP_USER') }}"
+                  bind_password: "{{ lookup('ENV','LDAP_PASSWORD') }}"
                   user_search:
                     base_dn: "ou=users,ou=GCC,o=GBIS"
                     filter: "(cn={0})"
@@ -179,9 +179,9 @@
               ldap:
                 ldap1:
                   order: 1
-                  url: "ldap://10.10.73.15:10389"
-                  bind_dn: "uid=admin,ou=system"
-                  bind_password: "GBIS@Elastic@321"
+                  url: "{{ lookup('ENV','LDAP_URL') }}"
+                  bind_dn: "{{ lookup('ENV','LDAP_USER') }}"
+                  bind_password: "{{ lookup('ENV','LDAP_PASSWORD') }}"
                   user_search:
                     base_dn: "ou=users,ou=GCC,o=GBIS"
                     filter: "(cn={0})"

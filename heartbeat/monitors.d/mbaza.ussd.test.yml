@@ -75,7 +75,7 @@
     #headers:
 
     # Required response contents.
-    body: Ikaze kuri MBAZA CHATBOT
+    body: Ikaze kuri RBC-Mbaza
 
     # Parses the body as JSON, then checks against the given condition expression
     #json:
@@ -93,7 +93,7 @@
   # monitor output. Fields can be scalar values, arrays, dictionaries, or any nested
   # combination of these.
   fields:
-    env: development
+    env: test
 
   # If this option is set to true, the custom fields are stored as top-level
   # fields in the output document instead of being grouped under a fields

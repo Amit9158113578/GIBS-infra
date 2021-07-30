@@ -126,7 +126,10 @@
   pipeline.workers: 1
   config.reload.automatic: true
   config.reload.interval: 3s
-  pipeline.ordered: false
+  pipeline.batch.size: 50
+  pipeline.batch.delay: 50
+  pipeline.unsafe_shutdown: true
+  pipeline.ordered: auto
 
   
 

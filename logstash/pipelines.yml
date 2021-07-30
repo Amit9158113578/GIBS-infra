@@ -121,8 +121,8 @@
 
 ## MBaza Report Pipeline Pipeline
 
-- pipeline.id: report-mbaza
-  path.config: "/etc/logstash/conf.d/report-mbaza/report-mbaza-pipeline.conf"
+- pipeline.id: mbaza-report
+  path.config: "/etc/logstash/conf.d/mbaza-chatbot-report/mbaza-chatbot-report-pipeline.conf"
   pipeline.workers: 1
   config.reload.automatic: true
   config.reload.interval: 3s

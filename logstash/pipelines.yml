@@ -128,7 +128,7 @@
   config.reload.interval: 3s
   pipeline.batch.size: 50
   pipeline.batch.delay: 50
-  pipeline.unsafe_shutdown: true
+#  pipeline.unsafe_shutdown: true
   pipeline.ordered: auto
 
   

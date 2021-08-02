@@ -128,7 +128,7 @@
   config.reload.interval: 3s
   pipeline.batch.size: 200
   pipeline.batch.delay: 50
-#  pipeline.ordered: auto
+  pipeline.ordered: false
 
   
 

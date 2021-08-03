@@ -51,11 +51,15 @@
       become: yes
 
     - name: start logstash
-      service:
-          name: logstash
-          state: started
-          arguments: --pipeline.unsafe_shutdown
-      become: yes
+      command: service logstash start --pipeline.unsafe_shutdown
+
+
+    # - name: start logstash
+    #   service:
+    #       name: logstash
+    #       state: started
+    #       arguments: --pipeline.unsafe_shutdown
+    #   become: yes
 
 
     # - name: start logstash

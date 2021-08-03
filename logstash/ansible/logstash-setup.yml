@@ -44,8 +44,22 @@
         force: yes
       become: yes
     
+    - name: stop logstash
+      service:
+          name: logstash
+          state: stopped
+      become: yes
+
     - name: start logstash
       service:
           name: logstash
-          state: restarted
-      become: yes  
+          state: started
+          arguments: --pipeline.unsafe_shutdown
+      become: yes
+
+
+    # - name: start logstash
+    #   service:
+    #       name: logstash
+    #       state: restarted
+    #   become: yes  

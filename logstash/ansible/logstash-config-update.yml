@@ -16,8 +16,11 @@
       become: yes
 
     - name: start logstash
-      service:
-          name: logstash
-          state: started
-          arguments: --pipeline.unsafe_shutdown
-      become: yes
+      command: systemctl stop logstash --pipeline.unsafe_shutdown
+
+    # - name: start logstash
+    #   service:
+    #       name: logstash
+    #       state: started
+    #       arguments: --pipeline.unsafe_shutdown
+    #   become: yes

@@ -17,7 +17,6 @@
 
     - name: start logstash
       service:
-          name: logstash
+          name: logstash --pipeline.unsafe_shutdown
           state: started
-          arguments: --pipeline.unsafe_shutdown
       become: yes

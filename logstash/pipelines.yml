@@ -119,7 +119,7 @@
   config.reload.interval: 3s
   pipeline.ordered: false
 
-## MBaza Report Pipeline Pipeline
+## MBaza Report Pipeline
 
 - pipeline.id: mbaza-report
   path.config: "/etc/logstash/conf.d/mbaza-chatbot-report/mbaza-chatbot-report-pipeline.conf"
@@ -130,5 +130,13 @@
   pipeline.batch.delay: 50
   pipeline.ordered: auto
 
+## Easternprovince Report Pipeline
+
+- pipeline.id: easternprovince
+  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-pipeline.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: auto
   
 

@@ -1,7 +1,0 @@
-## Temp templates 
-
-.temp_template:
-  stage: temp
-  script:
-         - export
-         - ssh node3 service logstash restart

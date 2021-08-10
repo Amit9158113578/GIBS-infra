@@ -2,8 +2,8 @@
 
 ## DEV
 
-temp_manual:
+testing_manual:
   extends:
-    - .temp_template
+    - .testing_template
     - .variables_dev
     - .rules_dev_manual

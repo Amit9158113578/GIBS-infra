@@ -11,4 +11,4 @@ include:
   - local: '/gitlab-ci/scripts/maintenance-scripts.yml'
   - local: '/gitlab-ci/scripts/metricbeat-scripts.yml'
   - local: '/gitlab-ci/scripts/migration-scripts.yml'
-  - local: '/gitlab-ci/scripts/temp-scripts.yml'
+  - local: '/gitlab-ci/scripts/testing-scripts.yml'

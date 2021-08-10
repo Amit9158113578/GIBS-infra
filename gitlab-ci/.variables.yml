@@ -64,13 +64,13 @@
     #OBJECT_TYPE: "index-pattern,visualization,dashboard,lens,search,config,canvas-workpad,url,map,tag,query,graph-workspace,canvas-element,infrastructure-ui-source,metrics-explorer-view,inventory-view,apm-indices"
     OBJECT_TYPE: "dashboard,search,index-pattern,url,visualization,lens,config,query,canvas-element,canvas-workpad,graph-workspace,tag,map,infrastructure-ui-source,metrics-explorer-view,inventory-view,apm-indices"
     PROPERTY_FILE: "application-dev"
-    ROLE_SOURCE: "https://$KIBANA_URL_DEV/api/security/role?pretty"
-    ROLE_DEST: "https://$KIBANA_URL_TEST/api/security/role/"
+    ROLE_SOURCE: "$KIBANA_URL_DEV/api/security/role?pretty"
+    ROLE_DEST: "$KIBANA_URL_TEST/api/security/role/"
     SPACE_ID: "national-application--government-command-center"
-    SPACE_SOURCE: "https://$KIBANA_URL_DEV/api/spaces/space"
-    SPACE_DEST: "https://$KIBANA_URL_TEST/api/spaces/space"
-    USER_SOURCE: "https://$ELASTICSEARCH_URL_DEV/_security/user?pretty"
-    USER_DEST: "https://$ELASTICSEARCH_URL_TEST/_security/user/"
+    SPACE_SOURCE: "$KIBANA_URL_DEV/api/spaces/space"
+    SPACE_DEST: "$KIBANA_URL_TEST/api/spaces/space"
+    USER_SOURCE: "$ELASTICSEARCH_URL_DEV/_security/user?pretty"
+    USER_DEST: "$ELASTICSEARCH_URL_TEST/_security/user/"
 
 
 
@@ -105,13 +105,13 @@
     #OBJECT_TYPE: "index-pattern,visualization,dashboard,lens,search,config,canvas-workpad,url,map,tag,query,graph-workspace,canvas-element,infrastructure-ui-source,metrics-explorer-view,inventory-view,apm-indices"
     OBJECT_TYPE: "dashboard,search,index-pattern,url,visualization,lens,config,query,canvas-element,canvas-workpad,graph-workspace,tag,map,infrastructure-ui-source,metrics-explorer-view,inventory-view,apm-indices"
     PROPERTY_FILE: "application-dev"
-    ROLE_SOURCE: "https://$KIBANA_URL_TEST/api/security/role?pretty"
-    ROLE_DEST: "https://$KIBANA_URL_PROD/api/security/role/"
+    ROLE_SOURCE: "$KIBANA_URL_TEST/api/security/role?pretty"
+    ROLE_DEST: "$KIBANA_URL_PROD/api/security/role/"
     SPACE_ID: "national-application--government-command-center"
-    SPACE_SOURCE: "https://$KIBANA_URL_TEST/api/spaces/space"
-    SPACE_DEST: "https://$KIBANA_URL_PROD/api/spaces/space"
-    USER_SOURCE: "https://$ELASTICSEARCH_URL_TEST/_security/user?pretty"
-    USER_DEST: "https://$ELASTICSEARCH_URL_PROD/_security/user/"
+    SPACE_SOURCE: "$KIBANA_URL_TEST/api/spaces/space"
+    SPACE_DEST: "$KIBANA_URL_PROD/api/spaces/space"
+    USER_SOURCE: "$ELASTICSEARCH_URL_TEST/_security/user?pretty"
+    USER_DEST: "$ELASTICSEARCH_URL_PROD/_security/user/"
 
 
 

@@ -1,0 +1,6 @@
+## Temp templates 
+
+.testing_template:
+  stage: testing
+  script:
+         - export

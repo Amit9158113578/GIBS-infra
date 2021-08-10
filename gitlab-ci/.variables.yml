@@ -29,8 +29,8 @@
     LOGSTASH_VERSION: "1:7.13.3-1"
     ELASTICSEARCH_PASSWORD: $ELASTICSEARCH_PASSWORD_DEV
     ELASTICSEARCH_USERNAME: $ELASTICSEARCH_USERNAME_DEV
-    KIBANA_URL: "https://kibana.dev.gcc.gov.rw"
-    ELASTICSEARCH_URL: "https://elasticsearch.dev.gcc.gov.rw:443"
+    KIBANA_URL: $KIBANA_URL_DEV
+    ELASTICSEARCH_URL: $ELASTICSEARCH_URL_DEV
 
 
 .variables_test:
@@ -49,8 +49,30 @@
     LOGSTASH_VERSION: "1:7.12.1-1"
     ELASTICSEARCH_PASSWORD: $ELASTICSEARCH_PASSWORD_TEST
     ELASTICSEARCH_USERNAME: $ELASTICSEARCH_USERNAME_TEST
-    ELASTICSEARCH_URL: "https://gbis-elastic.staging.risa.gov.rw:443"
-    KIBANA_URL: "https://gbis.staging.risa.gov.rw"
+    ELASTICSEARCH_URL: $ELASTICSEARCH_URL_TEST
+    KIBANA_URL: $KIBANA_URL_TEST
+
+    #Migration - DEV to TEST
+    
+    ENABLE_ROLE: "true"
+    NO_OF_ROLES_USER_MIGRATE: "ALL"
+    ENABLE_USER: "true"
+    ENABLE_OBJECT: "true"
+    ENABLE_SPACE: "true"
+    OBJECT_SOURCE: "https://$NODE1_DEV:5601/s/"
+    OBJECT_DEST: "https://$NODE1_TEST:5601/s/"
+    #OBJECT_TYPE: "index-pattern,visualization,dashboard,lens,search,config,canvas-workpad,url,map,tag,query,graph-workspace,canvas-element,infrastructure-ui-source,metrics-explorer-view,inventory-view,apm-indices"
+    OBJECT_TYPE: "dashboard,search,index-pattern,url,visualization,lens,config,query,canvas-element,canvas-workpad,graph-workspace,tag,map,infrastructure-ui-source,metrics-explorer-view,inventory-view,apm-indices"
+    PROPERTY_FILE: "application-dev"
+    ROLE_SOURCE: "https://$KIBANA_URL_DEV/api/security/role?pretty"
+    ROLE_DEST: "https://$KIBANA_URL_TEST/api/security/role/"
+    SPACE_ID: "national-application--government-command-center"
+    SPACE_SOURCE: "https://$KIBANA_URL_DEV/api/spaces/space"
+    SPACE_DEST: "https://$KIBANA_URL_TEST/api/spaces/space"
+    USER_SOURCE: "https://$ELASTICSEARCH_URL_DEV/_security/user?pretty"
+    USER_DEST: "https://$ELASTICSEARCH_URL_TEST/_security/user/"
+
+
 
 .variables_prod:
   extends:
@@ -68,25 +90,28 @@
     LOGSTASH_VERSION: "1:7.12.1-1"
     ELASTICSEARCH_PASSWORD: $ELASTICSEARCH_PASSWORD_PROD
     ELASTICSEARCH_USERNAME: $ELASTICSEARCH_USERNAME_PROD
-    ELASTICSEARCH_URL: ""
-    KIBANA_URL: ""
+    ELASTICSEARCH_URL: $ELASTICSEARCH_URL_PROD
+    KIBANA_URL: $KIBANA_URL_PROD
+    
+    #Migration - TEST to PROD
+    
     ENABLE_ROLE: "true"
     NO_OF_ROLES_USER_MIGRATE: "ALL"
     ENABLE_USER: "true"
     ENABLE_OBJECT: "true"
     ENABLE_SPACE: "true"
-    OBJECT_SOURCE: "https://10.10.73.26:5601/s/"
-    OBJECT_DEST: "https://10.10.73.29:5601/s/"
+    OBJECT_SOURCE: "https://$NODE1_TEST:5601/s/"
+    OBJECT_DEST: "https://$NODE1_PROD:5601/s/"
     #OBJECT_TYPE: "index-pattern,visualization,dashboard,lens,search,config,canvas-workpad,url,map,tag,query,graph-workspace,canvas-element,infrastructure-ui-source,metrics-explorer-view,inventory-view,apm-indices"
     OBJECT_TYPE: "dashboard,search,index-pattern,url,visualization,lens,config,query,canvas-element,canvas-workpad,graph-workspace,tag,map,infrastructure-ui-source,metrics-explorer-view,inventory-view,apm-indices"
     PROPERTY_FILE: "application-dev"
-    ROLE_SOURCE: "https://gbis.staging.risa.gov.rw/api/security/role?pretty"
-    ROLE_DEST: "https://10.10.73.29:5601/api/security/role/"
+    ROLE_SOURCE: "https://$KIBANA_URL_TEST/api/security/role?pretty"
+    ROLE_DEST: "https://$KIBANA_URL_PROD/api/security/role/"
     SPACE_ID: "national-application--government-command-center"
-    SPACE_SOURCE: "https://10.10.73.26:5601/api/spaces/space"
-    SPACE_DEST: "https://10.10.73.29:5601/api/spaces/space"
-    USER_SOURCE: "https://10.10.73.26:9200/_security/user?pretty"
-    USER_DEST: "https://10.10.73.29:9200/_security/user/"
+    SPACE_SOURCE: "https://$KIBANA_URL_TEST/api/spaces/space"
+    SPACE_DEST: "https://$KIBANA_URL_PROD/api/spaces/space"
+    USER_SOURCE: "https://$ELASTICSEARCH_URL_TEST/_security/user?pretty"
+    USER_DEST: "https://$ELASTICSEARCH_URL_PROD/_security/user/"
 
 
 

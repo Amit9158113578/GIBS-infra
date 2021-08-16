@@ -15,6 +15,11 @@
       logstash_plugin:
         state: present
         name: logstash-filter-sentimentalizer
+
+    - name: Install extractnumbers filter plugin
+      logstash_plugin:
+        state: present
+        name: logstash-filter-extractnumbers
     
     - name: Ensures /etc/logstash/security dir exists
       file: path=/etc/logstash/security state=directory

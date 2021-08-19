@@ -107,6 +107,8 @@ elasticsearch.ssl.verificationMode: certificate
 #i18n.locale: "en"
 monitoring.kibana.collection.enabled: false
 
+xpack.reporting.encryptionKey: "$KIBANA_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY"
+
 # ADD TLS
 xpack.security.sameSiteCookies: None
 xpack.security.secureCookies: true

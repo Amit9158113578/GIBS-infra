@@ -56,7 +56,7 @@
     
     ENABLE_ROLE: "true"
     NO_OF_ROLES_USER_MIGRATE: "ALL"
-    ENABLE_USER: "true"
+    ENABLE_USER: "false"
     ENABLE_OBJECT: "true"
     ENABLE_SPACE: "true"
     OBJECT_SOURCE: "https://$NODE1_DEV:5601/s/"

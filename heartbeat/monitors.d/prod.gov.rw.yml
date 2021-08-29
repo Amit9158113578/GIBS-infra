@@ -42,8 +42,6 @@
   timeout: 10s
 
   # Optional Authentication Credentials
-  #username: monitoring_user
-  #password: kypzIw-5mihme-sytrop
   response.include_body: always
   # TLS/SSL connection settings for use with HTTPS endpoint. If not configured
   # system defaults will be used.

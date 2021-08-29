@@ -42,6 +42,10 @@
       file: path=/etc/logstash/conf.d state=directory
       become: yes
 
+    - name: Ensures /etc/logstash/templates dir exists
+      file: path=/etc/logstash/templates state=directory
+      become: yes
+
     - name: Copy pipeline yml
       copy:
         src: ../pipelines.yml

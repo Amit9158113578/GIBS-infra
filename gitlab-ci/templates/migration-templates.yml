@@ -14,7 +14,7 @@
          - cp run_api_var.sh migration/run_api.sh
 
          - envsubst < "migration/src/main/resources/application.properties" > application-var.properties
-         - cp application-var.properties migration/src/main/resources/application-var.properties
+         - cp application-var.properties migration/src/main/resources/application.properties
 
          - ansible-playbook -i host migration/migration_setup.yml
          - bash -x migration/run_api.sh

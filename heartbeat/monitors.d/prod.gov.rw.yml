@@ -73,7 +73,7 @@
     #headers:
 
     # Required response contents.
-    body: This website is powered by TYPO3 - inspiring people to share!
+    body: Official website of the Government of Rwanda
 
     # Parses the body as JSON, then checks against the given condition expression
     #json:

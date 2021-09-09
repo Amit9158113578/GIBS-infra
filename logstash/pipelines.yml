@@ -170,3 +170,10 @@
   config.reload.interval: 3s
   pipeline.ordered: auto
 
+- pipeline.id: easternprovince-apitemp
+  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-apitemp-pipeline.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: auto
+

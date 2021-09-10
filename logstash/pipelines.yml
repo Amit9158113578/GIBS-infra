@@ -89,12 +89,12 @@
 
 ## project Management Pipelines
 
-- pipeline.id: openproject-management
-  path.config: "/etc/logstash/conf.d/openproject/openproject-pipeline.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
+# - pipeline.id: openproject-management
+#   path.config: "/etc/logstash/conf.d/openproject/openproject-pipeline.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
 
 
 ## Minagri Pipelines
@@ -170,8 +170,8 @@
   config.reload.interval: 3s
   pipeline.ordered: auto
 
-- pipeline.id: easternprovince-apitemp
-  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-apitemp-pipeline.conf"
+- pipeline.id: easternprovince-api-master-data-pipeline
+  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-master-data-pipeline.conf"
   pipeline.workers: 1
   config.reload.automatic: true
   config.reload.interval: 3s

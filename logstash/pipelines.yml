@@ -163,12 +163,12 @@
 #   config.reload.interval: 3s
 #   pipeline.ordered: auto
   
-- pipeline.id: easternprovince-api
-  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-pipeline.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: auto
+# - pipeline.id: easternprovince-api
+#   path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-pipeline.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: auto
 
 - pipeline.id: easternprovince-api-master-data-pipeline
   path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-master-data-pipeline.conf"

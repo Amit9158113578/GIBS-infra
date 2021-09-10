@@ -89,12 +89,12 @@
 
 ## project Management Pipelines
 
-# - pipeline.id: openproject-management
-#   path.config: "/etc/logstash/conf.d/openproject/openproject-pipeline.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
+- pipeline.id: openproject-management
+  path.config: "/etc/logstash/conf.d/openproject/openproject-pipeline.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
 
 
 ## Minagri Pipelines
@@ -145,14 +145,14 @@
 
 ## MBaza Report Pipeline
 
-# - pipeline.id: mbaza-chatbot-report
-#   path.config: "/etc/logstash/conf.d/mbaza-chatbot-report/mbaza-chatbot-report-pipeline.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.batch.size: 50
-#   pipeline.batch.delay: 50
-#   pipeline.ordered: auto
+- pipeline.id: mbaza-chatbot-report
+  path.config: "/etc/logstash/conf.d/mbaza-chatbot-report/mbaza-chatbot-report-pipeline.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.batch.size: 50
+  pipeline.batch.delay: 50
+  pipeline.ordered: auto
 
 ## Easternprovince Report Pipeline
 
@@ -170,10 +170,10 @@
   config.reload.interval: 3s
   pipeline.ordered: auto
 
-# - pipeline.id: easternprovince-apitemp
-#   path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-apitemp-pipeline.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: auto
+- pipeline.id: easternprovince-apitemp
+  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-apitemp-pipeline.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: auto
 

@@ -5,53 +5,53 @@
 #- pipeline.id: main
 #  path.config: "/etc/logstash/conf.d/*.conf"
 
-- pipeline.id: application_gcc_master_data_dummy
-  path.config: "/etc/logstash/conf.d/GCC/dummy-master-data.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+# - pipeline.id: application_gcc_master_data_dummy
+#   path.config: "/etc/logstash/conf.d/GCC/dummy-master-data.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
 
-- pipeline.id: application_gcc_kpi_data_dummy
-  path.config: "/etc/logstash/conf.d/GCC/dummy-kpi_data.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+# - pipeline.id: application_gcc_kpi_data_dummy
+#   path.config: "/etc/logstash/conf.d/GCC/dummy-kpi_data.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
 
-- pipeline.id: application_gcc_target_data_dummy
-  path.config: "/etc/logstash/conf.d/GCC/dummy-target.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+# - pipeline.id: application_gcc_target_data_dummy
+#   path.config: "/etc/logstash/conf.d/GCC/dummy-target.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
 
-- pipeline.id: application_gcc_master_data
-  path.config: "/etc/logstash/conf.d/GCC/master-data.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+# - pipeline.id: application_gcc_master_data
+#   path.config: "/etc/logstash/conf.d/GCC/master-data.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
 
-- pipeline.id: application_gcc_target_data
-  path.config: "/etc/logstash/conf.d/GCC/target.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+# - pipeline.id: application_gcc_target_data
+#   path.config: "/etc/logstash/conf.d/GCC/target.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
 
-- pipeline.id: application_gcc_kpi_data
-  path.config: "/etc/logstash/conf.d/GCC/kpi_data.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+# - pipeline.id: application_gcc_kpi_data
+#   path.config: "/etc/logstash/conf.d/GCC/kpi_data.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
 
 
 # # # vaccination
@@ -89,12 +89,12 @@
 
 ## project Management Pipelines
 
-- pipeline.id: openproject-management
-  path.config: "/etc/logstash/conf.d/openproject/openproject-pipeline.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
+# - pipeline.id: openproject-management
+#   path.config: "/etc/logstash/conf.d/openproject/openproject-pipeline.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
 
 
 ## Minagri Pipelines
@@ -145,23 +145,23 @@
 
 ## MBaza Report Pipeline
 
-- pipeline.id: mbaza-chatbot-report
-  path.config: "/etc/logstash/conf.d/mbaza-chatbot-report/mbaza-chatbot-report-pipeline.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.batch.size: 50
-  pipeline.batch.delay: 50
-  pipeline.ordered: auto
+# - pipeline.id: mbaza-chatbot-report
+#   path.config: "/etc/logstash/conf.d/mbaza-chatbot-report/mbaza-chatbot-report-pipeline.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.batch.size: 50
+#   pipeline.batch.delay: 50
+#   pipeline.ordered: auto
 
 ## Easternprovince Report Pipeline
 
-- pipeline.id: easternprovince
-  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-pipeline.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: auto
+# - pipeline.id: easternprovince
+#   path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-pipeline.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: auto
   
 - pipeline.id: easternprovince-api
   path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-pipeline.conf"
@@ -170,10 +170,10 @@
   config.reload.interval: 3s
   pipeline.ordered: auto
 
-- pipeline.id: easternprovince-apitemp
-  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-apitemp-pipeline.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: auto
+# - pipeline.id: easternprovince-apitemp
+#   path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-apitemp-pipeline.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: auto
 

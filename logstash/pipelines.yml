@@ -145,23 +145,23 @@
 
 ## MBaza Report Pipeline
 
-- pipeline.id: mbaza-chatbot-report
-  path.config: "/etc/logstash/conf.d/mbaza-chatbot-report/mbaza-chatbot-report-pipeline.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.batch.size: 50
-  pipeline.batch.delay: 50
-  pipeline.ordered: auto
+# - pipeline.id: mbaza-chatbot-report
+#   path.config: "/etc/logstash/conf.d/mbaza-chatbot-report/mbaza-chatbot-report-pipeline.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.batch.size: 50
+#   pipeline.batch.delay: 50
+#   pipeline.ordered: auto
 
 ## Easternprovince Report Pipeline
 
-- pipeline.id: easternprovince
-  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-pipeline.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: auto
+# - pipeline.id: easternprovince
+#   path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-pipeline.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: auto
   
 - pipeline.id: easternprovince-api
   path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-pipeline.conf"

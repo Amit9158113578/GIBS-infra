@@ -120,12 +120,12 @@
 #  config.reload.interval: 3s
 #  pipeline.ordered: false
 
-# - pipeline.id: minagri-nais-apis-all
-#   path.config: "/etc/logstash/conf.d/minagri-nais/minagri-nais-apis-all.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
+- pipeline.id: minagri-nais-apis-all
+  path.config: "/etc/logstash/conf.d/minagri-nais/minagri-nais-apis-all.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
 
 # - pipeline.id: minagri-mis-api1
 #   path.config: "/etc/logstash/conf.d/minagri-mis/minagri-mis-api1.conf"

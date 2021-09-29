@@ -1,11 +1,11 @@
 ## User Role API Scripts
 
 ## DEV
-migration_api_dev_manual:
-  extends:
-    - .migration_api_template
-    - .variables_dev
-    - .rules_dev_manual
+# migration_api_dev_manual:
+#   extends:
+#     - .migration_api_template
+#     - .variables_dev
+#     - .rules_dev_manual
 
 ## TEST
 migration_api_test_manual:

@@ -5,29 +5,29 @@
 #- pipeline.id: main
 #  path.config: "/etc/logstash/conf.d/*.conf"
 
-# - pipeline.id: application_gcc_master_data_dummy
-#   path.config: "/etc/logstash/conf.d/GCC/dummy-master-data.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
-#   queue.type: memory
+- pipeline.id: application_gcc_master_data_dummy
+  path.config: "/etc/logstash/conf.d/GCC/dummy-master-data.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
 
-# - pipeline.id: application_gcc_kpi_data_dummy
-#   path.config: "/etc/logstash/conf.d/GCC/dummy-kpi_data.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
-#   queue.type: memory
+- pipeline.id: application_gcc_kpi_data_dummy
+  path.config: "/etc/logstash/conf.d/GCC/dummy-kpi_data.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
 
-# - pipeline.id: application_gcc_target_data_dummy
-#   path.config: "/etc/logstash/conf.d/GCC/dummy-target.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
-#   queue.type: memory
+- pipeline.id: application_gcc_target_data_dummy
+  path.config: "/etc/logstash/conf.d/GCC/dummy-target.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
 
 # - pipeline.id: application_gcc_master_data
 #   path.config: "/etc/logstash/conf.d/GCC/master-data.conf"

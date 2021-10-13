@@ -19,9 +19,8 @@
     es_enable_transport_ssl: true 
     es_xpack_features: []
     es_config:
-      reindex.remote.whitelist: gbis-elastic.staging.risa.gov.rw:443
       xpack.monitoring.collection.enabled: true
-      cluster.name: "elk-cluster"
+      cluster.name: "ELK-{{ lookup('ENV','ENV') }}-Cluster"
       cluster.initial_master_nodes: "node1"
       discovery.seed_hosts: "{{ lookup('ENV','HOSTS') }}"
       http.port: 9200
@@ -92,7 +91,7 @@
     es_xpack_features: []
     es_config:
       xpack.monitoring.collection.enabled: true
-      cluster.name: "elk-cluster"
+      cluster.name: "ELK-{{ lookup('ENV','ENV') }}-Cluster"
       cluster.initial_master_nodes: "node1"
       discovery.seed_hosts: "{{ lookup('ENV','HOSTS') }}"
       http.port: 9200
@@ -160,7 +159,7 @@
     es_xpack_features: []
     es_config:
       xpack.monitoring.collection.enabled: true
-      cluster.name: "elk-cluster"
+      cluster.name: "ELK-{{ lookup('ENV','ENV') }}-Cluster"
       cluster.initial_master_nodes: "node1"
       discovery.seed_hosts: "{{ lookup('ENV','HOSTS') }}"
       http.port: 9200

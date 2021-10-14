@@ -20,7 +20,7 @@
     es_xpack_features: []
     es_config:
       xpack.monitoring.collection.enabled: true
-      cluster.name: "ELK-{{ lookup('ENV','ENV') }}-Cluster"
+      cluster.name: "{{ lookup('ENV','ENV') }}-CLUSTER"
       cluster.initial_master_nodes: "node1"
       discovery.seed_hosts: "{{ lookup('ENV','HOSTS') }}"
       http.port: 9200
@@ -91,7 +91,7 @@
     es_xpack_features: []
     es_config:
       xpack.monitoring.collection.enabled: true
-      cluster.name: "ELK-{{ lookup('ENV','ENV') }}-Cluster"
+      cluster.name: "{{ lookup('ENV','ENV') }}-CLUSTER"
       cluster.initial_master_nodes: "node1"
       discovery.seed_hosts: "{{ lookup('ENV','HOSTS') }}"
       http.port: 9200
@@ -159,7 +159,7 @@
     es_xpack_features: []
     es_config:
       xpack.monitoring.collection.enabled: true
-      cluster.name: "ELK-{{ lookup('ENV','ENV') }}-Cluster"
+      cluster.name: "{{ lookup('ENV','ENV') }}-CLUSTER"
       cluster.initial_master_nodes: "node1"
       discovery.seed_hosts: "{{ lookup('ENV','HOSTS') }}"
       http.port: 9200

@@ -248,7 +248,7 @@ setup.kibana:
   # the Default Space will be used.
   #space.id: ${ELK_MONITORING_SPACE}
   ssl.enabled: true
-  ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]
+  #ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]
 
 # ---------------------------- Elasticsearch Output ----------------------------
 output.elasticsearch:
@@ -257,7 +257,7 @@ output.elasticsearch:
   #   - https://risa-dwh1-es01:9200
   #   - https://risa-dwh1-es02:9200
   #   - https://risa-dwh1-es03:9200
-  ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]
+  #ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]
   hosts: ["$ELASTICSEARCH_HOSTS_MONITORING"]
   #ssl.certificate_authorities: ${SSL_CERTIFICATE_AUTHORITY_FILE}
   # Optional protocol and basic auth credentials.

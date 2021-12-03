@@ -34,8 +34,8 @@
     ELASTICSEARCH_URL: $ELASTICSEARCH_URL_DEV
 
     ## For Monitoring - SEND FROM DEV TO TEST CLUSTER
-    ELASTICSEARCH_HOSTS_MONITORING: https://gbis-elastic.staging.risa.gov.rw:443
-    KIBANA_HOSTS_MONITORING: https://gbis.staging.risa.gov.rw:443
+    ELASTICSEARCH_HOSTS_MONITORING: https://10.10.73.15:9200,https://10.10.73.16:9200,https://10.10.73.17:9200
+    KIBANA_HOSTS_MONITORING: https://10.10.73.15:5601,https://10.10.73.16:5601
 
 ##############################################################################
 
@@ -59,8 +59,8 @@
     KIBANA_URL: $KIBANA_URL_TEST
 
     ## For Monitoring - SEND TEST TO DEV CLUSTER
-    ELASTICSEARCH_HOSTS_MONITORING: https://elasticsearch.dev.gcc.gov.rw:443
-    KIBANA_HOSTS_MONITORING: https://kibana.dev.gcc.gov.rw:443
+    ELASTICSEARCH_HOSTS_MONITORING: https://10.10.73.26:9200,https://10.10.73.27:9200,https://10.10.73.28:9200
+    KIBANA_HOSTS_MONITORING: https://10.10.73.26:5601,https://10.10.73.27:5601
 
     #Migration - DEV to TEST
     
@@ -105,8 +105,8 @@
     KIBANA_URL: $KIBANA_URL_PROD
 
     ## For Monitoring - SEND PROD TO TEST CLUSTER
-    ELASTICSEARCH_HOSTS_MONITORING: https://gbis-elastic.staging.risa.gov.rw:443
-    KIBANA_HOSTS_MONITORING: https://gbis.staging.risa.gov.rw:443
+    ELASTICSEARCH_HOSTS_MONITORING: https://10.10.73.29:9200,https://10.10.73.30:9200,https://10.10.73.31:9200
+    KIBANA_HOSTS_MONITORING: https://10.10.73.29:5601,https://10.10.73.30:5601
     
     #Migration - TEST to PROD
     

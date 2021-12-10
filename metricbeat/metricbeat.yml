@@ -248,7 +248,7 @@ setup.kibana:
   # the Default Space will be used.
   #space.id: ${ELK_MONITORING_SPACE}
   ssl.enabled: true
-  #ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]
+  ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]
 
 # ---------------------------- Elasticsearch Output ----------------------------
 output.elasticsearch:

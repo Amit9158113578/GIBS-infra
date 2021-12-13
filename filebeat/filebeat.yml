@@ -230,7 +230,7 @@ filebeat.config.modules:
                      
 #========================== Elasticsearch output ===============================
 output.elasticsearch:
-  #ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]
+  ssl.certificate_authorities: ["/etc/metricbeat/security/ca/ca.crt"]
   hosts: ["$ELASTICSEARCH_HOSTS_MONITORING"]
   username: "$ELASTICSEARCH_USERNAME"
   password: "$ELASTICSEARCH_PASSWORD"

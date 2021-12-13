@@ -168,7 +168,7 @@ setup.kibana:
   #ssl.enabled: true
 
   ssl.enabled: true
-  #ssl.certificate_authorities: ["/etc/filebeat/security/ca/ca.crt"]
+  ssl.certificate_authorities: ["/etc/filebeat/security/ca/ca.crt"]
 
   # Controls the verification of certificates. Valid values are:
   # * full, which verifies that the provided certificate is signed by a trusted

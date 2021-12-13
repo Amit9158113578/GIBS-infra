@@ -16,7 +16,7 @@
       become: yes
 
     - name: start logstash
-      command: service logstash start --pipeline.unsafe_shutdown
+      command: service logstash start
 
     # - name: start logstash
     #   service:

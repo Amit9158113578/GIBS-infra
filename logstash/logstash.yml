@@ -308,7 +308,7 @@ path.logs: /var/log/logstash
 #xpack.management.elasticsearch.sniffing: false
 #xpack.management.logstash.poll_interval: 5s
 
-http.enabled: true
+api.enabled: true
 monitoring.enabled: false # legacy monitoring off
 http.port: 9600
 http.host: "node3"

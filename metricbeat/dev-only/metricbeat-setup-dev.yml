@@ -21,7 +21,7 @@
     - name: Copy metricbeat1 config yml
       copy:
         src: ../metricbeat1.yml
-        dest: /etc/metricbeat1
+        dest: /etc/metricbeat/
       become: yes
     - name: Add Block
       blockinfile:
@@ -84,7 +84,7 @@
     - name: Copy metricbeat1 config yml
       copy:
         src: ../metricbeat1.yml
-        dest: /etc/metricbeat1
+        dest: /etc/metricbeat/
       become: yes
     - name: Add Block
       blockinfile:
@@ -147,7 +147,7 @@
     - name: Copy metricbeat1 config yml
       copy:
         src: ../metricbeat1.yml
-        dest: /etc/metricbeat1
+        dest: /etc/metricbeat/
       become: yes
     - name: Add Block
       blockinfile:

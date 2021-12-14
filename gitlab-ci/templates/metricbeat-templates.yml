@@ -46,7 +46,7 @@
 
          - echo 'Prepare Variables END'
          - echo 'Metricbeat DEPLOY START'
-         - ansible-playbook -i host metricbeat/metricbeat-setup.yml
+         - ansible-playbook -i host metricbeat/dev-only/metricbeat-setup-dev.yml
          - echo 'Metricbeat DEPLOY END'
 
 

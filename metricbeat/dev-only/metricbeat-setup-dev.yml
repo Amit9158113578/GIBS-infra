@@ -20,7 +20,7 @@
       become: yes
     - name: Copy metricbeat1 config yml
       copy:
-        src: metricbeat1.yml
+        src: ../metricbeat1.yml
         dest: /etc/metricbeat1
       become: yes
     - name: Add Block
@@ -81,7 +81,7 @@
       become: yes
     - name: Copy metricbeat1 config yml
       copy:
-        src: metricbeat1.yml
+        src: ../metricbeat1.yml
         dest: /etc/metricbeat1
       become: yes
     - name: Add Block
@@ -142,7 +142,7 @@
       become: yes
     - name: Copy metricbeat1 config yml
       copy:
-        src: metricbeat1.yml
+        src: ../metricbeat1.yml
         dest: /etc/metricbeat1
       become: yes
     - name: Add Block

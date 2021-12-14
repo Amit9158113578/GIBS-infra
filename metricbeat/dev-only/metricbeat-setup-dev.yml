@@ -44,8 +44,10 @@
         src: ../modules.d
         dest: /etc/metricbeat
       become: yes
-    - name: make data dir for metricbeat1
-      command: mkdir /var/lib/metricbeat1
+    - name: Create metricbeat1 data dir
+      file:
+        path: /var/lib/metricbeat1
+        state: directory
     - name: system services reload
       command: systemctl daemon-reload
     - name: start metricbeat
@@ -105,8 +107,10 @@
         src: ../modules.d
         dest: /etc/metricbeat
       become: yes
-    - name: make data dir for metricbeat1
-      command: mkdir /var/lib/metricbeat1
+    - name: Create metricbeat1 data dir
+      file:
+        path: /var/lib/metricbeat1
+        state: directory
     - name: system services reload
       command: systemctl daemon-reload
     - name: start metricbeat
@@ -166,8 +170,10 @@
         src: ../modules.d
         dest: /etc/metricbeat
       become: yes
-    - name: make data dir for metricbeat1
-      command: mkdir /var/lib/metricbeat1
+    - name: Create metricbeat1 data dir
+      file:
+        path: /var/lib/metricbeat1
+        state: directory
     - name: system services reload
       command: systemctl daemon-reload
     - name: start metricbeat

@@ -1,0 +1,182 @@
+- name: MetricBeat Instalation
+  hosts: node1
+  tasks:
+    - name: Ensure metricbeat is at the "{{ lookup('ENV','ELK_VERSION') }}" version
+      apt: name=metricbeat={{ lookup('ENV','ELK_VERSION') }} state=present
+      become: yes
+    - name: Copy security folder 
+      copy:
+        src: ../security
+        dest: /etc/metricbeat/
+    - name: Copy metricbeat1 service file
+      copy:
+        src: metricbeat1.service
+        dest: /lib/systemd/system
+      become: yes
+    - name: Copy metricbeat config yml
+      copy:
+        src: ../metricbeat.yml
+        dest: /etc/metricbeat
+      become: yes
+    - name: Copy metricbeat1 config yml
+      copy:
+        src: metricbeat1.yml
+        dest: /etc/metricbeat1
+      become: yes
+    - name: Add Block
+      blockinfile:
+        dest: /etc/metricbeat/metricbeat.yml
+        block: |
+          http.enabled: true
+          monitoring.enabled: false # legacy monitoring off
+          http.port: 5066
+          http.host: node1
+    - name: Add Block
+      blockinfile:
+        dest: /etc/metricbeat/metricbeat1.yml
+        block: |
+          http.enabled: true
+          monitoring.enabled: false # legacy monitoring off
+          http.port: 5065
+          http.host: node1
+    - name: Copy modules.d folder
+      copy:
+        src: ../modules.d
+        dest: /etc/metricbeat
+      become: yes
+    - name: make data dir for metricbeat1
+      command: mkdir /var/lib/metricbeat1
+    - name: system services reload
+      command: systemctl daemon-reload
+    - name: start metricbeat
+      service:
+          name: metricbeat
+          state: restarted
+      become: yes
+    - name: start metricbeat1
+      service:
+          name: metricbeat1
+          state: restarted
+      become: yes
+
+- name: MetricBeat Instalation
+  hosts: node2
+  tasks:
+    - name: Ensure metricbeat is at the "{{ lookup('ENV','ELK_VERSION') }}" version
+      apt: name=metricbeat={{ lookup('ENV','ELK_VERSION') }} state=present
+      become: yes
+    - name: Copy security folder 
+      copy:
+        src: ../security
+        dest: /etc/metricbeat/
+    - name: Copy metricbeat1 service file
+      copy:
+        src: metricbeat1.service
+        dest: /lib/systemd/system
+      become: yes
+    - name: Copy metricbeat config yml
+      copy:
+        src: ../metricbeat.yml
+        dest: /etc/metricbeat
+      become: yes
+    - name: Copy metricbeat1 config yml
+      copy:
+        src: metricbeat1.yml
+        dest: /etc/metricbeat1
+      become: yes
+    - name: Add Block
+      blockinfile:
+        dest: /etc/metricbeat/metricbeat.yml
+        block: |
+          http.enabled: true
+          monitoring.enabled: false # legacy monitoring off
+          http.port: 5066
+          http.host: node2
+    - name: Add Block
+      blockinfile:
+        dest: /etc/metricbeat/metricbeat1.yml
+        block: |
+          http.enabled: true
+          monitoring.enabled: false # legacy monitoring off
+          http.port: 5065
+          http.host: node2
+    - name: Copy modules.d folder
+      copy:
+        src: ../modules.d
+        dest: /etc/metricbeat
+      become: yes
+    - name: make data dir for metricbeat1
+      command: mkdir /var/lib/metricbeat1
+    - name: system services reload
+      command: systemctl daemon-reload
+    - name: start metricbeat
+      service:
+          name: metricbeat
+          state: restarted
+      become: yes
+    - name: start metricbeat1
+      service:
+          name: metricbeat1
+          state: restarted
+      become: yes
+
+- name: MetricBeat Instalation
+  hosts: node3
+  tasks:
+    - name: Ensure metricbeat is at the "{{ lookup('ENV','ELK_VERSION') }}" version
+      apt: name=metricbeat={{ lookup('ENV','ELK_VERSION') }} state=present
+      become: yes
+    - name: Copy security folder 
+      copy:
+        src: ../security
+        dest: /etc/metricbeat/
+    - name: Copy metricbeat1 service file
+      copy:
+        src: metricbeat1.service
+        dest: /lib/systemd/system
+      become: yes
+    - name: Copy metricbeat config yml
+      copy:
+        src: ../metricbeat.yml
+        dest: /etc/metricbeat
+      become: yes
+    - name: Copy metricbeat1 config yml
+      copy:
+        src: metricbeat1.yml
+        dest: /etc/metricbeat1
+      become: yes
+    - name: Add Block
+      blockinfile:
+        dest: /etc/metricbeat/metricbeat.yml
+        block: |
+          http.enabled: true
+          monitoring.enabled: false # legacy monitoring off
+          http.port: 5066
+          http.host: node3
+    - name: Add Block
+      blockinfile:
+        dest: /etc/metricbeat/metricbeat1.yml
+        block: |
+          http.enabled: true
+          monitoring.enabled: false # legacy monitoring off
+          http.port: 5065
+          http.host: node3
+    - name: Copy modules.d folder
+      copy:
+        src: ../modules.d
+        dest: /etc/metricbeat
+      become: yes
+    - name: make data dir for metricbeat1
+      command: mkdir /var/lib/metricbeat1
+    - name: system services reload
+      command: systemctl daemon-reload
+    - name: start metricbeat
+      service:
+          name: metricbeat
+          state: restarted
+      become: yes
+    - name: start metricbeat1
+      service:
+          name: metricbeat1
+          state: restarted
+      become: yes

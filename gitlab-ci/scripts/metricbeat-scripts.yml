@@ -4,7 +4,7 @@
 
 metricbeat_setup_dev_manual:
   extends:
-    - .metricbeat_setup_template
+    - .metricbeat_setup_template_dev
     - .variables_dev
     - .rules_dev_manual
 

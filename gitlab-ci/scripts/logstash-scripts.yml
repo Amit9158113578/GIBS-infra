@@ -40,7 +40,7 @@ logstash_pipelines_update_dev:
   extends:
     - .logstash_pipelines_update_template
     - .variables_dev
-    - .rules_dev_auto
+    - .rules_dev_manual
 
 ## TEST
 

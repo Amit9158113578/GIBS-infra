@@ -1,0 +1,25 @@
+## Restark ELK Stack templates
+
+.restart_stack_template:
+  stage: restart_stack
+  script:
+         - export
+
+         ## Node3
+         - ssh node3 service logstash restart
+         - node3 service metricbeat restart
+         - node3 service filebeat restart
+         - node3 service heartbeat restart
+         - node3 service elasticsearch restart
+         
+         ## Node2
+         - ssh node2 service metricbeat restart
+         - node2 service filebeat restart
+         - node2 service kibana restart
+         - node2 service elasticsearch restart
+
+         ## Node1
+         - ssh node1 service metricbeat restart
+         - node1 service filebeat restart
+         - node1 service kibana restart
+         - node1 service elasticsearch restart

@@ -4,7 +4,10 @@ stages:
     - base_setup            # For setting up base requirements (one time run)
     - deploy_elk_stack      # For deploying different ELK modules/componenets
     - logstash_updates      # For updates to logstash.yml or pipelines.yml
-    - maintenance           # For pulling logs into GIT
+    - restart_stack         # For restaring entire ELK stack (logstash, beats, kibana, elasticsearch)
+    - stop_module           # For stopping individual module
+    - start_module          # For starting incividual module
+    - logs                  # For pulling logs into GIT
     - migration_api         # For User and Role migration API
     - ldap                  # For installing LDAP
     - testing               # For running temporary scripts for testing or other purposes

@@ -11,4 +11,7 @@ include:
   - local: '/gitlab-ci/templates/logstash-templates.yml'
   - local: '/gitlab-ci/templates/metricbeat-templates.yml'
   - local: '/gitlab-ci/templates/migration-templates.yml'
+  - local: '/gitlab-ci/templates/restart-stack-templates.yml'
+  - local: '/gitlab-ci/templates/start-module-templates.yml'
+  - local: '/gitlab-ci/templates/stop-module-templates.yml'
   - local: '/gitlab-ci/templates/testing-templates.yml'

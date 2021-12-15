@@ -1,0 +1,81 @@
+## start Module templates
+
+
+## start Logstash
+.start_logtash_template:
+  stage: start_module
+  script:
+         - export
+         - ssh node3 service logstash start
+
+## start Heartbeat
+.start_heartbeat_template:
+  stage: start_module
+  script:
+         - export
+
+         ## Node3
+         - ssh node3 service heartbeat start
+         
+         ## Node2
+         - ssh node2 service heartbeat start
+
+         ## Node1
+         - ssh node1 service heartbeat start
+
+## start Metricbeat
+.start_metricbeat_template:
+  stage: start_module
+  script:
+         - export
+
+         ## Node3
+         - ssh node3 service metricbeat start
+         
+         ## Node2
+         - ssh node2 service metricbeat start
+
+         ## Node1
+         - ssh node1 service metricbeat start
+
+## start Filebeat
+.start_filebeat_template:
+  stage: start_module
+  script:
+         - export
+
+         ## Node3
+         - ssh node3 service filebeat start
+         
+         ## Node2
+         - ssh node2 service filebeat start
+
+         ## Node1
+         - ssh node1 service filebeat start
+
+## start Kibana
+.start_kibana_template:
+  stage: start_module
+  script:
+         - export
+
+         ## Node2
+         - ssh node2 service kibana start
+
+         ## Node1
+         - ssh node1 service kibana start
+
+## start Elasticsearch
+.start_elasticsearch_template:
+  stage: start_module
+  script:
+         - export
+
+         ## Node3
+         - ssh node3 service elasticsearch start
+
+         ## Node2
+         - ssh node2 service elasticsearch start
+
+         ## Node1
+         - ssh node1 service elasticsearch start

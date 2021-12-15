@@ -1,0 +1,81 @@
+## Stop Module templates
+
+
+## Stop Logstash
+.stop_logtash_template:
+  stage: stop_module
+  script:
+         - export
+         - ssh node3 service logstash stop
+
+## Stop Heartbeat
+.stop_heartbeat_template:
+  stage: stop_module
+  script:
+         - export
+
+         ## Node3
+         - ssh node3 service heartbeat stop
+         
+         ## Node2
+         - ssh node2 service heartbeat stop
+
+         ## Node1
+         - ssh node1 service heartbeat stop
+
+## Stop Metricbeat
+.stop_metricbeat_template:
+  stage: stop_module
+  script:
+         - export
+
+         ## Node3
+         - ssh node3 service metricbeat stop
+         
+         ## Node2
+         - ssh node2 service metricbeat stop
+
+         ## Node1
+         - ssh node1 service metricbeat stop
+
+## Stop Filebeat
+.stop_filebeat_template:
+  stage: stop_module
+  script:
+         - export
+
+         ## Node3
+         - ssh node3 service filebeat stop
+         
+         ## Node2
+         - ssh node2 service filebeat stop
+
+         ## Node1
+         - ssh node1 service filebeat stop
+
+## Stop Kibana
+.stop_kibana_template:
+  stage: stop_module
+  script:
+         - export
+
+         ## Node2
+         - ssh node2 service kibana stop
+
+         ## Node1
+         - ssh node1 service kibana stop
+
+## Stop Elasticsearch
+.stop_elasticsearch_template:
+  stage: stop_module
+  script:
+         - export
+
+         ## Node3
+         - ssh node3 service elasticsearch stop
+
+         ## Node2
+         - ssh node2 service elasticsearch stop
+
+         ## Node1
+         - ssh node1 service elasticsearch stop

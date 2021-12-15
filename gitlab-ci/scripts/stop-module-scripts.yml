@@ -1,0 +1,79 @@
+## Restart ELK Stack Scripts
+
+## DEV
+
+stop_logstash_dev_manual:
+  extends:
+    - .stop_logtash_template
+    - .variables_dev
+    - .rules_dev_manual
+
+stop_heartbeat_dev_manual:
+  extends:
+    - .stop_heartbeat_template
+    - .variables_dev
+    - .rules_dev_manual
+
+stop_metricbeat_dev_manual:
+  extends:
+    - .stop_metricbeat_template
+    - .variables_dev
+    - .rules_dev_manual
+
+stop_filebeat_dev_manual:
+  extends:
+    - .stop_filebeat_template
+    - .variables_dev
+    - .rules_dev_manual
+
+stop_kibana_dev_manual:
+  extends:
+    - .stop_kibana_template
+    - .variables_dev
+    - .rules_dev_manual
+
+stop_elasticsearch_dev_manual:
+  extends:
+    - .stop_elasticsearch_template
+    - .variables_dev
+    - .rules_dev_manual
+
+
+
+## TEST
+
+stop_logstash_test_manual:
+  extends:
+    - .stop_logtash_template
+    - .variables_test
+    - .rules_test_manual
+
+stop_heartbeat_test_manual:
+  extends:
+    - .stop_heartbeat_template
+    - .variables_test
+    - .rules_test_manual
+
+stop_metricbeat_test_manual:
+  extends:
+    - .stop_metricbeat_template
+    - .variables_test
+    - .rules_test_manual
+
+stop_filebeat_test_manual:
+  extends:
+    - .stop_filebeat_template
+    - .variables_test
+    - .rules_test_manual
+
+stop_kibana_test_manual:
+  extends:
+    - .stop_kibana_template
+    - .variables_test
+    - .rules_test_manual
+
+stop_elasticsearch_test_manual:
+  extends:
+    - .stop_elasticsearch_template
+    - .variables_test
+    - .rules_test_manual

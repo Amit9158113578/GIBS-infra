@@ -1,0 +1,25 @@
+## Logs Scripts
+
+## Logs Jobs
+## DEV
+
+logs_dev_manual:
+  extends:
+    - .log_template
+    - .variables_dev
+    - .rules_dev_manual
+
+## TEST
+
+logs_test_manual:
+  extends:
+    - .log_template
+    - .variables_test
+    - .rules_test_manual
+
+## PROD
+logs_prod_manual:
+  extends:
+    - .log_template
+    - .variables_prod
+    - .rules_prod_manual

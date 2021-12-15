@@ -1,24 +1,24 @@
-## Maintenance Scripts
+## Restart ELK Stack Scripts
 
 ## DEV
 
-logs_dev_manual:
+restart_stack_dev_manual:
   extends:
-    - .log_template
+    - .restart_stack_template
     - .variables_dev
     - .rules_dev_manual
 
 ## TEST
 
-logs_test_manual:
+restart_stack_test_manual:
   extends:
-    - .log_template
+    - .restart_stack_template
     - .variables_test
     - .rules_test_manual
 
 ## PROD
-logs_prod_manual:
+restart_stack_prod_manual:
   extends:
-    - .log_template
+    - .restart_stack_template
     - .variables_prod
     - .rules_prod_manual

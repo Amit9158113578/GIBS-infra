@@ -1,7 +1,7 @@
 ## Logs templates
 
 .log_template:
-  stage: maintenance
+  stage: logs
   script:
          - export
          - ssh node3 ls -la /etc/logstash/conf.d/minagri-nais

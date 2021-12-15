@@ -7,19 +7,19 @@
 
          ## Node3
          - ssh node3 service logstash restart
-         - node3 service metricbeat restart
-         - node3 service filebeat restart
-         - node3 service heartbeat restart
-         - node3 service elasticsearch restart
+         - service metricbeat restart
+         - service filebeat restart
+         - service heartbeat restart
+         - service elasticsearch restart
          
          ## Node2
          - ssh node2 service metricbeat restart
-         - node2 service filebeat restart
-         - node2 service kibana restart
-         - node2 service elasticsearch restart
+         - service filebeat restart
+         - service kibana restart
+         - service elasticsearch restart
 
          ## Node1
          - ssh node1 service metricbeat restart
-         - node1 service filebeat restart
-         - node1 service kibana restart
-         - node1 service elasticsearch restart
+         - service filebeat restart
+         - service kibana restart
+         - service elasticsearch restart

@@ -4,3 +4,4 @@
   stage: testing
   script:
          - export
+         - service elasticsearch status

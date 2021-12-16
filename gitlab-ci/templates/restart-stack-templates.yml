@@ -4,22 +4,22 @@
   stage: restart_stack
   script:
          - export
+         
+         ## Node1
+         - ssh node1 service elasticsearch restart
+         - ssh node1 service kibana restart
+         - ssh node1 service metricbeat restart
+         - ssh node1 service filebeat restart
+
+         ## Node2
+         - ssh node2 service elasticsearch restart
+         - ssh node2 service kibana restart
+         - ssh node2 service metricbeat restart
+         - ssh node2 service filebeat restart
 
          ## Node3
+         - ssh node3 service elasticsearch restart
          - ssh node3 service logstash restart
          - ssh node3 service metricbeat restart
          - ssh node3 service filebeat restart
          - ssh node3 service heartbeat-elastic restart
-         - ssh node3 service elasticsearch restart
-         
-         ## Node2
-         - ssh node2 service metricbeat restart
-         - ssh node2 service filebeat restart
-         - ssh node2 service kibana restart
-         - ssh node2 service elasticsearch restart
-
-         ## Node1
-         - ssh node1 service metricbeat restart
-         - ssh node1 service filebeat restart
-         - ssh node1 service kibana restart
-         - ssh node1 service elasticsearch restart

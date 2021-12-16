@@ -7,7 +7,6 @@
   script:
          - export
          - ssh node3 service logstash stop
-         - ssh node3 service logstash status
 
 ## Stop Heartbeat
 .stop_heartbeat_template:
@@ -17,15 +16,12 @@
 
          ## Node3
          - ssh node3 service heartbeat-elastic stop
-         - ssh node3 service heartbeat-elastic status
          
          ## Node2
          - ssh node2 service heartbeat-elastic stop
-         - ssh node2 service heartbeat-elastic status
 
          ## Node1
          - ssh node1 service heartbeat-elastic stop
-         - ssh node1 service heartbeat-elastic status
 
 ## Stop Metricbeat
 .stop_metricbeat_template:
@@ -35,15 +31,12 @@
 
          ## Node3
          - ssh node3 service metricbeat stop
-         - ssh node3 service metricbeat status
          
          ## Node2
          - ssh node2 service metricbeat stop
-         - ssh node2 service metricbeat status
 
          ## Node1
          - ssh node1 service metricbeat stop
-         - ssh node1 service metricbeat status
 
 ## Stop Filebeat
 .stop_filebeat_template:
@@ -53,15 +46,12 @@
 
          ## Node3
          - ssh node3 service filebeat stop
-         - ssh node3 service filebeat status
          
          ## Node2
          - ssh node2 service filebeat stop
-         - ssh node2 service filebeat status
 
          ## Node1
          - ssh node1 service filebeat stop
-         - ssh node1 service filebeat status
 
 ## Stop Kibana
 .stop_kibana_template:
@@ -71,11 +61,9 @@
 
          ## Node2
          - ssh node2 service kibana stop
-         - ssh node2 service kibana status
 
          ## Node1
          - ssh node1 service kibana stop
-         - ssh node1 service kibana status
 
 ## Stop Elasticsearch
 .stop_elasticsearch_template:
@@ -85,12 +73,9 @@
 
          ## Node3
          - ssh node3 service elasticsearch stop
-         - ssh node3 service elasticsearch status
 
          ## Node2
          - ssh node2 service elasticsearch stop
-         - ssh node2 service elasticsearch status
 
          ## Node1
          - ssh node1 service elasticsearch stop
-         - ssh node1 service elasticsearch status

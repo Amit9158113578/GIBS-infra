@@ -19,13 +19,13 @@
          - ssh node3 service heartbeat-elastic start
          - ssh node3 service heartbeat-elastic status
          
-         ## Node2
-         - ssh node2 service heartbeat-elastic start
-         - ssh node2 service heartbeat-elastic status
+        #  ## Node2
+        #  - ssh node2 service heartbeat-elastic start
+        #  - ssh node2 service heartbeat-elastic status
 
-         ## Node1
-         - ssh node1 service heartbeat-elastic start
-         - ssh node1 service heartbeat-elastic status
+        #  ## Node1
+        #  - ssh node1 service heartbeat-elastic start
+        #  - ssh node1 service heartbeat-elastic status
 
 ## start Metricbeat
 .start_metricbeat_template:

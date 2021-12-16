@@ -17,11 +17,11 @@
          ## Node3
          - ssh node3 service heartbeat-elastic stop
          
-         ## Node2
-         - ssh node2 service heartbeat-elastic stop
+        #  ## Node2
+        #  - ssh node2 service heartbeat-elastic stop
 
-         ## Node1
-         - ssh node1 service heartbeat-elastic stop
+        #  ## Node1
+        #  - ssh node1 service heartbeat-elastic stop
 
 ## Stop Metricbeat
 .stop_metricbeat_template:

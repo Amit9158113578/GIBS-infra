@@ -15,13 +15,13 @@
          - export
 
          ## Node3
-         - ssh node3 service heartbeat start
+         - ssh node3 service heartbeat-elastic start
          
          ## Node2
-         - ssh node2 service heartbeat start
+         - ssh node2 service heartbeat-elastic start
 
          ## Node1
-         - ssh node1 service heartbeat start
+         - ssh node1 service heartbeat-elastic start
 
 ## start Metricbeat
 .start_metricbeat_template:

@@ -9,7 +9,7 @@
          - ssh node3 service logstash restart
          - service metricbeat restart
          - service filebeat restart
-         - service heartbeat restart
+         - service heartbeat-elastic restart
          - service elasticsearch restart
          
          ## Node2

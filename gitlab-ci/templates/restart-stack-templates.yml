@@ -8,11 +8,11 @@
          ## Elastisearch
 
          - ssh node1 service elasticsearch restart
-         - ssh node 1 service elasticsearch status
+         - ssh node1 service elasticsearch status
          - ssh node2 service elasticsearch restart
-         - ssh node 2 service elasticsearch status
+         - ssh node2 service elasticsearch status
          - ssh node3 service elasticsearch restart
-         - ssh node 3 service elasticsearch status
+         - ssh node3 service elasticsearch status
 
          ## Kibana
 

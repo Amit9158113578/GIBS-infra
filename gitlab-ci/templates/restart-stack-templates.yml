@@ -8,30 +8,43 @@
          ## Elastisearch
 
          - ssh node1 service elasticsearch restart
+         - ssh node 1 service elasticsearch status
          - ssh node2 service elasticsearch restart
+         - ssh node 2 service elasticsearch status
          - ssh node3 service elasticsearch restart
+         - ssh node 3 service elasticsearch status
 
          ## Kibana
 
          - ssh node1 service kibana restart
+         - ssh node1 service kibana status
          - ssh node2 service kibana restart
+         - ssh node2 service kibana status
 
          ## Logstash
 
          - ssh node3 service logstash restart
+         - ssh node3 service logstash status
 
          ## Metricbeat
 
          - ssh node1 service metricbeat restart
+         - ssh node1 service metricbeat status
          - ssh node2 service metricbeat restart
+         - ssh node2 service metricbeat status
          - ssh node3 service metricbeat restart
+         - ssh node3 service metricbeat status
 
          ## Filebeat
 
          - ssh node1 service filebeat restart
+         - ssh node1 service filebeat status
          - ssh node2 service filebeat restart
+         - ssh node2 service filebeat status
          - ssh node3 service filebeat restart
+         - ssh node3 service filebeat status
 
          ## Heartbeat
 
          - ssh node3 service heartbeat-elastic restart
+         - ssh node3 service heartbeat-elastic status

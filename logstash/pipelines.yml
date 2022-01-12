@@ -150,7 +150,7 @@
   pipeline.workers: 4
   config.reload.automatic: true
   config.reload.interval: 3s
-  pipeline.batch.size: 50
+  pipeline.batch.size: 1000
   pipeline.batch.delay: 50
   pipeline.ordered: auto
 

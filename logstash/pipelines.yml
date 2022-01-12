@@ -147,11 +147,10 @@
 
 - pipeline.id: mbaza-chatbot-report
   path.config: "/etc/logstash/conf.d/mbaza-chatbot-report/mbaza-chatbot-report-pipeline.conf"
-  pipeline.workers: 4
+  pipeline.workers: 8
   config.reload.automatic: true
   config.reload.interval: 3s
-  pipeline.batch.size: 1000
-  pipeline.batch.delay: 50
+  pipeline.batch.size: 5000
   pipeline.ordered: auto
 
 ## Easternprovince Report Pipeline

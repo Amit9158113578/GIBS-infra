@@ -10,7 +10,7 @@
     - add_observer_metadata:
         geo:
           location: -1.9441, 30.0619
-          name: MBAZA-VPN
+          name: gbis
           continent_name: Africa
           country_iso_code: RW
           region_name: Kigali

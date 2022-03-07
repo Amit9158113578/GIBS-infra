@@ -176,3 +176,11 @@
   config.reload.interval: 3s
   pipeline.ordered: auto
 
+## IOT Pipeline
+
+- pipeline.id: iot-airquality-data
+  path.config: "/etc/logstash/conf.d/iot-airquality/iot-airquality-data.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: auto

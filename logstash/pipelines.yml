@@ -53,6 +53,29 @@
   pipeline.ordered: false
   queue.type: memory
 
+- pipeline.id: gcc_staging_filename_mapping
+  path.config: "/etc/logstash/conf.d/GCC/read_git.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
+
+- pipeline.id: gcc_staging_upload_pre_approve
+  path.config: "/etc/logstash/conf.d/GCC/upload_pre_approve.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
+
+- pipeline.id: gcc_approved_kpidata
+  path.config: "/etc/logstash/conf.d/GCC/approve_logic_kpidata.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
 
 # # # vaccination
 

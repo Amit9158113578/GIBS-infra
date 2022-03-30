@@ -4,7 +4,7 @@
 
     - name: Copy logstash yml
       copy:
-        src: ../logstash-{{ lookup('ENV','ENV') }}.yml
+        src: ../logstash.yml
         dest: /etc/logstash/logstash.yml
         force: yes
       become: yes

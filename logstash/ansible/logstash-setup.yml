@@ -51,7 +51,7 @@
 
     - name: Copy pipeline yml
       copy:
-        src: ../pipelines.yml
+        src: ../pipelines-{{ lookup('ENV','ENV') }}.yml
         dest: /etc/logstash/pipelines.yml
         force: yes
       become: yes

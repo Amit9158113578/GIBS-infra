@@ -29,53 +29,30 @@
 #   pipeline.ordered: false
 #   queue.type: memory
 
-- pipeline.id: application_gcc_master_data
-  path.config: "/etc/logstash/conf.d/GCC/master-data.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+#- pipeline.id: application_gcc_master_data
+#  path.config: "/etc/logstash/conf.d/GCC/master-data.conf"
+#  pipeline.workers: 1
+#  config.reload.automatic: true
+#  config.reload.interval: 3s
+#  pipeline.ordered: false
+#  queue.type: memory
 
-- pipeline.id: application_gcc_target_data
-  path.config: "/etc/logstash/conf.d/GCC/target.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+#- pipeline.id: application_gcc_target_data
+#  path.config: "/etc/logstash/conf.d/GCC/target.conf"
+#  pipeline.workers: 1
+#  config.reload.automatic: true
+#  config.reload.interval: 3s
+#  pipeline.ordered: false
+#  queue.type: memory
 
-- pipeline.id: application_gcc_kpi_data
-  path.config: "/etc/logstash/conf.d/GCC/kpi_data.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+#- pipeline.id: application_gcc_kpi_data
+#  path.config: "/etc/logstash/conf.d/GCC/kpi_data.conf"
+#  pipeline.workers: 1
+#  config.reload.automatic: true
+#  config.reload.interval: 3s
+#  pipeline.ordered: false
+#  queue.type: memory
 
-- pipeline.id: gcc_staging_filename_mapping
-  path.config: "/etc/logstash/conf.d/GCC/read_git.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
-
-- pipeline.id: gcc_staging_upload_pre_approve
-  path.config: "/etc/logstash/conf.d/GCC/upload_pre_approve.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
-
-- pipeline.id: gcc_approved_kpidata
-  path.config: "/etc/logstash/conf.d/GCC/approve_logic_kpidata.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
 
 # # # vaccination
 
@@ -159,22 +136,22 @@
 
 ## Twitter Pipeline
 
-- pipeline.id: twitter
-  path.config: "/etc/logstash/conf.d/twitter/twitter.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
+# - pipeline.id: twitter
+#   path.config: "/etc/logstash/conf.d/twitter/twitter.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
 
 ## MBaza Report Pipeline
 
-- pipeline.id: mbaza-chatbot-report
-  path.config: "/etc/logstash/conf.d/mbaza-chatbot-report/mbaza-chatbot-report-pipeline.conf"
-  pipeline.workers: 8
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.batch.size: 5000
-  pipeline.ordered: auto
+#- pipeline.id: mbaza-chatbot-report
+#  path.config: "/etc/logstash/conf.d/mbaza-chatbot-report/mbaza-chatbot-report-pipeline.conf"
+#  pipeline.workers: 8
+#  config.reload.automatic: true
+#  config.reload.interval: 3s
+#  pipeline.batch.size: 5000
+#  pipeline.ordered: auto
 
 ## Easternprovince Report Pipeline
 
@@ -194,15 +171,6 @@
 
 - pipeline.id: easternprovince-api-master-data-pipeline
   path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-master-data-pipeline.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: auto
-
-## IOT Pipeline
-
-- pipeline.id: iot-airquality-data
-  path.config: "/etc/logstash/conf.d/iot-airquality/iot-airquality-data.conf"
   pipeline.workers: 1
   config.reload.automatic: true
   config.reload.interval: 3s

@@ -77,7 +77,18 @@
   pipeline.ordered: false
   queue.type: memory
 
-# # # vaccination
+  ## Kafka Pipeline
+
+- pipeline.id: streaming-kafka-multiple-sensor
+  path.config: "/etc/logstash/conf.d/kafka-iot/kafka_input_multiple_sensor.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
+  #### Kafka-Streaming-Pipeline
+
+  # # # vaccination
 
 # - pipeline.id: vaccination-report
 #   path.config: "/etc/logstash/conf.d/vaccination/vaccination-report.conf"

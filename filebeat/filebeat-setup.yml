@@ -1,5 +1,5 @@
 - name: FileBeat Instalation
-  hosts: node1
+  hosts: all
   tasks:
     - name: Ensure FileBeat is at the "{{ lookup('ENV','ELK_VERSION') }}" version
       apt: name=filebeat={{ lookup('ENV','ELK_VERSION') }} state=present
@@ -8,10 +8,13 @@
       copy:
         src: security
         dest: /etc/filebeat/
+        force: yes
+      become: yes
     - name: Copy filebeat config yml
       copy:
         src: filebeat.yml
         dest: /etc/filebeat
+        force: yes
       become: yes
     # - name: Add Block
     #   blockinfile:
@@ -25,74 +28,7 @@
       copy:
         src: modules.d
         dest: /etc/filebeat
-      become: yes
-    - name: start filebeat
-      service:
-          name: filebeat
-          state: restarted
-      become: yes
-
-- name: FileBeat Instalation
-  hosts: node2
-  tasks:
-    - name: Ensure FileBeat is at the "{{ lookup('ENV','ELK_VERSION') }}" version
-      apt: name=filebeat={{ lookup('ENV','ELK_VERSION') }} state=present
-      become: yes
-    - name: Copy security folder 
-      copy:
-        src: security
-        dest: /etc/filebeat/
-    - name: Copy filebeat config yml
-      copy:
-        src: filebeat.yml
-        dest: /etc/filebeat
-      become: yes
-    # - name: Add Block
-    #   blockinfile:
-    #     dest: /etc/filebeat/filebeat.yml
-    #     block: |
-    #       http.enabled: true
-    #       monitoring.enabled: false # legacy monitoring off
-    #       http.port: 5066
-    #       http.host: node2
-    - name: Copy modules.d folder
-      copy:
-        src: modules.d
-        dest: /etc/filebeat
-      become: yes
-    - name: start filebeat
-      service:
-          name: filebeat
-          state: restarted
-      become: yes
-
-- name: FileBeat Instalation
-  hosts: node3
-  tasks:
-    - name: Ensure FileBeat is at the "{{ lookup('ENV','ELK_VERSION') }}" version
-      apt: name=filebeat={{ lookup('ENV','ELK_VERSION') }} state=present
-      become: yes
-    - name: Copy security folder 
-      copy:
-        src: security
-        dest: /etc/filebeat/
-    - name: Copy filebeat config yml
-      copy:
-        src: filebeat.yml
-        dest: /etc/filebeat
-      become: yes
-    # - name: Add Block
-    #   blockinfile:
-    #     dest: /etc/filebeat/filebeat.yml
-    #     block: |
-    #       http.enabled: true
-    #       monitoring.enabled: false # legacy monitoring off
-    #       http.port: 5066
-    #       http.host: node3
-    - name: Copy modules.d folder
-      copy:
-        src: modules.d
-        dest: /etc/filebeat
+        force: yes
       become: yes
     - name: start filebeat
       service:

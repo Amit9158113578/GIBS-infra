@@ -310,8 +310,7 @@ path.logs: /var/log/logstash
 
 api.enabled: true
 monitoring.enabled: false # legacy monitoring off
-http.port: 9600
-http.host: "node3"
+api.http.host: "node3"
+api.http.port: 9600
 
-## X-Pack security credentials
-xpack.monitoring.enabled: true
+xpack.monitoring.enabled: false

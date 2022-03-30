@@ -1,205 +1,92 @@
-- hosts: node1
-  roles:
-    - role: elastic.elasticsearch
-  vars:
-    es_version: "{{ lookup('ENV','ELK_VERSION') }}"
-    es_enable_xpack: true
-    es_data_dirs:
-      - "/data/elasticsearch/data"
-    es_log_dir: "/data/elasticsearch/logs"
-    es_path_repo: "/data/elasticsearch/backup"
-    es_java_install: true
-    es_ssl_certificate_authority: security/ca/ca.crt
-    es_ssl_key: security/node1/node1.key
-    es_ssl_certificate: security/node1/node1.crt
-    es_enable_http_ssl: true
-    es_enable_auto_ssl_configuration: true
-    es_api_basic_auth_username: "{{ lookup('ENV','ELASTICSEARCH_USERNAME') }}"
-    es_api_basic_auth_password: "{{ lookup('ENV','ELASTICSEARCH_PASSWORD') }}"
-    es_enable_transport_ssl: true 
-    es_xpack_features: []
-    es_config:
-      xpack.monitoring.collection.enabled: true
-      cluster.name: "{{ lookup('ENV','ENV') }}-CLUSTER"
-      cluster.initial_master_nodes: "node1"
-      discovery.seed_hosts: "{{ lookup('ENV','HOSTS') }}"
-      http.port: 9200
-      node.data: true
-      node.master: true
-      bootstrap.memory_lock: false
-      network.host: '0.0.0.0'
-
-      xpack:
-        security:
-          authc:
-            realms:
-              native:
-                native1:
-                  order: 0
-              ldap:
-                ldap1:
-                  order: 1
-                  url: "{{ lookup('ENV','LDAP_URL') }}"
-                  bind_dn: "{{ lookup('ENV','LDAP_USER') }}"
-                  bind_password: "{{ lookup('ENV','LDAP_PASSWORD') }}"
-                  user_search:
-                    base_dn: "ou=users,ou=GCC,o=GBIS"
-                    filter: "(cn={0})"
-                  group_search:
-                    base_dn: "ou=groups,ou=GCC,o=GBIS"
-                  files:
-                    role_mapping: "/etc/elasticsearch/role_mapping.yml"
-                  unmapped_groups_as_roles: false
-    es_plugins:
-     - plugin: ingest-attachment
+- name: Elasticsearch Installation
+  hosts: all
   tasks:
-    - name: Copy role mapping
-      copy:
-        src: role_mapping.yml
-        dest: /etc/elasticsearch/role_mapping.yml
-        force: yes
+
+    - name: Import Elasticsearch PGP Key
+      apt_key:
+        url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+        state: present
       become: yes
-    - name: restart elasticsearch
-      service:
-          name: elasticsearch
-          state: restarted
+    
+    - name: Install apt-transport-https
+      apt: name=apt-transport-https state=present
       become: yes
 
+    - name: Add ELK Repo
+      apt_repository:
+        repo: deb https://artifacts.elastic.co/packages/7.x/apt stable main
+        state: present
+      become: yes
+    
+    - name: APT-GET Update
+      apt: update_cache=yes
+      become: yes
 
-
-
-
-- hosts: node2
-  roles:
-    - role: elastic.elasticsearch
-  vars:
-    es_version: "{{ lookup('ENV','ELK_VERSION') }}"
-    es_enable_xpack: true
-    es_data_dirs:
-      - "/data/elasticsearch/data"
-    es_log_dir: "/data/elasticsearch/logs"
-    es_path_repo: "/data/elasticsearch/backup"
-    es_java_install: true
-    es_ssl_certificate_authority: security/ca/ca.crt
-    es_ssl_key: security/node2/node2.key
-    es_ssl_certificate: security/node2/node2.crt
-    es_enable_http_ssl: true
-    es_enable_auto_ssl_configuration: true
-    es_api_basic_auth_username: "{{ lookup('ENV','ELASTICSEARCH_USERNAME') }}"
-    es_api_basic_auth_password: "{{ lookup('ENV','ELASTICSEARCH_PASSWORD') }}"
-    es_enable_transport_ssl: true 
-    es_xpack_features: []
-    es_config:
-      xpack.monitoring.collection.enabled: true
-      cluster.name: "{{ lookup('ENV','ENV') }}-CLUSTER"
-      cluster.initial_master_nodes: "node1"
-      discovery.seed_hosts: "{{ lookup('ENV','HOSTS') }}"
-      http.port: 9200
-      node.data: true
-      node.master: true
-      bootstrap.memory_lock: false
-      network.host: '0.0.0.0'
+    - name: Ensure elasticsearch is at the "{{ lookup('ENV','ELK_VERSION') }}" version
+      apt: name=elasticsearch={{ lookup('ENV','ELK_VERSION') }} state=present
+      become: yes
       
-      xpack:
-        security:
-          authc:
-            realms:
-              native:
-                native1:
-                  order: 0
-              ldap:
-                ldap1:
-                  order: 1
-                  url: "{{ lookup('ENV','LDAP_URL') }}"
-                  bind_dn: "{{ lookup('ENV','LDAP_USER') }}"
-                  bind_password: "{{ lookup('ENV','LDAP_PASSWORD') }}"
-                  user_search:
-                    base_dn: "ou=users,ou=GCC,o=GBIS"
-                    filter: "(cn={0})"
-                  group_search:
-                    base_dn: "ou=groups,ou=GCC,o=GBIS"
-                  files:
-                    role_mapping: "/etc/elasticsearch/role_mapping.yml"
-                  unmapped_groups_as_roles: false
-    es_plugins:
-     - plugin: ingest-attachment
-  tasks:
+    - name: Ensures /etc/elasticsearch/security dir exists
+      file: path=/etc/elasticsearch/security state=directory
+      become: yes
+
+    - name: Copy security folder 
+      copy:
+        src: security
+        dest: /etc/elasticsearch/
+      become: yes
+
+    - name: Copy config file 
+      copy:
+        src: elasticsearch.yml
+        dest: /etc/elasticsearch/elasticsearch.yml
+        force: yes
+      become: yes
+
+    - name: Add Server Certificate
+      blockinfile:
+        dest: /etc/elasticsearch/elasticsearch.yml
+        block: |
+          node.name: {{ inventory_hostname }}
+          xpack.security.transport.ssl.enabled: true
+          xpack.security.transport.ssl.verification_mode: "certificate"
+          xpack.security.transport.ssl.key: "/etc/elasticsearch/security/{{ inventory_hostname }}/{{ inventory_hostname }}.key"
+          xpack.security.transport.ssl.certificate: "/etc/elasticsearch/security/{{ inventory_hostname }}/{{ inventory_hostname }}.crt"
+          xpack.security.transport.ssl.certificate_authorities: "/etc/elasticsearch/security/ca/ca.crt"
+
+          xpack.security.http.ssl.enabled: true
+          xpack.security.http.ssl.key: "/etc/elasticsearch/security/{{ inventory_hostname }}/{{ inventory_hostname }}.key"
+          xpack.security.http.ssl.certificate: "/etc/elasticsearch/security/{{ inventory_hostname }}/{{ inventory_hostname }}.crt"
+          xpack.security.http.ssl.certificate_authorities: "/etc/elasticsearch/security/ca/ca.crt"
+      become: yes
+
     - name: Copy role mapping
       copy:
         src: role_mapping.yml
         dest: /etc/elasticsearch/role_mapping.yml
         force: yes
       become: yes
-    - name: restart elasticsearch
-      service:
-          name: elasticsearch
-          state: restarted
+
+    - name: Ensures /data/elasticsearch/data dir exists
+      file: path=/data/elasticsearch/data state=directory owner=elasticsearch group=elasticsearch
       become: yes
 
-
-- hosts: node3
-  roles:
-    - role: elastic.elasticsearch
-  vars:
-    es_version: "{{ lookup('ENV','ELK_VERSION') }}"
-    es_enable_xpack: true
-    es_data_dirs:
-      - "/data/elasticsearch/data"
-    es_log_dir: "/data/elasticsearch/logs"
-    es_path_repo: "/data/elasticsearch/backup"
-    es_java_install: true
-    es_ssl_certificate_authority: security/ca/ca.crt
-    es_ssl_key: security/node3/node3.key
-    es_ssl_certificate: security/node3/node3.crt
-    es_enable_http_ssl: true
-    es_enable_auto_ssl_configuration: true
-    es_api_basic_auth_username: "{{ lookup('ENV','ELASTICSEARCH_USERNAME') }}"
-    es_api_basic_auth_password: "{{ lookup('ENV','ELASTICSEARCH_PASSWORD') }}"
-    es_enable_transport_ssl: true 
-    es_xpack_features: []
-    es_config:
-      xpack.monitoring.collection.enabled: true
-      cluster.name: "{{ lookup('ENV','ENV') }}-CLUSTER"
-      cluster.initial_master_nodes: "node1"
-      discovery.seed_hosts: "{{ lookup('ENV','HOSTS') }}"
-      http.port: 9200
-      node.data: true
-      node.master: true
-      bootstrap.memory_lock: false
-      network.host: '0.0.0.0'
-      
-      xpack:
-        security:
-          authc:
-            realms:
-              native:
-                native1:
-                  order: 0
-              ldap:
-                ldap1:
-                  order: 1
-                  url: "{{ lookup('ENV','LDAP_URL') }}"
-                  bind_dn: "{{ lookup('ENV','LDAP_USER') }}"
-                  bind_password: "{{ lookup('ENV','LDAP_PASSWORD') }}"
-                  user_search:
-                    base_dn: "ou=users,ou=GCC,o=GBIS"
-                    filter: "(cn={0})"
-                  group_search:
-                    base_dn: "ou=groups,ou=GCC,o=GBIS"
-                  files:
-                    role_mapping: "/etc/elasticsearch/role_mapping.yml"
-                  unmapped_groups_as_roles: false
-    es_plugins:
-     - plugin: ingest-attachment
-  tasks:
-    - name: Copy role mapping
-      copy:
-        src: role_mapping.yml
-        dest: /etc/elasticsearch/role_mapping.yml
-        force: yes
+    - name: Ensures /data/elasticsearch/logs dir exists
+      file: path=/data/elasticsearch/logs state=directory owner=elasticsearch group=elasticsearch
       become: yes
-    - name: restart elasticsearch
-      service:
-          name: elasticsearch
-          state: restarted
+
+    - name: Ensures /data/elasticsearch/backup dir exists
+      file: path=/data/elasticsearch/backup state=directory owner=elasticsearch group=elasticsearch
+      become: yes
+
+    - name: daemon-reload
+      command: systemctl daemon-reload
+      become: yes
+
+    - name: enable elasticsearch.service
+      command: systemctl enable elasticsearch.service
+      become: yes
+
+    - name: start elasticsearch.service
+      command: systemctl start elasticsearch.service
       become: yes

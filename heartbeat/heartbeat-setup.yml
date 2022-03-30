@@ -24,6 +24,21 @@
         delete: yes
         dirs: yes
       become: yes
+    - name: Update permissions for monitors.d folder
+      command: chown root /etc/heartbeat/monitors.d
+      args:
+        warn: false
+      become: yes
+    - name: Update permissions for monitors
+      shell: chown root /etc/heartbeat/monitors.d/*
+      args:
+        warn: false
+      become: yes
+    - name: Update write permissions for monitors
+      shell: chmod go-w /etc/heartbeat/monitors.d/*
+      args:
+        warn: false
+      become: yes
     - name: stop heartbeat
       service:
           name: heartbeat-elastic

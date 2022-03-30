@@ -28,6 +28,7 @@
     ENV: DEV
     ELK_VERSION: $ELK_VERSION_DEV
     LOGSTASH_VERSION: $LOGSTASH_VERSION_DEV
+    BOOTSTRAP_PASSWORD: $BOOTSTRAP_PASSWORD_DEV
     ELASTICSEARCH_PASSWORD: $ELASTICSEARCH_PASSWORD_DEV
     ELASTICSEARCH_USERNAME: $ELASTICSEARCH_USERNAME_DEV
     KIBANA_URL: $KIBANA_URL_DEV
@@ -57,6 +58,7 @@
     ENV: TEST
     ELK_VERSION: $ELK_VERSION_TEST
     LOGSTASH_VERSION: $LOGSTASH_VERSION_TEST
+    BOOTSTRAP_PASSWORD: $BOOTSTRAP_PASSWORD_TEST
     ELASTICSEARCH_PASSWORD: $ELASTICSEARCH_PASSWORD_TEST
     ELASTICSEARCH_USERNAME: $ELASTICSEARCH_USERNAME_TEST
     ELASTICSEARCH_URL: $ELASTICSEARCH_URL_TEST
@@ -71,6 +73,7 @@
     ENABLE_ROLE: "false"
     NO_OF_ROLES_USER_MIGRATE: "ALL"
     ENABLE_USER: "false"
+    MIGRATION_USER_DEFAULT_PASSWORD: "Change@Password"
     ENABLE_OBJECT: "true"
     ENABLE_SPACE: "true"
     OBJECT_SOURCE: "https://$NODE1_DEV:5601/s/"
@@ -103,6 +106,7 @@
     ENV: PROD
     ELK_VERSION: $ELK_VERSION_PROD
     LOGSTASH_VERSION: $LOGSTASH_VERSION_PROD
+    BOOTSTRAP_PASSWORD: $BOOTSTRAP_PASSWORD_PROD
     ELASTICSEARCH_PASSWORD: $ELASTICSEARCH_PASSWORD_PROD
     ELASTICSEARCH_USERNAME: $ELASTICSEARCH_USERNAME_PROD
     ELASTICSEARCH_URL: $ELASTICSEARCH_URL_PROD
@@ -116,9 +120,10 @@
     
     ENABLE_ROLE: "true"
     NO_OF_ROLES_USER_MIGRATE: "ALL"
-    ENABLE_USER: "false"
-    ENABLE_OBJECT: "true"
-    ENABLE_SPACE: "true"
+    ENABLE_USER: "true"
+    MIGRATION_USER_DEFAULT_PASSWORD: "Change@Password"
+    ENABLE_OBJECT: "false"
+    ENABLE_SPACE: "false"
     OBJECT_SOURCE: "https://$NODE1_TEST:5601/s/"
     OBJECT_DEST: "https://$NODE1_PROD:5601/s/"
     #OBJECT_TYPE: "index-pattern,visualization,dashboard,lens,search,config,canvas-workpad,url,map,tag,query,graph-workspace,canvas-element,infrastructure-ui-source,metrics-explorer-view,inventory-view,apm-indices"
@@ -132,6 +137,19 @@
     SPACE_DEST: "$KIBANA_URL_PROD/api/spaces/space"
     USER_SOURCE: "$ELASTICSEARCH_URL_TEST/_security/user?pretty"
     USER_DEST: "$ELASTICSEARCH_URL_PROD/_security/user/"
+
+    ########## TEMP
+    # OBJECT_SOURCE: "https://$NODE1_DEV:5601/s/"
+    # OBJECT_DEST: "https://$NODE1_PROD:5601/s/"
+    # PROPERTY_FILE: "application-dev"
+    # ROLE_SOURCE: "$KIBANA_URL_DEV/api/security/role?pretty"
+    # ROLE_DEST: "$KIBANA_URL_PROD/api/security/role/"
+    # SPACE_ID: $MIGRATION_SPACE_ID_DEV_TO_TEST
+    # SPACE_SOURCE: "$KIBANA_URL_DEV/api/spaces/space"
+    # SPACE_DEST: "$KIBANA_URL_PROD/api/spaces/space"
+    # USER_SOURCE: "$ELASTICSEARCH_URL_DEV/_security/user?pretty"
+    # USER_DEST: "$ELASTICSEARCH_URL_PROD/_security/user/"
+
 
 ##############################################################################
 

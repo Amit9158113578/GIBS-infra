@@ -3,6 +3,7 @@
 stages:
     - base_setup            # For setting up base requirements (one time run)
     - deploy_elk_stack      # For deploying different ELK modules/componenets
+    - elastic_password      # For setting elastic superuser password - ONLY TO BE RUN ONCE WHEN INSTALLING ELASTICSEARCH FOR THE FIRST TIME
     - logstash_updates      # For updates to logstash.yml or pipelines.yml
     - restart_stack         # For restaring entire ELK stack (logstash, beats, kibana, elasticsearch)
     - stop_module           # For stopping individual module

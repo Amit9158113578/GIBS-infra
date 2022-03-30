@@ -10,16 +10,19 @@
       logstash_plugin:
         state: present
         name: logstash-filter-json_encode
+      become: yes
 
     - name: Install sentiment analyzer filter plugin
       logstash_plugin:
         state: present
         name: logstash-filter-sentimentalizer
+      become: yes
 
     - name: Install extractnumbers filter plugin
       logstash_plugin:
         state: present
         name: logstash-filter-extractnumbers
+      become: yes
     
     - name: Ensures /etc/logstash/security dir exists
       file: path=/etc/logstash/security state=directory
@@ -60,7 +63,14 @@
       become: yes
 
     - name: start logstash
-      command: service logstash start
+      service:
+          name: logstash
+          state: started
+      become: yes
+
+    # - name: start logstash
+    #   command: service logstash start
+    #   become: yes
 
 
     # - name: start logstash

@@ -17,5 +17,5 @@
          - cp application-var.properties migration/src/main/resources/application.properties
 
          - ansible-playbook -i host migration/migration_setup.yml
-         - bash -x migration/run_api.sh
+         - sudo bash -x migration/run_api.sh
          - echo 'deploy_migration_api End'

@@ -8,6 +8,9 @@
          - echo $NODE1
          - echo $NODE2
          - echo $NODE3
+         - echo 'Elasticsearch.yml'
+         - envsubst < "elasticsearch/elasticsearch.yml" > elasticsearch_var.yml
+         - cp elasticsearch_var.yml elasticsearch/elasticsearch.yml
          - echo 'ELASTICSEARCH SETUP START'
          - ansible-playbook -i host elasticsearch/elasticsearch-setup.yml
          #- cp elasticsearch/role_mapping.yml /etc/elasticsearch/role_mapping.yml

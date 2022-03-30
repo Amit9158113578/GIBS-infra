@@ -1,0 +1,209 @@
+# This file is where you define your pipelines. You can define multiple.
+# For more information on multiple pipelines, see the documentation:
+#   https://www.elastic.co/guide/en/logstash/current/multiple-pipelines.html
+
+#- pipeline.id: main
+#  path.config: "/etc/logstash/conf.d/*.conf"
+
+# - pipeline.id: mvp-multi-application-gcc-master_data
+#   path.config: "/etc/logstash/conf.d/GCC/mvp-multi-master_data.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
+
+# - pipeline.id: mvp-multi-application-gcc-kpi_data
+#   path.config: "/etc/logstash/conf.d/GCC/mvp-multi-kpi_data.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
+
+# - pipeline.id: mvp-multi-application-gcc-target_data
+#   path.config: "/etc/logstash/conf.d/GCC/mvp-multi-target.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
+
+- pipeline.id: application_gcc_master_data
+  path.config: "/etc/logstash/conf.d/GCC/master-data.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
+
+- pipeline.id: application_gcc_target_data
+  path.config: "/etc/logstash/conf.d/GCC/target.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
+
+- pipeline.id: application_gcc_kpi_data
+  path.config: "/etc/logstash/conf.d/GCC/kpi_data.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
+
+- pipeline.id: gcc_staging_filename_mapping
+  path.config: "/etc/logstash/conf.d/GCC/read_git.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
+
+- pipeline.id: gcc_staging_upload_pre_approve
+  path.config: "/etc/logstash/conf.d/GCC/upload_pre_approve.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
+
+- pipeline.id: gcc_approved_kpidata
+  path.config: "/etc/logstash/conf.d/GCC/approve_logic_kpidata.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
+
+# # # vaccination
+
+# - pipeline.id: vaccination-report
+#   path.config: "/etc/logstash/conf.d/vaccination/vaccination-report.conf"
+#   pipeline.workers: 1 # otherwise column autodetect will not work
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
+
+# - pipeline.id: vaccination-pipeline
+#   path.config: "/etc/logstash/conf.d/vaccination/vaccination-pipeline.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
+
+# - pipeline.id: vaccination-master-data-villages
+#   path.config: "/etc/logstash/conf.d/vaccination/master-data-villages.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+#   queue.type: memory
+
+# - pipeline.id: vaccination-master-data-health-facilities
+#   path.config: "/etc/logstash/conf.d/vaccination/master-data-health-facilities.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+
+## project Management Pipelines
+
+# - pipeline.id: openproject-management
+#   path.config: "/etc/logstash/conf.d/openproject/openproject-pipeline.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+
+
+## Minagri Pipelines
+
+#- pipeline.id: minagri-nais-api1
+#  path.config: "/etc/logstash/conf.d/minagri-nais/minagri-nais-api1.conf"
+#  pipeline.workers: 1
+#  config.reload.automatic: true
+#  config.reload.interval: 3s
+#  pipeline.ordered: false
+
+#- pipeline.id: minagri-nais-api2
+#  path.config: "/etc/logstash/conf.d/minagri-nais/minagri-nais-api2.conf"
+#  pipeline.workers: 1
+#  config.reload.automatic: true
+#  config.reload.interval: 3s
+#  pipeline.ordered: false
+
+#- pipeline.id: minagri-nais-api3
+#  path.config: "/etc/logstash/conf.d/minagri-nais/minagri-nais-api3.conf"
+#  pipeline.workers: 1
+#  config.reload.automatic: true
+#  config.reload.interval: 3s
+#  pipeline.ordered: false
+
+# - pipeline.id: minagri-nais-apis-all
+#   path.config: "/etc/logstash/conf.d/minagri-nais/minagri-nais-apis-all.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+
+# - pipeline.id: minagri-mis-api1
+#   path.config: "/etc/logstash/conf.d/minagri-mis/minagri-mis-api1.conf"
+#   pipeline.workers: 1
+#   config.reload.automatic: true
+#   config.reload.interval: 3s
+#   pipeline.ordered: false
+
+## Twitter Pipeline
+
+- pipeline.id: twitter
+  path.config: "/etc/logstash/conf.d/twitter/twitter.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+
+## MBaza Report Pipeline
+
+- pipeline.id: mbaza-chatbot-report
+  path.config: "/etc/logstash/conf.d/mbaza-chatbot-report/mbaza-chatbot-report-pipeline.conf"
+  pipeline.workers: 8
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.batch.size: 5000
+  pipeline.ordered: auto
+
+## Easternprovince Report Pipeline
+
+- pipeline.id: easternprovince
+  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-pipeline.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: auto
+  
+- pipeline.id: easternprovince-api
+  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-pipeline.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: auto
+
+- pipeline.id: easternprovince-api-master-data-pipeline
+  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-master-data-pipeline.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: auto
+
+## IOT Pipeline
+
+- pipeline.id: iot-airquality-data
+  path.config: "/etc/logstash/conf.d/iot-airquality/iot-airquality-data.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: auto

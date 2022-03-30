@@ -118,12 +118,12 @@
     
     #Migration - TEST to PROD
     
-    ENABLE_ROLE: "flase"
+    ENABLE_ROLE: "false"
     NO_OF_ROLES_USER_MIGRATE: "ALL"
-    ENABLE_USER: "flase"
+    ENABLE_USER: "false"
     MIGRATION_USER_DEFAULT_PASSWORD: "Change@Password"
-    ENABLE_OBJECT: "false"
-    ENABLE_SPACE: "false"
+    ENABLE_OBJECT: "true"
+    ENABLE_SPACE: "true"
     OBJECT_SOURCE: "https://$NODE1_TEST:5601/s/"
     OBJECT_DEST: "https://$NODE1_PROD:5601/s/"
     #OBJECT_TYPE: "index-pattern,visualization,dashboard,lens,search,config,canvas-workpad,url,map,tag,query,graph-workspace,canvas-element,infrastructure-ui-source,metrics-explorer-view,inventory-view,apm-indices"

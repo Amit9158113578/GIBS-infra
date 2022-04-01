@@ -60,17 +60,17 @@
         force: yes
       become: yes
     
-    - name: stop logstash
+    - name: restart logstash
       service:
           name: logstash
-          state: stopped
+          state: restarted
       become: yes
 
-    - name: start logstash
-      service:
-          name: logstash
-          state: started
-      become: yes
+    # - name: start logstash
+    #   service:
+    #       name: logstash
+    #       state: started
+    #   become: yes
 
     # - name: start logstash
     #   command: service logstash start

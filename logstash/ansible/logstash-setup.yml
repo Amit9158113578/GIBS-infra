@@ -48,13 +48,13 @@
     - name: Ensures /etc/logstash/templates dir exists
       file: path=/etc/logstash/templates state=directory
       become: yes
-
-    - name: Change folder permissions
-      command: chmod -R 777 /etc/logstash/offset
-      become: yes
     
     - name: Ensures /etc/logstash/offset dir exists
       file: path=/etc/logstash/offset state=directory
+      become: yes
+    
+    - name: Change folder permissions
+      command: chmod -R 777 /etc/logstash/offset
       become: yes
 
     - name: Copy pipeline yml

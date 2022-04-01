@@ -3,7 +3,7 @@
       - node
       - node_stats
   period: 10s
-  hosts: ["node3:9600"]
+  hosts: ["$NODE3:9600"]
   username: "$ELASTICSEARCH_USERNAME"
   password: "$ELASTICSEARCH_PASSWORD"
   xpack.enabled: true

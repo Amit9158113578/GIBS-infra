@@ -30,6 +30,24 @@
 #   pipeline.ordered: false
 #   queue.type: memory
 
+###############################################################
+
+- pipeline.id: application_gcc_master_data
+  path.config: "/etc/logstash/conf.d/GCC/master-data.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
+
+- pipeline.id: application_gcc_target_data
+  path.config: "/etc/logstash/conf.d/GCC/target.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
+
 - pipeline.id: application_gcc_financial_year
   path.config: "/etc/logstash/conf.d/GCC/financial_year.conf"
   pipeline.workers: 1
@@ -56,16 +74,6 @@
 
 - pipeline.id: gcc_approved_kpidata
   path.config: "/etc/logstash/conf.d/GCC/approve_logic_kpidata.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
-
-  ## Kafka Pipeline
-
-- pipeline.id: streaming-kafka-multiple-sensor
-  path.config: "/etc/logstash/conf.d/kafka-iot/kafka_input_multiple_sensor.conf"
   pipeline.workers: 1
   config.reload.automatic: true
   config.reload.interval: 3s

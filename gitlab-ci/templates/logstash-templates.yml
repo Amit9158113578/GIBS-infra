@@ -10,6 +10,12 @@
          - echo $NODE1
          - echo $NODE2
          - echo $NODE3
+
+         - echo '--- Logstash ---'
+         - envsubst < "logstash/logstash.yml" > logstash_var.yml
+         - cp logstash_var.yml logstash/logstash.yml
+         - echo '--- Logstash END ---'
+
          - echo 'Logstash DEPLOY START'
          - ansible-playbook -i host logstash/ansible/logstash-setup.yml
          - echo 'Logstash DEPLOY END'
@@ -38,6 +44,12 @@
          - echo $NODE1
          - echo $NODE2
          - echo $NODE3
+         
+         - echo '--- Logstash ---'
+         - envsubst < "logstash/logstash.yml" > logstash_var.yml
+         - cp logstash_var.yml logstash/logstash.yml
+         - echo '--- Logstash END ---'
+
          - echo 'Logstash Config Update START'
          - ansible-playbook -i host logstash/ansible/logstash-config-update.yml
          - echo 'Logstash Config Update END'

@@ -27,7 +27,7 @@
     - name: Copy modules.d folder
       synchronize:
         src: modules.d
-        dest: /etc/filebeat/modules.d
+        dest: /etc/filebeat/
         delete: yes
         dirs: yes
       become: yes

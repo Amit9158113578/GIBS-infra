@@ -25,9 +25,11 @@
     #       http.port: 5066
     #       http.host: node1
     - name: Copy modules.d folder
-      copy:
+      synchronize:
         src: modules.d
         dest: /etc/filebeat
+        delete: yes
+        dirs: yes
         force: yes
       become: yes
     - name: start filebeat

@@ -26,8 +26,8 @@
     #       http.host: node1
     - name: Copy modules.d folder
       synchronize:
-        src: modules.d
-        dest: /etc/filebeat/
+        src: modules.d/
+        dest: /etc/filebeat/modules.d/
         delete: yes
         dirs: yes
       become: yes

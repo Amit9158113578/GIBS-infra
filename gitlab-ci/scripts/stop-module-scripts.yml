@@ -77,3 +77,41 @@ stop_elasticsearch_test_manual:
     - .stop_elasticsearch_template
     - .variables_test
     - .rules_test_manual
+
+## PROD
+
+stop_logstash_prod_manual:
+  extends:
+    - .stop_logtash_template
+    - .variables_prod
+    - .rules_prod_manual
+
+stop_heartbeat_prod_manual:
+  extends:
+    - .stop_heartbeat_template
+    - .variables_prod
+    - .rules_prod_manual
+
+stop_metricbeat_prod_manual:
+  extends:
+    - .stop_metricbeat_template
+    - .variables_prod
+    - .rules_prod_manual
+
+stop_filebeat_prod_manual:
+  extends:
+    - .stop_filebeat_template
+    - .variables_prod
+    - .rules_prod_manual
+
+stop_kibana_prod_manual:
+  extends:
+    - .stop_kibana_template
+    - .variables_prod
+    - .rules_prod_manual
+
+stop_elasticsearch_prod_manual:
+  extends:
+    - .stop_elasticsearch_template
+    - .variables_prod
+    - .rules_prod_manual

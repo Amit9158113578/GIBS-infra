@@ -290,3 +290,4 @@
   config.reload.automatic: true
   config.reload.interval: 3s
   pipeline.ordered: auto
+

@@ -8,3 +8,4 @@
         dest: /etc/logstash/pipelines.yml
         force: yes
       become: yes
+

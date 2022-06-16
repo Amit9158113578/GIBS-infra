@@ -4,8 +4,6 @@ cluster.name: ${ENV}-CLUSTER
 discovery.seed_hosts: ${HOSTS}
 http.port: 9200
 network.host: 0.0.0.0
-node.data: true
-node.master: true
 xpack:
   security:
     authc:
@@ -46,3 +44,5 @@ xpack.monitoring.collection.enabled: false
 xpack.monitoring.elasticsearch.collection.enabled: false
 
 xpack.security.audit.enabled: true
+
+node.roles: [ data, master ]

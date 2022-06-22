@@ -39,7 +39,7 @@
     - name: Copy config file 
       copy:
         src: elasticsearch.yml
-        dest: /etc/elasticsearch/elasticsearch.yml
+        dest: /etc/elasticsearch/elasticsearch-{{ lookup('env','CI_COMMIT_BRANCH') }}.yml
         force: yes
       become: yes
 

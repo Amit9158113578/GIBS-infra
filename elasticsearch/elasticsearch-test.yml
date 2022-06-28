@@ -47,4 +47,4 @@ xpack.security.audit.enabled: true
 
 node.roles: [ data, master ]
 
-reindex.remote.whitelist: elasticsearch.dev.gcc.gov.rw:443
+reindex.remote.whitelist: elasticsearch.dev.gcc.gov.rw:443, elasticsearch.gbis.prod.risa.gov.rw:443

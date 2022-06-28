@@ -46,3 +46,5 @@ xpack.monitoring.elasticsearch.collection.enabled: false
 xpack.security.audit.enabled: true
 
 node.roles: [ data, master ]
+
+reindex.remote.whitelist: gbis-elastic.staging.risa.gov.rw:443, elasticsearch.gbis.prod.risa.gov.rw:443

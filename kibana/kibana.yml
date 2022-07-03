@@ -175,3 +175,4 @@ xpack.security.secureCookies: true
 #xpack.security.enabled: true
 xpack.security.encryptionKey: "$KIBANA_XPACK_ENCRYPTIONKEY"
 xpack.encryptedSavedObjects.encryptionKey: "$KIBANA_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY"
+monitoring.ui.ccs.enabled: false

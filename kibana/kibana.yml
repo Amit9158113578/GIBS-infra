@@ -176,5 +176,5 @@ xpack.security.secureCookies: true
 xpack.security.encryptionKey: "$KIBANA_XPACK_ENCRYPTIONKEY"
 xpack.encryptedSavedObjects.encryptionKey: "$KIBANA_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY"
 server.ssl.enabled: true
-server.ssl.certificate: /etc/kibana/security/node1/node1.crt
-server.ssl.key: /etc/kibana/security/node1/node1.key
+#server.ssl.certificate: /etc/kibana/security/node1/node1.crt
+#server.ssl.key: /etc/kibana/security/node1/node1.key

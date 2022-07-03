@@ -59,7 +59,7 @@
 
     - name: Copy pipeline yml
       copy:
-        src: pipelines-{{ lookup('env','CI_COMMIT_BRANCH') }}.yml
+        src: ../pipelines-{{ lookup('env','CI_COMMIT_BRANCH') }}.yml
         dest: /etc/logstash/pipelines.yml
         force: yes
       become: yes

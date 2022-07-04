@@ -47,7 +47,7 @@
       blockinfile:
         dest: /etc/elasticsearch/elasticsearch.yml
         block: |
-          node.name: {{ inventory_hostname }}
+          node.name: {{ lookup('ENV','ENV') }}-{{ inventory_hostname }}
           xpack.security.transport.ssl.enabled: true
           xpack.security.transport.ssl.verification_mode: "certificate"
           xpack.security.transport.ssl.key: "/etc/elasticsearch/security/{{ inventory_hostname }}/{{ inventory_hostname }}.key"

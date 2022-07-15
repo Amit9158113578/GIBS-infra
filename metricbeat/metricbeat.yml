@@ -374,3 +374,10 @@ monitoring.elasticsearch:
 # This allows to enable 6.7 migration aliases
 #migration.6_to_7.enabled: true
 
+logging.level: info
+logging.to_files: true
+logging.files:
+  path: /var/log/metricbeat
+  name: metricbeat
+  keepfiles: 7
+  permissions: 0640

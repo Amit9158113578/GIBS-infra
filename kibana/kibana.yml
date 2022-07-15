@@ -52,7 +52,8 @@ elasticsearch.hosts: ["${ELASTICSEARCH_HOSTS}"]
 # Kibana can also authenticate to Elasticsearch via "service account tokens".
 # Service account tokens are Bearer style tokens that replace the traditional username/password based configuration.
 # Use this token instead of a username/password.
-elasticsearch.serviceAccountToken: "AAEAAWVsYXN0aWMva2liYW5hL2tpYmFuYS10b2tlbjp3N0JVNXV0MVJHS3FxRTlCMnI3cVNB"
+#elasticsearch.serviceAccountToken: "AAEAAWVsYXN0aWMva2liYW5hL2tpYmFuYS10b2tlbjp3N0JVNXV0MVJHS3FxRTlCMnI3cVNB"
+elasticsearch.serviceAccountToken: "${ELASTICSEARCH_KIBANA_TOKEN}"
 
 # Time in milliseconds to wait for Elasticsearch to respond to pings. Defaults to the value of
 # the elasticsearch.requestTimeout setting.

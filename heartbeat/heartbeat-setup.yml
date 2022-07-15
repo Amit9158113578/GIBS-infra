@@ -17,6 +17,14 @@
         src: heartbeat.yml
         dest: /etc/heartbeat
       become: yes
+    - name: Add Block
+      blockinfile:
+        dest: /etc/heartbeat/heartbeat.yml
+        block: |
+          http.enabled: true
+          monitoring.enabled: false # legacy monitoring off
+          http.port: 5067
+          http.host: {{ inventory_hostname }} 
     - name: Copy monitors.d folder
       synchronize:
         src: monitors.d

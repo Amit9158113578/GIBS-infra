@@ -16,14 +16,14 @@
         dest: /etc/filebeat
         force: yes
       become: yes
-    # - name: Add Block
-    #   blockinfile:
-    #     dest: /etc/filebeat/filebeat.yml
-    #     block: |
-    #       http.enabled: true
-    #       monitoring.enabled: false # legacy monitoring off
-    #       http.port: 5066
-    #       http.host: node1
+    - name: Add Block
+      blockinfile:
+        dest: /etc/filebeat/filebeat.yml
+        block: |
+          http.enabled: true
+          monitoring.enabled: false # legacy monitoring off
+          http.port: 5068
+          http.host: {{ inventory_hostname }} 
     - name: Copy modules.d folder
       synchronize:
         src: modules.d/

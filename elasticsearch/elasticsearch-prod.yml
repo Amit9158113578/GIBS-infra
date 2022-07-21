@@ -45,6 +45,6 @@ xpack.monitoring.elasticsearch.collection.enabled: false
 
 xpack.security.audit.enabled: true
 
-node.roles: [ data, master, ingest, remote_cluster_client ]
+node.roles: [ data, master, ingest, remote_cluster_client, transform ]
 
 reindex.remote.whitelist: elasticsearch.dev.gcc.gov.rw:443, gbis-elastic.staging.risa.gov.rw:443

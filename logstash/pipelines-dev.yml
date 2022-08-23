@@ -86,31 +86,15 @@
   pipeline.ordered: false
   queue.type: memory
 
-  ## Joseph Pipeline
+## Joget Pipelines
 
-# - pipeline.id: gcc_kpis_api_master_data
-#   path.config: "/etc/logstash/conf.d/gcc-kpis/gcc-kpis-api-master-data-pipeline.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
-#   queue.type: memory
-
-# - pipeline.id: gcc_kpis_api
-#   path.config: "/etc/logstash/conf.d/gcc-kpis/gcc-kpis-api-pipeline.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
-#   queue.type: memory
-
-# - pipeline.id: gcc_kpis
-#   path.config: "/etc/logstash/conf.d/gcc-kpis/gcc-kpis-pipeline.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
-#   queue.type: memory
+- pipeline.id: joget_gor_services_api
+  path.config: "/etc/logstash/conf.d/joget-connection/joget-connection.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
 
   ## Kafka Pipeline
 

@@ -22,9 +22,12 @@
          - echo 'Setup Clear Logs Cron Job'
          # Node1
          - cp base_setup/clear_logs.sh /etc/cron.daily/clear_logs.sh
+         - chmod +x /etc/cron.daily/clear_logs.sh
 
          # Node2
          - scp /data/clear_logs.sh root@node2:/etc/cron.daily/clear_logs.sh
+         - ssh node2 chmod +x /etc/cron.daily/clear_logs.sh
 
          # Node3
          - scp /data/clear_logs.sh root@node3:/etc/cron.daily/clear_logs.sh
+         - node3 chmod +x /etc/cron.daily/clear_logs.sh

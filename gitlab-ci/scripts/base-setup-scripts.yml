@@ -22,3 +22,28 @@ base_setup_prod_manual:
     - .base_setup_template
     - .variables_prod
     - .rules_prod_manual
+
+
+## cron logs clear setup
+
+## DEV
+
+cron_clear_logs_dev_manual:
+  extends:
+    - .cron_clear_logs_template
+    - .variables_dev
+    - .rules_dev_manual
+
+## TEST
+cron_clear_logs_test_manual:
+  extends:
+    - .cron_clear_logs_template
+    - .variables_test
+    - .rules_test_manual
+
+## PROD
+cron_clear_logs_prod_manual:
+  extends:
+    - .cron_clear_logs_template
+    - .variables_prod
+    - .rules_prod_manual

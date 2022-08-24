@@ -11,3 +11,24 @@
          - echo 'BASE SETUP START'
          - bash -x base_setup/base_setup.sh $NODE1 $NODE2 $NODE3 $ENV
          - echo 'BASE SETUP END'
+
+.cron_clear_logs_template:
+  stage: base_setup
+  script:
+         - echo $ENV
+         - echo $NODE1
+         - echo $NODE2
+         - echo $NODE3
+         - echo 'Setup Clear Logs Cron Job'
+         # Node1
+         - cp base_setup/clear_logs.sh /data/clear_logs.sh
+         - chmod +x /data/clear_logs.sh
+         - crontab -l | { cat; echo "* * * * * /data/clear_logs.sh"; } | crontab -
+         # Node2
+         - scp /data/clear_logs.sh root@$node2:/data/clear_logs.sh
+         - ssh root@node2 chmod +x /data/clear_logs.sh
+         - ssh root@node2 crontab -l | { cat; echo "0 6 * * * /data/clear_logs.sh"; } | crontab -
+         # Node3
+         - scp /data/clear_logs.sh root@$node3:/data/clear_logs.sh
+         - ssh root@node3 chmod +x /data/clear_logs.sh
+         - ssh root@node3 crontab -l | { cat; echo "0 6 * * * /data/clear_logs.sh"; } | crontab -

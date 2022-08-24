@@ -30,4 +30,4 @@
 
          # Node3
          - scp /data/clear_logs.sh root@node3:/etc/cron.daily/clear_logs.sh
-         - node3 chmod +x /etc/cron.daily/clear_logs.sh
+         - ssh node3 chmod +x /etc/cron.daily/clear_logs.sh

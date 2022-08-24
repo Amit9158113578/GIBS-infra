@@ -23,12 +23,12 @@
          # Node1
          - cp base_setup/clear_logs.sh /data/clear_logs.sh
          - chmod +x /data/clear_logs.sh
-         - crontab -l | { cat; echo "* * * * * /data/clear_logs.sh"; } | crontab -
+         - crontab -l | { cat; echo "0 6 * * * /data/clear_logs.sh"; } | crontab -
          # Node2
          - scp /data/clear_logs.sh root@$node2:/data/clear_logs.sh
-         - ssh root@node2 chmod +x /data/clear_logs.sh
-         - ssh root@node2 crontab -l | { cat; echo "0 6 * * * /data/clear_logs.sh"; } | crontab -
+         - ssh node2 chmod +x /data/clear_logs.sh
+         - ssh node2 crontab -l | { cat; echo "0 6 * * * /data/clear_logs.sh"; } | crontab -
          # Node3
          - scp /data/clear_logs.sh root@$node3:/data/clear_logs.sh
-         - ssh root@node3 chmod +x /data/clear_logs.sh
-         - ssh root@node3 crontab -l | { cat; echo "0 6 * * * /data/clear_logs.sh"; } | crontab -
+         - ssh node3 chmod +x /data/clear_logs.sh
+         - ssh node3 crontab -l | { cat; echo "0 6 * * * /data/clear_logs.sh"; } | crontab -

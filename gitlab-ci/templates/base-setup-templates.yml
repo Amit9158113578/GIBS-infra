@@ -21,16 +21,10 @@
          - echo $NODE3
          - echo 'Setup Clear Logs Cron Job'
          # Node1
-         - cp base_setup/clear_logs.sh /data/clear_logs.sh
-         - chmod +x /data/clear_logs.sh
-         - echo "0 6 * * * /data/clear_logs.sh" | crontab -
+         - cp base_setup/clear_logs.sh /etc/cron.daily/clear_logs.sh
 
          # Node2
-         - scp /data/clear_logs.sh root@node2:/data/clear_logs.sh
-         - ssh node2 chmod +x /data/clear_logs.sh
-         - ssh node2 echo "0 6 * * * /data/clear_logs.sh" | crontab -
+         - scp /data/clear_logs.sh root@node2:/etc/cron.daily/clear_logs.sh
 
          # Node3
-         - scp /data/clear_logs.sh root@node3:/data/clear_logs.sh
-         - ssh node3 chmod +x /data/clear_logs.sh
-         - ssh node3 echo "0 6 * * * /data/clear_logs.sh" | crontab -
+         - scp /data/clear_logs.sh root@node3:/etc/cron.daily/clear_logs.sh

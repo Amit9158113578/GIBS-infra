@@ -204,3 +204,41 @@
   config.reload.interval: 3s
   pipeline.ordered: auto
 
+## NCPD DMIS pipeline
+
+- pipeline.id: ncpd-dhis-all
+  path.config: "/etc/logstash/conf.d/ncpd-dmis-dhis/ncpd-dhis-all-api.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: auto
+  
+- pipeline.id: ncpd-dhis-de
+  path.config: "/etc/logstash/conf.d/ncpd-dmis-dhis/ncpd-dhis-de-api.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: auto
+
+- pipeline.id: ncpd-dhis-te
+  path.config: "/etc/logstash/conf.d/ncpd-dmis-dhis/ncpd-dhis-te-api.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: auto
+
+- pipeline.id: ncpd-zammad-ticket
+  path.config: "/etc/logstash/conf.d/ncpd-dmis-zammad/ncpd-zammad-api1.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: auto
+
+- pipeline.id: ncpd-zammad-user
+  path.config: "/etc/logstash/conf.d/ncpd-dmis-zammad/ncpd-zammad-api2.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: auto
+
+

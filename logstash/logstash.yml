@@ -56,6 +56,7 @@ path.data: /var/lib/logstash
 # WARNING: enabling this can lead to data loss during shutdown
 #
 pipeline.unsafe_shutdown: true
+pipeline.ecs_compatibility: disabled
 #
 # Set the pipeline event ordering. Options are "auto" (the default), "true" or "false".
 # "auto" will  automatically enable ordering if the 'pipeline.workers' setting

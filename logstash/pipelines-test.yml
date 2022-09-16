@@ -33,13 +33,13 @@
 #################################################################################
 
 
-- pipeline.id: application_gcc_master_data
-  path.config: "/etc/logstash/conf.d/GCC/master-data.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+#- pipeline.id: application_gcc_master_data
+#  path.config: "/etc/logstash/conf.d/GCC/master-data.conf"
+#  pipeline.workers: 1
+#  config.reload.automatic: true
+#  config.reload.interval: 3s
+# pipeline.ordered: false
+#  queue.type: memory
 
 #- pipeline.id: application_gcc_target_data
 #  path.config: "/etc/logstash/conf.d/GCC/target.conf"

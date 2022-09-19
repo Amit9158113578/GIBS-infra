@@ -98,13 +98,13 @@
 
 ## MINEDUC SNIE pipeline
 
-- pipeline.id: snie_master_data
-  path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-master-data-pipeline.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+#- pipeline.id: snie_master_data
+#  path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-master-data-pipeline.conf"
+#  pipeline.workers: 1
+#  config.reload.automatic: true
+#  config.reload.interval: 3s
+#  pipeline.ordered: false
+#  queue.type: memory
 
 
   ## Kafka Pipeline

@@ -115,8 +115,8 @@
   queue.type: memory
 
 ## Mineduc sdms Pipeline
-#- pipeline.id: mineduc_mapped
-#  path.config: "/etc/logstash/conf.d/mineduc/mineduc_sdms/mineduc_mapped.conf"
+- pipeline.id: mineduc_mapped
+  path.config: "/etc/logstash/conf.d/mineduc/mineduc_sdms/mineduc_mapped.conf"
 #- pipeline.id: snie_master_data
 #  path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-master-data.conf"
 #  pipeline.workers: 1

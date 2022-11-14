@@ -89,12 +89,12 @@
 ## Joget Pipelines
 
 - pipeline.id: joget_gor_services_api
- path.config: "/etc/logstash/conf.d/joget-connection/joget-connection.conf"
- pipeline.workers: 1
- config.reload.automatic: true
- config.reload.interval: 3s
- pipeline.ordered: false
- queue.type: memory
+  path.config: "/etc/logstash/conf.d/joget-connection/joget-connection.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
 
 ## MINEDUC SNIE pipeline
 

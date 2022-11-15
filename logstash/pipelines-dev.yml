@@ -106,13 +106,13 @@
   pipeline.ordered: false
   queue.type: memory
 
-# - pipeline.id: snie_dhis_data
-#   path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-tei-data.conf"
-#   pipeline.workers: 1
-#   config.reload.automatic: true
-#   config.reload.interval: 3s
-#   pipeline.ordered: false
-#   queue.type: memory
+- pipeline.id: snie_dhis_data
+  path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-tei-data.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
 
 # - pipeline.id: snie_dhis_attendance
 #   path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-attendance.conf"

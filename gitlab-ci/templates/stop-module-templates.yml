@@ -16,12 +16,24 @@
 
          ## Node3
          - ssh node3 service heartbeat-elastic stop
-         
-        #  ## Node2
-        #  - ssh node2 service heartbeat-elastic stop
 
-        #  ## Node1
-        #  - ssh node1 service heartbeat-elastic stop
+## Stop Metricbeat
+.stop_metricbeat_template_dev_only:
+  stage: stop_module
+  script:
+         - export
+
+         ## Node3
+         - ssh node3 service metricbeat stop
+         - ssh node3 service metricbeat1 stop
+         
+         ## Node2
+         - ssh node2 service metricbeat stop
+         - ssh node2 service metricbeat1 stop
+
+         ## Node1
+         - ssh node1 service metricbeat stop
+         - ssh node1 service metricbeat1 stop
 
 ## Stop Metricbeat
 .stop_metricbeat_template:

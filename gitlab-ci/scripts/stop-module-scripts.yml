@@ -16,7 +16,7 @@ stop_heartbeat_dev_manual:
 
 stop_metricbeat_dev_manual:
   extends:
-    - .stop_metricbeat_template
+    - .stop_metricbeat_template_dev_only
     - .variables_dev
     - .rules_dev_manual
 

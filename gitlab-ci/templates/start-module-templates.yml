@@ -18,14 +18,30 @@
          ## Node3
          - ssh node3 service heartbeat-elastic start
          - ssh node3 service heartbeat-elastic status
-         
-        #  ## Node2
-        #  - ssh node2 service heartbeat-elastic start
-        #  - ssh node2 service heartbeat-elastic status
 
-        #  ## Node1
-        #  - ssh node1 service heartbeat-elastic start
-        #  - ssh node1 service heartbeat-elastic status
+## start Metricbeat
+.start_metricbeat_template_dev_only:
+  stage: start_module
+  script:
+         - export
+
+         ## Node3
+         - ssh node3 service metricbeat start
+         - ssh node3 service metricbeat status
+         - ssh node3 service metricbeat1 start
+         - ssh node3 service metricbeat1 status
+         
+         ## Node2
+         - ssh node2 service metricbeat start
+         - ssh node2 service metricbeat status
+         - ssh node2 service metricbeat1 start
+         - ssh node2 service metricbeat1 status
+
+         ## Node1
+         - ssh node1 service metricbeat start
+         - ssh node1 service metricbeat status
+         - ssh node1 service metricbeat1 start
+         - ssh node1 service metricbeat1 status
 
 ## start Metricbeat
 .start_metricbeat_template:

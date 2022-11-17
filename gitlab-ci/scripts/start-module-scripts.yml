@@ -16,7 +16,7 @@ start_heartbeat_dev_manual:
 
 start_metricbeat_dev_manual:
   extends:
-    - .start_metricbeat_template
+    - .start_metricbeat_template_dev_only
     - .variables_dev
     - .rules_dev_manual
 

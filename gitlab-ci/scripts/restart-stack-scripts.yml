@@ -4,7 +4,7 @@
 
 restart_stack_dev_manual:
   extends:
-    - .restart_stack_template
+    - .restart_stack_template_dev_only
     - .variables_dev
     - .rules_dev_manual
 

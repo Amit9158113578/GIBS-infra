@@ -98,45 +98,45 @@
 
 ## MINEDUC SNIE pipeline
 
-- pipeline.id: snie_master_data
-  path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-master-data.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+#- pipeline.id: snie_master_data
+ # path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-master-data.conf"
+ # pipeline.workers: 1
+  #config.reload.automatic: true
+  #config.reload.interval: 3s
+  #pipeline.ordered: false
+  #queue.type: memory
 
-- pipeline.id: snie_dhis_data
-  path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-tei-data.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+#- pipeline.id: snie_dhis_data
+ # path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-tei-data.conf"
+  #pipeline.workers: 1
+  #config.reload.automatic: true
+  #config.reload.interval: 3s
+  #pipeline.ordered: false
+  #queue.type: memory
 
-- pipeline.id: snie_dhis_attendance
-  path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-attendance.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+#- pipeline.id: snie_dhis_attendance
+ # path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-attendance.conf"
+  #pipeline.workers: 1
+  #config.reload.automatic: true
+  #config.reload.interval: 3s
+  #pipeline.ordered: false
+  #queue.type: memory
 
-- pipeline.id: snie_secondary_data
-  path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-tei-sec-data.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+#- pipeline.id: snie_secondary_data
+ # path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-tei-sec-data.conf"
+  #pipeline.workers: 1
+  #config.reload.automatic: true
+  #config.reload.interval: 3s
+  #pipeline.ordered: false
+  #queue.type: memory
 
-- pipeline.id: snie_nursery_data
-  path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-tei-nurs-data.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+#- pipeline.id: snie_nursery_data
+ # path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-tei-nurs-data.conf"
+  #pipeline.workers: 1
+  #config.reload.automatic: true
+  #config.reload.interval: 3s
+  #pipeline.ordered: false
+  #queue.type: memory
 
 ## Mineduc sdms Pipeline
 #- pipeline.id: mineduc_mapped
@@ -263,26 +263,26 @@
 
 ## Easternprovince Report Pipeline
 
-- pipeline.id: easternprovince
-  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-pipeline.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: auto
+#- pipeline.id: easternprovince
+ # path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-pipeline.conf"
+  #pipeline.workers: 1
+  #config.reload.automatic: true
+  #config.reload.interval: 3s
+  #pipeline.ordered: auto
   
-- pipeline.id: easternprovince-api
-  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-pipeline.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: auto
+#- pipeline.id: easternprovince-api
+ # path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-pipeline.conf"
+  #pipeline.workers: 1
+  #config.reload.automatic: true
+  #config.reload.interval: 3s
+  #pipeline.ordered: auto
 
-- pipeline.id: easternprovince-api-master-data-pipeline
-  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-master-data-pipeline.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: auto
+#- pipeline.id: easternprovince-api-master-data-pipeline
+ # path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-master-data-pipeline.conf"
+  #pipeline.workers: 1
+  #config.reload.automatic: true
+  #config.reload.interval: 3s
+  #pipeline.ordered: auto
 
 ## IOT Pipeline
 
@@ -326,13 +326,13 @@
 
 ##New NCPD Pipelines
 
-- pipeline.id: ncpd-dhis-de
-  path.config: "/etc/logstash/conf.d/ncpd-dmis-dhis/ncpd-dhis-de-api.conf"
-  pipeline.workers: 1
-  config.reload.automatic: true
-  config.reload.interval: 3s
-  pipeline.ordered: false
-  queue.type: memory
+#- pipeline.id: ncpd-dhis-de
+ # path.config: "/etc/logstash/conf.d/ncpd-dmis-dhis/ncpd-dhis-de-api.conf"
+  #pipeline.workers: 1
+  #config.reload.automatic: true
+  #config.reload.interval: 3s
+  #pipeline.ordered: false
+  #queue.type: memory
 
 #- pipeline.id: ncpd-dhis-all
 #  path.config: "/etc/logstash/conf.d/ncpd-dmis-dhis/ncpd-dhis-all-api.conf"

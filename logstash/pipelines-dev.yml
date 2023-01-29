@@ -97,13 +97,13 @@
 
 ## MINEDUC SNIE pipeline
 
-#- pipeline.id: snie_master_data
- # path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-master-data.conf"
- # pipeline.workers: 1
-  #config.reload.automatic: true
-  #config.reload.interval: 3s
-  #pipeline.ordered: false
-  #queue.type: memory
+- pipeline.id: snie_master_data
+  path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-master-data.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: false
+  queue.type: memory
 
 #- pipeline.id: snie_dhis_data
  # path.config: "/etc/logstash/conf.d/mineduc/snie/mineduc-snie-api-tei-data.conf"
@@ -262,26 +262,26 @@
 
 ## Easternprovince Report Pipeline
 
-#- pipeline.id: easternprovince
- # path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-pipeline.conf"
-  #pipeline.workers: 1
-  #config.reload.automatic: true
-  #config.reload.interval: 3s
-  #pipeline.ordered: auto
+- pipeline.id: easternprovince
+  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-pipeline.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: auto
   
-#- pipeline.id: easternprovince-api
- # path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-pipeline.conf"
-  #pipeline.workers: 1
-  #config.reload.automatic: true
-  #config.reload.interval: 3s
-  #pipeline.ordered: auto
+- pipeline.id: easternprovince-api
+  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-pipeline.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: auto
 
-#- pipeline.id: easternprovince-api-master-data-pipeline
- # path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-master-data-pipeline.conf"
-  #pipeline.workers: 1
-  #config.reload.automatic: true
-  #config.reload.interval: 3s
-  #pipeline.ordered: auto
+- pipeline.id: easternprovince-api-master-data-pipeline
+  path.config: "/etc/logstash/conf.d/easternprovince/easternprovince-api-master-data-pipeline.conf"
+  pipeline.workers: 1
+  config.reload.automatic: true
+  config.reload.interval: 3s
+  pipeline.ordered: auto
 
 ## IOT Pipeline
 
